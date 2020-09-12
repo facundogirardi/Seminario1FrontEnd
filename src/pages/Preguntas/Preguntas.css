@@ -1,0 +1,10 @@
+.main-preguntas {
+    background-color: #232323;
+    display:block;
+    margin:auto; 
+    text-align: center;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow-x: hidden;
+ }
+ 
