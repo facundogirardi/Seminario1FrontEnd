@@ -62,7 +62,7 @@ const SignIn = () => {
   function handleSubmit(event) {
     event.preventDefault()
     authenticate({
-      displayName: 'User',
+      displayName: 'Bienvenido,',
       email: username,
     })
   }

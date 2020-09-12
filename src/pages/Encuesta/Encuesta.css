@@ -1,0 +1,14 @@
+.main-consultas {
+    background-color: #232323;
+    display:block;
+    margin:auto; 
+    text-align: center;
+ }
+ 
+ .Cuadrado{
+    border: 1px;
+    display: inline-block;
+    width: auto;
+    margin: 0 40px;
+    text-align: justify;
+ }

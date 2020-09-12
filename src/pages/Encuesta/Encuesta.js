@@ -1,6 +1,5 @@
 import Button from '@material-ui/core/Button'
 import Page from 'material-ui-shell/lib/containers/Page/Page'
-import QuestionDialog from 'material-ui-shell/lib/containers/QuestionDialog/QuestionDialog'
 import React, { useContext } from 'react'
 import Scrollbar from 'material-ui-shell/lib/components/Scrollbar/Scrollbar'
 import { useIntl } from 'react-intl'
@@ -15,6 +14,7 @@ import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 import IconButton from "@material-ui/core/IconButton";
 import SendIcon from '@material-ui/icons/Send';
+import "./Encuesta.css";
 
 /* Ubicaciones */
 const regiones = [
@@ -125,8 +125,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const DIALOG_ID = 'demo_dialog'
-
 const HomePage = () => {
   const intl = useIntl()
   const { setValue } = useSimpleValues()
@@ -140,12 +138,13 @@ const HomePage = () => {
   };
 
     return (
-    <Page pageTitle={intl.formatMessage({ id: 'Para realizar su simulacion, por favor responda la siguiente encuesta' })}>
+    <Page pageTitle={intl.formatMessage({ id: 'Usted esta en la ventana de la encuesta.' })}>
     <Scrollbar
-        style={{ height: '100%', width: '100%', display: 'flex', flex: 1 }}
-      >
+        style={{ height: '100%', width: '100%', display: 'flex', flex: 1 }}>
+        {intl.formatMessage({ id: ' ' })}
+        <br />
       <div className="Cuadrado">
-      <h1> </h1>
+      <h1> Para realizar su simulacion, por favor responda la siguiente encuesta.</h1>
       <div>
         <FormControl component="fieldset">
           <FormLabel component="legend">Tamaño de su empresa</FormLabel>

@@ -7,12 +7,13 @@ import SettingsIcon from '@material-ui/icons/Settings';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp'
 import LanguageIcon from '@material-ui/icons/Language'
 import MenuOpenIcon from '@material-ui/icons/MenuOpen'
-import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
-import ListAltIcon from '@material-ui/icons/ListAlt';
 import GetApp from '@material-ui/icons/GetApp'
 import ChromeReaderMode from '@material-ui/icons/ChromeReaderMode'
 import StyleIcon from '@material-ui/icons/Style'
 import allThemes from './themes'
+import QuestionAnswerIcon from '@material-ui/icons/QuestionAnswer';
+import PollIcon from '@material-ui/icons/Poll';
+import InfoIcon from '@material-ui/icons/Info';
 
 const getMenuItems = (props) => {
   const {
@@ -78,7 +79,7 @@ const getMenuItems = (props) => {
       value: '/Encuesta',
       visible: isAuthorised,
       primaryText: intl.formatMessage({ id: 'Encuesta' }),
-      leftIcon: <DaschboardIcon />,
+      leftIcon: <PollIcon />,
     },
     {
       value: '/Preguntas',
@@ -87,7 +88,7 @@ const getMenuItems = (props) => {
         id: 'Preguntas',
         defaultMessage: 'Preguntas',
       }),
-      leftIcon: <ListAltIcon />,
+      leftIcon: <QuestionAnswerIcon />,
     },
     {
       value: '/Resultados',
@@ -96,7 +97,7 @@ const getMenuItems = (props) => {
         id: 'Resultados',
         defaultMessage: 'Resultados',
       }),
-      leftIcon: <ListAltIcon />,
+      leftIcon: <DaschboardIcon />,
     },
     {
       value: '/ABM',
@@ -105,13 +106,13 @@ const getMenuItems = (props) => {
         id: 'ABM',
         defaultMessage: 'ABM',
       }),
-      leftIcon: <ListAltIcon />,
+      leftIcon: <SettingsIcon />,
     },
     {
       value: '/about',
       visible: true,
       primaryText: intl.formatMessage({ id: 'about' }),
-      leftIcon: <HelpOutlineIcon />,
+      leftIcon: <InfoIcon />,
     },
     { divider: true },
     {

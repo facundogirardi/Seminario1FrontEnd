@@ -26,6 +26,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 export default function Preguntas() {
+  const intl = useIntl()
   const classes = useStyles();
   const [Rubro, setRubro] = React.useState('Rubro');
   const [cantidad, setValue1] = React.useState('cantidad');
@@ -66,80 +67,85 @@ export default function Preguntas() {
   };
   
   return (
-    
-    <div class="Cuadrado">
-      <h1> Responda las siguientes preguntas :</h1>
-      <div>
-        <form className={classes.root} noValidate autoComplete="off">
-          <TextField
-            id="standard-select-rubro"
-            label="Selecciona tu sector de actividad"
-            select
-            value0={Rubro}
-            onChange={handleChange}
-            helperText="">
-            {rubros.map((option) => (
-              <MenuItem key={option.value} value={option.value}>
-                {option.label}
-              </MenuItem>
-            ))}
-          </TextField> 
-          </form>
-      </div>
-      <div>
-        <FormControl component="fieldset">
-          <FormLabel component="legend">¿Hay recomposicion o liquidacion de stock de materias primas?</FormLabel>
-          <RadioGroup aria-label="stock" name="stock" value2={stock} onChange={handleChange}>
-            <FormControlLabel value="Si" control={<Radio />} label="Si" />
-            <FormControlLabel value="No." control={<Radio />} label="No" />
-          </RadioGroup>
-        </FormControl>
-      </div>
-      <div>
-        <FormControl component="fieldset">
-          <FormLabel component="legend">¿Que tipo de PyME avanza a mayor velocidad?</FormLabel>
-          <RadioGroup aria-label="velocidad" name="velocidad" value3={velocidad} onChange={handleChange}>
-            <FormControlLabel value="Industriales" control={<Radio />} label="Industriales" />
-            <FormControlLabel value="SSI" control={<Radio />} label="SSI" />
-            <FormControlLabel value="NS/NC" control={<Radio />} label="NS/NC" />
-          </RadioGroup>
-        </FormControl>
-      </div>
-      <div>
-        <FormControl component="fieldset">
-          <FormLabel component="legend">¿Cual es el clima laboral en este segmento empresarial?</FormLabel>
-          <RadioGroup aria-label="clima" name="clima" value4={clima} onChange={handleChange}>
-            <FormControlLabel value="Muy Bueno" control={<Radio />} label="Muy Bueno" />
-            <FormControlLabel value="Bueno" control={<Radio />} label="Bueno" />
-            <FormControlLabel value="Malo" control={<Radio />} label="Malo" />
-          </RadioGroup>
-        </FormControl>
-      </div>
-      <div>
-        <FormControl component="fieldset">
-          <FormLabel component="legend">¿Hay riesgo de falta de entrega de los proveedores?</FormLabel>
-          <RadioGroup aria-label="entrega" name="entrega" value5={entrega} onChange={handleChange}>
-            <FormControlLabel value="Si" control={<Radio />} label="Si" />
-            <FormControlLabel value="No." control={<Radio />} label="No" />
-            <FormControlLabel value="No corresponde" control={<Radio />} label="No corresponde" />
-          </RadioGroup>
-        </FormControl>
+    <Page pageTitle={intl.formatMessage({ id: 'Usted esta en la ventana de las preguntas.' })}>
+      <Scrollbar
+        style={{ height: '100%', width: '100%', display: 'flex', flex: 1 }}>
+        {intl.formatMessage({ id: ' ' })}
+        <br />
+        <div class="Cuadrado">
+          <h1> Responda las siguientes preguntas :</h1>
+          <div>
+            <form className={classes.root} noValidate autoComplete="off">
+              <TextField
+                id="standard-select-rubro"
+                label="Selecciona tu sector de actividad"
+                select
+                value0={Rubro}
+                onChange={handleChange}
+                helperText="">
+                {rubros.map((option) => (
+                  <MenuItem key={option.value} value={option.value}>
+                    {option.label}
+                  </MenuItem>
+                ))}
+              </TextField> 
+              </form>
+          </div>
+          <div>
+            <FormControl component="fieldset">
+              <FormLabel component="legend">¿Hay recomposicion o liquidacion de stock de materias primas?</FormLabel>
+              <RadioGroup aria-label="stock" name="stock" value2={stock} onChange={handleChange}>
+                <FormControlLabel value="Si" control={<Radio />} label="Si" />
+                <FormControlLabel value="No." control={<Radio />} label="No" />
+              </RadioGroup>
+            </FormControl>
+          </div>
+          <div>
+            <FormControl component="fieldset">
+              <FormLabel component="legend">¿Que tipo de PyME avanza a mayor velocidad?</FormLabel>
+              <RadioGroup aria-label="velocidad" name="velocidad" value3={velocidad} onChange={handleChange}>
+                <FormControlLabel value="Industriales" control={<Radio />} label="Industriales" />
+                <FormControlLabel value="SSI" control={<Radio />} label="SSI" />
+                <FormControlLabel value="NS/NC" control={<Radio />} label="NS/NC" />
+              </RadioGroup>
+            </FormControl>
+          </div>
+          <div>
+            <FormControl component="fieldset">
+              <FormLabel component="legend">¿Cual es el clima laboral en este segmento empresarial?</FormLabel>
+              <RadioGroup aria-label="clima" name="clima" value4={clima} onChange={handleChange}>
+                <FormControlLabel value="Muy Bueno" control={<Radio />} label="Muy Bueno" />
+                <FormControlLabel value="Bueno" control={<Radio />} label="Bueno" />
+                <FormControlLabel value="Malo" control={<Radio />} label="Malo" />
+              </RadioGroup>
+            </FormControl>
+          </div>
+          <div>
+            <FormControl component="fieldset">
+              <FormLabel component="legend">¿Hay riesgo de falta de entrega de los proveedores?</FormLabel>
+              <RadioGroup aria-label="entrega" name="entrega" value5={entrega} onChange={handleChange}>
+                <FormControlLabel value="Si" control={<Radio />} label="Si" />
+                <FormControlLabel value="No." control={<Radio />} label="No" />
+                <FormControlLabel value="No corresponde" control={<Radio />} label="No corresponde" />
+              </RadioGroup>
+            </FormControl>
 
-      </div>
+          </div>
 
-      <div>
-        <IconButton edge="end" className={classes.SendIcon} color="inherit"  aria-label="menu">
-        <Button 
-          
-            variant="contained"
-            color="inherit"
-            className={classes.button}
-            startIcon={<SendIcon />}>
-            Enviar</Button>
-        </IconButton>
-      </div>
-    </div>  
-
+          <div>
+            <IconButton edge="end" className={classes.SendIcon} color="inherit"  aria-label="menu">
+            <Button 
+              
+                variant="contained"
+                color="inherit"
+                className={classes.button}
+                startIcon={<SendIcon />}>
+                Enviar</Button>
+            </IconButton>
+          </div>
+        </div>  
+      </Scrollbar>
+    </Page>               
   );
 }
 

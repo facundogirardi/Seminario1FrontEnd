@@ -1,4 +1,3 @@
-import Button from '@material-ui/core/Button'
 import Page from 'material-ui-shell/lib/containers/Page/Page'
 import QuestionDialog from 'material-ui-shell/lib/containers/QuestionDialog/QuestionDialog'
 import React, { useContext } from 'react'
@@ -13,19 +12,13 @@ const HomePage = () => {
   const { setValue } = useSimpleValues()
 
   return (
-    <Page pageTitle={intl.formatMessage({ id: 'Encuesta' })}>
+    <Page pageTitle={intl.formatMessage({ id: 'Usted esta en la ventana de administrador.' })}>
       <Scrollbar
         style={{ height: '100%', width: '100%', display: 'flex', flex: 1 }}
       >
         {intl.formatMessage({ id: ' ' })}
         <br />
-        <Button
-          onClick={() => {
-            setValue(DIALOG_ID, true)
-          }}
-        >
-          ESTE ES EL ABM
-        </Button>
+        <h1>Falta hacer el ABM.</h1>
         <QuestionDialog
           id={DIALOG_ID}
           title="Dialog title"
