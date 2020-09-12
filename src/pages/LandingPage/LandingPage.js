@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import imagen1 from '../../imagenes/imagen1.png';
+import imagen1 from '../../imagenes/Imagen1.png';
 import InputIcon from '@material-ui/icons/Input';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
@@ -31,7 +31,7 @@ export default function () {
             className={classes.button}
             startIcon={<InputIcon />}
             >
-            <Link to="/home"><center>Ingresar</center></Link>
+            <Link to="/Encuesta"><center>Ingresar</center></Link>
           </Button>
         </IconButton>
       </p>

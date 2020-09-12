@@ -74,7 +74,7 @@ const SignUp = () => {
     setAuthMenuOpen(false)
     let _location = history.location
 
-    let _route = '/home'
+    let _route = '/Encuesta'
     if (_location.state && _location.state.from) {
       _route = _location.state.from.pathname
       history.push(_route)

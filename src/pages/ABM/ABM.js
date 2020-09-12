@@ -13,18 +13,18 @@ const HomePage = () => {
   const { setValue } = useSimpleValues()
 
   return (
-    <Page pageTitle={intl.formatMessage({ id: 'home' })}>
+    <Page pageTitle={intl.formatMessage({ id: 'Encuesta' })}>
       <Scrollbar
         style={{ height: '100%', width: '100%', display: 'flex', flex: 1 }}
       >
-        {intl.formatMessage({ id: 'home' })}
+        {intl.formatMessage({ id: ' ' })}
         <br />
         <Button
           onClick={() => {
             setValue(DIALOG_ID, true)
           }}
         >
-          este es el abm
+          ESTE ES EL ABM
         </Button>
         <QuestionDialog
           id={DIALOG_ID}

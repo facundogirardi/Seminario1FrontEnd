@@ -8,8 +8,7 @@ const SignIn = lazy(() => import('../pages/SignIn/SignIn'))
 const SignUp = lazy(() => import('../pages/SignUp/SignUp'))
 const PasswordReset = lazy(() => import('../pages/PasswordReset/PasswordReset'))
 const About = lazy(() => import('../pages/About/About'))
-const Home = lazy(() => import('../pages/Home/Home'))
-const DialogDemo = lazy(() => import('../pages/DialogDemo/DialogDemo'))
+const Encuesta = lazy(() => import('../pages/Encuesta/Encuesta'))
 const ABM = lazy(() => import('../pages/ABM/ABM'))
 const Preguntas = lazy(() => import('../pages/Preguntas/Preguntas'))
 const Resultados = lazy(() => import('../pages/Resultados/Resultado'))
@@ -24,8 +23,7 @@ const routes = [
     component={PasswordReset}
   />,
   <Route path="/about" exact component={About} />,
-  <PrivateRoute path="/home" exact component={Home} />,
-  <PrivateRoute path="/dialog_demo" exact component={DialogDemo} />,
+  <PrivateRoute path="/Encuesta" exact component={Encuesta} />,
   <PrivateRoute path="/ABM" exact component={ABM} />,
   <PrivateRoute path="/Preguntas" exact component={Preguntas} />,
   <PrivateRoute path="/Resultados" exact component={Resultados} />,

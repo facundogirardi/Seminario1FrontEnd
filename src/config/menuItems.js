@@ -2,13 +2,13 @@ import allLocales from './locales'
 // import allThemes from './themes'
 import React from 'react'
 import DaschboardIcon from '@material-ui/icons/Dashboard'
-import InfoOutlined from '@material-ui/icons/InfoOutlined'
 import LockIcon from '@material-ui/icons/Lock'
+import SettingsIcon from '@material-ui/icons/Settings';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp'
 import LanguageIcon from '@material-ui/icons/Language'
-import SettingsIcon from '@material-ui/icons/SettingsApplications'
 import MenuOpenIcon from '@material-ui/icons/MenuOpen'
-import ChatBubble from '@material-ui/icons/ChatBubble'
+import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
+import ListAltIcon from '@material-ui/icons/ListAlt';
 import GetApp from '@material-ui/icons/GetApp'
 import ChromeReaderMode from '@material-ui/icons/ChromeReaderMode'
 import StyleIcon from '@material-ui/icons/Style'
@@ -75,19 +75,10 @@ const getMenuItems = (props) => {
   }
   return [
     {
-      value: '/home',
+      value: '/Encuesta',
       visible: isAuthorised,
-      primaryText: intl.formatMessage({ id: 'home' }),
+      primaryText: intl.formatMessage({ id: 'Encuesta' }),
       leftIcon: <DaschboardIcon />,
-    },
-    {
-      value: '/dialog_demo',
-      visible: isAuthorised,
-      primaryText: intl.formatMessage({
-        id: 'dialog_demo',
-        defaultMessage: 'Dialog demo',
-      }),
-      leftIcon: <ChatBubble />,
     },
     {
       value: '/Preguntas',
@@ -96,16 +87,7 @@ const getMenuItems = (props) => {
         id: 'Preguntas',
         defaultMessage: 'Preguntas',
       }),
-      leftIcon: <ChatBubble />,
-    },
-    {
-      value: '/ABM',
-      visible: isAuthorised,
-      primaryText: intl.formatMessage({
-        id: 'ABM',
-        defaultMessage: 'ABM',
-      }),
-      leftIcon: <ChatBubble />,
+      leftIcon: <ListAltIcon />,
     },
     {
       value: '/Resultados',
@@ -114,13 +96,22 @@ const getMenuItems = (props) => {
         id: 'Resultados',
         defaultMessage: 'Resultados',
       }),
-      leftIcon: <ChatBubble />,
+      leftIcon: <ListAltIcon />,
+    },
+    {
+      value: '/ABM',
+      visible: isAuthorised,
+      primaryText: intl.formatMessage({
+        id: 'ABM',
+        defaultMessage: 'ABM',
+      }),
+      leftIcon: <ListAltIcon />,
     },
     {
       value: '/about',
       visible: true,
       primaryText: intl.formatMessage({ id: 'about' }),
-      leftIcon: <InfoOutlined />,
+      leftIcon: <HelpOutlineIcon />,
     },
     { divider: true },
     {

@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     '& > *': {
       margin: theme.spacing(1),
-      width: '25ch',
+      width: '50ch',
     },
   },
 }));
@@ -66,6 +66,7 @@ export default function Preguntas() {
   };
   
   return (
+    
     <div class="Cuadrado">
       <h1> Responda las siguientes preguntas :</h1>
       <div>
