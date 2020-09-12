@@ -1,0 +1,24 @@
+#container {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
+#image {
+    background-attachment: fixed;
+    background-position: center center;
+    background-size: cover;
+
+}
+#text {
+    z-index: 100;
+    position: absolute;
+    color: rgb(0, 0, 0);
+    font-size: 80px;
+    text-align: center;
+    left: 100px;
+    top: 200px;
+}
+
+a:link, a:visited, a:active {
+    text-decoration:none;
+}
