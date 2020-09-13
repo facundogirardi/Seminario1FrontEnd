@@ -15,6 +15,7 @@ const messages = defineMessages({
   red: 'Rot',
   green: 'Grün',
   language: 'Sprache',
+  es: 'Spanisch',
   en: 'Englisch',
   de: 'Deutsch',
   ru: 'Russisch',

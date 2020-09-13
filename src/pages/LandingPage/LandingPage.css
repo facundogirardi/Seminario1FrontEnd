@@ -12,7 +12,7 @@
 #text {
     z-index: 100;
     position: absolute;
-    color: rgb(0, 0, 0);
+    color: "inherit";
     font-size: 80px;
     text-align: center;
     left: 100px;
