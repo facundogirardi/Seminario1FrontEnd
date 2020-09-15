@@ -12,3 +12,11 @@
     margin: 0 40px;
     text-align: justify;
  }
+
+ .Cuadrado2{
+   border: 1px;
+   display: inline-block;
+   width: auto;
+   margin: 0 80px;
+   text-align: justify;
+}

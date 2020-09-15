@@ -156,8 +156,7 @@ const HomePage = () => {
             <FormControlLabel value="Grande : Mas de 800 ocupados." control={<Radio />} label="Grande : Mas de 800 ocupados." />
           </RadioGroup>
         </FormControl>
-      </div>
-      <div>
+        <div class="Cuadrado2">
         <form className={classes.root} noValidate autoComplete="off">
           <TextField id="standard-basic1" label="Mail"/><br></br>
           <TextField id="standard-basic2" label="Razon social" /><br></br>
@@ -175,17 +174,18 @@ const HomePage = () => {
             ))}
           </TextField> 
         </form>
+        <IconButton edge="end" className={classes.SendIcon} color="inherit" aria-label="menu">
+        <Button 
+            href="/Preguntas"
+            variant="contained"
+            color="inherit"
+            className={classes.button}
+            startIcon={<SendIcon />}>
+            Enviar</Button>
+        </IconButton>
+        </div>
       </div>
-      <IconButton edge="end" className={classes.SendIcon} color="inherit" aria-label="menu">
-      <Button 
-          href="/Preguntas"
-          variant="contained"
-          color="inherit"
-          className={classes.button}
-          startIcon={<SendIcon />}>
-          Enviar</Button>
-      </IconButton>
-    </div>   
+      </div>
     </Scrollbar>
     </Page>
   )
