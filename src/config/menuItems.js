@@ -14,6 +14,7 @@ import allThemes from './themes'
 import QuestionAnswerIcon from '@material-ui/icons/QuestionAnswer';
 import PollIcon from '@material-ui/icons/Poll';
 import InfoIcon from '@material-ui/icons/Info';
+import CreateIcon from '@material-ui/icons/Create';
 
 const getMenuItems = (props) => {
   const {
@@ -86,7 +87,6 @@ const getMenuItems = (props) => {
       visible: isAuthorised,
       primaryText: intl.formatMessage({
         id: 'Preguntas',
-        defaultMessage: 'Preguntas',
       }),
       leftIcon: <QuestionAnswerIcon />,
     },
@@ -95,7 +95,6 @@ const getMenuItems = (props) => {
       visible: isAuthorised,
       primaryText: intl.formatMessage({
         id: 'Resultados',
-        defaultMessage: 'Resultados',
       }),
       leftIcon: <DaschboardIcon />,
     },
@@ -104,9 +103,8 @@ const getMenuItems = (props) => {
       visible: isAuthorised,
       primaryText: intl.formatMessage({
         id: 'ABM',
-        defaultMessage: 'ABM',
       }),
-      leftIcon: <SettingsIcon />,
+      leftIcon: <CreateIcon />,
     },
     {
       value: '/about',
