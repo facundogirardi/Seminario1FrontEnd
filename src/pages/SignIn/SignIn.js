@@ -135,8 +135,8 @@ const SignIn = () => {
               justifyContent: 'space-between',
             }}
           >
-            <Link to="/password_reset">Forgot Password?</Link>
-            <Link to="/signup">Register</Link>
+            <Link to="/password_reset">Olvido su contraseña?</Link>
+            <Link to="/signup">Registrar</Link>
           </div>
         </div>
       </Paper>

@@ -126,13 +126,6 @@ const getMenuItems = (props) => {
           nestedItems: themeItems,
         },
         {
-          primaryText: intl.formatMessage({ id: 'language' }),
-          secondaryText: intl.formatMessage({ id: locale }),
-          primaryTogglesNestedList: true,
-          leftIcon: <LanguageIcon />,
-          nestedItems: localeItems,
-        },
-        {
           visible: isDesktop ? true : false,
           onClick: () => {
             setMiniMode(!useMiniMode)

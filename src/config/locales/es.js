@@ -18,7 +18,7 @@ const messages = defineMessages({
   default: 'Por defecto',
   red: 'Rojo',
   green: 'Verde',
-  language: 'Lenguaje',
+  language: 'Idioma',
   es: 'Español',
   en: 'Ingles',
   de: 'Aleman',
