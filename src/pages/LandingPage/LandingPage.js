@@ -31,7 +31,17 @@ export default function () {
             className={classes.button}
             startIcon={<InputIcon />}
             >
-            <Link to="/Encuesta"><center>Ingresar</center></Link>
+            <Link to="/Encuesta"><center>Pyme</center></Link>
+          </Button>
+        </IconButton>
+      <IconButton edge="end" className={classes.InputIcon} color="inherit"  aria-label="menu">
+          <Button 
+            variant="contained"
+            color="inherit"
+            className={classes.button}
+            startIcon={<InputIcon />}
+            >
+            <Link to="/ABM"><center>Administrador</center></Link>
           </Button>
         </IconButton>
       </p>
