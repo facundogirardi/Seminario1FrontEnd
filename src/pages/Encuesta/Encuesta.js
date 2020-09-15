@@ -178,6 +178,7 @@ const HomePage = () => {
       </div>
       <IconButton edge="end" className={classes.SendIcon} color="inherit" aria-label="menu">
       <Button 
+          href="/Preguntas"
           variant="contained"
           color="inherit"
           className={classes.button}

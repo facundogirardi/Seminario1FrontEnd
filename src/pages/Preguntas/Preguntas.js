@@ -135,7 +135,7 @@ export default function Preguntas() {
           <div>
             <IconButton edge="end" className={classes.SendIcon} color="inherit"  aria-label="menu">
             <Button 
-              
+                href="/Resultados"
                 variant="contained"
                 color="inherit"
                 className={classes.button}

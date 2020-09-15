@@ -5,3 +5,18 @@
     text-align: center;
  }
  
+ .Cuadrado{
+    border: 1px;
+    display: inline-block;
+    width: auto;
+    margin: 0 40px;
+    text-align: justify;
+ }
+
+ .Boton{
+    border: 1px;
+    display: inline-block;
+    width: auto;
+    margin: 0 60px;
+    text-align: justify;
+ }
