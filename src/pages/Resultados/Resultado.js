@@ -14,6 +14,8 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import { Link } from 'react-router-dom'
 
 const useStyles = makeStyles({
   table: {
@@ -48,7 +50,19 @@ export default function BasicTextFields() {
         <div class="Cuadrado">
           <h1> Resultados de su consulta :</h1>
         </div>
-        <div class="Boton">
+        <div class="BotonAtras">
+          <IconButton edge="end" className={classes.ArrowBackIcon} color="inherit"  aria-label="menu">
+            <Button 
+              variant="contained"
+              color="inherit"
+              className={classes.button}
+              startIcon={<ArrowBackIcon />}
+              >
+              <Link to="/Preguntas"><center>Atras</center></Link>
+            </Button>
+          </IconButton>
+        </div>
+        <div class="BotonGenerar">
           <IconButton edge="end" className={classes.PictureAsPdfIcon} color="inherit"  aria-label="menu">
             <Button 
                 variant="contained"

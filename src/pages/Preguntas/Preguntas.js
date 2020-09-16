@@ -16,6 +16,8 @@ import IconButton from "@material-ui/core/IconButton";
 import SendIcon from '@material-ui/icons/Send';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import { Link } from 'react-router-dom'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -131,16 +133,27 @@ export default function Preguntas() {
             </FormControl>
 
           </div>
-
-          <div>
-            <IconButton edge="end" className={classes.SendIcon} color="inherit"  aria-label="menu">
-            <Button 
-                href="/Resultados"
+          <div class="BotonAtras">
+            <IconButton edge="end" className={classes.ArrowBackIcon} color="inherit"  aria-label="menu">
+              <Button 
                 variant="contained"
                 color="inherit"
                 className={classes.button}
-                startIcon={<SendIcon />}>
-                Enviar</Button>
+                startIcon={<ArrowBackIcon />}
+                >
+                <Link to="/Encuesta"><center>Atras</center></Link>
+              </Button>
+            </IconButton>
+          </div>
+          <div class="BotonEnviar">
+            <IconButton edge="end" className={classes.SendIcon} color="inherit"  aria-label="menu">
+              <Button 
+                  variant="contained"
+                  color="inherit"
+                  className={classes.button}
+                  startIcon={<SendIcon />}>
+                  <Link to="/Resultados"><center>Enviar</center></Link>
+              </Button>
             </IconButton>
           </div>
         </div>  

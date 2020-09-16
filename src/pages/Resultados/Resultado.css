@@ -13,10 +13,22 @@
     text-align: justify;
  }
 
- .Boton{
+ .BotonGenerar{
     border: 1px;
     display: inline-block;
     width: auto;
-    margin: 0 60px;
+    margin: 0 -10px;
     text-align: justify;
  }
+
+ .BotonAtras{
+   border: 1px;
+   display: inline-block;
+   width: auto;
+   margin: 0 20px;
+   text-align: justify;
+}
+
+a:link, a:visited, a:active {
+   text-decoration:none;
+}
