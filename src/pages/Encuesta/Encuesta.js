@@ -15,6 +15,7 @@ import FormLabel from '@material-ui/core/FormLabel';
 import IconButton from "@material-ui/core/IconButton";
 import SendIcon from '@material-ui/icons/Send';
 import "./Encuesta.css";
+import { Link } from 'react-router-dom'
 
 /* Ubicaciones */
 const regiones = [
@@ -175,13 +176,13 @@ const HomePage = () => {
           </TextField> 
         </form>
         <IconButton edge="end" className={classes.SendIcon} color="inherit" aria-label="menu">
-        <Button 
-            href="/Preguntas"
-            variant="contained"
-            color="inherit"
-            className={classes.button}
-            startIcon={<SendIcon />}>
-            Enviar</Button>
+          <Button 
+              variant="contained"
+              color="inherit"
+              className={classes.button}
+              startIcon={<SendIcon />}>
+              <Link to="/Preguntas"><center>Enviar</center></Link>
+          </Button>
         </IconButton>
         </div>
       </div>
