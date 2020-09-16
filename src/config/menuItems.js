@@ -15,6 +15,7 @@ import QuestionAnswerIcon from '@material-ui/icons/QuestionAnswer';
 import PollIcon from '@material-ui/icons/Poll';
 import InfoIcon from '@material-ui/icons/Info';
 import CreateIcon from '@material-ui/icons/Create';
+import HomeIcon from '@material-ui/icons/Home';
 
 const getMenuItems = (props) => {
   const {
@@ -58,97 +59,199 @@ const getMenuItems = (props) => {
     }
   })
 
-  if (isAuthMenuOpen || !isAuthorised) {
-    return [
-      {
-        value: '/signin',
-        onClick: isAuthorised
-          ? () => {
-              setAuth({ isAuthenticated: false })
-            }
-          : () => {},
+  if (isAuthMenuOpen && !isAuthorised) {
+      return [
+        {
+        value: '/',
         visible: true,
-        primaryText: isAuthorised
-          ? intl.formatMessage({ id: 'sign_out' })
-          : intl.formatMessage({ id: 'sign_in' }),
-        leftIcon: isAuthorised ? <ExitToAppIcon /> : <LockIcon />,
+        primaryText: intl.formatMessage({ id: 'Home' }),
+        leftIcon: <HomeIcon />,
+        },
+        {
+          value: '/signin',
+          onClick: isAuthorised
+            ? () => {
+                setAuth({ isAuthenticated: false })
+              }
+            : () => {},
+          visible: true,
+          primaryText: isAuthorised
+            ? intl.formatMessage({ id: 'sign_out' })
+            : intl.formatMessage({ id: 'sign_in' }),
+          leftIcon: isAuthorised ? <ExitToAppIcon /> : <LockIcon />,
+        },
+      {
+        value: '/ABM',
+        visible: isAuthorised,
+        primaryText: intl.formatMessage({
+          id: 'ABM',
+        }),
+        leftIcon: <CreateIcon />,
+      },
+      {
+        value: '/about',
+        visible: isAuthorised,
+        primaryText: intl.formatMessage({ id: 'about' }),
+        leftIcon: <InfoIcon />,
+      },
+      {
+        value: null,
+        visible: isAppInstallable && !isAppInstalled,
+        onClick: () => {
+          deferredPrompt.prompt()
+        },
+        primaryText: intl.formatMessage({
+          id: 'install',
+          defaultMessage: 'Install',
+        }),
+        leftIcon: <GetApp />,
+      },
+      {
+        value: '/Encuesta',
+        visible: true,
+        primaryText: intl.formatMessage({ id: 'Encuesta' }),
+        leftIcon: <PollIcon />,
+      },
+      {
+        value: '/Preguntas',
+        visible: true,
+        primaryText: intl.formatMessage({
+          id: 'Preguntas',
+        }),
+        leftIcon: <QuestionAnswerIcon />,
+      },
+      {
+        value: '/Resultados',
+        visible: true,
+        primaryText: intl.formatMessage({
+          id: 'Resultados',
+        }),
+        leftIcon: <DaschboardIcon />,
+      },
+       { divider: true },
+      {
+        primaryText: intl.formatMessage({ id: 'settings' }),
+        primaryTogglesNestedList: true,
+        leftIcon: <SettingsIcon />,
+        nestedItems: [
+          {
+            primaryText: intl.formatMessage({ id: 'theme' }),
+            secondaryText: intl.formatMessage({ id: themeID }),
+            primaryTogglesNestedList: true,
+            leftIcon: <StyleIcon />,
+            nestedItems: themeItems,
+          },
+          {
+            visible: isDesktop ? true : false,
+            onClick: () => {
+              setMiniMode(!useMiniMode)
+            },
+            primaryText: intl.formatMessage({
+              id: 'menu_mini_mode',
+            }),
+            leftIcon: useMiniMode ? <MenuOpenIcon /> : <ChromeReaderMode />,
+          },
+        ],
       },
     ]
   }
-  return [
-    {
-      value: '/Encuesta',
-      visible: isAuthorised,
-      primaryText: intl.formatMessage({ id: 'Encuesta' }),
-      leftIcon: <PollIcon />,
-    },
-    {
-      value: '/Preguntas',
-      visible: isAuthorised,
-      primaryText: intl.formatMessage({
-        id: 'Preguntas',
-      }),
-      leftIcon: <QuestionAnswerIcon />,
-    },
-    {
-      value: '/Resultados',
-      visible: isAuthorised,
-      primaryText: intl.formatMessage({
-        id: 'Resultados',
-      }),
-      leftIcon: <DaschboardIcon />,
-    },
-    {
-      value: '/ABM',
-      visible: isAuthorised,
-      primaryText: intl.formatMessage({
-        id: 'ABM',
-      }),
-      leftIcon: <CreateIcon />,
-    },
-    {
-      value: '/about',
-      visible: true,
-      primaryText: intl.formatMessage({ id: 'about' }),
-      leftIcon: <InfoIcon />,
-    },
-    { divider: true },
-    {
-      primaryText: intl.formatMessage({ id: 'settings' }),
-      primaryTogglesNestedList: true,
-      leftIcon: <SettingsIcon />,
-      nestedItems: [
+  else{
+    return [
         {
-          primaryText: intl.formatMessage({ id: 'theme' }),
-          secondaryText: intl.formatMessage({ id: themeID }),
-          primaryTogglesNestedList: true,
-          leftIcon: <StyleIcon />,
-          nestedItems: themeItems,
+        value: '/',
+        visible: true,
+        primaryText: intl.formatMessage({ id: 'Home' }),
+        leftIcon: <HomeIcon />,
         },
-        {
-          visible: isDesktop ? true : false,
-          onClick: () => {
-            setMiniMode(!useMiniMode)
-          },
-          primaryText: intl.formatMessage({
-            id: 'menu_mini_mode',
-          }),
-          leftIcon: useMiniMode ? <MenuOpenIcon /> : <ChromeReaderMode />,
-        },
-      ],
-    },
-    {
-      value: null,
-      visible: isAppInstallable && !isAppInstalled,
-      onClick: () => {
-        deferredPrompt.prompt()
+      {
+        value: '/ABM',
+        visible: isAuthorised,
+        primaryText: intl.formatMessage({
+          id: 'ABM',
+        }),
+        leftIcon: <CreateIcon />,
       },
-      primaryText: intl.formatMessage({
-        id: 'install',
-        defaultMessage: 'Install',
-      }),
-      leftIcon: <GetApp />,
-    },
-  ]
+      {
+        value: '/about',
+        visible: isAuthorised,
+        primaryText: intl.formatMessage({ id: 'about' }),
+        leftIcon: <InfoIcon />,
+      },
+      {
+          value: '/signin',
+          onClick: isAuthorised
+            ? () => {
+                setAuth({ isAuthenticated: false })
+              }
+            : () => {},
+          visible: true,
+          primaryText: isAuthorised
+            ? intl.formatMessage({ id: 'sign_out' })
+            : intl.formatMessage({ id: 'sign_in' }),
+          leftIcon: isAuthorised ? <ExitToAppIcon /> : <LockIcon />,
+        },
+      {
+        value: null,
+        visible: isAppInstallable && !isAppInstalled,
+        onClick: () => {
+          deferredPrompt.prompt()
+        },
+        primaryText: intl.formatMessage({
+          id: 'install',
+          defaultMessage: 'Install',
+        }),
+        leftIcon: <GetApp />,
+      },
+      {
+        value: '/Encuesta',
+        visible: false,
+        primaryText: intl.formatMessage({ id: 'Encuesta' }),
+        leftIcon: <PollIcon />,
+      },
+      {
+        value: '/Preguntas',
+        visible: false,
+        primaryText: intl.formatMessage({
+          id: 'Preguntas',
+        }),
+        leftIcon: <QuestionAnswerIcon />,
+      },
+      {
+        value: '/Resultados',
+        visible: false,
+        primaryText: intl.formatMessage({
+          id: 'Resultados',
+        }),
+        leftIcon: <DaschboardIcon />,
+      },
+       { divider: true },
+      {
+        primaryText: intl.formatMessage({ id: 'settings' }),
+        primaryTogglesNestedList: true,
+        leftIcon: <SettingsIcon />,
+        nestedItems: [
+          {
+            primaryText: intl.formatMessage({ id: 'theme' }),
+            secondaryText: intl.formatMessage({ id: themeID }),
+            primaryTogglesNestedList: true,
+            leftIcon: <StyleIcon />,
+            nestedItems: themeItems,
+          },
+          {
+            visible: isDesktop ? true : false,
+            onClick: () => {
+              setMiniMode(!useMiniMode)
+            },
+            primaryText: intl.formatMessage({
+              id: 'menu_mini_mode',
+            }),
+            leftIcon: useMiniMode ? <MenuOpenIcon /> : <ChromeReaderMode />,
+          },
+        ],
+      },
+    ]
+  }
+
+  
 }
 export default getMenuItems

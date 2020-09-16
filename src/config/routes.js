@@ -16,17 +16,12 @@ const Resultados = lazy(() => import('../pages/Resultados/Resultado'))
 const routes = [
   <PublicRoute path="/signin" redirectTo="/" exact component={SignIn} />,
   <PublicRoute path="/signup" redirectTo="/" exact component={SignUp} />,
-  <PublicRoute
-    path="/password_reset"
-    redirectTo="/"
-    exact
-    component={PasswordReset}
-  />,
-  <Route path="/about" exact component={About} />,
-  <PrivateRoute path="/Encuesta" exact component={Encuesta} />,
+  <PublicRoute path="/password_reset" redirectTo="/" exact component={PasswordReset} />,
+  <PrivateRoute path="/about" exact component={About} />,
+  <PublicRoute path="/Encuesta" exact component={Encuesta} />,
   <PrivateRoute path="/ABM" exact component={ABM} />,
-  <PrivateRoute path="/Preguntas" exact component={Preguntas} />,
-  <PrivateRoute path="/Resultados" exact component={Resultados} />,
+  <PublicRoute path="/Preguntas" exact component={Preguntas} />,
+  <PublicRoute path="/Resultados" exact component={Resultados} />,
 ]
 
 export default routes
