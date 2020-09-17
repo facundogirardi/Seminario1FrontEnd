@@ -1,11 +1,11 @@
  ![version](https://img.shields.io/badge/version-1.0.0-blue.svg) 
 
 ## Presentacion del producto
-![Product Presentation Image](https://i.ibb.co/XJPMnFt/portada.jpg)
+![Product Presentation Image](https://i.ibb.co/MC82byP/portada.png)
 
 ## Descripcion
 
-<p>Nuestro proyecto consta en hacer un benchmarking sobre la fundacion "Observatorio pyme" vamos a comparar estadisticas, sacar promedios, calcular sectores, entre otras cosas.</p>
+<p>Nuestro proyecto consta en hacer un benchmarking sobre la fundacion "Observatorio pyme" donde las Pymes podran realizar consultas de como se encuentra su empresa en el mercado.</p>
 <p>A continuacion les dejamos un link para que vean el contexto del proyecto en el cual estamos trabajando.</p>
 https://www.observatoriopyme.org.ar/la-fundacion/historia-y-actualidad/
 
@@ -32,7 +32,6 @@ Agregar documentacion sobre la aplicacion
 
 * Descargar la aplicacion del repositorio https://gitlab.com/facundogirardi/api-benchmarking
 * En la carpeta del proyecto ejecutar <b>npm install</b>
-* Instalar router Dom </b>npm install --save react-router-dom</b>
 * Se levantara en local http://localhost:3000/
 
 
@@ -40,7 +39,7 @@ Agregar documentacion sobre la aplicacion
 
 Se probo en los siguientes navegadores: 
 
-<img src="https://github.com/creativetimofficial/public-assets/blob/master/logos/chrome-logo.png?raw=true" width="60" height="60"> <img src="https://raw.githubusercontent.com/creativetimofficial/public-assets/master/logos/firefox-logo.png" width="60" height="60"> <img src="https://raw.githubusercontent.com/creativetimofficial/public-assets/master/logos/edge-logo.png" width="60" height="60"> <img src="https://raw.githubusercontent.com/creativetimofficial/public-assets/master/logos/safari-logo.png" width="60" height="60"> <img src="https://raw.githubusercontent.com/creativetimofficial/public-assets/master/logos/opera-logo.png" width="60" height="60">
+<img src="https://github.com/creativetimofficial/public-assets/blob/master/logos/chrome-logo.png?raw=true" width="60" height="60"> <img src="https://raw.githubusercontent.com/creativetimofficial/public-assets/master/logos/firefox-logo.png" width="60" height="60"> <img src="https://raw.githubusercontent.com/creativetimofficial/public-assets/master/logos/edge-logo.png" width="60" height="60"> <img src="https://raw.githubusercontent.com/creativetimofficial/public-assets/master/logos/opera-logo.png" width="60" height="60">
 
 ## Recursos
 

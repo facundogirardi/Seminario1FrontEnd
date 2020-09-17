@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import imagen1 from '../../imagenes/Imagen1.png';
+import fondo from '../../imagenes/fondo.png';
 import InputIcon from '@material-ui/icons/Input';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
@@ -25,7 +25,7 @@ export default function () {
   const classes = useStyles();
   return (
     <div id="container">
-      <img src ={imagen1} width="100%" height="100%" alt="Imagen Benchmarking" />
+      <img src ={fondo} width="100%" height="100%" alt="Imagen Benchmarking" />
       <p id="text">
       <center>Bienvenido al Termometro Pyme!</center>
       <IconButton edge="end" className={classes.InputIcon} color="inherit"  aria-label="menu">

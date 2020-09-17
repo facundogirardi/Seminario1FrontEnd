@@ -174,7 +174,7 @@ const getMenuItems = (props) => {
       {
         value: '/about',
         visible: isAuthorised,
-        primaryText: intl.formatMessage({ id: 'about' }),
+        primaryText: intl.formatMessage({ id: 'About' }),
         leftIcon: <InfoIcon />,
       },
       {
