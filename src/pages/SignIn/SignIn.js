@@ -136,7 +136,6 @@ const SignIn = () => {
             }}
           >
             <Link to="/password_reset">Olvido su contraseña?</Link>
-            <Link to="/signup">Registrar</Link>
           </div>
         </div>
       </Paper>

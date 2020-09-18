@@ -10,6 +10,7 @@ import InstagramIcon from '@material-ui/icons/Instagram';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import TwitterIcon from '@material-ui/icons/Twitter';
+import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -38,12 +39,12 @@ export default function () {
             <Link to="/Encuesta"><center>Pyme</center></Link>
           </Button>
         </IconButton>
-      <IconButton edge="end" className={classes.InputIcon} color="inherit"  aria-label="menu">
+      <IconButton edge="end" className={classes.SupervisorAccountIcon} color="inherit"  aria-label="menu">
           <Button 
             variant="contained"
             color="inherit"
             className={classes.button}
-            startIcon={<InputIcon />}
+            startIcon={<SupervisorAccountIcon />}
             >
             <Link to="/ABM"><center>Administrador</center></Link>
           </Button>
