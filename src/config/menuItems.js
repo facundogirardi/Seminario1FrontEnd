@@ -59,7 +59,7 @@ const getMenuItems = (props) => {
     }
   })
 
-  if (isAuthMenuOpen && !isAuthorised) {
+  if (isAuthMenuOpen && isAuthorised) {
       return [
         {
         value: '/',
