@@ -6,7 +6,7 @@ const messages = defineMessages({
   sign_out: 'Cerrar Sesion',
   username: 'Nombre de Usuario',
   password: 'Contraseña',
-  about: 'Informacion',
+  about: 'About',
   home: 'Home',
   page_not_found: 'Pagina no encontrada',
   settings: 'Configuracion',

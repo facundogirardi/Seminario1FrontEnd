@@ -16,6 +16,7 @@ import IconButton from "@material-ui/core/IconButton";
 import SendIcon from '@material-ui/icons/Send';
 import "./Encuesta.css";
 import { Link } from 'react-router-dom'
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
 /* Ubicaciones */
 const regiones = [
@@ -145,7 +146,7 @@ const HomePage = () => {
         {intl.formatMessage({ id: ' ' })}
         <br />
       <div className="Cuadrado">
-      <h1> Para realizar su simulacion, por favor responda la siguiente encuesta.</h1>
+      <h1> Por favor responda la siguiente encuesta:</h1>
       <div>
         <FormControl component="fieldset">
           <FormLabel component="legend">Tamaño de su empresa</FormLabel>
@@ -175,15 +176,29 @@ const HomePage = () => {
             ))}
           </TextField> 
         </form>
+        <div class="BotonAtras">
+            <IconButton edge="end" className={classes.ArrowBackIcon} color="inherit"  aria-label="menu">
+              <Button 
+                variant="contained"
+                color="inherit"
+                className={classes.button}
+                startIcon={<ArrowBackIcon />}
+                >
+                <Link to="/Preguntas"><center>Atras</center></Link>
+              </Button>
+            </IconButton>
+          </div>
+        <div class="BotonEnviar">
         <IconButton edge="end" className={classes.SendIcon} color="inherit" aria-label="menu">
           <Button 
               variant="contained"
               color="inherit"
               className={classes.button}
               startIcon={<SendIcon />}>
-              <Link to="/Preguntas"><center>Enviar</center></Link>
+              <Link to="/Resultados"><center>Enviar</center></Link>
           </Button>
         </IconButton>
+        </div>
         </div>
       </div>
       </div>

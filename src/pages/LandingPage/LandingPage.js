@@ -36,7 +36,7 @@ export default function () {
             className={classes.button}
             startIcon={<InputIcon />}
             >
-            <Link to="/Encuesta"><center>Pyme</center></Link>
+            <Link to="/Preguntas"><center>Pyme</center></Link>
           </Button>
         </IconButton>
       <IconButton edge="end" className={classes.SupervisorAccountIcon} color="inherit"  aria-label="menu">

@@ -68,6 +68,36 @@ const getMenuItems = (props) => {
         leftIcon: <HomeIcon />,
         },
         {
+          value: '/ABM',
+          visible: isAuthorised,
+          primaryText: intl.formatMessage({
+            id: 'ABM',
+          }),
+          leftIcon: <CreateIcon />,
+        },
+        {
+          value: '/Encuesta',
+          visible: false,
+          primaryText: intl.formatMessage({ id: 'Encuesta' }),
+          leftIcon: <PollIcon />,
+        },
+        {
+          value: '/Preguntas',
+          visible: false,
+          primaryText: intl.formatMessage({
+            id: 'Preguntas',
+          }),
+          leftIcon: <QuestionAnswerIcon />,
+        },
+        {
+          value: '/Resultados',
+          visible: false,
+          primaryText: intl.formatMessage({
+            id: 'Resultados',
+          }),
+          leftIcon: <DaschboardIcon />,
+        },
+        {
           value: '/signin',
           onClick: isAuthorised
             ? () => {
@@ -80,14 +110,6 @@ const getMenuItems = (props) => {
             : intl.formatMessage({ id: 'sign_in' }),
           leftIcon: isAuthorised ? <ExitToAppIcon /> : <LockIcon />,
         },
-      {
-        value: '/ABM',
-        visible: isAuthorised,
-        primaryText: intl.formatMessage({
-          id: 'ABM',
-        }),
-        leftIcon: <CreateIcon />,
-      },
       {
         value: '/about',
         visible: isAuthorised,
@@ -105,28 +127,6 @@ const getMenuItems = (props) => {
           defaultMessage: 'Install',
         }),
         leftIcon: <GetApp />,
-      },
-      {
-        value: '/Encuesta',
-        visible: true,
-        primaryText: intl.formatMessage({ id: 'Encuesta' }),
-        leftIcon: <PollIcon />,
-      },
-      {
-        value: '/Preguntas',
-        visible: true,
-        primaryText: intl.formatMessage({
-          id: 'Preguntas',
-        }),
-        leftIcon: <QuestionAnswerIcon />,
-      },
-      {
-        value: '/Resultados',
-        visible: true,
-        primaryText: intl.formatMessage({
-          id: 'Resultados',
-        }),
-        leftIcon: <DaschboardIcon />,
       },
        { divider: true },
       {

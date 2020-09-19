@@ -58,7 +58,7 @@ export default function BasicTextFields() {
               className={classes.button}
               startIcon={<ArrowBackIcon />}
               >
-              <Link to="/Preguntas"><center>Atras</center></Link>
+              <Link to="/Encuesta"><center>Atras</center></Link>
             </Button>
           </IconButton>
         </div>
