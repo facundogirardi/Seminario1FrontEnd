@@ -1,188 +1,141 @@
-import Button from '@material-ui/core/Button'
-import Page from 'material-ui-shell/lib/containers/Page/Page'
-import React, { useContext } from 'react'
+import React, { Component } from 'react';
+import "survey-react/survey.css";
+import * as Survey from "survey-react";
 import Scrollbar from 'material-ui-shell/lib/components/Scrollbar/Scrollbar'
-import { useIntl } from 'react-intl'
-import { useSimpleValues } from 'base-shell/lib/providers/SimpleValues'
-import { makeStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
-import MenuItem from '@material-ui/core/MenuItem';
-import Radio from '@material-ui/core/Radio';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormControl from '@material-ui/core/FormControl';
-import FormLabel from '@material-ui/core/FormLabel';
+import Page from 'material-ui-shell/lib/containers/Page/Page'
+import Button from '@material-ui/core/Button';
 import IconButton from "@material-ui/core/IconButton";
 import SendIcon from '@material-ui/icons/Send';
 import "./Encuesta.css";
 import { Link } from 'react-router-dom'
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
-/* Ubicaciones */
-const regiones = [
-  {
-    value: 'Buenos Aires',
-    label: 'Buenos Aires',
-  },
-  {
-    value: 'Capital',
-    label: 'Capital Federal',
-  },
-   {
-    value: 'Catamarca',
-    label: 'Catamarca',
-  },
-   {
-    value: 'Chaco',
-    label: 'Chaco',
-  },
-   {
-    value: 'Chubut',
-    label: 'Chubut',
-  },
-   {
-    value: 'Córdoba',
-    label: 'Córdoba',
-  },  
-   {
-    value: 'Entre Ríos',
-    label: 'Entre Ríos',
-  },
-   {
-    value: 'Corrientes',
-    label: 'Corrientes',
-  },
-   {
-    value: 'Formosa',
-    label: 'Formosa',
-  },
-   {
-    value: 'Jujuy',
-    label: 'Jujuy',
-  },
-   {
-    value: 'La Pampa',
-    label: 'La Pampa',
-  },
-   {
-    value: 'La Rioja',
-    label: 'La Rioja',
-  },
-   {
-    value: 'Mendoza',
-    label: 'Mendoza',
-  },
-     {
-    value: 'Misiones',
-    label: 'Misiones',
-  },
-   {
-    value: 'Neuquén',
-    label: 'Neuquén',
-  },
-   {
-    value: 'Río Negro',
-    label: 'Río Negro',
-  },
-   {
-    value: 'Salta',
-    label: 'Salta',
-  },
-   {
-    value: 'San Juan',
-    label: 'San Juan',
-  },
-   {
-    value: 'San Luis',
-    label: 'San Luis',
-  },
-   {
-    value: 'Santa Cruz',
-    label: 'Santa Cruz',
-  },
-   {
-    value: 'Santa Fe',
-    label: 'Santa Fe',
-  },
-   {
-    value: 'Santiago del Estero',
-    label: 'Santiago del Estero',
-  },
-   {
-    value: 'Tierra del Fuego',
-    label: 'Tierra del Fuego',
-  },  
-   {
-    value: 'Tucumán',
-    label: 'Tucumán',
-  },  
-];
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    '& > *': {
-      margin: theme.spacing(1),
-      width: '50ch',
-    },
-  },
-}));
+class Encuesta extends Component{
+  
+  constructor(props){
+    super(props)  
+    this.state = {
 
-const HomePage = () => {
-  const intl = useIntl()
-  const { setValue } = useSimpleValues()
-  const classes = useStyles();
-  const [region, setRegion] = React.useState('Region');
-  const [tamaño, setValue1] = React.useState('tamaño');
+    }
+    this.onCompleteComponent = this.onCompleteComponent.bind(this)
+  }
 
-  const handleChange = (event) => {
-    setRegion(event.target.value1);
-    setValue1(event.target.value2);
+  onCompleteComponent = () => {
+    this.setState({
+      isCompleted:true
+    })
+  }
+
+  render(){
+    var json = {
+      "questions": [
+          {
+              "name": "name",
+              "type": "text",
+              "title": "Razon social de la empresa:",
+              "placeHolder": "",
+              "isRequired": false
+          }, 
+          {
+            type: "radiogroup",
+            name: "tamaño",
+            title: "Indique tamaño de su empresa",
+            isRequired: false,
+            colCount: 1,
+            choices: [
+                "Micro : 0-9 ocupados.",
+                "Pequeña : 10-50 ocupados.",
+                "Mediana : 51-250 ocupados.",
+                "Grande : Mas de 800 ocupados."
+            ]
+        },
+          {
+            type: "dropdown",
+            name: "region",
+            title: "Elija su region",
+            isRequired: false,
+            colCount: 0,
+            choices: [
+              "Buenos Aires",
+              "Capital Federal",
+              "Catamarca",
+              "Chaco",
+              "Chubut",
+              "Córdoba",
+              "Entre Ríos",
+              "Corrientes",
+              "Formosa",
+              "Jujuy",
+              "La Pampa",
+              "La Rioja",
+              "Mendoza",
+              "Misiones",
+              "Neuquén",
+              "Río Negro",
+              "Salta",
+              "San Juan",
+              "San Luis",
+              "Santa Cruz",
+              "Santa Fe",
+              "Santiago del Estero",
+              "Tierra del Fuego",
+              "Tucumán"
+            ]
+        },
+        {
+          name: "antiguedad",
+          type: "text",
+          inputType: "date",
+          title: "Activo desde :",
+          isRequired: false
+      },
+          {
+              "name": "email",
+              "type": "text",
+              "inputType": "email",
+              "title": "Correo electronico",
+              "placeHolder": "",
+              "isRequired": false,
+              "validators": [
+                  {
+                      "type": "email"
+                  }
+              ]
+          }
+      ]
   };
+  var surveyRender = !this.state.isCompleted ? (
+    <Survey.Survey
+    json={json}
+    showCompletedPage={false}
+    onComplete={this.onCompleteComponent}
+    />
+  ) : null
 
-    return (
-    <Page pageTitle={intl.formatMessage({ id: 'Usted esta en la ventana de la encuesta.' })}>
-    <Scrollbar
-        style={{ height: '100%', width: '100%', display: 'flex', flex: 1 }}>
-        {intl.formatMessage({ id: ' ' })}
-        <br />
-      <div className="Cuadrado">
-      <h1> Por favor responda la siguiente encuesta:</h1>
+  var onSurveyCompletion = this.state.isCompleted ? (
+    <div><h1>Redirigir a preguntas.</h1></div>
+    
+  ) : null;
+  
+  return (
+    <Page pageTitle={'Usted esta en la ventana de encuesta.'}>
+      <Scrollbar
+        style={{ height: '100%', width: '100%', display: 'flex', flex: 1 }}
+      >
       <div>
-        <FormControl component="fieldset">
-          <FormLabel component="legend">Tamaño de su empresa</FormLabel>
-          <RadioGroup aria-label="tamaño" name="tamaño" value2={tamaño} onChange={handleChange}>
-            <FormControlLabel value="Micro : 0-9 ocupados." control={<Radio />} label="Micro : 0-9 ocupados." />
-            <FormControlLabel value="Pequeña : 10-50 ocupados." control={<Radio />} label="Pequeña : 10-50 ocupados." />
-            <FormControlLabel value="Mediana : 51-250 ocupados." control={<Radio />} label="Mediana : 51-250 ocupados." />
-            <FormControlLabel value="Mediana Grande : 251-800 ocupados." control={<Radio />} label="Mediana Grande : 251-800 ocupados." />
-            <FormControlLabel value="Grande : Mas de 800 ocupados." control={<Radio />} label="Grande : Mas de 800 ocupados." />
-          </RadioGroup>
-        </FormControl>
-        <div class="Cuadrado2">
-        <form className={classes.root} noValidate autoComplete="off">
-          <TextField id="standard-basic1" label="Mail"/><br></br>
-          <TextField id="standard-basic2" label="Razon social" /><br></br>
-          <TextField
-            id="standard-select-region"
-            label="Elija su region"
-            select
-            value1={region}
-            onChange={handleChange}
-            helperText="">
-            {regiones.map((option) => (
-              <MenuItem key={option.value} value={option.value}>
-                {option.label}
-              </MenuItem>
-            ))}
-          </TextField> 
-        </form>
-        <div class="BotonAtras">
+        {surveyRender}
+        {onSurveyCompletion}
+      </div>
+      <br/>
+
+      <div class="BotonAtras">
           <Link to="/Preguntas">
-            <IconButton edge="end" className={classes.ArrowBackIcon} color="inherit"  aria-label="menu">
+            <IconButton edge="end" className={ArrowBackIcon} color="inherit"  aria-label="menu">
               <Button 
                 variant="contained"
                 color="primary"
-                className={classes.button}
+                className={Button}
                 startIcon={<ArrowBackIcon />}
                 >
                 Atras
@@ -192,22 +145,24 @@ const HomePage = () => {
           </div>
         <div class="BotonEnviar">
         <Link to="/Resultados">
-        <IconButton edge="end" className={classes.SendIcon} color="inherit" aria-label="menu">
+        <IconButton edge="end" className={SendIcon} color="inherit" aria-label="menu">
           <Button 
               variant="contained"
               color="primary"
-              className={classes.button}
+              className={Button}
               startIcon={<SendIcon />}>
               Enviar
           </Button>
         </IconButton>
         </Link>
         </div>
-        </div>
-      </div>
-      </div>
-    </Scrollbar>
+      </Scrollbar>
+
     </Page>
-  )
+    
+  );
+  }
 }
-export default HomePage
+
+export default Encuesta;
+

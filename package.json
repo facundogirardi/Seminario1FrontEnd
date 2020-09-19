@@ -17,6 +17,7 @@
     "react-intl": "4.x",
     "react-ios-pwa-prompt": "1.x",
     "react-markdown": "4.x",
+    "react-minimal-pie-chart": "^8.0.1",
     "react-redux": "7.x",
     "react-router-dom": "5.x",
     "react-scripts": "3.4.3",
