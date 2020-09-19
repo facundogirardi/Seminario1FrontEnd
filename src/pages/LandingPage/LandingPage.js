@@ -29,6 +29,7 @@ export default function () {
       <img src ={fondo} width="100%" height="100%" alt="Imagen Benchmarking" />
       <p id="text">
       <center>Bienvenido al Termometro Pyme!</center>
+      <Link to="/Preguntas">
       <IconButton edge="end" className={classes.InputIcon} color="inherit"  aria-label="menu">
           <Button 
             variant="contained"
@@ -36,9 +37,11 @@ export default function () {
             className={classes.button}
             startIcon={<InputIcon />}
             >
-            <Link to="/Preguntas"><center>Pyme</center></Link>
+            Pyme
           </Button>
         </IconButton>
+      </Link>
+      <Link to="/ABM">
       <IconButton edge="end" className={classes.SupervisorAccountIcon} color="inherit"  aria-label="menu">
           <Button 
             variant="contained"
@@ -46,9 +49,10 @@ export default function () {
             className={classes.button}
             startIcon={<SupervisorAccountIcon />}
             >
-            <Link to="/ABM"><center>Administrador</center></Link>
+            Administrador
           </Button>
         </IconButton>
+      </Link>
       </p>
       <div id="logos">
         <IconButton edge="start" className={classes.InstagramIcon} color="inherit"  aria-label="menu" href="https://www.instagram.com/observatoriopyme/">

@@ -19,7 +19,8 @@
     "react-markdown": "4.x",
     "react-redux": "7.x",
     "react-router-dom": "5.x",
-    "react-scripts": "3.4.3"
+    "react-scripts": "3.4.3",
+    "survey-react": "^1.8.3"
   },
   "scripts": {
     "start": "react-scripts start",

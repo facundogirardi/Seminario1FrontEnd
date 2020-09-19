@@ -51,22 +51,24 @@ export default function BasicTextFields() {
           <h1> Resultados de su consulta :</h1>
         </div>
         <div class="BotonAtras">
+        <Link to="/Encuesta">
           <IconButton edge="end" className={classes.ArrowBackIcon} color="inherit"  aria-label="menu">
             <Button 
               variant="contained"
-              color="inherit"
+              color="primary"
               className={classes.button}
               startIcon={<ArrowBackIcon />}
               >
-              <Link to="/Encuesta"><center>Atras</center></Link>
+              Atras
             </Button>
           </IconButton>
+        </Link>
         </div>
         <div class="BotonGenerar">
           <IconButton edge="end" className={classes.PictureAsPdfIcon} color="inherit"  aria-label="menu">
             <Button 
                 variant="contained"
-                color="inherit"
+                color="primary"
                 className={classes.button}
                 startIcon={<PictureAsPdfIcon />}>
                 Generar PDF

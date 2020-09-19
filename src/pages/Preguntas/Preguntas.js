@@ -133,15 +133,17 @@ export default function Preguntas() {
 
           </div>
           <div class="BotonEnviar">
+          <Link to="/Encuesta">
             <IconButton edge="end" className={classes.SendIcon} color="inherit"  aria-label="menu">
               <Button 
                   variant="contained"
-                  color="inherit"
+                  color="primary"
                   className={classes.button}
                   startIcon={<SendIcon />}>
-                  <Link to="/Encuesta"><center>Enviar</center></Link>
+                  Enviar
               </Button>
             </IconButton>
+          </Link>
           </div>
         </div>  
       </Scrollbar>

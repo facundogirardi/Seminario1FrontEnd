@@ -177,27 +177,31 @@ const HomePage = () => {
           </TextField> 
         </form>
         <div class="BotonAtras">
+          <Link to="/Preguntas">
             <IconButton edge="end" className={classes.ArrowBackIcon} color="inherit"  aria-label="menu">
               <Button 
                 variant="contained"
-                color="inherit"
+                color="primary"
                 className={classes.button}
                 startIcon={<ArrowBackIcon />}
                 >
-                <Link to="/Preguntas"><center>Atras</center></Link>
+                Atras
               </Button>
             </IconButton>
+          </Link>
           </div>
         <div class="BotonEnviar">
+        <Link to="/Resultados">
         <IconButton edge="end" className={classes.SendIcon} color="inherit" aria-label="menu">
           <Button 
               variant="contained"
-              color="inherit"
+              color="primary"
               className={classes.button}
               startIcon={<SendIcon />}>
-              <Link to="/Resultados"><center>Enviar</center></Link>
+              Enviar
           </Button>
         </IconButton>
+        </Link>
         </div>
         </div>
       </div>
