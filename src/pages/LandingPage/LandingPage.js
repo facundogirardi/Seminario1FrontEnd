@@ -29,7 +29,7 @@ export default function () {
       <img src ={fondo} width="100%" height="100%" alt="Imagen Benchmarking" />
       <p id="text">
       <center>Bienvenido al Termometro Pyme!</center>
-      <Link to="/Preguntas">
+      <Link to="/Encuesta">
       <IconButton edge="end" className={classes.InputIcon} color="inherit"  aria-label="menu">
           <Button 
             variant="contained"
