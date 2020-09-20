@@ -17,23 +17,15 @@
    border: 1px;
    display: inline-block;
    width: auto;
-   margin: 0 80px;
+   margin: 0 200px;
    text-align: justify;
 }
 
-.BotonEnviar{
+.BotonResultados{
    border: 1px;
    display: inline-block;
    width: auto;
-   margin: 0 10px;
-   text-align: justify;
-}
-
- .BotonAtras{
-   border: 1px;
-   display: inline-block;
-   width: auto;
-   margin: 0 -10px;
+   margin: 0 40px;
    text-align: justify;
 }
 

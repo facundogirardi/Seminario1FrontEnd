@@ -3,7 +3,7 @@ import Page from 'material-ui-shell/lib/containers/Page/Page'
 import Scrollbar from 'material-ui-shell/lib/components/Scrollbar/Scrollbar'
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
-
+import ContactsIcon from '@material-ui/icons/Contacts';
 import Button from '@material-ui/core/Button';
 import IconButton from "@material-ui/core/IconButton";
 import { Link } from 'react-router-dom'
@@ -103,18 +103,27 @@ export default class Demo extends React.PureComponent {
           />
         </Chart>
       </Paper>
-
       <Link to="/Encuesta">
             <IconButton edge="end" className={ArrowBackIcon} color="inherit"  aria-label="menu">
               <Button 
                 variant="contained"
                 color="primary"
-                className={Button}
+                className={ArrowBackIcon}
                 >
-                Inicio
+                Realizar nuevamente
               </Button>
             </IconButton>
           </Link>
+          <IconButton edge="end" className={ContactsIcon} color="inherit"  aria-label="menu">
+              <Button 
+                href="https://www.observatoriopyme.org.ar/newsite/contacto/"
+                variant="contained"
+                color="primary"
+                className={ContactsIcon}
+                >
+                Contacto
+              </Button>
+            </IconButton>
     </Scrollbar>
     </Page>
     );

@@ -9,7 +9,6 @@ import SendIcon from '@material-ui/icons/Send';
 import "./Encuesta.css";
 import logo from './continuar.jpg';
 import { Link } from 'react-router-dom'
-import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
 
 class Encuesta extends Component{
@@ -158,7 +157,7 @@ class Encuesta extends Component{
               type: "text",
               inputType: "date",
               title: "Activo desde :",
-              isRequired: false
+              isRequired: true
           },
               {
                   "name": "email",
@@ -186,20 +185,20 @@ class Encuesta extends Component{
   ) : null
 
   var onSurveyCompletion = this.state.isCompleted ? (
-    <div><h1>¡Gracias por utilizar Termonetro PyME!</h1> 
-    <img src={logo} /> 
-    <br/>     
-        <Link to="/Resultados">
-        <IconButton edge="end" className={SendIcon} color="inherit" aria-label="menu">
-          <Button 
-              variant="contained"
-              color="primary"
-              className={Button}>
-              ¡Ver Resultados!
-          </Button>
-        </IconButton>
-        </Link>
-        </div>
+    <div class="Cuadrado">
+      <center><h1>¡Gracias por utilizar Termometro PyME!
+          <Link to="/Resultados">
+          <IconButton edge="end" className={SendIcon} color="inherit" aria-label="menu">
+            <Button 
+                variant="contained"
+                color="primary"
+                className={Button}>
+                Visualizar Dashboard
+            </Button>
+          </IconButton>
+          </Link></h1></center>
+        <center><img src={logo} width="100%" alt="Logo Fundacion"/></center>
+    </div>
     
   ) : null;
   

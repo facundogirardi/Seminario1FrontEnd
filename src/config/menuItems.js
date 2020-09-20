@@ -47,14 +47,8 @@ const getMenuItems = (props) => {
         {
         value: '/',
         visible: true,
-        primaryText: intl.formatMessage({ id: 'Home' }),
+        primaryText: intl.formatMessage({ id: 'Inicio' }),
         leftIcon: <HomeIcon />,
-        },
-        {
-        value: 'https://www.observatoriopyme.org.ar/newsite/contacto/',
-        visible: true,
-        primaryText: intl.formatMessage({ id: 'Contacto' }),
-        leftIcon: <ContactsIcon />,
         },
         {
           value: '/ABM',
@@ -102,7 +96,7 @@ const getMenuItems = (props) => {
       {
         value: '/about',
         visible: isAuthorised,
-        primaryText: intl.formatMessage({ id: 'about' }),
+        primaryText: intl.formatMessage({ id: 'Informacion' }),
         leftIcon: <InfoIcon />,
       },
       {
@@ -149,15 +143,9 @@ const getMenuItems = (props) => {
         {
         value: '/',
         visible: true,
-        primaryText: intl.formatMessage({ id: 'Home' }),
+        primaryText: intl.formatMessage({ id: 'Inicio' }),
         leftIcon: <HomeIcon />,
         },
-        {
-          value: 'https://www.observatoriopyme.org.ar/newsite/contacto/',
-          visible: true,
-          primaryText: intl.formatMessage({ id: 'Contacto' }),
-          leftIcon: <ContactsIcon />,
-          },
       {
         value: '/ABM',
         visible: isAuthorised,
@@ -169,7 +157,7 @@ const getMenuItems = (props) => {
       {
         value: '/about',
         visible: isAuthorised,
-        primaryText: intl.formatMessage({ id: 'About' }),
+        primaryText: intl.formatMessage({ id: 'Informacion' }),
         leftIcon: <InfoIcon />,
       },
       {
