@@ -39,7 +39,7 @@ class Encuesta extends Component{
               type: "dropdown",
               name: "Actividad",
               title: "Selecciona tu sector de actividad",
-              isRequired: true,
+              isRequired: false,
               colCount: 0,
               choices: [
                   "01 Elaboraciòn de productos alimenticios y/o bebidas",
@@ -53,7 +53,7 @@ class Encuesta extends Component{
             type: "radiogroup",
             name: "1",
             title: "¿Hay recomposicion o liquidacion de stock de materias primas?",
-            isRequired: true,
+            isRequired: false,
             colCount: 1,
             choices: [
                 "Si",
@@ -64,7 +64,7 @@ class Encuesta extends Component{
           type: "radiogroup",
           name: "2",
           title: "¿Que tipo de PyME avanza a mayor velocidad?",
-          isRequired: true,
+          isRequired: false,
           colCount: 1,
           choices: [
               "Industriales",
@@ -76,7 +76,7 @@ class Encuesta extends Component{
         type: "radiogroup",
         name: "3",
         title: "¿Cual es el clima laboral en este segmento empresarial?",
-        isRequired: true,
+        isRequired: false,
         colCount: 1,
         choices: [
             "Muy Bueno",
@@ -88,7 +88,7 @@ class Encuesta extends Component{
       type: "radiogroup",
       name: "4",
       title: "¿Hay riesgo de falta de entrega de los proveedores?",
-      isRequired: true,
+      isRequired: false,
       colCount: 1,
       choices: [
           "Si",
@@ -105,13 +105,13 @@ class Encuesta extends Component{
                   "type": "text",
                   "title": "Razon social de la empresa:",
                   "placeHolder": "",
-                  "isRequired": true
+                  "isRequired": false
               }, 
               {
                 type: "radiogroup",
                 name: "tamaño",
                 title: "Indique tamaño de su empresa",
-                isRequired: true,
+                isRequired: false,
                 colCount: 1,
                 choices: [
                     "Micro : 0-9 ocupados.",
@@ -124,7 +124,7 @@ class Encuesta extends Component{
                 type: "dropdown",
                 name: "region",
                 title: "Elija su region",
-                isRequired: true,
+                isRequired: false,
                 colCount: 0,
                 choices: [
                   "Buenos Aires",
@@ -166,7 +166,7 @@ class Encuesta extends Component{
                   "inputType": "email",
                   "title": "Correo electronico",
                   "placeHolder": "",
-                  "isRequired": true,
+                  "isRequired": false,
                   "validators": [
                       {
                           "type": "email"
@@ -186,7 +186,6 @@ class Encuesta extends Component{
   ) : null
 
   var onSurveyCompletion = this.state.isCompleted ? (
-    <div class="Cuadrado">
       <center><h1>¡Gracias por utilizar Termometro PyME!
           <Link to="/Resultados">
           <IconButton edge="end" className={SendIcon} color="inherit" aria-label="menu">
@@ -197,9 +196,8 @@ class Encuesta extends Component{
                 Visualizar Dashboard
             </Button>
           </IconButton>
-          </Link></h1></center>
-        <center><img src={logo} width="100%" alt="Logo Fundacion"/></center>
-    </div>
+          </Link></h1>
+        <img src={logo} width="auto" alt="Logo Fundacion"/></center>
     
   ) : null;
   
