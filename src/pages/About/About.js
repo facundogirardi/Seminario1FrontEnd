@@ -5,6 +5,7 @@ import "./About.css";
 import Scrollbar from 'material-ui-shell/lib/components/Scrollbar'
 import { injectIntl } from 'react-intl'
 import logo from './boton.png';
+import Footer from '../Footer/Footer';
 
 const AboutPage = ({ intl }) => {
   return (
@@ -30,6 +31,7 @@ const AboutPage = ({ intl }) => {
         <p>Alta, baja y modificacion de preguntas por parte del personal del Observatorio, estas preguntas se veran reflejadas en la pantallas "Preguntas"</p>
     </div> 
     </Scrollbar>
+    <Footer/>
     </Page>
   )
 }

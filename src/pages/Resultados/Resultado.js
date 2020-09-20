@@ -8,6 +8,7 @@ import Button from '@material-ui/core/Button';
 import IconButton from "@material-ui/core/IconButton";
 import { Link } from 'react-router-dom'
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import Footer from '../Footer/Footer';
 
 import {
   Chart,
@@ -51,13 +52,14 @@ export default class Demo extends React.PureComponent {
     };
   }
 
+  
   render() {
     const { data: chartData } = this.state;
 
     return (
       <Page pageTitle={'Usted esta en la ventana de los resultados.'}>
       <Scrollbar
-        style={{ height: '100%', width: '100%', display: 'flex', flex: 1 }}
+        style={{ height: '93.4%', width: '100%', display: 'flex', flex: 1 }}
       >
       <Paper>
         <Chart
@@ -125,6 +127,7 @@ export default class Demo extends React.PureComponent {
               </Button>
             </IconButton>
     </Scrollbar>
+    <Footer/>
     </Page>
     );
   }

@@ -65,14 +65,6 @@ const getMenuItems = (props) => {
           leftIcon: <PollIcon />,
         },
         {
-          value: '/Preguntas',
-          visible: false,
-          primaryText: intl.formatMessage({
-            id: 'Preguntas',
-          }),
-          leftIcon: <QuestionAnswerIcon />,
-        },
-        {
           value: '/Resultados',
           visible: false,
           primaryText: intl.formatMessage({
@@ -190,14 +182,6 @@ const getMenuItems = (props) => {
         visible: false,
         primaryText: intl.formatMessage({ id: 'Encuesta' }),
         leftIcon: <PollIcon />,
-      },
-      {
-        value: '/Preguntas',
-        visible: false,
-        primaryText: intl.formatMessage({
-          id: 'Preguntas',
-        }),
-        leftIcon: <QuestionAnswerIcon />,
       },
       {
         value: '/Resultados',

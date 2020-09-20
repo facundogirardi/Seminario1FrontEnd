@@ -9,6 +9,7 @@ import SendIcon from '@material-ui/icons/Send';
 import "./Encuesta.css";
 import logo from './continuar.jpg';
 import { Link } from 'react-router-dom'
+import Footer from '../Footer/Footer';
 
 
 class Encuesta extends Component{
@@ -157,7 +158,7 @@ class Encuesta extends Component{
               type: "text",
               inputType: "date",
               title: "Activo desde :",
-              isRequired: true
+              isRequired: false
           },
               {
                   "name": "email",
@@ -208,17 +209,18 @@ class Encuesta extends Component{
 
   return (
     <Page pageTitle={'Usted esta en la ventana de encuesta.'}>
+      
       <Scrollbar
-        style={{ height: '100%', width: '100%', display: 'flex', flex: 1 }}
+        
+        style={{ height: '93.4%', width: '100%', display: 'flex', flex: 1 }}
       >
       <div>
         {surveyRender}
         {onSurveyCompletion}
       </div>
       <br/>
-
       </Scrollbar>
-
+      <Footer/>
     </Page>
     
   );

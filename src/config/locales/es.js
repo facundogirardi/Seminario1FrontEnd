@@ -11,7 +11,6 @@ const messages = defineMessages({
   page_not_found: 'Pagina no encontrada',
   settings: 'Configuracion',
   Resultados: 'Resultados',
-  Preguntas: 'Preguntas',
   Encuesta: 'Encuesta',
   ABM: 'ABM',
   theme: 'Tema',

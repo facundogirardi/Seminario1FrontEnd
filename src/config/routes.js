@@ -8,7 +8,6 @@ const PasswordReset = lazy(() => import('../pages/PasswordReset/PasswordReset'))
 const About = lazy(() => import('../pages/About/About'))
 const Encuesta = lazy(() => import('../pages/Encuesta/Encuesta'))
 const ABM = lazy(() => import('../pages/ABM/ABM'))
-const Preguntas = lazy(() => import('../pages/Preguntas/Preguntas'))
 const Resultados = lazy(() => import('../pages/Resultados/Resultado'))
 
 const routes = [
@@ -17,7 +16,6 @@ const routes = [
   <PrivateRoute path="/about" exact component={About} />,
   <PublicRoute path="/Encuesta" exact component={Encuesta} />,
   <PrivateRoute path="/ABM" exact component={ABM} />,
-  <PublicRoute path="/Preguntas" exact component={Preguntas} />,
   <PublicRoute path="/Resultados" exact component={Resultados} />,
 ]
 
