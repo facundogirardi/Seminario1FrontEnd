@@ -2,9 +2,27 @@
   color: #666;
   background-color: #232323;
   padding-top: 10px;
-  position: absolute;
+  position: auto;
   bottom: 10px  #232323;
   width: 100%;
   height: auto;
  
+}
+
+.izquierda{
+  padding:10px;
+  width:100px;
+  margin:40px;
+}
+
+.medio{
+  padding:10px;
+  width:100px;
+  margin:40px;
+}
+
+.derecha{
+  padding:10px;
+  width:100px;
+  margin:40px;
 }
