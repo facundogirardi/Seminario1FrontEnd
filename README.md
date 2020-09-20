@@ -10,12 +10,19 @@
 https://www.observatoriopyme.org.ar/la-fundacion/historia-y-actualidad/
 
 ## Insignias
-<img src="https://img.shields.io/badge/Benchmarking-API-yellowgreen" width="190" height="60" />
+<img src="https://img.shields.io/badge/Benchmarking-API-yellowgreen" width="140" height="40" />
 
-## Table of Contents
+## Integrantes grupo 6
+
+* Alcantara Yrigoyen, Stefano Guillermo <b>Legajo : 1058188</b>
+* Camicha, Nicolas                      <b>Legajo : 1101634</b>
+* Girardi, Facundo Martin               <b>Legajo : 1084454</b>
+* Marchant Rojas, Luis Jose Javier      <b>Legajo : 1042891</b>
+* Venzmer, Nicolas Alejandro            <b>Legajo : 1076345</b>
+
+## Tabla de contenidos
 
 * [Version](#Version)
-* [Documentacion](#Documentacion)
 * [Instalacion](#Instalacion)
 * [Navegadores soportados](#Navegadores-soportados)
 * [Recursos](#Recursos)
@@ -23,10 +30,6 @@ https://www.observatoriopyme.org.ar/la-fundacion/historia-y-actualidad/
 ## Version
 
 <img src="https://github.com/creativetimofficial/public-assets/blob/master/logos/html-logo.jpg?raw=true" width="64" height="64" /><img src="https://github.com/creativetimofficial/public-assets/blob/master/logos/react-logo.jpg?raw=true" width="64" height="64" />
-
-## Documentacion
-
-Agregar documentacion sobre la aplicacion
 
 ## Instalacion
 

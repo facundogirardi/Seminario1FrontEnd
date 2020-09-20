@@ -11,7 +11,7 @@ const AboutPage = ({ intl }) => {
   return (
     <Page pageTitle={intl.formatMessage({ id: 'About' })}>
       <Scrollbar
-        style={{ height: '100%', width: '100%', display: 'flex', flex: 1 }}>
+        style={{ height: '93.4%', width: '100%', display: 'flex', flex: 1 }}>
         {intl.formatMessage({ id: ' ' })}
         <br />
         <div class="Cuadrado">
@@ -22,13 +22,11 @@ const AboutPage = ({ intl }) => {
         <p>Cada uno de estos botones tiene vistas separadas para separar las vistas de administrador y usuario</p>
         <img src={logo} />
         <h2>Encuesta</h2>
-        <p>El usuario antes de poder generar su simulacion, debe completar un pequeño formulario de incripcion para poder tener un tracking de las empresas que utilizaron el servicio </p>
-        <h2>Preguntas</h2>
-        <p>Cuestionario de 5 preguntas donde el usuario debe completar para poder conocer el estado</p>
+        <p>El usuario podra realizar una breve encuesta, y luego completar con sus datos para poder tener traqueo de las empresas que usan el servicio </p>
         <h2>Resultado</h2>
-        <p>Una vez generado el resultado, el usuario podra exportar el mismo a PDF</p>
+        <p>El usuario podra visualizarlo en forma de grafico, simple y rapido de comprander</p>
         <h2>ABM</h2>
-        <p>Alta, baja y modificacion de preguntas por parte del personal del Observatorio, estas preguntas se veran reflejadas en la pantallas "Preguntas"</p>
+        <p>Alta, baja y modificacion de preguntas por parte del personal del Observatorio, estas preguntas se veran reflejadas en la pantallas "Encuesta"</p>
     </div> 
     </Scrollbar>
     <Footer/>
