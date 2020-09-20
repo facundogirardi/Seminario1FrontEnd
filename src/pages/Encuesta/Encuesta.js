@@ -7,6 +7,7 @@ import Button from '@material-ui/core/Button';
 import IconButton from "@material-ui/core/IconButton";
 import SendIcon from '@material-ui/icons/Send';
 import "./Encuesta.css";
+import logo from './continuar.jpg';
 import { Link } from 'react-router-dom'
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
@@ -114,10 +115,42 @@ class Encuesta extends Component{
   ) : null
 
   var onSurveyCompletion = this.state.isCompleted ? (
-    <div><h1>Redirigir a preguntas.</h1></div>
+    <div><h1>¿Estas seguro de continuar?</h1> 
+    <img src={logo} /> 
+    <br/>
+    <Link to="/Encuesta">
+            <IconButton edge="end" className={ArrowBackIcon} color="inherit"  aria-label="menu">
+              <Button 
+                variant="contained"
+                color="primary"
+                onClick={refreshPage}
+                className={Button}
+                startIcon={<ArrowBackIcon />}
+                >
+                Atras
+              </Button>
+            </IconButton>
+          </Link>
+      
+        <Link to="/Resultados">
+        <IconButton edge="end" className={SendIcon} color="inherit" aria-label="menu">
+          <Button 
+              variant="contained"
+              color="primary"
+              className={Button}
+              startIcon={<SendIcon />}>
+              Continuar
+          </Button>
+        </IconButton>
+        </Link>
+        </div>
     
   ) : null;
   
+  function refreshPage(){ 
+    window.location.reload(); 
+}
+
   return (
     <Page pageTitle={'Usted esta en la ventana de encuesta.'}>
       <Scrollbar
@@ -129,33 +162,6 @@ class Encuesta extends Component{
       </div>
       <br/>
 
-      <div class="BotonAtras">
-          <Link to="/Preguntas">
-            <IconButton edge="end" className={ArrowBackIcon} color="inherit"  aria-label="menu">
-              <Button 
-                variant="contained"
-                color="primary"
-                className={Button}
-                startIcon={<ArrowBackIcon />}
-                >
-                Atras
-              </Button>
-            </IconButton>
-          </Link>
-          </div>
-        <div class="BotonEnviar">
-        <Link to="/Resultados">
-        <IconButton edge="end" className={SendIcon} color="inherit" aria-label="menu">
-          <Button 
-              variant="contained"
-              color="primary"
-              className={Button}
-              startIcon={<SendIcon />}>
-              Enviar
-          </Button>
-        </IconButton>
-        </Link>
-        </div>
       </Scrollbar>
 
     </Page>
