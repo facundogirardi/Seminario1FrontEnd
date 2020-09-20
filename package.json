@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@devexpress/dx-react-chart": "^2.7.1",
+    "@devexpress/dx-react-chart-material-ui": "^2.7.1",
+    "@devexpress/dx-react-core": "^2.7.1",
     "@formatjs/intl-relativetimeformat": "4.x",
     "@material-ui/core": "4.x",
     "@material-ui/icons": "4.x",
@@ -12,6 +15,7 @@
     "intl-locales-supported": "1.x",
     "material-ui-shell": "1.x",
     "react": "16.x",
+    "react-charts": "^2.0.0-beta.7",
     "react-custom-scrollbars": "4.x",
     "react-dom": "16.x",
     "react-intl": "4.x",

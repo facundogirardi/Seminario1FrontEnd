@@ -1,11 +1,8 @@
-import allLocales from './locales'
-// import allThemes from './themes'
 import React from 'react'
 import DaschboardIcon from '@material-ui/icons/Dashboard'
 import LockIcon from '@material-ui/icons/Lock'
 import SettingsIcon from '@material-ui/icons/Settings';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp'
-import LanguageIcon from '@material-ui/icons/Language'
 import MenuOpenIcon from '@material-ui/icons/MenuOpen'
 import GetApp from '@material-ui/icons/GetApp'
 import ChromeReaderMode from '@material-ui/icons/ChromeReaderMode'
@@ -16,13 +13,11 @@ import PollIcon from '@material-ui/icons/Poll';
 import InfoIcon from '@material-ui/icons/Info';
 import CreateIcon from '@material-ui/icons/Create';
 import HomeIcon from '@material-ui/icons/Home';
+import ContactsIcon from '@material-ui/icons/Contacts';
 
 const getMenuItems = (props) => {
   const {
-    appConfig,
     intl,
-    updateLocale,
-    locale,
     menuContext,
     themeContext,
     a2HSContext,
@@ -32,18 +27,6 @@ const getMenuItems = (props) => {
   const { themeID, setThemeID } = themeContext
   const { auth, setAuth } = authData
   const { isAppInstallable, isAppInstalled, deferredPrompt } = a2HSContext
-
-  const localeItems = allLocales.map((l) => {
-    return {
-      value: undefined,
-      visible: true,
-      primaryText: intl.formatMessage({ id: l.locale }),
-      onClick: () => {
-        updateLocale(l.locale)
-      },
-      leftIcon: <LanguageIcon />,
-    }
-  })
 
   const isAuthorised = auth.isAuthenticated
 
@@ -66,6 +49,12 @@ const getMenuItems = (props) => {
         visible: true,
         primaryText: intl.formatMessage({ id: 'Home' }),
         leftIcon: <HomeIcon />,
+        },
+        {
+        value: 'https://www.observatoriopyme.org.ar/newsite/contacto/',
+        visible: true,
+        primaryText: intl.formatMessage({ id: 'Contacto' }),
+        leftIcon: <ContactsIcon />,
         },
         {
           value: '/ABM',
@@ -163,6 +152,12 @@ const getMenuItems = (props) => {
         primaryText: intl.formatMessage({ id: 'Home' }),
         leftIcon: <HomeIcon />,
         },
+        {
+          value: 'https://www.observatoriopyme.org.ar/newsite/contacto/',
+          visible: true,
+          primaryText: intl.formatMessage({ id: 'Contacto' }),
+          leftIcon: <ContactsIcon />,
+          },
       {
         value: '/ABM',
         visible: isAuthorised,
