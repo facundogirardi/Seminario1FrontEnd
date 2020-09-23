@@ -22,7 +22,7 @@ function Footer() {
   return (
     <div className="main-footer">
         <div id="izquierda">
-          <center><img src={logo} width="70px" alt="Logo"/></center>
+          <center><a href="https://www.observatoriopyme.org.ar/"><img src={logo} width="70px" alt="Logo"/></a></center>
           <div id="derecha">
           <center>
           <IconButton edge="start" className={classes.InstagramIcon} color="primary"  aria-label="menu" href="https://www.instagram.com/observatoriopyme/">
