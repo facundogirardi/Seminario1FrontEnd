@@ -3,7 +3,7 @@ import Scrollbar from 'material-ui-shell/lib/components/Scrollbar/Scrollbar'
 import Page from 'material-ui-shell/lib/containers/Page/Page'
 import Footer from '../Footer/Footer';
 import Button from '@material-ui/core/Button';
-import ABMRadio from "./ABM-Radio"
+import ABMTipo from "./ABM-Tipo"
 
 
 function ABM(){
@@ -13,7 +13,7 @@ function ABM(){
       <Scrollbar
         style={{ height: '100%', width: '100%', display: 'flex', flex: 1 }}
       >
-      <ABMRadio/>
+      <ABMTipo/>
       <div className="Cuadrado">
         <h2>Para cargar el Excel:</h2>
         <input

@@ -9,6 +9,10 @@ import Typography from '@material-ui/core/Typography';
 import { green } from '@material-ui/core/colors';
 import Box from '@material-ui/core/Box';
 import ABMTexto from "./ABM-Texto"
+import IconButton from "@material-ui/core/IconButton";
+import AddIcon from '@material-ui/icons/Add';
+import Button from '@material-ui/core/Button';
+import ABMUnaOpcion from "./ABM-UnaOpcion"
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -61,7 +65,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ABMRadio() {
+export default function ABMTipo() {
   const classes = useStyles();
   const theme = useTheme();
   const [value, setValue] = React.useState(0);
@@ -103,11 +107,20 @@ export default function ABMRadio() {
         </TabPanel>
         <TabPanel value={value} index={1} dir={theme.direction}>
           Opcion Unica:
+          <ABMUnaOpcion/>
         </TabPanel>
         <TabPanel value={value} index={2} dir={theme.direction}>
           Seleccion:
         </TabPanel>
       </SwipeableViews>
+      <IconButton width="auto" edge="end" className={AddIcon} color="inherit"  aria-label="menu">
+        <Button 
+          variant="contained"
+          color="primary"
+          className={AddIcon}>
+          Generar Cuestionario
+        </Button>
+      </IconButton>
     </div>
   );
 }
