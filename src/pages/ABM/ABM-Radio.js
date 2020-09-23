@@ -43,7 +43,7 @@ function a11yProps(index) {
 const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: theme.palette.background.paper,
-    width: 500,
+    width: "auto",
     position: 'relative',
     minHeight: 200,
   },
@@ -77,7 +77,7 @@ export default function ABMRadio() {
   return (
     
     <div className={classes.root}>
-    <h2>Realizar preguntas tipo pregunta:</h2>
+    <h2>Realizar preguntas de tipo:</h2>
       <AppBar position="static" color="default">
         <Tabs
           value={value}
@@ -87,9 +87,9 @@ export default function ABMRadio() {
           variant="fullWidth"
           aria-label="action tabs example"
         >
-          <Tab label="Preguntas de texto" {...a11yProps(0)} />
-          <Tab label="Preguntas de una opcion" {...a11yProps(1)} />
-          <Tab label="Preguntas de seleccion" {...a11yProps(2)} />
+          <Tab label="Texto" {...a11yProps(0)} />
+          <Tab label="Opcion Unica" {...a11yProps(1)} />
+          <Tab label="Seleccion" {...a11yProps(2)} />
         </Tabs>
       </AppBar>
       <SwipeableViews
@@ -98,14 +98,14 @@ export default function ABMRadio() {
         onChangeIndex={handleChangeIndex}
       >
         <TabPanel value={value} index={0} dir={theme.direction}>
-          Pregunta de texto:
+          Texto:
           <ABMTexto/>
         </TabPanel>
         <TabPanel value={value} index={1} dir={theme.direction}>
-          Pregunta de opcion unica:
+          Opcion Unica:
         </TabPanel>
         <TabPanel value={value} index={2} dir={theme.direction}>
-          Pregunta de seleccion:
+          Seleccion:
         </TabPanel>
       </SwipeableViews>
     </div>
