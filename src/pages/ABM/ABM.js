@@ -3,7 +3,6 @@ import Scrollbar from 'material-ui-shell/lib/components/Scrollbar/Scrollbar'
 import Page from 'material-ui-shell/lib/containers/Page/Page'
 import Footer from '../Footer/Footer';
 import Button from '@material-ui/core/Button';
-import ABMTexto from "./ABM-Texto"
 import ABMRadio from "./ABM-Radio"
 
 

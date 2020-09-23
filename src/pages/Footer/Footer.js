@@ -41,7 +41,7 @@ function Footer() {
           </div>
         </div>
           <p>
-            <center>© FUNDACIÓN OBSERVATORIO PYME © 2020. Todos los derechos reservados. TEL +54 11 4381-3331 Av. de Mayo 1147, Piso 3. Buenos Aires. Argentina</center>  
+            <center>© FUNDACIÓN OBSERVATORIO PYME © 2020. Todos los derechos reservados. Telefono (+5411-4381-3331) Av. de Mayo 1147, Piso 3. Buenos Aires. Argentina</center>  
             <br/>
           </p>
       </div>
