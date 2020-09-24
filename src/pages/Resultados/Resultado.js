@@ -97,7 +97,7 @@ export default class Demo extends React.PureComponent {
           />
           <Animation />
           <Legend position="bottom" rootComponent={Root} labelComponent={Label} />
-          <Title text="Dashboard sobre como esta tu Pyme dentro del Rubro." />
+          <Title  font-family= "Bauer Bodoni" text="Dashboard sobre como esta tu Pyme dentro del Rubro." />
           <Stack
             stacks={[
               { series: ['Pepsi', 'Ferrari', 'Ford', 'Coca-Cola', 'Nissan'] },
@@ -108,6 +108,7 @@ export default class Demo extends React.PureComponent {
       <Link to="/Encuesta">
             <IconButton edge="end" className={ArrowBackIcon} color="inherit"  aria-label="menu">
               <Button 
+                font-family= "Bauer Bodoni"
                 variant="contained"
                 color="primary"
                 className={ArrowBackIcon}
@@ -119,6 +120,7 @@ export default class Demo extends React.PureComponent {
           <IconButton edge="end" className={ContactsIcon} color="inherit"  aria-label="menu">
               <Button 
                 href="https://www.observatoriopyme.org.ar/newsite/contacto/"
+                font-family= "Bauer Bodoni"
                 variant="contained"
                 color="primary"
                 className={ContactsIcon}

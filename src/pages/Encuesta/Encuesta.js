@@ -186,7 +186,7 @@ class Encuesta extends Component{
   ) : null
 
   var onSurveyCompletion = this.state.isCompleted ? (
-      <center><h1>¡Gracias por utilizar el Termometro PyME!
+      <center><h1 font-family= "Bauer Bodoni">¡Gracias por utilizar el Termometro PyME!
           <Link to="/Resultados">
           <IconButton edge="end" className={SendIcon} color="inherit" aria-label="menu">
             <Button 

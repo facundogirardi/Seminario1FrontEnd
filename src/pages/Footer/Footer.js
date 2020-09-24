@@ -40,7 +40,7 @@ function Footer() {
           </center>
           </div>
         </div>
-          <p>
+          <p font-family= "Bauer Bodoni">
             <center>© FUNDACIÓN OBSERVATORIO PYME © 2020. Todos los derechos reservados. Telefono (+5411-4381-3331) Av. de Mayo 1147, Piso 3. Buenos Aires. Argentina</center>  
             <br/>
           </p>

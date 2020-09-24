@@ -11,6 +11,7 @@ import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount';
+import BusinessIcon from '@material-ui/icons/Business';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -30,12 +31,12 @@ export default function () {
       <p id="text">
       <center>Bienvenido al Termometro Pyme!</center>
       <Link to="/Encuesta">
-      <IconButton edge="end" className={classes.InputIcon} color="inherit"  aria-label="menu">
+      <IconButton edge="end" className={classes.BusinessIcon} color="inherit"  aria-label="menu">
           <Button 
             variant="contained"
             color="inherit"
             className={classes.button}
-            startIcon={<InputIcon />}
+            startIcon={<BusinessIcon />}
             >
             Pyme
           </Button>
