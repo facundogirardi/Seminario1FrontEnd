@@ -8,7 +8,6 @@ import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
-import FormLabel from '@material-ui/core/FormLabel';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -20,8 +19,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function ABMUnaOpcion(){
-
-    const classes = useStyles();
 
     const [value, setValue] = React.useState('female');
 
@@ -55,23 +52,29 @@ function ABMUnaOpcion(){
       {inputList.map((x, i) => {
         return (
             <FormControl component="fieldset">
-                <FormLabel component="legend">Titulo de la pregunta</FormLabel>
+              <TextField id="outlined-basic" label="Pregunta a realizar:" variant="outlined" 
+              input
+              name="firstName"
+              placeholder="Pregunta a realizar:"
+              value={x.firstName}
+              onChange={e => handleInputChange(e, i)}
+            />
                 <div className="box" width="auto">
-                    <RadioGroup aria-label="gender" name="gender1" value={value} onChange={handleChange}>
-                        <FormControlLabel value="1" control={<Radio />} label="1" />
-                        <FormControlLabel value="2" control={<Radio />} label="2" />
-                        <FormControlLabel value="3" control={<Radio />} label="3" />
-                        <FormControlLabel value="4" control={<Radio />} label="4" />
-                        <FormControlLabel value="5" control={<Radio />} label="5" />
+                    <RadioGroup aria-label="gender" name="gender1" onChange={handleChange}>
+                        <FormControlLabel value="10" control={<Radio />} label="Opcion 1" />
+                        <FormControlLabel value="90" control={<Radio />} label="Opcion 2" />
+                        <FormControlLabel value="99" control={<Radio />} label="Opcion 3" />
+                        <FormControlLabel value="87" control={<Radio />} label="Opcion 4" />
+                        <FormControlLabel value="30" control={<Radio />} label="Opcion 5" />
                     </RadioGroup>
-            <div className="btn-box">
+            <div className="btn-box"> 
               {inputList.length !== 1 && 
               <IconButton  width="auto" edge="end" className={AddIcon} color="inherit"  aria-label="menu">
                 <Button 
                 variant="contained"
                 color="primary"
                 className={AddIcon}
-                onClick={() => handleRemoveClick(i)}>Eliminar</Button></IconButton>}
+                onClick={() => handleRemoveClick(i)}>Eliminar</Button></IconButton>} 
               {inputList.length - 1 === i && <IconButton width="auto" edge="end" className={AddIcon} color="inherit"  aria-label="menu">
                 <Button 
                 variant="contained"

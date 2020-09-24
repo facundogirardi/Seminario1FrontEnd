@@ -12,7 +12,7 @@ import ABMTexto from "./ABM-Texto"
 import IconButton from "@material-ui/core/IconButton";
 import AddIcon from '@material-ui/icons/Add';
 import Button from '@material-ui/core/Button';
-import ABMUnaOpcion from "./ABM-UnaOpcion"
+import ABMRadio from "./ABM-Radio"
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -103,14 +103,17 @@ export default function ABMTipo() {
       >
         <TabPanel value={value} index={0} dir={theme.direction}>
           Texto:
+          <br/>
           <ABMTexto/>
         </TabPanel>
         <TabPanel value={value} index={1} dir={theme.direction}>
           Opcion Unica:
-          <ABMUnaOpcion/>
+          <br/>
+          <ABMRadio/>
         </TabPanel>
         <TabPanel value={value} index={2} dir={theme.direction}>
           Seleccion:
+          <br/>
         </TabPanel>
       </SwipeableViews>
       <IconButton width="auto" edge="end" className={AddIcon} color="inherit"  aria-label="menu">
