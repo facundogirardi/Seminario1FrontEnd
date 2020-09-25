@@ -41,6 +41,7 @@ function Footer() {
                 href="https://www.observatoriopyme.org.ar/newsite/contacto/"
                 fontFamily= "Bauer Bodoni"
                 color="primary"
+                target="_blank"
                 >
                 Contacto
               </Button>
