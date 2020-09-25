@@ -3,10 +3,7 @@ import Page from 'material-ui-shell/lib/containers/Page/Page'
 import Scrollbar from 'material-ui-shell/lib/components/Scrollbar/Scrollbar'
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
-import Button from '@material-ui/core/Button';
-import IconButton from "@material-ui/core/IconButton";
 import { Link } from 'react-router-dom'
-import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import Footer from '../Footer/Footer';
 import "./Resultado.css";
 
