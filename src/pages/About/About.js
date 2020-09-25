@@ -9,7 +9,7 @@ import Footer from '../Footer/Footer';
 
 const AboutPage = ({ intl }) => {
   return (
-    <Page pageTitle={intl.formatMessage({ id: 'About' })}>
+    <Page pageTitle={intl.formatMessage({ id: 'Informacion' })}>
       <Scrollbar
         style={{ height: '93.4%', width: '100%', display: 'flex', flex: 1 }}>
         {intl.formatMessage({ id: ' ' })}

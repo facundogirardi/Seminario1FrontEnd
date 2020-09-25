@@ -4,7 +4,9 @@ import Page from 'material-ui-shell/lib/containers/Page/Page'
 import Footer from '../Footer/Footer';
 import Button from '@material-ui/core/Button';
 import ABMTipo from "./ABM-Tipo"
-
+import IconButton from "@material-ui/core/IconButton";
+import AddIcon from '@material-ui/icons/Add';
+import { Link } from 'react-router-dom';
 
 function ABM(){
 
@@ -16,17 +18,30 @@ function ABM(){
       <ABMTipo/>
       <div className="Cuadrado">
         <h2>Para cargar el Excel:</h2>
+        <label htmlFor="contained-button-file">
         <input
           accept="image/*"
           id="contained-button-file"
           multiple
           type="file"
         />
-        <label htmlFor="contained-button-file">
-          <Button variant="contained" color="primary" component="span">
-            Cargar Archivo
-          </Button>
         </label>
+        <br/>
+        <br/>
+        <Button variant="contained" color="primary" component="span">
+            Cargar Archivo
+        </Button>
+      
+      <Link to="/Encuesta">
+      <IconButton width="auto" edge="end" className={AddIcon} color="inherit"  aria-label="menu">
+        <Button 
+          variant="contained"
+          color="primary"
+          className={AddIcon}>
+          Generar Cuestionario
+        </Button>
+      </IconButton>
+      </Link>
       </div>
       </Scrollbar>
       <Footer/>

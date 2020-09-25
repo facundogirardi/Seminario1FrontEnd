@@ -5,3 +5,7 @@
     margin: 0 40px;
     text-align: justify;
  }
+
+ a:link, a:visited, a:active {
+    text-decoration:none;
+}

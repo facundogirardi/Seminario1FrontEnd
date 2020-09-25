@@ -22,26 +22,26 @@ function Footer() {
   return (
     <div className="main-footer">
         <div id="izquierda">
-          <center><a href="https://www.observatoriopyme.org.ar/"><img src={logo} width="70px" alt="Logo"/></a></center>
+          <center><a href="https://www.observatoriopyme.org.ar/" target="_blank"><img src={logo} width="70px" alt="Logo"/></a></center>
           <div id="derecha">
           <center>
-          <IconButton edge="start" className={classes.InstagramIcon} color="primary"  aria-label="menu" href="https://www.instagram.com/observatoriopyme/">
+          <IconButton edge="start" className={classes.InstagramIcon} color="primary"  aria-label="menu" href="https://www.instagram.com/observatoriopyme/" target="_blank">
             <InstagramIcon/>
           </IconButton>
-          <IconButton edge="start" className={classes.LinkedInIcon} color="primary"  aria-label="menu" href="https://www.linkedin.com/in/observatoriopyme/">
+          <IconButton edge="start" className={classes.LinkedInIcon} color="primary"  aria-label="menu" href="https://www.linkedin.com/in/observatoriopyme/" target="_blank">
             <LinkedInIcon />
           </IconButton>
-          <IconButton edge="start" className={classes.FacebookIcon} color="primary" aria-label="menu" href="https://www.facebook.com/fundacionobservatoriopyme">
+          <IconButton edge="start" className={classes.FacebookIcon} color="primary" aria-label="menu" href="https://www.facebook.com/fundacionobservatoriopyme" target="_blank">
             <FacebookIcon />
           </IconButton>
-          <IconButton edge="start" className={classes.TwitterIcon} color="primary" aria-label="menu" href="https://twitter.com/FOPyME">
+          <IconButton edge="start" className={classes.TwitterIcon} color="primary" aria-label="menu" href="https://twitter.com/FOPyME" target="_blank">
             <TwitterIcon />
           </IconButton>
           </center>
           </div>
         </div>
           <p font-family= "Bauer Bodoni">
-            <center>© FUNDACIÓN OBSERVATORIO PYME © 2020. Todos los derechos reservados. Telefono (+5411-4381-3331) Av. de Mayo 1147, Piso 3. Buenos Aires. Argentina</center>  
+            <center>© Fundación Observatorio Pyme © 2020. Todos los derechos reservados. Telefono (+5411-4381-3331) Av. de Mayo 1147, Piso 3. Buenos Aires. Argentina</center>  
             <br/>
           </p>
       </div>

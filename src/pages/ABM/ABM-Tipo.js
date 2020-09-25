@@ -9,11 +9,9 @@ import Typography from '@material-ui/core/Typography';
 import { green } from '@material-ui/core/colors';
 import Box from '@material-ui/core/Box';
 import ABMTexto from "./ABM-Texto"
-import IconButton from "@material-ui/core/IconButton";
-import AddIcon from '@material-ui/icons/Add';
-import Button from '@material-ui/core/Button';
 import ABMRadio from "./ABM-Radio";
 import ABMCheckbox from "./ABM-Checkbox";
+import "./ABM.css";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -82,7 +80,10 @@ export default function ABMTipo() {
   return (
     
     <div className={classes.root}>
+    <div className="Cuadrado">
     <h2>Realizar preguntas de tipo:</h2>
+    </div>
+    <div className="Cuadrado"></div>
       <AppBar position="static" color="default">
         <Tabs
           value={value}
@@ -118,14 +119,6 @@ export default function ABMTipo() {
           <ABMCheckbox/>
         </TabPanel>
       </SwipeableViews>
-      <IconButton width="auto" edge="end" className={AddIcon} color="inherit"  aria-label="menu">
-        <Button 
-          variant="contained"
-          color="primary"
-          className={AddIcon}>
-          Generar Cuestionario
-        </Button>
-      </IconButton>
     </div>
   );
 }

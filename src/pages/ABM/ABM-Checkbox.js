@@ -54,6 +54,7 @@ function ABMCheckbox(){
       <div>
       {inputList.map((x, i) => {
         return (
+          <form className={classes.root} noValidate autoComplete="off">
             <FormControl component="fieldset" component="fieldset" className={classes.formControl}>
               <TextField id="outlined-basic" label="Pregunta a realizar:" variant="outlined" 
               input
@@ -71,7 +72,7 @@ function ABMCheckbox(){
                     <Checkbox inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} /> <input type="text" id="Name" name="Name" /> <br/> 
                        
                     
-                    <div className="btn-box"> 
+            <div className="btn-box"> 
               {inputList.length !== 1 &&  
               <IconButton  width="auto" edge="end" className={AddIcon} color="inherit"  aria-label="menu">
                 <Button 
@@ -88,6 +89,7 @@ function ABMCheckbox(){
           </div>
           <br/>
           </FormControl>
+          </form>
         );
       })}
       </div>

@@ -8,7 +8,6 @@ import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
-import FormLabel from '@material-ui/core/FormLabel';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -55,6 +54,7 @@ function ABMRadio(){
       <div>
       {inputList.map((x, i) => {
         return (
+          <form className={classes.root} noValidate autoComplete="off">
             <FormControl component="fieldset">
               <TextField id="outlined-basic" label="Pregunta a realizar:" variant="outlined" 
               input
@@ -87,6 +87,7 @@ function ABMRadio(){
             </div> 
           </div> 
           </FormControl>
+          </form>
         );
       })}
       </div>
