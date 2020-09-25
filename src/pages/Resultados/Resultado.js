@@ -148,18 +148,9 @@ export default class Demo extends React.PureComponent {
           />
         </Chart>
       </Paper>
-      <Link to="/Encuesta">
-            <IconButton edge="end" className={ArrowBackIcon} color="inherit"  aria-label="menu">
-              <Button 
-                fontFamily= "Bauer Bodoni"
-                variant="contained"
-                color="primary"
-                className={ArrowBackIcon}
-                >
-                Realizar nuevamente
-              </Button>
-            </IconButton>
-          </Link>
+        <Link to="/Encuesta">
+          <button class="block">Realizar Nuevamente</button>
+        </Link>
     </Scrollbar>
     <Footer/>
     </Page>
