@@ -6,9 +6,21 @@ import Button from '@material-ui/core/Button';
 import ABMTipo from "./ABM-Tipo"
 import IconButton from "@material-ui/core/IconButton";
 import AddIcon from '@material-ui/icons/Add';
-import { Link } from 'react-router-dom';
+
+
 
 function ABM(){
+
+
+  function showAlert1() {
+    var myText = "Cuestionario generado exitosamente!";
+    alert (myText);
+  }
+
+  function showAlert2() {
+    var myText = "Archivo cargado exitosamente en la base de datos";
+    alert (myText);
+  }
 
   return (
     <Page pageTitle={'Usted esta en la ventana de administrador.'}>
@@ -29,24 +41,24 @@ function ABM(){
         <br/>
         <br/>
         <Button variant="contained" color="primary" component="span">
+            onClick={showAlert1}
             Cargar Archivo
         </Button>
-      
-      <Link to="/Encuesta">
       <IconButton width="auto" edge="end" className={AddIcon} color="inherit"  aria-label="menu">
-        <Button 
+        <Button
+          onClick={showAlert2}
           variant="contained"
           color="primary"
           className={AddIcon}>
           Generar Cuestionario
         </Button>
       </IconButton>
-      </Link>
       </div>
       </Scrollbar>
       <Footer/>
     </Page>
   );
 }
+
 
 export default ABM;
