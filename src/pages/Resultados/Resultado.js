@@ -71,33 +71,76 @@ export default class Demo extends React.PureComponent {
           />
 
           <BarSeries
-            name="Pepsi"
+            name="Pepsi Facturacion"
             valueField="hydro"
-            argumentField="mes"
+            argumentField="FacturacionPromedioGeneral"
           />
           <BarSeries
-            name="Ferrari"
+            name="Ferrari Facturacion"
             valueField="oil"
-            argumentField="mes"
+            argumentField="FacturacionPromedioGeneral"
           />
           <BarSeries
-            name="Ford"
+            name="Ford Facturacion"
             valueField="gas"
-            argumentField="mes"
+            argumentField="FacturacionPromedioGeneral"
           />
           <BarSeries
-            name="Coca Cola"
+            name="Coca Cola Facturacion"
             valueField="coal"
-            argumentField="mes"
+            argumentField="FacturacionPromedioGeneral"
           />
           <BarSeries
-            name="Nissan"
+            name="Nissan Facturacion"
             valueField="nuclear"
-            argumentField="mes"
+            argumentField="FacturacionPromedioGeneral"
           />
           <Animation />
           <Legend position="bottom" rootComponent={Root} labelComponent={Label} />
-          <Title  fontFamily= "Bauer Bodoni" text="Dashboard sobre como esta tu Pyme dentro del Rubro." />
+          <Title  fontFamily= "Bauer Bodoni" text="Dashboard sobre la facturacion promedio general dentro del rubro." />
+          <Stack
+            stacks={[
+              { series: ['Pepsi', 'Ferrari', 'Ford', 'Coca-Cola', 'Nissan'] },
+            ]}
+          />
+        </Chart>
+      </Paper>
+      <Paper>
+        <Chart
+          data={chartData}
+        >
+          <ArgumentAxis />
+          <ValueAxis
+            max={10000}
+          />
+          <BarSeries
+            name="Pepsi Pedidos"
+            valueField="hydro"
+            argumentField="CarteraDePedidosPromedioGeneral"
+          />
+          <BarSeries
+            name="Ferrari Pedidos"
+            valueField="oil"
+            argumentField="CarteraDePedidosPromedioGeneral"
+          />
+          <BarSeries
+            name="Ford Pedidos"
+            valueField="gas"
+            argumentField="CarteraDePedidosPromedioGeneral"
+          />
+          <BarSeries
+            name="Coca Cola Pedidos"
+            valueField="coal"
+            argumentField="CarteraDePedidosPromedioGeneral"
+          />
+          <BarSeries
+            name="Nissan Pedidos"
+            valueField="nuclear"
+            argumentField="CarteraDePedidosPromedioGeneral"
+          />
+          <Animation />
+          <Legend position="bottom" rootComponent={Root} labelComponent={Label} />
+          <Title  fontFamily= "Bauer Bodoni" text="Dashboard sobre la cartera de pedidos promedio general dentro del rubro." />
           <Stack
             stacks={[
               { series: ['Pepsi', 'Ferrari', 'Ford', 'Coca-Cola', 'Nissan'] },
