@@ -40,10 +40,15 @@ function ABM(){
         </label>
         <br/>
         <br/>
-        <Button variant="contained" color="primary" component="span">
+      <IconButton width="auto" edge="end" className={AddIcon} color="inherit"  aria-label="menu">
+        <Button 
             onClick={showAlert1}
+            variant="contained"
+            color="primary"
+            className={AddIcon}>
             Cargar Archivo
         </Button>
+      </IconButton>
       <IconButton width="auto" edge="end" className={AddIcon} color="inherit"  aria-label="menu">
         <Button
           onClick={showAlert2}
