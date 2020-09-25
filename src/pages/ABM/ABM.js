@@ -13,12 +13,12 @@ function ABM(){
 
 
   function showAlert1() {
-    var myText = "Cuestionario generado exitosamente!";
+    var myText = "Archivo cargado exitosamente en la base de datos";
     alert (myText);
   }
 
   function showAlert2() {
-    var myText = "Archivo cargado exitosamente en la base de datos";
+    var myText = "Cuestionario generado exitosamente!";
     alert (myText);
   }
 

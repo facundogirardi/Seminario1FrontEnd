@@ -4,7 +4,7 @@ const messages = defineMessages({
   app_name: 'React Most Wanted',
   sign_in: 'Iniciar Sesion',
   sign_out: 'Cerrar Sesion',
-  username: 'Nombre de Usuario',
+  username: 'Usuario Pyme',
   password: 'Contraseña',
   about: 'About',
   home: 'Home',

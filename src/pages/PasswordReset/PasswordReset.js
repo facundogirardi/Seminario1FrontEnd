@@ -3,14 +3,12 @@ import Page from 'material-ui-shell/lib/containers/Page/Page'
 import Paper from '@material-ui/core/Paper'
 /*import React, { useState, useContext } from 'react'*/
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
 import TextField from '@material-ui/core/TextField'
 import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
-import { useAuth } from 'base-shell/lib/providers/Auth'
 import { useHistory } from 'react-router-dom'
 import { useIntl } from 'react-intl'
-import { useMenu } from 'material-ui-shell/lib/providers/Menu'
+/*import { useMenu } from 'material-ui-shell/lib/providers/Menu'*/
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -51,46 +49,36 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-const SignIn = () => {
+const SignUp = () => {
   const classes = useStyles()
   const intl = useIntl()
   const history = useHistory()
-  /*const [username, setUsername] = useState('')*/
-  /*const [password, setPassword] = useState('')*/
-  const [username, setUsername] = useState('Grupo6')
-  const [password, setPassword] = useState('Grupo6')
-  const { setAuthMenuOpen } = useMenu()
-  /*const { auth, setAuth } = useAuth()*/
-  const { setAuth } = useAuth()
+  const [username, setUsername] = useState('')
+  /*const [password, setPassword] = useState('')
+  const { setAuthMenuOpen } = useMenu()*/
 
   function handleSubmit(event) {
     event.preventDefault()
-    authenticate({
-      displayName: 'Hola, ', email: username,
-    })
-  }
-
-  const authenticate = (user) => {
-    setAuth({ isAuthenticated: true, ...user })
-    setAuthMenuOpen(false)
-
-    let _location = history.location
-
-    let _route = '/Encuesta'
-    if (_location.state && _location.state.from) {
-      _route = _location.state.from.pathname
-      history.push(_route)
-    } else {
-      history.push(_route)
-    }
+    history.replace('/signin')
   }
 
   return (
-    <Page pageTitle={intl.formatMessage({ id: 'sign_in' })}>
+    <Page
+      pageTitle={intl.formatMessage({
+        id: 'password_reset',
+        defaultMessage: 'Reinicio de contraseña',
+      })}
+      onBackClick={() => {
+        history.goBack()
+      }}
+    >
       <Paper className={classes.paper} elevation={6}>
         <div className={classes.container}>
           <Typography component="h1" variant="h5">
-            {intl.formatMessage({ id: 'sign_in' })}
+            {intl.formatMessage({
+              id: 'password_reset',
+              defaultMessage: 'Reseteo de Contraseña',
+            })}
           </Typography>
           <form className={classes.form} onSubmit={handleSubmit} noValidate>
             <TextField
@@ -100,25 +88,16 @@ const SignIn = () => {
               margin="normal"
               required
               fullWidth
-              id="username"
-              label={intl.formatMessage({ id: 'username' })}
-              name="username"
-              autoComplete="username"
+              id="email"
+              label={intl.formatMessage({
+                id: 'email',
+                defaultMessage: 'E-Mail',
+              })}
+              name="email"
+              autoComplete="email"
               autoFocus
             />
-            <TextField
-              value={password}
-              onInput={(e) => setPassword(e.target.value)}
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label={intl.formatMessage({ id: 'password' })}
-              type="password"
-              id="password"
-              autoComplete="current-password"
-            />
+
             <Button
               type="submit"
               fullWidth
@@ -126,25 +105,16 @@ const SignIn = () => {
               color="primary"
               className={classes.submit}
             >
-              {intl.formatMessage({ id: 'sign_in' })}
+              {intl.formatMessage({
+                id: 'reset_password',
+                defaultMessage: 'Confirmar',
+              })}
             </Button>
           </form>
-
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'row',
-              width: '100%',
-              justifyContent: 'space-between',
-            }}
-          >
-           <Link to="/password_reset">Olvido su contraseña?</Link>
-           <Link to="/signup">Registrar</Link>
-          </div>
         </div>
       </Paper>
     </Page>
   )
 }
 
-export default SignIn
+export default SignUp
