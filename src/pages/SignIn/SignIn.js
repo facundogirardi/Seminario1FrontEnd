@@ -5,7 +5,6 @@ import Paper from '@material-ui/core/Paper'
 import React, { useState } from 'react'
 import TextField from '@material-ui/core/TextField'
 import Typography from '@material-ui/core/Typography'
-import { Link } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles'
 import { useAuth } from 'base-shell/lib/providers/Auth'
 import { useHistory } from 'react-router-dom'
@@ -55,8 +54,10 @@ const SignIn = () => {
   const classes = useStyles()
   const intl = useIntl()
   const history = useHistory()
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
+  /*const [username, setUsername] = useState('')*/
+  /*const [password, setPassword] = useState('')*/
+  const [username, setUsername] = useState('Grupo6')
+  const [password, setPassword] = useState('Grupo6')
   const { setAuthMenuOpen } = useMenu()
   /*const { auth, setAuth } = useAuth()*/
   const { setAuth } = useAuth()
@@ -137,7 +138,6 @@ const SignIn = () => {
               justifyContent: 'space-between',
             }}
           >
-            <Link to="/password_reset">Olvido su contraseña?</Link>
           </div>
         </div>
       </Paper>
