@@ -20,7 +20,7 @@ function ABMCheckbox(){
 
     const classes = useStyles();
 
-    const [value, setValue] = React.useState('female');
+    const [value, setValue] = React.useState(' ');
 
     const [checked, setChecked] = React.useState(true);
     const handleChange = (event) => {
@@ -55,7 +55,7 @@ function ABMCheckbox(){
       {inputList.map((x, i) => {
         return (
           <form className={classes.root} noValidate autoComplete="off">
-            <FormControl component="fieldset" component="fieldset" className={classes.formControl}>
+            <FormControl component="fieldset" className={classes.formControl}>
               <TextField id="outlined-basic" label="Pregunta a realizar:" variant="outlined" 
               input
               name="firstName"

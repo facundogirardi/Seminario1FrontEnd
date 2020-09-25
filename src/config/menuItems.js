@@ -8,12 +8,10 @@ import GetApp from '@material-ui/icons/GetApp'
 import ChromeReaderMode from '@material-ui/icons/ChromeReaderMode'
 import StyleIcon from '@material-ui/icons/Style'
 import allThemes from './themes'
-import QuestionAnswerIcon from '@material-ui/icons/QuestionAnswer';
 import PollIcon from '@material-ui/icons/Poll';
 import InfoIcon from '@material-ui/icons/Info';
 import CreateIcon from '@material-ui/icons/Create';
 import HomeIcon from '@material-ui/icons/Home';
-import ContactsIcon from '@material-ui/icons/Contacts';
 
 const getMenuItems = (props) => {
   const {

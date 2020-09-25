@@ -22,7 +22,7 @@ function Footer() {
   return (
     <div className="main-footer">
         <div id="izquierda">
-          <center><a href="https://www.observatoriopyme.org.ar/" target="_blank"><img src={logo} width="70px" alt="Logo"/></a></center>
+          <center><a href="https://www.observatoriopyme.org.ar/" target="_blank" rel="noopener noreferrer" > <img src={logo} width="70px" alt="Logo"/></a></center>
           <div id="derecha">
           <center>
           <IconButton edge="start" className={classes.InstagramIcon} color="primary"  aria-label="menu" href="https://www.instagram.com/observatoriopyme/" target="_blank">
@@ -40,7 +40,7 @@ function Footer() {
           </center>
           </div>
         </div>
-          <p font-family= "Bauer Bodoni">
+          <p fontFamily= "Bauer Bodoni">
             <center>© Fundación Observatorio Pyme © 2020. Todos los derechos reservados. Telefono (+5411-4381-3331) Av. de Mayo 1147, Piso 3. Buenos Aires. Argentina</center>  
             <br/>
           </p>

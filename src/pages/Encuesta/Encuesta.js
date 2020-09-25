@@ -186,7 +186,7 @@ class Encuesta extends Component{
   ) : null
 
   var onSurveyCompletion = this.state.isCompleted ? (
-      <center><h1 font-family= "Bauer Bodoni">¡Gracias por utilizar el Termometro PyME!
+      <center><h1 fontFamily= "Bauer Bodoni">¡Gracias por utilizar el Termometro PyME!
           <Link to="/Resultados">
           <IconButton edge="end" className={SendIcon} color="inherit" aria-label="menu">
             <Button 
@@ -201,10 +201,6 @@ class Encuesta extends Component{
     
   ) : null;
   
-  function refreshPage(){ 
-    window.location.reload(); 
-}
-
   return (
     <Page pageTitle={'Usted esta en la ventana de encuesta.'}>
       
