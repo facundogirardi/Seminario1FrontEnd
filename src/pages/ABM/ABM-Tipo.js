@@ -12,7 +12,8 @@ import ABMTexto from "./ABM-Texto"
 import IconButton from "@material-ui/core/IconButton";
 import AddIcon from '@material-ui/icons/Add';
 import Button from '@material-ui/core/Button';
-import ABMRadio from "./ABM-Radio"
+import ABMRadio from "./ABM-Radio";
+import ABMCheckbox from "./ABM-Checkbox";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -92,7 +93,7 @@ export default function ABMTipo() {
           aria-label="action tabs example"
         >
           <Tab label="Texto" {...a11yProps(0)} />
-          <Tab label="Opcion Unica" {...a11yProps(1)} />
+          <Tab label="Unica Respuesta" {...a11yProps(1)} />
           <Tab label="Seleccion" {...a11yProps(2)} />
         </Tabs>
       </AppBar>
@@ -107,13 +108,14 @@ export default function ABMTipo() {
           <ABMTexto/>
         </TabPanel>
         <TabPanel value={value} index={1} dir={theme.direction}>
-          Opcion Unica:
+          Unica Respuesta:
           <br/>
           <ABMRadio/>
         </TabPanel>
         <TabPanel value={value} index={2} dir={theme.direction}>
           Seleccion:
           <br/>
+          <ABMCheckbox/>
         </TabPanel>
       </SwipeableViews>
       <IconButton width="auto" edge="end" className={AddIcon} color="inherit"  aria-label="menu">

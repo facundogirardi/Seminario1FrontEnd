@@ -4,12 +4,8 @@ import AddIcon from '@material-ui/icons/Add';
 import IconButton from "@material-ui/core/IconButton";
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
-import Radio from '@material-ui/core/Radio';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
-import FormLabel from '@material-ui/core/FormLabel';
-
+import Checkbox from '@material-ui/core/Checkbox';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -20,13 +16,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function ABMRadio(){
+function ABMCheckbox(){
 
     const classes = useStyles();
 
     const [value, setValue] = React.useState('female');
 
+    const [checked, setChecked] = React.useState(true);
     const handleChange = (event) => {
+        setChecked(event.target.checked);
         setValue(event.target.value);
     };
     const [inputList, setInputList] = useState([{ firstName: "", lastName: "" }]);
@@ -51,11 +49,12 @@ function ABMRadio(){
       setInputList([...inputList, { firstName: "", lastName: "" }]);
     };
 
+   
   return (
       <div>
       {inputList.map((x, i) => {
         return (
-            <FormControl component="fieldset">
+            <FormControl component="fieldset" component="fieldset" className={classes.formControl}>
               <TextField id="outlined-basic" label="Pregunta a realizar:" variant="outlined" 
               input
               name="firstName"
@@ -63,16 +62,17 @@ function ABMRadio(){
               value={x.firstName}
               onChange={e => handleInputChange(e, i)}
             />
+
                 <div className="box" width="auto">
-                    <RadioGroup aria-label="gender" name="gender1" onChange={handleChange}>
-                      <br/> <span> <FormControlLabel value="1" control={<Radio />} label for="Name"/> <input type="text" id="Name" name="Name"/>  </span>
-                      <br/> <span> <FormControlLabel value="2" control={<Radio />} label for="Name"/> <input type="text" id="Name" name="Name"/>  </span>
-                      <br/> <span> <FormControlLabel value="3" control={<Radio />} label for="Name"/> <input type="text" id="Name" name="Name"/>  </span>
-                      <br/> <span> <FormControlLabel value="4" control={<Radio />} label for="Name"/> <input type="text" id="Name" name="Name"/>  </span>
-                      <br/> <span> <FormControlLabel value="5" control={<Radio />} label for="Name"/> <input type="text" id="Name" name="Name"/>  </span> 
-                    </RadioGroup>
-            <div className="btn-box"> 
-              {inputList.length !== 1 && 
+                    <Checkbox inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} /> <input type="text" id="Name" name="Name" /> <br/> 
+                    <Checkbox inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} /> <input type="text" id="Name" name="Name" /> <br/> 
+                    <Checkbox inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} /> <input type="text" id="Name" name="Name" /> <br/> 
+                    <Checkbox inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} /> <input type="text" id="Name" name="Name" /> <br/> 
+                    <Checkbox inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} /> <input type="text" id="Name" name="Name" /> <br/> 
+                       
+                    
+                    <div className="btn-box"> 
+              {inputList.length !== 1 &&  
               <IconButton  width="auto" edge="end" className={AddIcon} color="inherit"  aria-label="menu">
                 <Button 
                 variant="contained"
@@ -83,9 +83,10 @@ function ABMRadio(){
                 <Button 
                 variant="contained"
                 color="primary"
-                className={AddIcon} onClick={handleAddClick}>Agregar</Button></IconButton>}
-            </div> 
-          </div> 
+                className={AddIcon} onClick={handleAddClick}>Agregar</Button></IconButton>} 
+            </div>
+          </div>
+          <br/>
           </FormControl>
         );
       })}
@@ -93,4 +94,4 @@ function ABMRadio(){
   );
 }
 
-export default ABMRadio;
+export default ABMCheckbox;
