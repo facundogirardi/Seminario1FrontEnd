@@ -7,12 +7,12 @@ import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import { makeStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     '& > *': {
       margin: theme.spacing(1),
-      width: '25ch',
     },
   },
 }));
@@ -37,6 +37,13 @@ function Footer() {
           <IconButton edge="start" className={classes.TwitterIcon} color="primary" aria-label="menu" href="https://twitter.com/FOPyME" target="_blank">
             <TwitterIcon />
           </IconButton>
+              <Button 
+                href="https://www.observatoriopyme.org.ar/newsite/contacto/"
+                fontFamily= "Bauer Bodoni"
+                color="primary"
+                >
+                Contacto
+              </Button>
           </center>
           </div>
         </div>
