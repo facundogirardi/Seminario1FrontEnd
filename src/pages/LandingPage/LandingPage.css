@@ -1,6 +1,8 @@
 #container {
-    height: 100%;
-    width: 100%;
+    right: 0px;
+    left: 0px;
+    top: 0px;
+    bottom:0px;
     position: absolute;
 }
 
