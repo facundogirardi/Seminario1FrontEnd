@@ -66,9 +66,9 @@ const SignIn = () => {
 
   function validateForm() { 
     if (username === 'admin' && password ==='admin') {
-      window.location.href = "/ABM";
+      window.location.href = "/Administrador";
   } else {
-    alert("User & password incorrect");
+    alert("Usuario o contraseña incorrectos");
     return false
     window.location.href = "/";
     
@@ -85,7 +85,7 @@ const SignIn = () => {
 
     let _location = history.location
 
-    let _route = '/ABM'
+    let _route = '/Administrador'
     if (_location.state && _location.state.from) {
       _route = _location.state.from.pathname
       history.push(_route)
