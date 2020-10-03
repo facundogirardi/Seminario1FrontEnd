@@ -12,6 +12,7 @@ import { useHistory } from 'react-router-dom'
 import { useIntl } from 'react-intl'
 import { useMenu } from 'material-ui-shell/lib/providers/Menu'
 
+
 const useStyles = makeStyles((theme) => ({
   paper: {
     width: 'auto',
@@ -57,18 +58,26 @@ const SignIn = () => {
   const history = useHistory()
   /*const [username, setUsername] = useState('')*/
   /*const [password, setPassword] = useState('')*/
-  const [username, setUsername] = useState('Grupo6')
-  const [password, setPassword] = useState('Grupo6')
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
   const { setAuthMenuOpen } = useMenu()
   /*const { auth, setAuth } = useAuth()*/
   const { setAuth } = useAuth()
 
-  function handleSubmit(event) {
-    event.preventDefault()
-    authenticate({
-      displayName: 'Hola, ', email: username,
-    })
+  function validateForm() { 
+    if (username === 'admin' && password ==='admin') {
+      window.location.href = "/ABM";
+  } else {
+    alert("User & password incorrect");
+    return false
+    window.location.href = "/";
+    
   }
+  
+  authenticate({
+    displayName: 'Hola, ', email: username,
+  })
+}
 
   const authenticate = (user) => {
     setAuth({ isAuthenticated: true, ...user })
@@ -76,7 +85,7 @@ const SignIn = () => {
 
     let _location = history.location
 
-    let _route = '/Encuesta'
+    let _route = '/ABM'
     if (_location.state && _location.state.from) {
       _route = _location.state.from.pathname
       history.push(_route)
@@ -92,7 +101,7 @@ const SignIn = () => {
           <Typography component="h1" variant="h5">
             {intl.formatMessage({ id: 'sign_in' })}
           </Typography>
-          <form className={classes.form} onSubmit={handleSubmit} noValidate>
+          <form className={classes.form} onSubmit={validateForm} Validate>
             <TextField
               value={username}
               onInput={(e) => setUsername(e.target.value)}
