@@ -1,201 +1,162 @@
-import React from 'react';
-import { makeStyles, useTheme  } from '@material-ui/core/styles';
+
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import Button from '@material-ui/core/Button';
-import clsx from 'clsx';
-import Input from '@material-ui/core/Input';
-import ListItemText from '@material-ui/core/ListItemText';
-import Checkbox from '@material-ui/core/Checkbox';
-import Chip from '@material-ui/core/Chip';
 import DeleteIcon from '@material-ui/icons/Delete';
 import IconButton from '@material-ui/core/IconButton';
 import EditIcon from '@material-ui/icons/Edit';
 import AddIcon from '@material-ui/icons/Add';
-import { Link } from 'react-router-dom'
-
-
-
+import Card from '@material-ui/core/Card';
+import React, {useState} from "react";
+import { makeStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
+import { CardHeader } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
-  button: {
-    display: 'block',
-    marginTop: theme.spacing(2),
-  },
-  formControl: {
-    margin: theme.spacing(1),
-    minWidth: 120,
-  },
-  chips: {
-    display: 'flex',
-    flexWrap: 'wrap',
-  },
-  chip: {
-    margin: 2,
-  },
-  noLabel: {
-    marginTop: theme.spacing(3),
+  root: {
+    '& .MuiTextField-root': {
+      margin: theme.spacing(1),
+      width: 'auto',
+    },
   },
 }));
 
-const ITEM_HEIGHT = 48;
-const ITEM_PADDING_TOP = 8;
-const MenuProps = {
-  PaperProps: {
-    style: {
-      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-      width: 250,
-    },
-  },
-};
+function CardText(){
 
+  const classes = useStyles();
 
-const names = [
-  'Oliver Hansen',
-  'Van Henry',
-  'April Tucker',
-  'Ralph Hubbard',
-  'Omar Alexander',
-  'Carlos Abbott',
-  'Miriam Wagner',
-  'Bradley Wilkerson',
-  'Virginia Andrews',
-  'Kelly Snyder',
-  
-];
-function getStyles(name, personName, theme) {
-    return {
-      fontWeight:
-        personName.indexOf(name) === -1
-          ? theme.typography.fontWeightRegular
-          : theme.typography.fontWeightMedium,
-    };
-  }
+  const [inputList, setInputList] = useState([{ firstName: "", lastName: "" }]);
+ 
+  // handle input change
+  const handleInputChange = (e, index) => {
+    const { name, value } = e.target;
+    const list = [...inputList];
+    list[index][name] = value;
+    setInputList(list);
+  };
+ 
+  // handle click event of the Remove button
+  const handleRemoveClick = index => {
+    const list = [...inputList];
+    list.splice(index, 1);
+    setInputList(list);
+  };
+ 
+  // handle click event of the Add button
+  const handleAddClick = () => {
+    setInputList([...inputList, { firstName: "", lastName: "" , firstName2: "", lastName2: "", lastName3: "", lastName4: "", lastName5: "", lastName6: "", lastName7: ""}]);
+  };
 
-  export default function MultipleSelect() {
-    const classes = useStyles();
-    const theme = useTheme();
-    const [personName, setPersonName] = React.useState([]);
-  
-    const handleChange = (event) => {
-      setPersonName(event.target.value);
-    };
-  
-    const handleChangeMultiple = (event) => {
-      const { options } = event.target;
-      const value = [];
-      for (let i = 0, l = options.length; i < l; i += 1) {
-        if (options[i].selected) {
-          value.push(options[i].value);
-        }
-      }
-      setPersonName(value);
-    };
-  
-    return (
+  return (
       <div>
-          
-        <FormControl className={classes.formControl}>
-          <InputLabel id="demo-mutiple-checkbox-label">Seleccionar usuarios:</InputLabel>
-          <Select
-            labelId="demo-mutiple-checkbox-label"
-            id="demo-mutiple-checkbox"
-            multiple
-            value={personName}
-            onChange={handleChange}
-            input={<Input />}
-            renderValue={(selected) => selected.join(', ')}
-            MenuProps={MenuProps}
-          >
-            {names.map((name) => (
-              <MenuItem key={name} value={name}>
-                <Checkbox checked={personName.indexOf(name) > -1} />
-                <ListItemText primary={name} />
-              </MenuItem>
-            ))}
-          </Select>
-        </FormControl>
-        <FormControl className={classes.formControl}>
-          <InputLabel id="demo-mutiple-chip-label">Usuarios seleccionados:</InputLabel>
-          <Select
-            labelId="demo-mutiple-chip-label"
-            id="demo-mutiple-chip"
-            multiple
-            value={personName}
-            onChange={handleChange}
-            input={<Input id="select-multiple-chip" />}
-            renderValue={(selected) => (
-              <div className={classes.chips}>
-                {selected.map((value) => (
-                  <Chip key={value} label={value} className={classes.chip} />
-                ))}
-                
-              </div>
-            )}
-            MenuProps={MenuProps}
-          >
-            {names.map((name) => (
-              <MenuItem key={name} value={name} style={getStyles(name, personName, theme)}>
-                {name}
-            
-              </MenuItem>
+        <h1>Administracion de usuarios</h1>
+      {inputList.map((x, i) => {
+        return (
+          <Card>
+          <form className={classes.root} noValidate autoComplete="off">
+          <div className="box" width="auto">
+            <TextField id="outlined-basic"  variant="outlined" 
+              input
+              name="firstName"
+              placeholder="Nombre"
+              value={x.firstName}
+              onChange={e => handleInputChange(e, i)}
+            /> 
               
-            ))}
+            <TextField id="outlined-basic"  variant="outlined" 
+              input
+              name="firstName2"
+              placeholder="Apellido"
+              value={x.firstName2}
+              onChange={e => handleInputChange(e, i)}
+            /> 
+            <br/>
+            <TextField id="outlined-basic"  variant="outlined" 
+              input
+              className="ml10"
+              name="lastName2"
+              placeholder="e-Mail"
+              value={x.lastName2}
+              onChange={e => handleInputChange(e, i)}
+            />
+             <br/>
 
-      
-          </Select> 
-          <div>
-
-          <IconButton edge="end" aria-label="delete">
-                      <DeleteIcon />
-                    </IconButton>
+            <TextField id="outlined-basic"  variant="outlined" 
+              input
+              className="ml10"
+              name="lastName3"
+              placeholder="Compañia"
+              value={x.lastName3}
+              onChange={e => handleInputChange(e, i)}
+              />
+               <br/>
+              
+              <TextField id="outlined-basic"  variant="outlined" 
+                input
+                className="ml10"
+                name="lastName4"
+                placeholder="Ciudad"
+                value={x.lastName4}
+                onChange={e => handleInputChange(e, i)}
+                />
+                <TextField id="outlined-basic"  variant="outlined" 
+                input
+                className="ml10"
+                name="lastName5"
+                placeholder="Pais"
+                value={x.lastName5}
+                onChange={e => handleInputChange(e, i)}
+                />
+                <TextField id="outlined-basic"  variant="outlined" 
+                input
+                className="ml10"
+                name="lastName6"
+                placeholder="Direccion"
+                value={x.lastName6}
+                onChange={e => handleInputChange(e, i)}
+                />
+                <TextField id="outlined-basic"  variant="outlined" 
+                input
+                className="ml10"
+                name="lastName7"
+                placeholder="Codigo postal"
+                value={x.lastName7}
+                onChange={e => handleInputChange(e, i)}
+                />
+                <div className="btn-box">
+              {inputList.length !== 1 && 
+              <IconButton  width="auto" edge="end" className={AddIcon} color="inherit"  aria-label="menu">
+                <Button 
+                variant="contained"
+                color="primary"
+                className={AddIcon}
+                onClick={() => handleRemoveClick(i)}>Eliminar este usuario</Button></IconButton>}
+              {inputList.length - 1 === i && <IconButton width="auto" edge="end" className={AddIcon} color="inherit"  aria-label="menu">
+                <Button 
+                variant="contained"
+                color="primary"
+                className={AddIcon} onClick={handleAddClick}>Agregar otro usuario</Button></IconButton>}
+            </div>
+            <IconButton>
+            <Button>
+              UPDATE USER
+            </Button>
+            </IconButton>
                 
-                    </div>
-            <div> 
-            <Link to="/Editar-Perfil">   
-            
-            <IconButton edge="end" aria-label="edit">
-                <EditIcon/>
-                </IconButton>
-                </Link>
-                </div>  
-                <div>
-                <IconButton edge="end" aria-label="add">
-                <AddIcon/>
-                </IconButton>
-                </div>  
-        </FormControl>
 
-        
-        <FormControl className={classes.formControl}>
-          <InputLabel shrink htmlFor="select-multiple-native">
-            Usuarios confimados
-          </InputLabel>
-          <Select
-            multiple
-            native
-            value={personName}
-            onChange={handleChangeMultiple}
-            inputProps={{
-              id: 'select-multiple-native',
-            }}
-          >
-            {names.map((name) => (
-              <option key={name} value={name}>
-                {name}
-              </option>
-            ))}
-          </Select>
-        </FormControl>
-        <Link to="/ABM">
-        <Button variant="contained">Usuarios autorizados</Button>
-      </Link>
+          
+          
+          </div>
+          </form>
+          </Card>
+         
+         
+        );
+      })}
       </div>
-      
-    );
-  }
+  );
+}
 
-
-  
+export default CardText;
