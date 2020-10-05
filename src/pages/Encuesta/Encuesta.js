@@ -1,225 +1,234 @@
-import React, { Component } from 'react';
-import "survey-react/survey.css";
-import * as Survey from "survey-react";
 import Scrollbar from 'material-ui-shell/lib/components/Scrollbar/Scrollbar'
 import Page from 'material-ui-shell/lib/containers/Page/Page'
-import Button from '@material-ui/core/Button';
-import IconButton from "@material-ui/core/IconButton";
-import SendIcon from '@material-ui/icons/Send';
 import "./Encuesta.css";
-import logo from './continuar.jpg';
-import { Link } from 'react-router-dom'
 import Footer from '../Footer/Footer';
+import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import InputLabel from '@material-ui/core/InputLabel';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+import Button from '@material-ui/core/Button';
+import { Link } from 'react-router-dom'
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormLabel from '@material-ui/core/FormLabel';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import TextField from '@material-ui/core/TextField';
+import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 
 
-class Encuesta extends Component{
-  
-  constructor(props){
-    super(props)  
-    this.state = {
-
-    }
-    this.onCompleteComponent = this.onCompleteComponent.bind(this)
-  }
-
-  onCompleteComponent = () => {
-    this.setState({
-      isCompleted:true
-    })
-  }
-
-  render(){
-    
-    var json = {
-      pages: [
-
-        {
-          questions: [
-            {
-              type: "dropdown",
-              name: "Actividad",
-              title: "Selecciona tu sector de actividad",
-              isRequired: true,
-              colCount: 0,
-              choices: [
-                  "01 Elaboraciòn de productos alimenticios y/o bebidas",
-                  "02 Fabricación de productos textiles",
-                  "03 Producción de madera y fabricación de productos de madera, corcho y paja, excepto muebles",
-                  "04 Fabricación de papel y productos de papel",
-                  "05 Fabricación de sustancias y productos químicos"
-              ]
-          },
-          {
-            type: "radiogroup",
-            name: "1",
-            title: "¿Hay recomposicion o liquidacion de stock de materias primas?",
-            isRequired: true,
-            colCount: 1,
-            choices: [
-                "Si",
-                "No"
-            ]
-        },
-        {
-          type: "radiogroup",
-          name: "2",
-          title: "¿Que tipo de PyME avanza a mayor velocidad?",
-          isRequired: true,
-          colCount: 1,
-          choices: [
-              "Industriales",
-              "SSI",
-              "NS/NC"
-          ]
-      },
-      {
-        type: "radiogroup",
-        name: "3",
-        title: "¿Cual es el clima laboral en este segmento empresarial?",
-        isRequired: true,
-        colCount: 1,
-        choices: [
-            "Muy Bueno",
-            "Bueno",
-            "Malo"
-        ]
-    },
-    {
-      type: "radiogroup",
-      name: "4",
-      title: "¿Hay riesgo de falta de entrega de los proveedores?",
-      isRequired: true,
-      colCount: 1,
-      choices: [
-          "Si",
-          "No",
-          "No corresponde"
-      ]
+const useStylesButton = makeStyles((theme) => ({
+  button: {
+    margin: theme.spacing(3),
   },
-          ]
-      },
-        {
-          "questions": [
-              {
-                  "name": "name",
-                  "type": "text",
-                  "title": "Razon social de la empresa:",
-                  "placeHolder": "",
-                  "isRequired": true
-              }, 
-              {
-                type: "radiogroup",
-                name: "tamaño",
-                title: "Indique tamaño de su empresa",
-                isRequired: true,
-                colCount: 1,
-                choices: [
-                    "Micro : 0-9 ocupados.",
-                    "Pequeña : 10-50 ocupados.",
-                    "Mediana : 51-250 ocupados.",
-                    "Grande : Mas de 800 ocupados."
-                ]
-            },
-              {
-                type: "dropdown",
-                name: "region",
-                title: "Elija su region",
-                isRequired: true,
-                colCount: 0,
-                choices: [
-                  "Buenos Aires",
-                  "Capital Federal",
-                  "Catamarca",
-                  "Chaco",
-                  "Chubut",
-                  "Córdoba",
-                  "Entre Ríos",
-                  "Corrientes",
-                  "Formosa",
-                  "Jujuy",
-                  "La Pampa",
-                  "La Rioja",
-                  "Mendoza",
-                  "Misiones",
-                  "Neuquén",
-                  "Río Negro",
-                  "Salta",
-                  "San Juan",
-                  "San Luis",
-                  "Santa Cruz",
-                  "Santa Fe",
-                  "Santiago del Estero",
-                  "Tierra del Fuego",
-                  "Tucumán"
-                ]
-            },
-            {
-              name: "antiguedad",
-              type: "text",
-              inputType: "date",
-              title: "Activo desde :",
-              isRequired: false
-          },
-              {
-                  "name": "email",
-                  "type": "text",
-                  "inputType": "email",
-                  "title": "Correo electronico",
-                  "placeHolder": "",
-                  "isRequired": true,
-                  "validators": [
-                      {
-                          "type": "email"
-                      }
-                  ]
-              }
-          ]
-        }
-    ]
-  };
-  var surveyRender = !this.state.isCompleted ? (
-    <Survey.Survey
-    json={json}
-    showCompletedPage={false}
-    onComplete={this.onCompleteComponent}
-    />
-  ) : null
+}));
 
-  var onSurveyCompletion = this.state.isCompleted ? (
-      <center><h1 fontFamily= "Bauer Bodoni">¡Gracias por utilizar el Termometro PyME!
-          <Link to="/Resultados">
-          <IconButton edge="end" className={SendIcon} color="inherit" aria-label="menu">
-            <Button 
-                variant="contained"
-                color="primary"
-                className={Button}>
-                Visualizar Dashboard
-            </Button>
-          </IconButton>
-          </Link></h1>
-        <img src={logo} width="auto" alt="Logo Fundacion"/></center>
-    
-  ) : null;
+const useStylesSelect = makeStyles((theme) => ({
+  formControl: {
+    width: "100%",
+  },
+  selectEmpty: {
+    marginTop: theme.spacing(2),
+  },
+}));
+
+const useStylesCards = makeStyles({
+  root: {
+    maxWidth: 1000,
+  },
+  bullet: {
+    display: 'inline-block',
+    margin: '0 2px',
+    transform: 'scale(0.8)',
+  },
+  title: {
+    fontSize: 14,
+  },
+  pos: {
+    marginBottom: 12,
+  },
+});
+
+const useStylesText = makeStyles((theme) => ({
+  root: {
+    '& > *': {
+      margin: theme.spacing(1),
+      width: '100%',
+    },
+  },
+}));
+
+export default function Encuesta() {
+  const clase1 = useStylesCards();
+  const clase2 = useStylesSelect();
+  const clase3 = useStylesText();
+  const clase4 = useStylesButton();
+
+  const [state, setState] = React.useState({
+    age: '',
+    name: 'hai',
+  });
   
+  const handleChangeRadioVentas = (event) => {
+    setValue(event.target.value);
+  };
+  
+  const handleChangeRadioIngresos = (event) => {
+    setValue(event.target.value);
+  };
+
+  const handleChangeRadioTamaño = (event) => {
+    setValue(event.target.value);
+  };
+
+  const [value, setValue] = React.useState('female');
+
+  const handleChange = (event) => {
+    const name = event.target.name;
+    setState({
+      ...state,
+      [name]: event.target.value,
+    });
+  };
+
   return (
-    <Page pageTitle={'Usted esta en la ventana de encuesta.'}>
-      
-      <Scrollbar
-        
-        style={{ height: '93.4%', width: '100%', display: 'flex', flex: 1 }}
-      >
-      <div>
-        {surveyRender}
-        {onSurveyCompletion}
-      </div>
+    <Page pageTitle={'Usted esta en la ventana de consulta.'}>
+      <Scrollbar style={{ height: '93.4%', width: '100%', display: 'flex', flex: 1 }}>
       <br/>
+      <div className="Cuadrado">
+      <h2>Realizar una nueva consulta</h2>
+
+      <Card className={clase1.root}>
+      <CardContent>
+      <FormControl variant="outlined" className={clase2.formControl}>
+        <InputLabel htmlFor="outlined-age-native-simple">Sector al cual pertenece la consulta</InputLabel>
+        <Select
+          native
+          value={state.Sector}
+          onChange={handleChange}
+          label="Age"
+          inputProps={{
+            name: 'age',
+            id: 'outlined-age-native-simple',
+          }}
+        >
+          <option aria-label="None" value="" />
+          <option value={10}>Sector 1</option>
+          <option value={20}>Sector 2</option>
+          <option value={30}>Sector 3</option>
+        </Select>
+      </FormControl>
+      <br/>
+      <br/>
+      <FormControl variant="outlined" className={clase2.formControl}>
+        <InputLabel htmlFor="outlined-age-native-simple">Seleccione el tamaño de su empresa</InputLabel>
+        <Select
+          native
+          value={state.Tamaño}
+          onChange={handleChange}
+          label="Age"
+          inputProps={{
+            name: 'age',
+            id: 'outlined-age-native-simple',
+          }}
+        >
+          <option aria-label="None" value="" />
+          <option value={11}>Pequeña</option>
+          <option value={21}>Mediana</option>
+        </Select>
+      </FormControl>
+      <br/>
+      <br/>
+      <FormControl variant="outlined" className={clase2.formControl}>
+        <InputLabel htmlFor="outlined-age-native-simple">Seleccione su consulta</InputLabel>
+        <Select
+          native
+          value={state.Consulta}
+          onChange={handleChange}
+          label="Age"
+          inputProps={{
+            name: 'age',
+            id: 'outlined-age-native-simple',
+          }}
+        >
+          <option aria-label="None" value="" />
+          <option value={31}>Nombre de la consulta numero 1</option>
+        </Select>
+      </FormControl>
+      </CardContent>
+      </Card>
+      <br/>
+      <br/>
+      <Card className={clase1.root}>
+      <CardContent>
+      <FormControl component="fieldset">
+        <FormLabel component="legend">Tamaño de la empresa:</FormLabel>
+          <RadioGroup aria-label="gender" name="gender1" onChange={handleChangeRadioTamaño}>
+            <FormControlLabel value="14" control={<Radio />} label="Pequeña" />
+            <FormControlLabel value="25" control={<Radio />} label="Mediana" />
+          </RadioGroup>
+        </FormControl>
+          </CardContent>
+          </Card> 
+          <br/>
+        <Card className={clase1.root}>
+      <CardContent>
+      <FormControl component="fieldset">
+        <FormLabel component="legend">Sus ingresos anuales..</FormLabel>
+          <RadioGroup aria-label="gender" name="gender1"  onChange={handleChangeRadioIngresos}>
+            <FormControlLabel value="42" control={<Radio />} label="Aumentaron...%" />
+            <FormControlLabel value="13" control={<Radio />} label="Se mantuvieron" />
+            <FormControlLabel value="12" control={<Radio />} label="Bajaron...%" />
+          </RadioGroup>
+        </FormControl>
+        <form className={clase3.root} noValidate autoComplete="off">
+            <TextField id="outlined-basic" label="Ingrese dato adicional" variant="outlined" />
+        </form>
+          </CardContent>
+          </Card> 
+          <br/>
+        <Card className={clase1.root}>
+      <CardContent>
+      <FormControl component="fieldset">
+        <FormLabel component="legend">Sus ventas anuales..</FormLabel>
+          <RadioGroup aria-label="gender" name="gender1" onChange={handleChangeRadioVentas}>
+            <FormControlLabel value="42" control={<Radio />} label="Aumentaron...%" />
+            <FormControlLabel value="13" control={<Radio />} label="Se mantuvieron" />
+            <FormControlLabel value="12" control={<Radio />} label="Bajaron...%" />
+          </RadioGroup>
+        </FormControl>
+        <form className={clase3.root} noValidate autoComplete="off">
+            <TextField id="outlined-basic" label="Ingrese dato adicional" variant="outlined" />
+        </form>
+          </CardContent>
+          </Card> 
+        <br/>
+      <Card className={clase1.root}>
+      <CardContent>
+      <h2>Información de contacto</h2>
+          <form className={clase3.root} noValidate autoComplete="off">
+          <TextField id="standard-basic" label="Ingrese el nombre de la empresa *" />
+          <TextField id="standard-basic" label="Ingrese el email de la empresa *" />
+          <TextField id="standard-basic" label="Ingrese el telefono de la empresa *" />
+        </form>
+          </CardContent>
+          </Card> 
+        <Link to="/Resultados">
+        <Button
+        variant="contained"
+        color="Primary"
+        className={clase4.button}
+        startIcon={<CloudUploadIcon />}
+      >
+        Hacer Consulta
+      </Button>
+      </Link>
+      </div>
       </Scrollbar>
       <Footer/>
     </Page>
     
   );
-  }
 }
-
-export default Encuesta;
-

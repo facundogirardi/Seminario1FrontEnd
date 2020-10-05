@@ -153,10 +153,13 @@ function getStyles(name, personName, theme) {
                     </IconButton>
                 
                     </div>
-            <div>     
+            <div> 
+            <Link to="/Editar-Perfil">   
+            
             <IconButton edge="end" aria-label="edit">
                 <EditIcon/>
                 </IconButton>
+                </Link>
                 </div>  
                 <div>
                 <IconButton edge="end" aria-label="add">
