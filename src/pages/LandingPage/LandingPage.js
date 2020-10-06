@@ -29,7 +29,7 @@ export default function () {
     
     <div id="container">
       <img src ={fondo} width="100%" height="100%" alt="Imagen Benchmarking" color= "blue"/>
-      <div STYLE="position:absolute; top:350px; left:1200px; visibility:visible z-index:1">
+      <div className="img">
         <img src={fotoDashboard} alt="alternative"/>
       </div>
       <div STYLE="position:absolute; top:10px; left:50px; visibility:visible z-index:1">
@@ -57,7 +57,7 @@ export default function () {
             >Admin</Button>
       </Link>
       </div>
-      <div id="logos">
+      <div className="logos">
         <IconButton edge="start" className={classes.InstagramIcon} color="inherit"  aria-label="menu" href="https://www.instagram.com/observatoriopyme/" target="_blank">
           <InstagramIcon/>
         </IconButton>

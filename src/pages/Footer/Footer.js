@@ -1,6 +1,6 @@
 import React from 'react';
 import "./Footer.css";
-import logo from './continuar.jpg';
+import logo from '../../imagenes/logo2.png';
 import IconButton from "@material-ui/core/IconButton";
 import InstagramIcon from '@material-ui/icons/Instagram';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';

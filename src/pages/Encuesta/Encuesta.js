@@ -17,6 +17,8 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import TextField from '@material-ui/core/TextField';
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
+import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
 
 
 const useStylesButton = makeStyles((theme) => ({
@@ -36,7 +38,8 @@ const useStylesSelect = makeStyles((theme) => ({
 
 const useStylesCards = makeStyles({
   root: {
-    width: "100%",
+    width: "98%",
+    margin: '0 10px',
   },
   bullet: {
     display: 'inline-block',
@@ -60,11 +63,25 @@ const useStylesText = makeStyles((theme) => ({
   },
 }));
 
+const useStylesGrid = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+  },
+  paper: {
+    padding: theme.spacing(2),
+    textAlign: 'center',
+    width:"98%",
+    margin: "0 10px",
+    color: theme.palette.text.secondary,
+  },
+}));
+
 export default function Encuesta() {
   const clase1 = useStylesCards();
   const clase2 = useStylesSelect();
   const clase3 = useStylesText();
   const clase4 = useStylesButton();
+  const clase5 = useStylesGrid();
 
   const [state, setState] = React.useState({
     age: '',
@@ -97,9 +114,12 @@ export default function Encuesta() {
     <Page pageTitle={'Usted esta en la ventana de consulta.'}>
       <Scrollbar style={{ height: '93.4%', width: '100%', display: 'flex', flex: 1 }}>
       <br/>
-      <div className="Cuadrado">
-      <h2>Realizar una nueva consulta</h2>
-
+      <Grid container spacing={3}>
+        <Grid item xs={12}>
+          <Paper className={clase5.paper}><h2>Realizar una nueva consulta</h2></Paper>
+        </Grid>
+      </Grid>
+      <br/>
       <Card className={clase1.root}>
       <CardContent>
       <FormControl variant="outlined" className={clase2.formControl}>
@@ -224,10 +244,8 @@ export default function Encuesta() {
         Realizar Consulta
       </Button>
       </Link>
-      </div>
       </Scrollbar>
-      <Footer/>
+    <Footer/>
     </Page>
-    
   );
 }
