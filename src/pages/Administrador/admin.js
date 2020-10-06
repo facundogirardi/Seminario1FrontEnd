@@ -13,6 +13,9 @@ import React, {useState} from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import { CardHeader } from '@material-ui/core';
+import Scrollbar from 'material-ui-shell/lib/components/Scrollbar/Scrollbar'
+import Page from 'material-ui-shell/lib/containers/Page/Page'
+import Footer from '../Footer/Footer';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -50,8 +53,9 @@ function CardText(){
   };
 
   return (
-      <div>
-        <h1>Administracion de usuarios</h1>
+    <Page pageTitle={'Usted esta en la ventana de Super Usuario.'}>
+      <Scrollbar style={{ height: '93.4%', width: '100%', display: 'flex', flex: 1 }}>
+        <br/>
       {inputList.map((x, i) => {
         return (
           <Card>
@@ -155,7 +159,9 @@ function CardText(){
          
         );
       })}
-      </div>
+      </Scrollbar>
+      <Footer/>
+    </Page>
   );
 }
 

@@ -29,27 +29,27 @@ export default function () {
     
     <div id="container">
       <img src ={fondo} width="100%" height="100%" alt="Imagen Benchmarking" color= "blue"/>
-      <div STYLE="position:absolute; top:200px; left:800px; visibility:visible z-index:1">
+      <div STYLE="position:absolute; top:350px; left:1200px; visibility:visible z-index:1">
         <img src={fotoDashboard} alt="alternative"/>
       </div>
       <div STYLE="position:absolute; top:10px; left:50px; visibility:visible z-index:1">
         <img src={logo} alt="alternative"/>
       </div>
-      <div STYLE="position:absolute; top:200px; left:50px; visibility:visible z-index:1">
+      <div STYLE="position:absolute; top:300px; left:50px; visibility:visible z-index:1">
         <h1>Bienvendio al Termometro PyME!</h1>
       </div>
-      <div STYLE="position:absolute; top:250px; left:55px; visibility:visible z-index:1">
+      <div STYLE="position:absolute; top:360px; left:65px; visibility:visible z-index:1">
         <p>Conoce el estado de tu empresa en relacion al sector.</p>
       </div>
-      <div STYLE="position:absolute; top:150px; left:990px; visibility:visible z-index:1">
+      <div STYLE="position:absolute; top:310px; left:1350px; visibility:visible z-index:1">
         <h3>Benchmarking</h3>
       </div>
-      <div STYLE="position:absolute; top:320px; left:100px; visibility:visible z-index:1">
+      <div STYLE="position:absolute; top:400px; left:100px; visibility:visible z-index:1">
       <Link to="/Encuesta">
         <Button variant="contained">Realizar Consulta</Button>
       </Link>
       </div>
-      <div STYLE="position:absolute; top:86px; left:950px; visibility:visible z-index:1">
+      <div STYLE="position:absolute; top:105px; left:1500px; visibility:visible z-index:1">
       <Link to="/ABM">
           <Button
             color="inherit"

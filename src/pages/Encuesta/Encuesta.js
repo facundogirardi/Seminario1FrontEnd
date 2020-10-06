@@ -36,7 +36,7 @@ const useStylesSelect = makeStyles((theme) => ({
 
 const useStylesCards = makeStyles({
   root: {
-    maxWidth: 1000,
+    width: "100%",
   },
   bullet: {
     display: 'inline-block',
@@ -160,7 +160,6 @@ export default function Encuesta() {
       </CardContent>
       </Card>
       <br/>
-      <br/>
       <Card className={clase1.root}>
       <CardContent>
       <FormControl component="fieldset">
@@ -222,7 +221,7 @@ export default function Encuesta() {
         className={clase4.button}
         startIcon={<CloudUploadIcon />}
       >
-        Hacer Consulta
+        Realizar Consulta
       </Button>
       </Link>
       </div>
