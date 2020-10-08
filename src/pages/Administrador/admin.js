@@ -6,16 +6,15 @@ import Select from '@material-ui/core/Select';
 import Button from '@material-ui/core/Button';
 import DeleteIcon from '@material-ui/icons/Delete';
 import IconButton from '@material-ui/core/IconButton';
-import EditIcon from '@material-ui/icons/Edit';
 import AddIcon from '@material-ui/icons/Add';
 import Card from '@material-ui/core/Card';
 import React, {useState} from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
-import { CardHeader } from '@material-ui/core';
 import Scrollbar from 'material-ui-shell/lib/components/Scrollbar/Scrollbar'
 import Page from 'material-ui-shell/lib/containers/Page/Page'
 import Footer from '../Footer/Footer';
+import EnhancedTable from './tabla_admin'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -56,6 +55,7 @@ function CardText(){
     <Page pageTitle={'Usted esta en la ventana de Super Usuario.'}>
       <Scrollbar style={{ height: '93.4%', width: '100%', display: 'flex', flex: 1 }}>
         <br/>
+        <EnhancedTable/>
       {inputList.map((x, i) => {
         return (
           <Card>
@@ -154,7 +154,11 @@ function CardText(){
           
           </div>
           </form>
+          <div>
+          </div>
           </Card>
+          
+          
          
          
         );

@@ -71,7 +71,6 @@ const SignIn = () => {
   } else {
     alert("Usuario o contraseña incorrectos");
     return false
-    window.location.href = "/";
     
   }
   
