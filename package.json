@@ -9,6 +9,8 @@
     "@formatjs/intl-relativetimeformat": "4.x",
     "@material-ui/core": "4.x",
     "@material-ui/icons": "4.x",
+    "@progress/kendo-drawing": "^1.9.2",
+    "@progress/kendo-react-pdf": "^3.17.0",
     "base-shell": "1.x",
     "github-markdown-css": "4.x",
     "intl": "1.x",

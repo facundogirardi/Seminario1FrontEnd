@@ -5,6 +5,10 @@ import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import { Link } from 'react-router-dom'
 import Footer from '../Footer/Footer';
+import Button from '@material-ui/core/Button';
+import Doc from './DocService';
+import PdfContainer from './PdfContainer';
+import LockIcon from '@material-ui/icons/Lock';
 import "./Resultado.css";
 
 import {
@@ -42,6 +46,7 @@ const Label = withStyles(legendLabelStyles, { name: 'LegendLabel' })(legendLabel
 
 export default class Demo extends React.PureComponent {
   constructor(props) {
+
     super(props);
 
     this.state = {
@@ -49,15 +54,23 @@ export default class Demo extends React.PureComponent {
     };
   }
 
+  createPdf = (html) => Doc.createPdf(html);
   
   render() {
     const { data: chartData } = this.state;
 
     return (
+      
+      
       <Page pageTitle={'Usted esta en la ventana de los resultados.'}>
-      <Scrollbar
+        
+        <Scrollbar
         style={{ height: '93.4%', width: '100%', display: 'flex', flex: 1 }}
       >
+        <Link to="/Encuesta">
+          <button class="block">Realizar otra encuesta</button>
+        </Link>
+        <PdfContainer createPdf={this.createPdf}>
       <Paper>
         <Chart
           data={chartData}
@@ -93,6 +106,7 @@ export default class Demo extends React.PureComponent {
             argumentField="FacturacionPromedioGeneral"
           />
           <Animation />
+          
           <Legend position="bottom" rootComponent={Root} labelComponent={Label} />
           <Title  fontFamily= "Bauer Bodoni" text="Dashboard sobre la facturacion promedio general dentro del rubro." />
           <Stack
@@ -144,13 +158,13 @@ export default class Demo extends React.PureComponent {
             ]}
           />
         </Chart>
-      </Paper>
-        <Link to="/Encuesta">
-          <button class="block">Realizar Nuevamente</button>
-        </Link>
+      </Paper>       
+      </PdfContainer>
     </Scrollbar>
     <Footer/>
     </Page>
+
+       
     );
   }
 }
