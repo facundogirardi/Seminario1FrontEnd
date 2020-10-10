@@ -5,9 +5,7 @@ import Footer from '../Footer/Footer';
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TimelineIcon from '@material-ui/icons/Timeline';
-import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
 import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom'
 import Radio from '@material-ui/core/Radio';
@@ -17,9 +15,9 @@ import FormLabel from '@material-ui/core/FormLabel';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import TextField from '@material-ui/core/TextField';
-import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 
 
 const useStylesButton = makeStyles((theme) => ({
@@ -141,7 +139,16 @@ export default function Encuesta() {
         </FormControl>
           </CardContent>
           </Card> 
-          
+      <Link to="/Encuesta">
+        <Button
+        variant="contained"
+        color="Primary"
+        className={clase4.button}
+        startIcon={<ArrowBackIosIcon />}
+      >
+        Atras
+      </Button>
+      </Link>
         <Link to="/Resultados">
         <Button
         variant="contained"

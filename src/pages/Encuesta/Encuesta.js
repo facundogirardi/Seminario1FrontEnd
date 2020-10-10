@@ -10,14 +10,8 @@ import Select from '@material-ui/core/Select';
 import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom'
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
-import Radio from '@material-ui/core/Radio';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormLabel from '@material-ui/core/FormLabel';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
-import TextField from '@material-ui/core/TextField';
-import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 
@@ -78,9 +72,9 @@ const useStylesGrid = makeStyles((theme) => ({
 }));
 
 export default function Encuesta() {
-  const clase1 = useStylesCards();
+  const clase1 = useStylesSelect();
   const clase2 = useStylesSelect();
-  const clase3 = useStylesText();
+  const clase3 = useStylesSelect();
   const clase4 = useStylesButton();
   const clase5 = useStylesGrid();
 
@@ -88,18 +82,6 @@ export default function Encuesta() {
     age: '',
     name: 'hai',
   });
-  
-  const handleChangeRadioVentas = (event) => {
-    setValue(event.target.value);
-  };
-  
-  const handleChangeRadioIngresos = (event) => {
-    setValue(event.target.value);
-  };
-
-  const handleChangeRadioTamaño = (event) => {
-    setValue(event.target.value);
-  };
 
   const [value, setValue] = React.useState('female');
 
@@ -123,16 +105,14 @@ export default function Encuesta() {
       <br/>
       <Card className={clase1.root}>
       <CardContent>
-      <FormControl variant="outlined" className={clase2.formControl}>
+      <FormControl  variant="outlined" className={clase1.formControl}>
         <InputLabel htmlFor="outlined-age-native-simple">Seleccione el rubro de su empresa</InputLabel>
         <Select
           native
           value={state.Sector}
           onChange={handleChange}
-          label="Age"
           inputProps={{
-            name: 'age',
-            id: 'outlined-age-native-simple',
+
           }}
         >
           <option aria-label="None" value="" />
@@ -165,7 +145,7 @@ export default function Encuesta() {
       </FormControl>
       <br/>
       <br/>
-      <FormControl variant="outlined" className={clase2.formControl}>
+      <FormControl variant="outlined" className={clase3.formControl}>
         <InputLabel htmlFor="outlined-age-native-simple">Seleccione la encuesta a realizar</InputLabel>
         <Select
           native

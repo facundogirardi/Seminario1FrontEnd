@@ -3,9 +3,9 @@ import { savePDF } from '@progress/kendo-react-pdf';
 class DocService {
   createPdf = (html) => {
     savePDF(html, { 
-      paperSize: 'Letter',
+      paperSize: 'auto',
       fileName: 'Resultados.pdf',
-      margin: 3
+      margin: 40
     })
   }
 }

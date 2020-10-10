@@ -5,12 +5,11 @@ import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import { Link } from 'react-router-dom'
 import Footer from '../Footer/Footer';
-import Button from '@material-ui/core/Button';
 import Doc from './DocService';
 import PdfContainer from './PdfContainer';
-import LockIcon from '@material-ui/icons/Lock';
 import "./Resultado.css";
-
+import { energyConsumption as data } from '../Resultados/DatosTabla';
+import { Stack, Animation } from '@devexpress/dx-react-chart';
 import {
   Chart,
   Title,
@@ -19,8 +18,7 @@ import {
   BarSeries,
   ValueAxis,
 } from '@devexpress/dx-react-chart-material-ui';
-import { energyConsumption as data } from '../Resultados/DatosTabla';
-import { Stack, Animation } from '@devexpress/dx-react-chart';
+
 
 const legendStyles = () => ({
   root: {
@@ -61,9 +59,9 @@ export default class Demo extends React.PureComponent {
 
     return (
       
-      
+     
       <Page pageTitle={'Usted esta en la ventana de los resultados.'}>
-        
+         
         <Scrollbar
         style={{ height: '93.4%', width: '100%', display: 'flex', flex: 1 }}
       >
@@ -161,10 +159,10 @@ export default class Demo extends React.PureComponent {
       </Paper>       
       </PdfContainer>
     </Scrollbar>
+ 
     <Footer/>
     </Page>
-
-       
+           
     );
   }
 }

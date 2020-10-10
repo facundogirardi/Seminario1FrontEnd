@@ -34,7 +34,7 @@ https://www.observatoriopyme.org.ar/la-fundacion/historia-y-actualidad/
 
 * Descargar la aplicacion del repositorio https://gitlab.com/facundogirardi/api-benchmarking
 * En la carpeta del proyecto ejecutar <b>npm install</b>
-* cd aplicaciones-interactivas
+* <b>cd</b> aplicaciones-interactivas
 * Luego dar <b>npm start</b>
 * Se levantará en local http://localhost:3000/
 
