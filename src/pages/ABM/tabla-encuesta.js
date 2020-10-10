@@ -26,12 +26,12 @@ function createData(name, calories, fat, carbs, protein) {
 }
 
 const rows = [
-  createData('Usuario1','Martin Guzman', "MartinGuzman@hotmail.com", 12345678,"Root"),
-  createData('Usuario2','Pablo Escobar', "PablitoEscobar@gmail.com", 12345678,"Admin"),
-  createData('Usuario3','Diego Maradona',"DiegoMaradona_Dios@yahoo.es", 12345678,"Admin"),
-  createData('Usuario4','Ricardo Thompson', "RThompson@hotmail.com", 12345678,"Admin"),
-  createData('Usuario5','Tomas VinoMalbec',"TomasVino@hotmail.com", 12345678,"Admin"),
-  createData('Usuario6','Elber Galarga', "TomasVino@hotmail.com", 12345678,"Admin"),
+  createData('Encuesta1','23/01/20', 20 ),
+  createData('Encuesta2','23/01/20', 25 ),
+  createData('Encuesta3','23/01/20', 50 ),
+  createData('Encuesta4','23/01/20', 100 ),
+  createData('Encuesta5','23/01/20', 50 ),
+  createData('Encuesta6','23/01/20', 10 ),
 ];
 
 function descendingComparator(a, b, orderBy) {
@@ -61,12 +61,10 @@ function stableSort(array, comparator) {
 }
 
 const headCells = [
-  { id: 'name', numeric: false, disablePadding: true, label: 'Usuario' },
-  { id: 'nomape', numeric: true, disablePadding: false, label: 'Nombre/Apellido' },
-  { id: 'e-Mail', numeric: true, disablePadding: false, label: 'Email:' },
-  { id: 'id', numeric: true, disablePadding: false, label: 'DNI / LE / LC' },
-  { id: 'usuariotipo', numeric: true, disablePadding: false, label: 'Nivel de usuario' },
-];
+  { id: 'name', numeric: false, disablePadding: true, label: 'Nombre Encuesta' },
+  { id: 'fecha', numeric: true, disablePadding: false, label: 'Fecha de Creacion' },
+  { id: 'respuesta', numeric: true, disablePadding: false, label: '% de Respuesta' },
+    ];
 
 function EnhancedTableHead(props) {
   const { classes, onSelectAllClick, order, orderBy, numSelected, rowCount, onRequestSort } = props;
@@ -319,7 +317,7 @@ export default function EnhancedTable() {
                       <TableCell align="right">{row.calories}</TableCell>
                       <TableCell align="right">{row.fat}</TableCell>
                       <TableCell align="right">{row.carbs}</TableCell>
-                      <TableCell align="right">{row.protein}</TableCell>
+                      
                     </TableRow>
                   );
                 })}

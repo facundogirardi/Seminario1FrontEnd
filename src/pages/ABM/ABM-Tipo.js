@@ -11,6 +11,7 @@ import Box from '@material-ui/core/Box';
 import ABMTexto from "./ABM-Texto"
 import ABMRadio from "./ABM-Radio";
 import ABMCheckbox from "./ABM-Checkbox";
+import ListaEncuesta from "./Lista-Encuesta";
 import "./ABM.css";
 
 function TabPanel(props) {
@@ -81,7 +82,7 @@ export default function ABMTipo() {
     
     <div className={classes.root}>
     <div className="Cuadrado">
-    <h2>Realizar preguntas de tipo:</h2>
+
     </div>
     <div className="Cuadrado"></div>
       <AppBar position="static" color="default">
@@ -93,9 +94,9 @@ export default function ABMTipo() {
           variant="fullWidth"
           aria-label="action tabs example"
         >
-          <Tab label="Texto" {...a11yProps(0)} />
-          <Tab label="Unica Respuesta" {...a11yProps(1)} />
-          <Tab label="Seleccion" {...a11yProps(2)} />
+         <Tab label="Lista de Encuestas" {...a11yProps(0)} />
+          <Tab label="Crear Encuestas" {...a11yProps(1)} />
+
         </Tabs>
       </AppBar>
       <SwipeableViews
@@ -104,19 +105,14 @@ export default function ABMTipo() {
         onChangeIndex={handleChangeIndex}
       >
         <TabPanel value={value} index={0} dir={theme.direction}>
-          Texto:
-          <br/>
-          <ABMTexto/>
+        <ListaEncuesta/>
         </TabPanel>
         <TabPanel value={value} index={1} dir={theme.direction}>
           Unica Respuesta:
           <br/>
           <ABMRadio/>
-        </TabPanel>
-        <TabPanel value={value} index={2} dir={theme.direction}>
-          Seleccion:
-          <br/>
           <ABMCheckbox/>
+          <ABMTexto/>
         </TabPanel>
       </SwipeableViews>
     </div>

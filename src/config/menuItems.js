@@ -12,6 +12,9 @@ import PollIcon from '@material-ui/icons/Poll';
 import InfoIcon from '@material-ui/icons/Info';
 import CreateIcon from '@material-ui/icons/Create';
 import HomeIcon from '@material-ui/icons/Home';
+import FormatListNumberedIcon from '@material-ui/icons/FormatListNumbered';
+import PersonIcon from '@material-ui/icons/Person';
+
 
 const getMenuItems = (props) => {
   const {
@@ -142,7 +145,7 @@ const getMenuItems = (props) => {
         primaryText: intl.formatMessage({
           id: 'Encuestas',
         }),
-        leftIcon: <CreateIcon />,
+        leftIcon: <FormatListNumberedIcon />,
       },
       {
         value: '/Administrador',
@@ -150,7 +153,7 @@ const getMenuItems = (props) => {
         primaryText: intl.formatMessage({
           id: 'Usuarios',
         }),
-        leftIcon: <CreateIcon />,
+        leftIcon: <PersonIcon />,
       },
       {
         value: '/about',

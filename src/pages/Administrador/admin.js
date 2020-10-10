@@ -61,7 +61,7 @@ function CardText(){
   };
 
   return (
-    <Page pageTitle={'Usted esta en la ventana de Super Usuario.'}>
+    <Page pageTitle={'Administrador de usuarios'}>
       <Scrollbar style={{ height: '93.4%', width: '100%', display: 'flex', flex: 1 }}>
         <br/>
         <EnhancedTable/>
@@ -107,25 +107,6 @@ function CardText(){
               value={x.DNI}
               onChange={e => handleInputChange(e, i)}
               />
-              <FormControl component="fieldset">
-              <FormLabel component="legend">Nivel de usuario</FormLabel>
-              <RadioGroup row aria-label="position" name="position" defaultValue="top">
-        
-              <FormControlLabel
-                value="Root"
-                control={<Radio color="primary" />}
-                label="Root"
-                labelPlacement="start"
-                />
-              <FormControlLabel
-                value="Admin"
-                control={<Radio color="primary" />}
-                label="Admin"
-                labelPlacement="start"
-             />
-
-      </RadioGroup>
-    </FormControl>
                 <div className="btn-box">
                 {inputList.length !== 1 && 
                 <IconButton  width="auto" edge="end" className={AddIcon} color="inherit"  aria-label="menu">
