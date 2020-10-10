@@ -46,7 +46,7 @@ export default function () {
       </div>
       <div STYLE="position:absolute; top:400px; left:100px; visibility:visible z-index:1">
       <Link to="/Encuesta">
-        <Button variant="contained">Realizar Consulta</Button>
+        <Button variant="contained" color="secondary">Realizar Consulta</Button>
       </Link>
       </div>
       <div STYLE="position:absolute; top:105px; left:1500px; visibility:visible z-index:1">

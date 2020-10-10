@@ -16,8 +16,7 @@ import Paper from '@material-ui/core/Paper';
 import Checkbox from '@material-ui/core/Checkbox';
 import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Switch from '@material-ui/core/Switch';
+import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 import FilterListIcon from '@material-ui/icons/FilterList';
 
@@ -26,19 +25,12 @@ function createData(name, calories, fat, carbs, protein) {
 }
 
 const rows = [
-  createData('Martin Guzman', 27304466, "Coca-Cola", "MartinGuzman@hotmail.com", "Argentina"),
-  createData('Pablo Escobar', 26789055, "iPhone", "PablitoEscobar@gmail.com", "Colombia"),
-  createData('Diego Maradona', 25230027, "IBM", "DiegoMaradona_Dios@yahoo.es", "Argentina"),
-  createData('Ricardo Thompson', 23822085, "Calvin Klein", "RThompson@hotmail.com", "Bolivia"),
-  createData('Tomas VinoMalbec', 30335962, "Amazon", "TomasVino@hotmail.com", "Paraguay"),
-  createData('Elber Galarga', 35569978, "Microsoft", "TomasVino@hotmail.com", "Peru"),
-  createData('Maton Sandwich', 27209198, "Linux", "TomasVino@hotmail.com", "Brasil"),
-  createData('Benito Camela', 29283930, "Google", "TomasVino@hotmail.com", "Venezuela"),
-  createData('Pilar De Vainilla', 20575828, "Intel", "TomasVino@hotmail.com", "Uruguay"),
-  createData('Agarra Laconhonor', 26437565, "Cisco Systems", "TomasVino@hotmail.com", "Chile"),
-  createData('Come cienpennes', 30221584, "Samsung", "TomasVino@hotmail.com", "Ecuador"),
-  createData('Ricky manito', 31018668, "Amazon", "TomasVino@hotmail.com", "Argentina"),
-  createData('Horacio laverguetta', 31790933, "Telefonica", "TomasVino@hotmail.com", "Paraguay"),
+  createData('Usuario1','Martin Guzman', "MartinGuzman@hotmail.com", 12345678,"Root"),
+  createData('Usuario2','Pablo Escobar', "PablitoEscobar@gmail.com", 12345678,"Admin"),
+  createData('Usuario3','Diego Maradona',"DiegoMaradona_Dios@yahoo.es", 12345678,"Admin"),
+  createData('Usuario4','Ricardo Thompson', "RThompson@hotmail.com", 12345678,"Admin"),
+  createData('Usuario5','Tomas VinoMalbec',"TomasVino@hotmail.com", 12345678,"Admin"),
+  createData('Usuario6','Elber Galarga', "TomasVino@hotmail.com", 12345678,"Admin"),
 ];
 
 function descendingComparator(a, b, orderBy) {
@@ -68,11 +60,11 @@ function stableSort(array, comparator) {
 }
 
 const headCells = [
-  { id: 'name', numeric: false, disablePadding: true, label: 'Nombre de usuarios:' },
+  { id: 'name', numeric: false, disablePadding: true, label: 'Usuario' },
+  { id: 'nomape', numeric: true, disablePadding: false, label: 'Nombre/Apellido' },
+  { id: 'e-Mail', numeric: true, disablePadding: false, label: 'Email:' },
   { id: 'id', numeric: true, disablePadding: false, label: 'DNI / LE / LC' },
-  { id: 'compañia', numeric: true, disablePadding: false, label: 'Compañias:' },
-  { id: 'e-Mail', numeric: true, disablePadding: false, label: 'e-Mail' },
-  { id: 'pais', numeric: true, disablePadding: false, label: 'Pais' },
+  { id: 'usuariotipo', numeric: true, disablePadding: false, label: 'Nivel de usuario' },
 ];
 
 function EnhancedTableHead(props) {
@@ -160,28 +152,33 @@ const EnhancedTableToolbar = (props) => {
     >
       {numSelected > 0 ? (
         <Typography className={classes.title} color="inherit" variant="subtitle1" component="div">
-          {numSelected} selected
+          {numSelected} Seleccionados
         </Typography>
+        
       ) : (
         <Typography className={classes.title} variant="h6" id="tableTitle" component="div">
           Usuarios Registrados
         </Typography>
       )}
+    
 
-      {numSelected > 0 ? (
-        <Tooltip title="Delete">
-          <IconButton aria-label="delete">
-            <DeleteIcon />
-          </IconButton>
-        </Tooltip>
+      {numSelected > 1 ? (
+      <Tooltip title="Eliminar">
+        <IconButton aria-label="Eliminar">
+        <DeleteIcon />
+      </IconButton>
+    </Tooltip>
       ) : (
-        <Tooltip title="Filter list">
-          <IconButton aria-label="filter list">
-            <FilterListIcon />
-          </IconButton>
-        </Tooltip>
+        <Tooltip title="Editar">
+        <IconButton aria-label="Editar">
+        <EditIcon />
+       </IconButton>
+     </Tooltip>
       )}
-    </Toolbar>
+
+
+</Toolbar>
+
   );
 };
 
@@ -324,6 +321,7 @@ export default function EnhancedTable() {
                       <TableCell align="right">{row.fat}</TableCell>
                       <TableCell align="right">{row.carbs}</TableCell>
                       <TableCell align="right">{row.protein}</TableCell>
+                      <TableCell align="right">{row.protein}</TableCell>
                     </TableRow>
                   );
                 })}
@@ -336,7 +334,7 @@ export default function EnhancedTable() {
           </Table>
         </TableContainer>
         <TablePagination
-          rowsPerPageOptions={[5, 10, 25]}
+          rowsPerPageOptions={[5, 10]}
           component="div"
           count={rows.length}
           rowsPerPage={rowsPerPage}
@@ -345,10 +343,6 @@ export default function EnhancedTable() {
           onChangeRowsPerPage={handleChangeRowsPerPage}
         />
       </Paper>
-      <FormControlLabel
-        control={<Switch checked={dense} onChange={handleChangeDense} />}
-        label="Dense padding"
-      />
     </div>
   );
 }

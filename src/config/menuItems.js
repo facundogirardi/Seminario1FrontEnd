@@ -140,7 +140,15 @@ const getMenuItems = (props) => {
         value: '/ABM',
         visible: isAuthorised,
         primaryText: intl.formatMessage({
-          id: 'ABM',
+          id: 'Encuestas',
+        }),
+        leftIcon: <CreateIcon />,
+      },
+      {
+        value: '/Administrador',
+        visible: isAuthorised,
+        primaryText: intl.formatMessage({
+          id: 'Usuarios',
         }),
         leftIcon: <CreateIcon />,
       },

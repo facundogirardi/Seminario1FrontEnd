@@ -1,7 +1,7 @@
  ![version](https://img.shields.io/badge/version-1.0.0-blue.svg) 
 
 ## Presentacion del producto
-![Product Presentation Image](https://i.ibb.co/MC82byP/portada.png)
+![Product Presentation Image](https://i.ibb.co/xFPczJJ/Portada.png)
 
 ## Descripcion
 
@@ -16,6 +16,7 @@ https://www.observatoriopyme.org.ar/la-fundacion/historia-y-actualidad/
 * [Instalacion](#Instalacion)
 * [Navegadores soportados](#Navegadores-soportados)
 * [Recursos](#Recursos)
+* [Flujo](#Flujo)
 
 ## Integrantes grupo 6
 
@@ -46,3 +47,6 @@ Se probo en los siguientes navegadores:
 ## Recursos
 
 - GIT: <https://gitlab.com/facundogirardi/api-benchmarking>
+
+## Flujo
+![Product Presentation Image](https://i.ibb.co/tsZJYG6/Flujo.png)

@@ -15,6 +15,10 @@ import Scrollbar from 'material-ui-shell/lib/components/Scrollbar/Scrollbar'
 import Page from 'material-ui-shell/lib/containers/Page/Page'
 import Footer from '../Footer/Footer';
 import EnhancedTable from './tabla_admin'
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormLabel from '@material-ui/core/FormLabel';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -28,6 +32,9 @@ const useStyles = makeStyles((theme) => ({
 function CardText(){
 
   const classes = useStyles();
+  const handleChange = (event) => {
+    
+  };
 
   const [inputList, setInputList] = useState([{ firstName: "", lastName: "" }]);
  
@@ -45,10 +52,12 @@ function CardText(){
     list.splice(index, 1);
     setInputList(list);
   };
+
+  
  
   // handle click event of the Add button
   const handleAddClick = () => {
-    setInputList([...inputList, { firstName: "", lastName: "" , firstName2: "", lastName2: "", lastName3: "", lastName4: "", lastName5: "", lastName6: "", lastName7: ""}]);
+    setInputList([...inputList, { Usuario: "", Nombre: "" , Apellido: "", Email: "", DNI: ""}]);
   };
 
   return (
@@ -63,75 +72,63 @@ function CardText(){
           <div className="box" width="auto">
             <TextField id="outlined-basic"  variant="outlined" 
               input
-              name="firstName"
-              placeholder="Nombre"
-              value={x.firstName}
-              onChange={e => handleInputChange(e, i)}
-            /> 
-              
-            <TextField id="outlined-basic"  variant="outlined" 
-              input
-              name="firstName2"
-              placeholder="Apellido"
-              value={x.firstName2}
-              onChange={e => handleInputChange(e, i)}
-            /> 
-            <br/>
-            <TextField id="outlined-basic"  variant="outlined" 
-              input
-              className="ml10"
-              name="lastName2"
-              placeholder="e-Mail"
-              value={x.lastName2}
+              name="Usuario"
+              placeholder="Usuario"
+              value={x.Usuario}
               onChange={e => handleInputChange(e, i)}
             />
-             <br/>
-
+            <TextField id="outlined-basic"  variant="outlined" 
+              input
+              name="Nombre"
+              placeholder="Nombre"
+              value={x.Nombre}
+              onChange={e => handleInputChange(e, i)}
+            /> 
+            <TextField id="outlined-basic"  variant="outlined" 
+              input
+              name="Apellido"
+              placeholder="Apellido"
+              value={x.Apellido}
+              onChange={e => handleInputChange(e, i)}
+            /> 
             <TextField id="outlined-basic"  variant="outlined" 
               input
               className="ml10"
-              name="lastName3"
-              placeholder="Compañia"
-              value={x.lastName3}
+              name="Email"
+              placeholder="e-Mail"
+              value={x.Email}
+              onChange={e => handleInputChange(e, i)}
+            />
+            <TextField id="outlined-basic"  variant="outlined" 
+              input
+              className="ml10"
+              name="DNI"
+              placeholder="DNI"
+              value={x.DNI}
               onChange={e => handleInputChange(e, i)}
               />
-               <br/>
-              
-              <TextField id="outlined-basic"  variant="outlined" 
-                input
-                className="ml10"
-                name="lastName4"
-                placeholder="Ciudad"
-                value={x.lastName4}
-                onChange={e => handleInputChange(e, i)}
+              <FormControl component="fieldset">
+              <FormLabel component="legend">Nivel de usuario</FormLabel>
+              <RadioGroup row aria-label="position" name="position" defaultValue="top">
+        
+              <FormControlLabel
+                value="Root"
+                control={<Radio color="primary" />}
+                label="Root"
+                labelPlacement="start"
                 />
-                <TextField id="outlined-basic"  variant="outlined" 
-                input
-                className="ml10"
-                name="lastName5"
-                placeholder="Pais"
-                value={x.lastName5}
-                onChange={e => handleInputChange(e, i)}
-                />
-                <TextField id="outlined-basic"  variant="outlined" 
-                input
-                className="ml10"
-                name="lastName6"
-                placeholder="Direccion"
-                value={x.lastName6}
-                onChange={e => handleInputChange(e, i)}
-                />
-                <TextField id="outlined-basic"  variant="outlined" 
-                input
-                className="ml10"
-                name="lastName7"
-                placeholder="Codigo postal"
-                value={x.lastName7}
-                onChange={e => handleInputChange(e, i)}
-                />
+              <FormControlLabel
+                value="Admin"
+                control={<Radio color="primary" />}
+                label="Admin"
+                labelPlacement="start"
+             />
+
+      </RadioGroup>
+    </FormControl>
                 <div className="btn-box">
-              {inputList.length !== 1 && 
-              <IconButton  width="auto" edge="end" className={AddIcon} color="inherit"  aria-label="menu">
+                {inputList.length !== 1 && 
+                <IconButton  width="auto" edge="end" className={AddIcon} color="inherit"  aria-label="menu">
                 <Button 
                 variant="contained"
                 color="primary"
@@ -143,24 +140,9 @@ function CardText(){
                 color="primary"
                 className={AddIcon} onClick={handleAddClick}>Agregar otro usuario</Button></IconButton>}
             </div>
-            <IconButton>
-            <Button>
-              UPDATE USER
-            </Button>
-            </IconButton>
-                
-
-          
-          
           </div>
           </form>
-          <div>
-          </div>
-          </Card>
-          
-          
-         
-         
+          </Card>         
         );
       })}
       </Scrollbar>
