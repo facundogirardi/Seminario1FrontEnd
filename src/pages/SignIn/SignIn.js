@@ -67,7 +67,7 @@ const SignIn = () => {
 
   function validateForm() { 
     if (username === 'admin' && password ==='admin') {
-      window.location.href = "/Administrador";
+      window.location.href = "/ABM";
   } else {
     alert("Usuario o contraseña incorrectos");
     return false

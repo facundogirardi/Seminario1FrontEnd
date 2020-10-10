@@ -6,7 +6,7 @@ export default (props) => {
   return (
     <section className="pdf-container">
       <section className="pdf-toolbar">
-      <button onClick={createPdf} class="block">Generar resultados en PDF</button>
+      <button onClick={createPdf} class="block">Descargar resultados en PDF</button>
       </section>
       <section className="pdf-body" ref={bodyRef}>
         {props.children}
