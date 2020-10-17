@@ -46,18 +46,34 @@ function ABMTexto(){
         return (
           <form className={classes.root} noValidate autoComplete="off">
           <div className="box" width="auto">
-            <TextField id="outlined-basic" label="Titulo Pregunta" variant="outlined" 
+            <TextField id="outlined-basic" label="Nombre" variant="outlined" 
               input
-              name="firstName"
-              placeholder="Titulo Pregunta"
+              name="Nombre"
+              placeholder="Nombre"
               value={x.firstName}
               onChange={e => handleInputChange(e, i)}
             />
-            <TextField id="outlined-basic" label="Respuesta:" variant="outlined" 
+            <TextField id="outlined-basic" label="Apellido" variant="outlined" 
               input
               className="ml10"
-              name="lastName"
-              placeholder="Respuesta:"
+              name="Apellido"
+              placeholder="Apellido"
+              value={x.lastName}
+              onChange={e => handleInputChange(e, i)}
+            />
+             <TextField id="outlined-basic" label="e-Mail" variant="outlined" 
+              input
+              className="ml10"
+              name="e-Mail"
+              placeholder="e-Mail"
+              value={x.lastName}
+              onChange={e => handleInputChange(e, i)}
+            />
+             <TextField id="outlined-basic" label="DNI" variant="outlined" 
+              input
+              className="ml10"
+              name="DNI"
+              placeholder="DNI"
               value={x.lastName}
               onChange={e => handleInputChange(e, i)}
             />
@@ -73,7 +89,7 @@ function ABMTexto(){
                 <Button 
                 variant="contained"
                 color="primary"
-                className={AddIcon} onClick={handleAddClick}>Agregar</Button></IconButton>}
+                className={AddIcon} onClick={handleAddClick}>Agregar otro usuario</Button></IconButton>}
             </div>
           </div>
           </form>

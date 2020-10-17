@@ -56,16 +56,16 @@ function ABMRadio(){
         return (
           <form className={classes.root} noValidate autoComplete="off">
             <FormControl component="fieldset">
-              <TextField id="outlined-basic" label="Pregunta a realizar:" variant="outlined" 
+              <TextField id="outlined-basic" label="Titulo Pregunta" variant="outlined" 
               input
               name="firstName"
-              placeholder="Pregunta a realizar:"
+              placeholder="Titulo Pregunta"
               value={x.firstName}
               onChange={e => handleInputChange(e, i)}
             />
                 <div className="box" width="auto">
                     <RadioGroup aria-label="gender" name="gender1" onChange={handleChange}>
-                      <br/> <span> <FormControlLabel value="1" control={<Radio />} label for="Name"/> <input type="text" id="Name" name="Name"/>  </span>
+                      <br/> <span> <FormControlLabel value="1" control={<Radio />} label for="Name"/> <input type="text" id="Name" name="Name" />  </span>
                       <br/> <span> <FormControlLabel value="2" control={<Radio />} label for="Name"/> <input type="text" id="Name" name="Name"/>  </span>
                       <br/> <span> <FormControlLabel value="3" control={<Radio />} label for="Name"/> <input type="text" id="Name" name="Name"/>  </span>
                       <br/> <span> <FormControlLabel value="4" control={<Radio />} label for="Name"/> <input type="text" id="Name" name="Name"/>  </span>

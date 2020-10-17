@@ -56,10 +56,10 @@ function ABMCheckbox(){
         return (
           <form className={classes.root} noValidate autoComplete="off">
             <FormControl component="fieldset" className={classes.formControl}>
-              <TextField id="outlined-basic" label="Pregunta a realizar:" variant="outlined" 
+              <TextField id="outlined-basic" label="Titulo Pregunta" variant="outlined" 
               input
               name="firstName"
-              placeholder="Pregunta a realizar:"
+              placeholder="Titulo Pregunta"
               value={x.firstName}
               onChange={e => handleInputChange(e, i)}
             />
