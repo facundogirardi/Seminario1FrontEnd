@@ -12,13 +12,15 @@ import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import LockIcon from '@material-ui/icons/Lock';
+import Grid from "@material-ui/core/Grid";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    '& > *': {
-      margin: theme.spacing(1),
-      width: '25ch',
+    "& .MuiTextField-root": {
+      margin: theme.spacing(3),
     },
+    padding: 24,
+    height: "100%",
   },
 }));
 
@@ -26,52 +28,56 @@ const useStyles = makeStyles((theme) => ({
 export default function () {
   const classes = useStyles();
   return (
-    
-    <div id="container">
-      <img src ={fondo} width="100%" height="100%" alt="Imagen Benchmarking" color= "blue"/>
-      <div className="img">
-        <img src={fotoDashboard} alt="alternative"/>
-      </div>
-      <div STYLE="position:absolute; top:10px; left:50px; visibility:visible z-index:1">
-        <img src={logo} alt="alternative"/>
-      </div>
-      <div STYLE="position:absolute; top:300px; left:50px; visibility:visible z-index:1">
-        <h1>Bienvendio al Termometro PyME!</h1>
-      </div>
-      <div STYLE="position:absolute; top:360px; left:65px; visibility:visible z-index:1">
-        <p>Conoce el estado de tu empresa en relacion al sector.</p>
-      </div>
-      <div STYLE="position:absolute; top:310px; left:1350px; visibility:visible z-index:1">
-        <h3>Benchmarking</h3>
-      </div>
-      <div STYLE="position:absolute; top:400px; left:100px; visibility:visible z-index:1">
-      <Link to="/Encuesta">
-        <Button variant="contained" color="secondary">Realizar Consulta</Button>
-      </Link>
-      </div>
-      <div STYLE="position:absolute; top:105px; left:1500px; visibility:visible z-index:1">
-      <Link to="/ABM">
-          <Button
-            color="inherit"
-            startIcon={<LockIcon />}
-            >Admin</Button>
-      </Link>
-      </div>
-      <div className="logos">
-        <IconButton edge="start" className={classes.InstagramIcon} color="inherit"  aria-label="menu" href="https://www.instagram.com/observatoriopyme/" target="_blank">
-          <InstagramIcon/>
-        </IconButton>
-        <IconButton edge="start" className={classes.LinkedInIcon} color="inherit"  aria-label="menu" href="https://www.linkedin.com/in/observatoriopyme/" target="_blank">
-          <LinkedInIcon />
-        </IconButton>
-        <IconButton edge="start" className={classes.FacebookIcon} color="inherit" aria-label="menu" href="https://www.facebook.com/fundacionobservatoriopyme" target="_blank">
-          <FacebookIcon />
-        </IconButton>
-        <IconButton edge="start" className={classes.TwitterIcon} color="inherit" aria-label="menu" href="https://twitter.com/FOPyME" target="_blank">
-          <TwitterIcon />
-        </IconButton>
-      </div>
-      
+    <div class="container-fluid">
+        <Grid container spacing={15}>
+          <Grid item xs={6} sm={4}>
+            <img src={logo} alt="alternative"/>
+          </Grid>
+          <Grid item xs={6} sm={4}></Grid>
+          <Grid item xs={6} sm={4}>
+            <br/>
+            <br/>
+            <br/>
+            <center>
+             <Link to="/ABM">
+                <Button
+                color="inherit"
+                startIcon={<LockIcon />}
+                >Admin</Button>
+              </Link>
+              <IconButton edge="start" className={classes.InstagramIcon} color="inherit"  aria-label="menu" href="https://www.instagram.com/observatoriopyme/" target="_blank">
+                <InstagramIcon/>
+              </IconButton>
+              <IconButton edge="start" className={classes.LinkedInIcon} color="inherit"  aria-label="menu" href="https://www.linkedin.com/in/observatoriopyme/" target="_blank">
+              <LinkedInIcon />
+              </IconButton>
+              <IconButton edge="start" className={classes.FacebookIcon} color="inherit" aria-label="menu" href="https://www.facebook.com/fundacionobservatoriopyme" target="_blank">
+                <FacebookIcon />
+              </IconButton>
+              <IconButton edge="start" className={classes.TwitterIcon} color="inherit" aria-label="menu" href="https://twitter.com/FOPyME" target="_blank">
+                <TwitterIcon />
+              </IconButton>
+            </center>
+          </Grid>
+        </Grid>
+        <Grid container spacing={3}>
+          <Grid item xs={6} md={4}>
+          <br/>
+          <br/>
+          <center><h3>Bienvendio al Termometro PyME!</h3>
+          <p>Conoce el estado de tu empresa en relacion al sector.</p>
+          <Link to="/Encuesta">
+            <Button variant="contained" color="secondary">Realizar Consulta</Button>
+          </Link>
+          </center>
+          </Grid>
+          <Grid item xs={6} md={4}></Grid>
+          <Grid item xs={6} md={4}>
+            <center><h4>Benchmarking</h4>
+            <img src={fotoDashboard} alt="alternative"/></center>
+          </Grid>
+      </Grid>
     </div>
+
   )
 }
