@@ -6,6 +6,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import FormControl from '@material-ui/core/FormControl';
 import Checkbox from '@material-ui/core/Checkbox';
+import Snackbar from '@material-ui/core/Snackbar';
+import CloseIcon from '@material-ui/icons/Close';
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -17,6 +20,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function ABMCheckbox(){
+
+    const [open, setOpen] = React.useState(false);
+
 
     const classes = useStyles();
 
@@ -49,6 +55,17 @@ function ABMCheckbox(){
       setInputList([...inputList, { firstName: "", lastName: "" }]);
     };
 
+    const handleClick = () => {
+      setOpen(true);
+    };
+
+    const handleClose = (event, reason) => {
+      if (reason === 'clickaway') {
+        return;
+      }
+  
+      setOpen(false);
+    };
    
   return (
       <div>
@@ -89,9 +106,52 @@ function ABMCheckbox(){
           </div>
           <br/>
           </FormControl>
+       
           </form>
         );
       })}
+         <div>
+          <IconButton  width="auto" edge="end" className={AddIcon} color="inherit"  aria-label="menu">
+          <Button onClick={handleClick}
+           variant="contained"
+           color="primary"
+           className={AddIcon}
+           >Haga click para confirmar la encuesta
+          </Button>
+          </IconButton>
+          <Snackbar
+            anchorOrigin={{
+              vertical: 'bottom',
+              horizontal: 'left',
+            }}
+            open={open}
+            autoHideDuration={6000}
+            onClose={handleClose}
+            message="Encuesta confirmada y archivada"
+            action={
+              <React.Fragment>
+                 <IconButton  width="auto" edge="end" className={AddIcon} color="inherit"  aria-label="menu">
+                <Button color="secondary" size="small" onClick={handleClose}>
+                  CERRAR
+                </Button>
+                </IconButton>
+                <IconButton size="small" aria-label="close" color="inherit" onClick={handleClose}>
+                  <CloseIcon fontSize="small" />
+                </IconButton>
+              </React.Fragment>
+            
+            }
+          />
+          <Link to='/ABM'>
+          <IconButton  width="auto" edge="end" className={AddIcon} color="inherit"  aria-label="menu">
+          <Button  variant="contained"
+           color="primary"
+           className={AddIcon} >
+            Volver 
+          </Button>
+          </IconButton>
+          </Link>
+        </div>
       </div>
   );
 }

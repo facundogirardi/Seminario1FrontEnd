@@ -7,7 +7,7 @@
     "@devexpress/dx-react-chart-material-ui": "^2.7.1",
     "@devexpress/dx-react-core": "^2.7.1",
     "@formatjs/intl-relativetimeformat": "4.x",
-    "@material-ui/core": "4.x",
+    "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "4.x",
     "@progress/kendo-drawing": "^1.9.2",
     "@progress/kendo-react-pdf": "^3.17.0",

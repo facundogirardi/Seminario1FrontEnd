@@ -4,6 +4,8 @@
     width: auto;
     margin: 0 40px;
     text-align: justify;
+    justify-content: center;
+    
  }
 
  a:link, a:visited, a:active {

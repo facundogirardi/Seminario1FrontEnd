@@ -13,7 +13,9 @@ import ABMRadio from "./ABM-Radio";
 import ABMCheckbox from "./ABM-Checkbox";
 import ListaEncuesta from "./Lista-Encuesta";
 import TextField from '@material-ui/core/TextField';
+import DialogSelect from './ABM-Selector'
 import "./ABM.css";
+import EncuestasConfirmadas from './EncuestasConfirmadas';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -97,6 +99,7 @@ export default function ABMTipo() {
         >
          <Tab label="Lista de Encuestas" {...a11yProps(0)} />
           <Tab label="Crear Encuestas" {...a11yProps(1)} />
+          <Tab label="Encuestas confirmadas" {...a11yProps(2)}/>
 
         </Tabs>
       </AppBar>
@@ -118,9 +121,11 @@ export default function ABMTipo() {
             />
           <br/>
           <br/>
-          <ABMRadio/>
-          <ABMCheckbox/>
-          <ABMTexto/>
+          <DialogSelect/>
+         
+        </TabPanel>
+        <TabPanel value={value} index={2} dir={theme.direction}>
+         
         </TabPanel>
       </SwipeableViews>
     </div>
