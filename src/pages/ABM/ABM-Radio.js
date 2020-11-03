@@ -64,6 +64,20 @@ function ABMRadio(){
               onChange={e => handleInputChange(e, i)}
             />
                 <div className="box" width="auto">
+                <div className="btn-box">
+              {inputList.length !== 1 && 
+              <IconButton  width="auto" edge="end" className={AddIcon} color="inherit"  aria-label="menu">
+                <Button 
+                variant="contained"
+                color="primary"
+                className={AddIcon}
+                onClick={() => handleRemoveClick(i)}>Eliminar</Button></IconButton>}
+              {inputList.length - 1 === i && <IconButton width="auto" edge="end" className={AddIcon} color="inherit"  aria-label="menu">
+                <Button 
+                variant="contained"
+                color="primary"
+                className={AddIcon} onClick={handleAddClick}>Agregar</Button></IconButton>}
+            </div>
                     <RadioGroup aria-label="gender" name="gender1" onChange={handleChange}>
                       <br/> <span> <FormControlLabel value="1" control={<Radio />} label for="Name"/> <input type="text" id="Name" name="Name"/>  </span>
                       <br/> <span> <FormControlLabel value="2" control={<Radio />} label for="Name"/> <input type="text" id="Name" name="Name"/>  </span>
