@@ -12,6 +12,7 @@ import ABMTexto from "./ABM-Texto"
 import ABMRadio from "./ABM-Radio";
 import ABMCheckbox from "./ABM-Checkbox";
 import ListaEncuesta from "./Lista-Encuesta";
+import TextField from '@material-ui/core/TextField';
 import "./ABM.css";
 
 function TabPanel(props) {
@@ -108,7 +109,14 @@ export default function ABMTipo() {
         <ListaEncuesta/>
         </TabPanel>
         <TabPanel value={value} index={1} dir={theme.direction}>
-          Unica Respuesta:
+        <TextField id="outlined-basic" label="Titulo de encuesta" variant="outlined" 
+              input
+              name="firstName"
+              placeholder="Titulo de encuesta"
+           
+              
+            />
+          <br/>
           <br/>
           <ABMRadio/>
           <ABMCheckbox/>

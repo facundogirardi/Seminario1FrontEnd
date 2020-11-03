@@ -1,27 +1,18 @@
-.container {
-    right: 0px;
-    left: 0px;
-    top: 0px;
-    bottom:0px;
-    position: absolute;
+.container-fluid {
+    background-image: url(../../imagenes/fondo1.jpg); 
+    background-repeat: no-repeat;
+      
+    /* Set up proportionate scaling */
     width: 100%;
-    max-width: auto;
-}
-
-.img {
-    z-index: 100;
-    position: absolute;
-    left: 1200px;
-    top: 350px;
-}
-
-.logos {
-    z-index: 100;
-    position: absolute;
-    left: 1600px;
-    top: 100px;
-}
-
-a:link, a:visited, a:active {
+    height: 100%;
+      
+    /* Set up positioning */
+    position: fixed;
+    top: 0;
+    left: 0;
+    
+  }
+  
+  a:link, a:visited, a:active {
     text-decoration:none;
 }

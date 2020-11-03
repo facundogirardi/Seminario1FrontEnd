@@ -19,17 +19,17 @@ import Tooltip from '@material-ui/core/Tooltip';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 
-function createData(name, calories, fat, carbs, protein) {
-  return { name, calories, fat, carbs, protein };
+function createData(name, nombre, email, dni) {
+  return { name, nombre, email, dni };
 }
 
 const rows = [
-  createData('Usuario1','Martin Guzman', "MartinGuzman@hotmail.com", 12345678,"Root"),
-  createData('Usuario2','Pablo Escobar', "PablitoEscobar@gmail.com", 12345678,"Admin"),
-  createData('Usuario3','Diego Maradona',"DiegoMaradona_Dios@yahoo.es", 12345678,"Admin"),
-  createData('Usuario4','Ricardo Thompson', "RThompson@hotmail.com", 12345678,"Admin"),
-  createData('Usuario5','Tomas VinoMalbec',"TomasVino@hotmail.com", 12345678,"Admin"),
-  createData('Usuario6','Elber Galarga', "TomasVino@hotmail.com", 12345678,"Admin"),
+  createData('Martin Guzman', "MartinGuzman@hotmail.com", 12345678),
+  createData('Pablo Escobar', "PablitoEscobar@gmail.com", 12345678),
+  createData('Diego Maradona',"DiegoMaradona_Dios@yahoo.es", 12345678),
+  createData('Ricardo Thompson', "RThompson@hotmail.com", 12345678),
+  createData('Tomas VinoMalbec',"TomasVino@hotmail.com", 12345678),
+  createData('Elber Galarga', "TomasVino@hotmail.com", 12345678),
 ];
 
 function descendingComparator(a, b, orderBy) {
@@ -59,11 +59,9 @@ function stableSort(array, comparator) {
 }
 
 const headCells = [
-  { id: 'name', numeric: false, disablePadding: true, label: 'Usuario' },
-  { id: 'nomape', numeric: true, disablePadding: false, label: 'Nombre/Apellido' },
-  { id: 'e-Mail', numeric: true, disablePadding: false, label: 'Email:' },
+  { id: 'name', numeric: false, disablePadding: false, label: 'Nombre/Apellido' },
+  { id: 'e-Mail', numeric: true, disablePadding: false, label: 'Email' },
   { id: 'id', numeric: true, disablePadding: false, label: 'DNI / LE / LC' },
-  { id: 'usuariotipo', numeric: true, disablePadding: false, label: 'Nivel de usuario' },
 ];
 
 function EnhancedTableHead(props) {
@@ -210,7 +208,7 @@ const useStyles = makeStyles((theme) => ({
 export default function EnhancedTable() {
   const classes = useStyles();
   const [order, setOrder] = React.useState('asc');
-  const [orderBy, setOrderBy] = React.useState('calories');
+  const [orderBy, setOrderBy] = React.useState('nombre');
   const [selected, setSelected] = React.useState([]);
   const [page, setPage] = React.useState(0);
   const [dense, setDense] = React.useState(false);
@@ -314,10 +312,9 @@ export default function EnhancedTable() {
                       <TableCell component="th" id={labelId} scope="row" padding="none">
                         {row.name}
                       </TableCell>
-                      <TableCell align="right">{row.calories}</TableCell>
-                      <TableCell align="right">{row.fat}</TableCell>
-                      <TableCell align="right">{row.carbs}</TableCell>
-                      <TableCell align="right">{row.protein}</TableCell>
+                      <TableCell align="right">{row.nombre}</TableCell>
+                      <TableCell align="right">{row.email}</TableCell>
+                      <TableCell align="right">{row.dni}</TableCell>
                     </TableRow>
                   );
                 })}

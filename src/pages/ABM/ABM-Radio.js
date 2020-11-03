@@ -56,10 +56,10 @@ function ABMRadio(){
         return (
           <form className={classes.root} noValidate autoComplete="off">
             <FormControl component="fieldset">
-              <TextField id="outlined-basic" label="Pregunta a realizar:" variant="outlined" 
+              <TextField id="outlined-basic" label="Titulo Pregunta" variant="outlined" 
               input
               name="firstName"
-              placeholder="Pregunta a realizar:"
+              placeholder="Titulo Pregunta"
               value={x.firstName}
               onChange={e => handleInputChange(e, i)}
             />
@@ -79,7 +79,7 @@ function ABMRadio(){
                 className={AddIcon} onClick={handleAddClick}>Agregar</Button></IconButton>}
             </div>
                     <RadioGroup aria-label="gender" name="gender1" onChange={handleChange}>
-                      <br/> <span> <FormControlLabel value="1" control={<Radio />} label for="Name"/> <input type="text" id="Name" name="Name"/>  </span>
+                      <br/> <span> <FormControlLabel value="1" control={<Radio />} label for="Name"/> <input type="text" id="Name" name="Name" />  </span>
                       <br/> <span> <FormControlLabel value="2" control={<Radio />} label for="Name"/> <input type="text" id="Name" name="Name"/>  </span>
                       <br/> <span> <FormControlLabel value="3" control={<Radio />} label for="Name"/> <input type="text" id="Name" name="Name"/>  </span>
                       <br/> <span> <FormControlLabel value="4" control={<Radio />} label for="Name"/> <input type="text" id="Name" name="Name"/>  </span>
@@ -98,6 +98,7 @@ function ABMRadio(){
                 variant="contained"
                 color="primary"
                 className={AddIcon} onClick={handleAddClick}>Agregar</Button></IconButton>}
+              <br/>
             </div> 
           </div> 
           </FormControl>
