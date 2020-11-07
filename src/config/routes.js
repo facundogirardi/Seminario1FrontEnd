@@ -1,11 +1,6 @@
-/* eslint-disable react/jsx-key */
 import React, { lazy } from 'react'
 import PrivateRoute from 'base-shell/lib/components/PrivateRoute/PrivateRoute'
 import PublicRoute from 'base-shell/lib/components/PublicRoute/PublicRoute'
-
-
-
-
 
 const SignIn = lazy(() => import('../pages/SignIn/SignIn'))
 const Administrador = lazy(() =>import ('../pages/Administrador/admin'))
@@ -22,17 +17,17 @@ const EncuestasConfirmadas = lazy(() => import('../pages/ABM/EncuestasConfirmada
 
 const routes = [
   <PublicRoute path="/signin" redirectTo="/" exact component={SignIn} />,
-    <PrivateRoute path="/administrador" exact component={Administrador}/>,
+  <PublicRoute path="/administrador" component={Administrador} exact/>,
   <PublicRoute path="/password_reset" redirectTo="/" exact component={PasswordReset} />,
-  <PrivateRoute path="/about" exact component={About} />,
+  <PublicRoute path="/about" exact component={About} />,
   <PublicRoute path="/Encuesta" exact component={Encuesta} />,
-  <PrivateRoute path="/ABM" exact component={ABM} />,
+  <PublicRoute path="/ABM" exact component={ABM} />,
   <PublicRoute path="/Resultados" exact component={Resultados} />,
   <PublicRoute path="/Contacto" exact component={Contacto} />,
-  <PrivateRoute path="/ABM-Radio" exact component={ABMRadio} />,
-  <PrivateRoute path="/ABM-Texto" exact component={ABMTexto} />,
-  <PrivateRoute path="/ABM-Checkbox" exact component={ABMCheckbox} />,
-  <PrivateRoute path="/EncuestasConfirmadas" exact component={EncuestasConfirmadas} />,
+  <PublicRoute path="/ABM-Radio" exact component={ABMRadio} />,
+  <PublicRoute path="/ABM-Texto" exact component={ABMTexto} />,
+  <PublicRoute path="/ABM-Checkbox" exact component={ABMCheckbox} />,
+  <PublicRoute path="/EncuestasConfirmadas" exact component={EncuestasConfirmadas} />,
 ]
 
 export default routes
