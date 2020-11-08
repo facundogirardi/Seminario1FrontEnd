@@ -8,8 +8,7 @@ export const login= async function(login)
     const formData = new URLSearchParams();
     formData.append('email', login.email);
     formData.append('password', login.password);
-    //console.log("dato",formData);
-    //console.log("url",url);
+
     try
     {
         let response = await fetch(url,{
@@ -38,8 +37,16 @@ export const login= async function(login)
                     let user = data.loginUser.user;
                     localStorage.setItem("nombre",user.name);
                     localStorage.setItem("email",user.email);
+                    console.log("es usurio",user.root);
+
+                    if (user.root === "S") {
+                        return ({rdo:2,mensaje:"Ok"});//Es root
+                      }
+                    else {
+                        return ({rdo:0,mensaje:"Ok"});//correcto
+                      }
+
                     
-                    return ({rdo:0,mensaje:"Ok"});//correcto
                 }
                 case 202:
                 {
@@ -68,8 +75,6 @@ export const guardarImgUser = async function(message)
 {
     //url webservices
     let url = urlWebServices.guardarImgUser;
-    //console.log("url",url);
-    //console.log("token",WebToken.webToken);
     const formData = new URLSearchParams();
     formData.append('email', message.email);
     formData.append('nombreImagen',message.imagen);

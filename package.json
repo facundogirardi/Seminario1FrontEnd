@@ -11,10 +11,12 @@
     "@material-ui/icons": "4.x",
     "@progress/kendo-drawing": "^1.9.2",
     "@progress/kendo-react-pdf": "^3.17.0",
+    "axios": "^0.21.0",
     "base-shell": "1.x",
     "github-markdown-css": "4.x",
     "intl": "1.x",
     "intl-locales-supported": "1.x",
+    "material-table": "^1.69.1",
     "material-ui-shell": "1.x",
     "notistack": "^1.0.0",
     "react": "16.x",
@@ -28,8 +30,10 @@
     "react-redux": "7.x",
     "react-router-dom": "5.x",
     "react-scripts": "^3.4.4",
+    "react-sweet-progress": "^1.1.2",
     "react-swipeable-views": "^0.13.9",
     "survey-react": "^1.8.3",
+    "sweetalert2-react": "^0.8.3",
     "webpack": "^4.42.0"
   },
   "scripts": {

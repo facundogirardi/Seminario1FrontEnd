@@ -167,11 +167,11 @@ export default function Encuesta() {
             <FormControl component="fieldset">
               <FormLabel component="legend">Tamaño de su empresa</FormLabel>
               <RadioGroup onChange={handleTamaño}>
-                <FormControlLabel required value="01" control={<Radio />} label="Micro: 0-9 ocupados" />
-                <FormControlLabel required value="02" control={<Radio />} label="Pequeña: 10-50 ocupados" />
-                <FormControlLabel required value="03" control={<Radio />} label="Mediana: 51-250 ocupados" />
-                <FormControlLabel required value="04" control={<Radio />} label="Mediana Grande: 251-800 ocupados" />
-                <FormControlLabel required value="05" control={<Radio />} label="Grande: Más de 800 ocupados" />
+                <FormControlLabel required value="Micro" control={<Radio />} label="Micro: 0-9 ocupados" />
+                <FormControlLabel required value="Pequeña" control={<Radio />} label="Pequeña: 10-50 ocupados" />
+                <FormControlLabel required value="Mediana" control={<Radio />} label="Mediana: 51-250 ocupados" />
+                <FormControlLabel required value="Mediana Grande" control={<Radio />} label="Mediana Grande: 251-800 ocupados" />
+                <FormControlLabel required value="Grande" control={<Radio />} label="Grande: Más de 800 ocupados" />
               </RadioGroup>
             </FormControl>
           </CardContent>

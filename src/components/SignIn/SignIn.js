@@ -9,6 +9,7 @@ import { Redirect } from "react-router-dom";
 import TextField from '@material-ui/core/TextField';
 import { useIntl } from 'react-intl'
 import Typography from '@material-ui/core/Typography'
+import loginimg from '../../imagenes/login.png';
 //importo llamada a endpoint
 import { login } from "../../controller/miApp.controller";
 
@@ -58,6 +59,7 @@ export default function SignIn(props) {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
   const [usuarioValido, setUsuarioValido] = React.useState(false);
+  const [usuarioRoot, setUsuarioRoot] = React.useState(false);
 
   setTimeout(function () {
     setCardAnimation("");
@@ -80,10 +82,16 @@ export default function SignIn(props) {
     let datos = {
       email: email,
       password: password
+        
     }
+    
     let getLogin = await login(datos);
+    
     if (getLogin.rdo === 0) {
       setUsuarioValido(true);
+    }
+    if (getLogin.rdo === 2) {
+      setUsuarioRoot(true);
     }
     if (getLogin.rdo === 1) {
       alert(getLogin.mensaje)
@@ -103,16 +111,16 @@ export default function SignIn(props) {
 
   }
   const redirect = () => {
-    if (usuarioValido) {
-      return <Redirect to="/ABM" />
-    }
-    else if(email==="root" && password==="root"){
+    if (usuarioRoot){
       return <Redirect to="/Administrador" />
+    }
+    else if(usuarioValido) {
+      return <Redirect to="/ABM" />
     }
   }
 
-  return (
-    <div
+  return ( 
+    <div 
       style={{
         display: 'flex',
         flexDirection: 'row',
@@ -123,18 +131,21 @@ export default function SignIn(props) {
       {redirect()}
       <Page pageTitle={intl.formatMessage({ id: 'sign_in' })}>
         <Paper className={classes.paper} elevation={6}>
+          
           <div className={classes.container}>
+            <img src={loginimg} width="200px" alt="Logo"/>
             <Typography component="h1" variant="h5">
               {intl.formatMessage({ id: 'Iniciar Sesion' })}
             </Typography>
             <form className={classes.form}>
               <TextField
+               
                 variant="outlined"
                 margin="normal"
                 required
                 fullWidth
                 autoFocus
-                labelText="Mail..."
+                label="Mail"
                 id="email"
                 inputProps={{
                   type: "email",
@@ -147,7 +158,7 @@ export default function SignIn(props) {
                 }}
               />
               <TextField
-                labelText="Contraseña"
+                label="Contraseña"
                 id="pass"
                 variant="outlined"
                 margin="normal"
@@ -163,6 +174,7 @@ export default function SignIn(props) {
                   )
                 }}
               />
+              
               <Button
                 fullWidth
                 variant="contained"
