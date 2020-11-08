@@ -18,20 +18,14 @@ import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
+import {useHistory} from 'react-router';
 
+//importo llamada a endpoint
+import { guardarContacto } from "../../controller/miApp.controller";
 
 const useStylesButton = makeStyles((theme) => ({
   button: {
     margin: theme.spacing(3),
-  },
-}));
-
-const useStylesSelect = makeStyles((theme) => ({
-  formControl: {
-    width: "100%",
-  },
-  selectEmpty: {
-    marginTop: theme.spacing(2),
   },
 }));
 
@@ -69,7 +63,7 @@ const useStylesGrid = makeStyles((theme) => ({
   paper: {
     padding: theme.spacing(2),
     textAlign: 'center',
-    width:"98%",
+    width: "98%",
     margin: "0 10px",
     color: theme.palette.text.secondary,
   },
@@ -77,90 +71,132 @@ const useStylesGrid = makeStyles((theme) => ({
 
 export default function Encuesta() {
   const clase1 = useStylesCards();
-  const clase2 = useStylesSelect();
   const clase3 = useStylesText();
   const clase4 = useStylesButton();
   const clase5 = useStylesGrid();
 
-  const [state, setState] = React.useState({
-    age: '',
-    name: 'hai',
-  });
-  
-  const handleChangeRadioVentas = (event) => {
-    setValue(event.target.value);
-  };
-  
-  const handleChangeRadioIngresos = (event) => {
-    setValue(event.target.value);
+  const history = useHistory();
+  const [razonsocial, setRazonSocial] = React.useState('');
+  const [email, setEmail] = React.useState('');
+  const [region, setRegion] = React.useState("");
+  const [tamaño, setTamaño] = React.useState("");
+
+  const handleEmail = (event) => {
+    setEmail(event.target.value);
+  }
+  const handleRazonSocial = (event) => {
+    setRazonSocial(event.target.value);
+  }
+  const handleRegion = (event) => {
+    setRegion(event.target.value);
+  }
+  const handleTamaño = (event) => {
+    setTamaño(event.target.value);
+  }
+
+  const isEmpty = (stringToValidate) => {
+    if (stringToValidate !== undefined && stringToValidate !== null) {
+      return stringToValidate.length === 0
+    }
+
+    return true;
   };
 
-  const handleChangeRadioTamaño = (event) => {
-    setValue(event.target.value);
-  };
+  const subirDatos = async function () {
+    let archivoDatos = false;
+    console.log("razonsocial", razonsocial);
+    console.log("email", email);
+    console.log("region", region);
+    console.log("tamaño", tamaño);
+    if (!isEmpty(razonsocial) && !isEmpty(email) && !isEmpty(region) && !isEmpty(tamaño)) {
 
-  const [value, setValue] = React.useState('female');
+      archivoDatos = await guardarContacto(razonsocial, email, region, tamaño);
+    }
+    else{
+      alert("Llenar datos.")
+    }
+    return archivoDatos
+  }
 
-  const handleChange = (event) => {
-    const name = event.target.name;
-    setState({
-      ...state,
-      [name]: event.target.value,
-    });
-  };
+  const redirect = async () => {
+    const ok = await subirDatos()
+    if (ok) {
+      history.push("/Resultados")
+    }
+  }
 
   return (
     <Page pageTitle={'Usted esta en la ventana de Contacto'}>
       <Scrollbar style={{ height: '93.4%', width: '100%', display: 'flex', flex: 1 }}>
-      <br/>
-      <Grid container spacing={3}>
-        <Grid item xs={12}>
-          <Paper className={clase5.paper}><h2>Información de contacto</h2></Paper>
+        <br />
+        <Grid container spacing={3}>
+          <Grid item xs={12}>
+            <Paper className={clase5.paper}><h2>Información de contacto</h2></Paper>
+          </Grid>
         </Grid>
-      </Grid>
-      <br/>
-      <Card className={clase1.root}>
-      <CardContent>
-        <form className={clase3.root} noValidate autoComplete="off">
-          <TextField id="standard-basic" label="Razon social *" />
-          <TextField id="standard-basic" label="Correo electronico *" />
-          <TextField id="standard-basic" label="Region *" />
-           </form>
-        <br/> <br/>
-        <FormControl component="fieldset">
-        <FormLabel component="legend">Tamaño de su empresa</FormLabel>
-          <RadioGroup aria-label="gender" name="gender1"  onChange={handleChangeRadioIngresos}>
-            <FormControlLabel value="01" control={<Radio />} label="Micro: 0-9 ocupados" />
-            <FormControlLabel value="02" control={<Radio />} label="Pequeña: 10-50 ocupados" />
-            <FormControlLabel value="03" control={<Radio />} label="Mediana: 51-250 ocupados" />
-            <FormControlLabel value="04" control={<Radio />} label="Mediana Grande: 251-800 ocupados" />
-            <FormControlLabel value="05" control={<Radio />} label="Grande: Más de 800 ocupados" />
-          </RadioGroup>
-        </FormControl>
+        <br />
+        <Card className={clase1.root}>
+          <CardContent>
+            <form className={clase3.root} autoComplete="off">
+              <TextField
+                required
+                id="RazonSocial"
+                label="Razon social"
+                inputProps={{
+                  onChange: (event) => handleRazonSocial(event),
+                }}
+              />
+              <TextField
+                required
+                id="email"
+                label="Correo electronico"
+                inputProps={{
+                  onChange: (event) => handleEmail(event),
+                }}
+              />
+              <TextField
+                required
+                id="region"
+                label="Region"
+                inputProps={{
+                  onChange: (event) => handleRegion(event),
+                }}
+              />
+            </form>
+            <br /> <br />
+            <FormControl component="fieldset">
+              <FormLabel component="legend">Tamaño de su empresa</FormLabel>
+              <RadioGroup onChange={handleTamaño}>
+                <FormControlLabel required value="01" control={<Radio />} label="Micro: 0-9 ocupados" />
+                <FormControlLabel required value="02" control={<Radio />} label="Pequeña: 10-50 ocupados" />
+                <FormControlLabel required value="03" control={<Radio />} label="Mediana: 51-250 ocupados" />
+                <FormControlLabel required value="04" control={<Radio />} label="Mediana Grande: 251-800 ocupados" />
+                <FormControlLabel required value="05" control={<Radio />} label="Grande: Más de 800 ocupados" />
+              </RadioGroup>
+            </FormControl>
           </CardContent>
-          </Card> 
-      <Link to="/Encuesta">
-        <Button
-        variant="contained"
-        color="Primary"
-        className={clase4.button}
-        startIcon={<ArrowBackIosIcon />}
-      >
-        Atras
+        </Card>
+        <Link to="/Encuesta">
+          <Button
+            variant="contained"
+            color="Primary"
+            className={clase4.button}
+            startIcon={<ArrowBackIosIcon />}
+          >
+            Atras
       </Button>
-      </Link>
-        <Link to="/Resultados">
-        <Button
-        variant="contained"
-        color="Primary"
-        className={clase4.button}
-        startIcon={<TimelineIcon />}
-      >
-        Generar resultados
+        </Link>
+          <Button
+            variant="contained"
+            color="Primary"
+            className={clase4.submit}
+            startIcon={<TimelineIcon />}
+            onClick={() => { redirect() }}
+          >
+            Generar resultados
       </Button>
-      </Link>
       </Scrollbar>
-    <Footer/>
+      <Footer />
     </Page>
   );
 }

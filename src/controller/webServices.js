@@ -1,5 +1,5 @@
-const urlApi = "http://localhost:4000/";
-//const urlApi = "http://api-benchmark.herokuapp.com/";
+//const urlApi = "http://localhost:4000/";
+const urlApi = "http://api-benchmark.herokuapp.com/";
 console.log("url",urlApi);
 
 const urlWebServices = {
@@ -8,6 +8,7 @@ const urlWebServices = {
     guardarImgUser: urlApi + "api/users/guardarImgUser",
     getImgUser: urlApi + "api/users/imgUserByMail",
     uploadFileImg: urlApi + "api/users/uploadImg",
+    contacto: urlApi + "api/users/contacto",
 }
 
 export default urlWebServices;

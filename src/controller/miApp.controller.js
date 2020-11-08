@@ -179,3 +179,46 @@ export const getImagenesByUser = async function()
         console.log("error",error);
     };
 }
+
+//Contacto
+
+export const guardarContacto= async function(razonsocial, email, region, tamaño)
+{
+    //url webservices
+    let url = urlWebServices.contacto;
+    //console.log("url",url);
+    //console.log("token",WebToken.webToken);
+    const formData = new URLSearchParams();
+    formData.append('razonsocial', razonsocial);
+    formData.append('email',email);
+    formData.append('region',region);
+    formData.append('tamaño',tamaño);
+    console.log("formData", formData)
+    
+    try
+    {
+        let response = await fetch(url,{
+            method: 'POST', // or 'PUT'
+            mode: "cors",
+            headers:{
+                'Accept':'application/x-www-form-urlencoded',
+                'x-access-token': localStorage.getItem('x'),
+                'Origin':'http://localhost:3000',
+                'Content-Type': 'application/x-www-form-urlencoded'},
+            body:formData
+        });
+        if (response.status===201)
+        {
+            return true;
+        }
+        else
+        {
+           return false; 
+        }
+    }
+    catch(error)
+    {
+        console.log("error",error);
+        return false;
+    };
+}
