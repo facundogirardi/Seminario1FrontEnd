@@ -2,17 +2,17 @@ import React, { lazy } from 'react'
 import PrivateRoute from 'base-shell/lib/components/PrivateRoute/PrivateRoute'
 import PublicRoute from 'base-shell/lib/components/PublicRoute/PublicRoute'
 
-const SignIn = lazy(() => import('../pages/SignIn/SignIn'))
-const Administrador = lazy(() =>import ('../pages/Administrador/admin'))
-const About = lazy(() => import('../pages/About/About'))
-const Encuesta = lazy(() => import('../pages/Encuesta/Encuesta'))
-const ABM = lazy(() => import('../pages/ABM/ABM'))
-const Resultados = lazy(() => import('../pages/Resultados/Resultado'))
-const Contacto = lazy(() => import('../pages/Contacto/Contacto'))
-const ABMRadio = lazy(() => import('../pages/ABM/ABM-Radio'))
-const ABMTexto = lazy(() => import('../pages/ABM/ABM-Texto'))
-const ABMCheckbox = lazy(() => import('../pages/ABM/ABM-Checkbox'))
-const EncuestasConfirmadas = lazy(() => import('../pages/ABM/EncuestasConfirmadas'))
+const SignIn = lazy(() => import('../components/SignIn/SignIn'))
+const Administrador = lazy(() =>import ('../components/Administrador/admin'))
+const About = lazy(() => import('../components/About/About'))
+const Encuesta = lazy(() => import('../components/Encuesta/Encuesta'))
+const ABM = lazy(() => import('../components/ABM/ABM'))
+const Resultados = lazy(() => import('../components/Resultados/Resultado'))
+const Contacto = lazy(() => import('../components/Contacto/Contacto'))
+const ABMRadio = lazy(() => import('../components/ABM/ABM-Radio'))
+const ABMTexto = lazy(() => import('../components/ABM/ABM-Texto'))
+const ABMCheckbox = lazy(() => import('../components/ABM/ABM-Checkbox'))
+const EncuestasConfirmadas = lazy(() => import('../components/ABM/EncuestasConfirmadas'))
 
 const routes = [
   <PublicRoute path="/signin" redirectTo="/" exact component={SignIn} />,

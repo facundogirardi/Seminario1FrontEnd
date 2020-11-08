@@ -29,8 +29,8 @@ const config = {
     defaultType: 'light',
   },
   pages: {
-    LandingPage: lazy(() => import('../pages/LandingPage/LandingPage')),
-    PageNotFound: lazy(() => import('../pages/PageNotFound/PageNotFound')),
+    LandingPage: lazy(() => import('../components/LandingPage/LandingPage')),
+    PageNotFound: lazy(() => import('../components/PageNotFound/PageNotFound')),
   },
 }
 
