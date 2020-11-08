@@ -1,8 +1,6 @@
 import React from 'react'
 import DaschboardIcon from '@material-ui/icons/Dashboard'
-import LockIcon from '@material-ui/icons/Lock'
 import SettingsIcon from '@material-ui/icons/Settings';
-import ExitToAppIcon from '@material-ui/icons/ExitToApp'
 import MenuOpenIcon from '@material-ui/icons/MenuOpen'
 import GetApp from '@material-ui/icons/GetApp'
 import ChromeReaderMode from '@material-ui/icons/ChromeReaderMode'
@@ -73,19 +71,6 @@ const getMenuItems = (props) => {
           }),
           leftIcon: <DaschboardIcon />,
         },
-        {
-          value: '/signin',
-          onClick: isAuthorised
-            ? () => {
-                setAuth({ isAuthenticated: false })
-              }
-            : () => {},
-          visible: true,
-          primaryText: isAuthorised
-            ? intl.formatMessage({ id: 'sign_out' })
-            : intl.formatMessage({ id: 'sign_in' }),
-          leftIcon: isAuthorised ? <ExitToAppIcon /> : <LockIcon />,
-        },
       {
         value: '/about',
         visible: isAuthorised,
@@ -106,7 +91,7 @@ const getMenuItems = (props) => {
       },
        { divider: true },
       {
-        primaryText: intl.formatMessage({ id: 'settings' }),
+        primaryText: intl.formatMessage({ id: 'Configuracion' }),
         primaryTogglesNestedList: true,
         leftIcon: <SettingsIcon />,
         nestedItems: [
@@ -141,7 +126,7 @@ const getMenuItems = (props) => {
         },
       {
         value: '/ABM',
-        visible: isAuthorised,
+        visible: false,
         primaryText: intl.formatMessage({
           id: 'ABM Encuestas',
         }),
@@ -149,7 +134,7 @@ const getMenuItems = (props) => {
       },
       {
         value: '/Administrador',
-        visible: isAuthorised,
+        visible: false,
         primaryText: intl.formatMessage({
           id: 'ABM Usuarios',
         }),
@@ -161,19 +146,6 @@ const getMenuItems = (props) => {
         primaryText: intl.formatMessage({ id: 'Informacion' }),
         leftIcon: <InfoIcon />,
       },
-      {
-          value: '/signin',
-          onClick: isAuthorised
-            ? () => {
-                setAuth({ isAuthenticated: false })
-              }
-            : () => {},
-          visible: true,
-          primaryText: isAuthorised
-            ? intl.formatMessage({ id: 'sign_out' })
-            : intl.formatMessage({ id: 'sign_in' }),
-          leftIcon: isAuthorised ? <ExitToAppIcon /> : <LockIcon />,
-        },
       {
         value: null,
         visible: isAppInstallable && !isAppInstalled,
@@ -202,27 +174,18 @@ const getMenuItems = (props) => {
       },
        { divider: true },
       {
-        primaryText: intl.formatMessage({ id: 'settings' }),
+        primaryText: intl.formatMessage({ id: 'Configuracion' }),
         primaryTogglesNestedList: true,
         leftIcon: <SettingsIcon />,
         nestedItems: [
           {
-            primaryText: intl.formatMessage({ id: 'theme' }),
+            primaryText: intl.formatMessage({ id: 'Tema' }),
             secondaryText: intl.formatMessage({ id: themeID }),
             primaryTogglesNestedList: true,
             leftIcon: <StyleIcon />,
             nestedItems: themeItems,
           },
-          {
-            visible: isDesktop ? true : false,
-            onClick: () => {
-              setMiniMode(!useMiniMode)
-            },
-            primaryText: intl.formatMessage({
-              id: 'menu_mini_mode',
-            }),
-            leftIcon: useMiniMode ? <MenuOpenIcon /> : <ChromeReaderMode />,
-          },
+
         ],
       },
     ]

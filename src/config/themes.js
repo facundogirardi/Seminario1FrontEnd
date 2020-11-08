@@ -16,7 +16,7 @@ const themes = [
     },
   },
   {
-    id: 'red',
+    id: 'Rojo',
     color: red[500],
     source: {
       palette: {
@@ -27,7 +27,7 @@ const themes = [
     },
   },
   {
-    id: 'green',
+    id: 'Verde',
     color: green[500],
     source: {
       palette: {
