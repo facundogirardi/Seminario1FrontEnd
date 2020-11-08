@@ -16,6 +16,9 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import Select from '@material-ui/core/Select';
 import Paper from '@material-ui/core/Paper';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import {useHistory} from 'react-router';
@@ -69,16 +72,27 @@ const useStylesGrid = makeStyles((theme) => ({
   },
 }));
 
+const useStyles = makeStyles((theme) => ({
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: 120,
+  },
+  selectEmpty: {
+    marginTop: theme.spacing(2),
+  },
+}));
+
 export default function Encuesta() {
   const clase1 = useStylesCards();
   const clase3 = useStylesText();
   const clase4 = useStylesButton();
   const clase5 = useStylesGrid();
+  const classes = useStyles();
+  const [region, setRegion] = React.useState('');
 
   const history = useHistory();
   const [razonsocial, setRazonSocial] = React.useState('');
   const [email, setEmail] = React.useState('');
-  const [region, setRegion] = React.useState("");
   const [tamaño, setTamaño] = React.useState("");
 
   const handleEmail = (event) => {
@@ -102,6 +116,10 @@ export default function Encuesta() {
     return true;
   };
 
+  const handleChange = (event) => {
+    setRegion(event.target.value);
+  };
+
   const subirDatos = async function () {
     let archivoDatos = false;
     console.log("razonsocial", razonsocial);
@@ -113,7 +131,7 @@ export default function Encuesta() {
       archivoDatos = await guardarContacto(razonsocial, email, region, tamaño);
     }
     else{
-      alert("Llenar datos.")
+      alert("Completar todos los datos")
     }
     return archivoDatos
   }
@@ -124,6 +142,8 @@ export default function Encuesta() {
       history.push("/Resultados")
     }
   }
+
+  
 
   return (
     <Page pageTitle={'Usted esta en la ventana de Contacto'}>
@@ -154,18 +174,44 @@ export default function Encuesta() {
                   onChange: (event) => handleEmail(event),
                 }}
               />
-              <TextField
-                required
-                id="region"
-                label="Region"
-                inputProps={{
-                  onChange: (event) => handleRegion(event),
-                }}
-              />
+      <FormControl className={classes.formControl}>
+        <InputLabel id="demo-simple-select-label">Region *</InputLabel>
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          value={region}
+          onChange={handleChange}
+        >
+          <MenuItem value={"Buenos Aires"}>Buenos Aires</MenuItem>
+          <MenuItem value={"Cuidad Autonoma de Buenos Aires"}>Cuidad Autonoma de Buenos Aires</MenuItem>
+          <MenuItem value={"Catamarca"}>Catamarca</MenuItem>
+          <MenuItem value={"Chaco"}>Chaco</MenuItem>
+          <MenuItem value={"Chubut"}>Chubut</MenuItem>
+          <MenuItem value={"Córdoba"}>Córdoba</MenuItem>
+          <MenuItem value={"Corrientes"}>Corrientes</MenuItem>
+          <MenuItem value={"Entre Ríos"}>Entre Ríos</MenuItem>
+          <MenuItem value={"Formosa"}>Formosa</MenuItem>
+          <MenuItem value={"Jujuy"}>Jujuy</MenuItem>
+          <MenuItem value={"La Pampa"}>La Pampa</MenuItem>
+          <MenuItem value={"La Rioja"}>La Rioja</MenuItem>
+          <MenuItem value={"Mendoza"}>Mendoza</MenuItem>
+          <MenuItem value={"Misiones"}>Misiones</MenuItem>
+          <MenuItem value={"Neuquén"}>Río Negro</MenuItem>
+          <MenuItem value={"Río Negro"}>Río Negro</MenuItem>
+          <MenuItem value={"Salta"}>Salta</MenuItem>
+          <MenuItem value={"San Juan"}>San Juan</MenuItem>
+          <MenuItem value={"San Luis"}>San Luis</MenuItem>
+          <MenuItem value={"Santa Cruz"}>Santa Cruz</MenuItem>
+          <MenuItem value={"Santa Fe"}>Santa Fe</MenuItem>
+          <MenuItem value={"Santiago del Estero"}>Santiago del Estero</MenuItem>
+          <MenuItem value={"Tierra del Fuego, Antártida e Isla del Atlántico Sur"}>Tierra del Fuego, Antártida e Isla del Atlántico Sur</MenuItem>
+          <MenuItem value={"Tucumán"}>Tucumán</MenuItem>
+        </Select>
+      </FormControl>
             </form>
             <br /> <br />
             <FormControl component="fieldset">
-              <FormLabel component="legend">Tamaño de su empresa</FormLabel>
+              <FormLabel component="legend">Tamaño de su empresa *</FormLabel>
               <RadioGroup onChange={handleTamaño}>
                 <FormControlLabel required value="Micro" control={<Radio />} label="Micro: 0-9 ocupados" />
                 <FormControlLabel required value="Pequeña" control={<Radio />} label="Pequeña: 10-50 ocupados" />
