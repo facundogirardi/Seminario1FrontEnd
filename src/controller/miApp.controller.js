@@ -227,3 +227,43 @@ export const guardarContacto= async function(razonsocial, email, region, tamaño
         return false;
     };
 }
+
+export const guardarUsuario = async function(name,lastname,email,password,dni)
+{
+    //url webservices
+    let url = urlWebServices.guardarUsuario;
+    const formData = new URLSearchParams();
+    formData.append('name', name);
+    formData.append('lastname',lastname);
+    formData.append('email',email);
+    formData.append('password',password);
+    formData.append('dni',dni);
+    
+    try
+    {
+        let response = await fetch(url,{
+            method: 'POST', // or 'PUT'
+            mode: "cors",
+            headers:{
+                'Accept':'application/x-www-form-urlencoded',
+                'x-access-token': localStorage.getItem('x'),
+                'Origin':'http://localhost:3000',
+                'Content-Type': 'application/x-www-form-urlencoded'},
+            body:formData
+        });
+
+        if (response.status===201)
+        {
+            return true;
+        }
+        else
+        {
+           return false; 
+        }
+    }
+    catch(error)
+    {
+        console.log("error",error);
+        return false;
+    };
+}

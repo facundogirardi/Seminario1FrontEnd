@@ -9,6 +9,7 @@ const urlWebServices = {
     getImgUser: urlApi + "api/users/imgUserByMail",
     uploadFileImg: urlApi + "api/users/uploadImg",
     contacto: urlApi + "api/users/contacto",
+    guardarUsuario: urlApi + "api/users/registration"
 }
 
 export default urlWebServices;
