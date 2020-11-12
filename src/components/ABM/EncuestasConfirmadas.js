@@ -7,30 +7,23 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 
-
 const useStyles = makeStyles((theme) => ({
-    root: {
-      '& .MuiTextField-root': {
-        margin: theme.spacing(1),
-        width: 'auto',
-      },
+  root: {
+    '& .MuiTextField-root': {
+      margin: theme.spacing(1),
+      width: 'auto',
     },
-  }));
-
+  },
+}));
 
 function EncuestasConfirmadas() {
-    const classes = useStyles();
+  const classes = useStyles();
   return (
-      <div>
+    <div>
       <form className={classes.root} noValidate autoComplete="on">
-          <ABMRadio/>
-
-
-
-        </form>
-        </div>
-)
-
-
-}        
+        <ABMRadio />
+      </form>
+    </div>
+  )
+}
 

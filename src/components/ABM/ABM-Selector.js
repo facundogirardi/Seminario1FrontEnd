@@ -14,26 +14,22 @@ const useStyles = makeStyles((theme) => ({
 export default function OutlinedButtons() {
   const classes = useStyles();
 
-
-  
-
   return (
-      
     <div className={classes.root}>
-        <h1>Elija el tipo de encuesta que quiere realizar:</h1>
-      <Link to = '/ABM-Checkbox'>
-      <Button variant="outlined" color="primary">
-        Preguntas con respuesta multiple
+      <h1>Elija el tipo de encuesta que quiere realizar:</h1>
+      <Link to='/ABM-Checkbox'>
+        <Button variant="outlined" color="primary">
+          Preguntas con respuesta multiple
       </Button>
       </Link>
-      <Link to = '/ABM-Radio'>
-      <Button variant="outlined" color="secondary">
-        Preguntas con respuesta unica
+      <Link to='/ABM-Radio'>
+        <Button variant="outlined" color="secondary">
+          Preguntas con respuesta unica
       </Button>
       </Link>
-      <Link to = '/ABM-Texto'>
-      <Button variant="outlined" color="primary" >
-        Preguntas con respuesta de texto
+      <Link to='/ABM-Texto'>
+        <Button variant="outlined" color="primary" >
+          Preguntas con respuesta de texto
       </Button>
       </Link>
     </div>

@@ -5,6 +5,8 @@ import IconButton from "@material-ui/core/IconButton";
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import FormControl from '@material-ui/core/FormControl';
+
+//importo 
 import { guardarUsuario } from "../../controller/miApp.controller";
 
 const useStyles = makeStyles((theme) => ({
@@ -59,11 +61,6 @@ function ABMTexto() {
 
   const subirUsuario = async function () {
     let archivoUsuario = false;
-    console.log("name", name);
-    console.log("email", email);
-    console.log("lastname", lastname);
-    console.log("dni", dni);
-    console.log("password", password);
     
     if (!isEmpty(name) && !isEmpty(email) && !isEmpty(lastname) && !isEmpty(dni) && !isEmpty(password)) {
 

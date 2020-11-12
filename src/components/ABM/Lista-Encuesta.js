@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import EnhancedTable from './tabla-encuesta'
 
@@ -11,45 +11,41 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function ABMRadio(){
+function ABMRadio() {
 
-    const classes = useStyles();
+  const classes = useStyles();
+  const [value, setValue] = React.useState(' ');
+  const [inputList, setInputList] = useState([{ firstName: "", lastName: "" }]);
 
-    const [value, setValue] = React.useState(' ');
+  const handleChange = (event) => {
+    setValue(event.target.value);
+  };
 
-    const handleChange = (event) => {
-        setValue(event.target.value);
-    };
-    const [inputList, setInputList] = useState([{ firstName: "", lastName: "" }]);
- 
-    // handle input change
-    const handleInputChange = (e, index) => {
-      const { name, value } = e.target;
-      const list = [...inputList];
-      list[index][name] = value;
-      setInputList(list);
-    };
-   
-    // handle click event of the Remove button
-    const handleRemoveClick = index => {
-      const list = [...inputList];
-      list.splice(index, 1);
-      setInputList(list);
-    };
-   
-    // handle click event of the Add button
-    const handleAddClick = () => {
-      setInputList([...inputList, { firstName: "", lastName: "" }]);
-    };
+  const handleInputChange = (e, index) => {
+    const { name, value } = e.target;
+    const list = [...inputList];
+    list[index][name] = value;
+    setInputList(list);
+  };
+
+  const handleRemoveClick = index => {
+    const list = [...inputList];
+    list.splice(index, 1);
+    setInputList(list);
+  };
+
+  const handleAddClick = () => {
+    setInputList([...inputList, { firstName: "", lastName: "" }]);
+  };
 
   return (
-      <div>
+    <div>
       {inputList.map((x, i) => {
-         return (
-          <EnhancedTable/>
+        return (
+          <EnhancedTable />
         );
       })}
-      </div>
+    </div>
   );
 }
 

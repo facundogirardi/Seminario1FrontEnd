@@ -82,12 +82,11 @@ export default function ABMTipo() {
   };
 
   return (
-    
-    <div className={classes.root}>
-    <div className="Cuadrado">
 
-    </div>
-    <div className="Cuadrado"></div>
+    <div className={classes.root}>
+      <div className="Cuadrado">
+      </div>
+      <div className="Cuadrado"></div>
       <AppBar position="static" color="default">
         <Tabs
           value={value}
@@ -97,10 +96,9 @@ export default function ABMTipo() {
           variant="fullWidth"
           aria-label="action tabs example"
         >
-         <Tab label="Lista de Encuestas" {...a11yProps(0)} />
+          <Tab label="Lista de Encuestas" {...a11yProps(0)} />
           <Tab label="Crear Encuestas" {...a11yProps(1)} />
-          <Tab label="Encuestas confirmadas" {...a11yProps(2)}/>
-
+          <Tab label="Encuestas confirmadas" {...a11yProps(2)} />
         </Tabs>
       </AppBar>
       <SwipeableViews
@@ -109,23 +107,21 @@ export default function ABMTipo() {
         onChangeIndex={handleChangeIndex}
       >
         <TabPanel value={value} index={0} dir={theme.direction}>
-        <ListaEncuesta/>
+          <ListaEncuesta />
         </TabPanel>
         <TabPanel value={value} index={1} dir={theme.direction}>
-        <TextField id="outlined-basic" label="Titulo de encuesta" variant="outlined" 
-              input
-              name="firstName"
-              placeholder="Titulo de encuesta"
-           
-              
-            />
-          <br/>
-          <br/>
-          <DialogSelect/>
-         
+          <TextField
+            id="outlined-basic"
+            label="Titulo de encuesta"
+            variant="outlined"
+            input
+            name="firstName"
+          />
+          <br />
+          <br />
+          <DialogSelect />
         </TabPanel>
         <TabPanel value={value} index={2} dir={theme.direction}>
-         
         </TabPanel>
       </SwipeableViews>
     </div>

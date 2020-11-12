@@ -228,7 +228,7 @@ export const guardarContacto= async function(razonsocial, email, region, tamaño
     };
 }
 
-export const guardarUsuario = async function(name,lastname,email,password,dni)
+export const guardarUsuario = async function(name,lastname,email,dni,password)
 {
     //url webservices
     let url = urlWebServices.guardarUsuario;
@@ -236,8 +236,9 @@ export const guardarUsuario = async function(name,lastname,email,password,dni)
     formData.append('name', name);
     formData.append('lastname',lastname);
     formData.append('email',email);
-    formData.append('password',password);
     formData.append('dni',dni);
+    formData.append('password',password);
+    
     
     try
     {
@@ -258,6 +259,132 @@ export const guardarUsuario = async function(name,lastname,email,password,dni)
         }
         else
         {
+           return false; 
+        }
+    }
+    catch(error)
+    {
+        console.log("error",error);
+        return false;
+    };
+}
+
+export const getUsuario = async function()
+{
+    //url webservices
+    let url = urlWebServices.getUsuario;
+    //console.log("url",url);
+    //console.log("token",WebToken.webToken);
+    
+    try
+    {
+        let response = await fetch(url,{
+            method: 'GET', // or 'PUT'
+            mode: "cors",
+            headers:{
+                'Accept':'application/x-www-form-urlencoded',
+                'x-access-token': localStorage.getItem('x'),
+                'Origin':'http://localhost:3000',
+                'Content-Type': 'application/x-www-form-urlencoded'},
+        });
+        if (response.status===200)
+        {
+            let data = await response.json();
+            
+            let listaUsuarios = data.data.docs;
+            console.log("Lista de Usuarios",listaUsuarios);
+            return listaUsuarios;
+        }
+        else
+        {
+            let vacio=[];
+            console.log("No hay usuarios")
+            return (vacio);
+            
+        }
+    }
+    catch(error)
+    {
+        console.log("error",error);
+    };
+}
+
+export const deleteUsuario = async function(id)
+{
+    //url webservices
+    let url = urlWebServices.deleteUsuario;
+    const formData = new URLSearchParams();
+    console.log("el id",id)
+    formData.append('_id', id);
+    console.log("el formData",formData)
+
+    try
+    {
+        let response = await fetch(url,{
+            method: 'DELETE', // or 'PUT'
+            mode: "cors",
+            headers:{
+                'Accept':'application/x-www-form-urlencoded',
+                //'x-access-token': localStorage.getItem('x'),
+                'Origin':'http://localhost:3000',
+                'Content-Type': 'application/x-www-form-urlencoded'},
+            body:formData
+        });
+
+        if (response.status===201)
+        {
+            return true;
+        }
+        else
+        {
+           return false; 
+        }
+    }
+    catch(error)
+    {
+        console.log("error",error);
+        return false;
+    };
+}
+
+export const updateUsuario = async function(name,lastname,email,dni,password)
+{
+    //url webservices
+    let url = urlWebServices.updateUsuario;
+    const formData = new URLSearchParams();
+    console.log(name);
+    console.log(lastname);
+    console.log(email);
+    console.log(dni);
+    console.log(password);
+
+    formData.append('name', name);
+    formData.append('lastname',lastname);
+    formData.append('email',email);
+    formData.append('dni',dni);
+    formData.append('password',password);
+    
+    
+    try
+    {
+        let response = await fetch(url,{
+            method: 'PUT', // or 'PUT'
+            mode: "cors",
+            headers:{
+                'Accept':'application/x-www-form-urlencoded',
+                //'x-access-token': localStorage.getItem('x'),
+                'Origin':'http://localhost:3000',
+                'Content-Type': 'application/x-www-form-urlencoded'},
+            body:formData
+        });
+
+        if (response.status===201)
+        {
+            return true;
+        }
+        else
+        {
+            console.log("Estoy en el true 201.")
            return false; 
         }
     }

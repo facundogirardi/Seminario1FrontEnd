@@ -9,7 +9,10 @@ const urlWebServices = {
     getImgUser: urlApi + "api/users/imgUserByMail",
     uploadFileImg: urlApi + "api/users/uploadImg",
     contacto: urlApi + "api/users/contacto",
-    guardarUsuario: urlApi + "api/users/registration"
+    guardarUsuario: urlApi + "api/users/registration",
+    getUsuario: urlApi + "api/users/tusuarios",
+    deleteUsuario: urlApi + "api/users/deleteo",
+    updateUsuario: urlApi + "api/users/actualizacion",
 }
 
 export default urlWebServices;
