@@ -73,7 +73,7 @@ export default function AbmUsuarios() {
   };
 
   const deleteUsuarios = (usuario, resolve) => {
-    const newUsuario = { _id: usuario._id, name: usuario.name, lastname: usuario.lastname, email: usuario.email, dni: usuario.dni };
+    const newUsuario = { _id: usuario._id, name: usuario.name, lastname: usuario.lastname, email: usuario.email, dni: usuario.dni, password: usuario.password };
     borrarUsuario(newUsuario)
     console.log("Aca elimino el usuario.", usuario)
     resolve()
@@ -112,9 +112,9 @@ export default function AbmUsuarios() {
     { title: 'Nombre', field: 'name' },
     { title: 'Apellido', field: 'lastname' },
     { title: 'Email', field: 'email' },
-    { title: 'DNI', field: 'dni' },
+    { title: 'DNI', field: 'dni',editable: 'never' },
     { title: 'Contraseña', field: 'password' },
-    { title: 'Root', field: 'root', editable: 'never' },
+    { title: 'Root', field: 'root' },
   ];
 
   return (
