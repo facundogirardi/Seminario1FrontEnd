@@ -109,12 +109,12 @@ export default function AbmUsuarios() {
   };
 
   const columns = [
+    { title: 'DNI', field: 'dni'},
     { title: 'Nombre', field: 'name' },
     { title: 'Apellido', field: 'lastname' },
     { title: 'Email', field: 'email' },
-    { title: 'DNI', field: 'dni',editable: 'never' },
     { title: 'Contraseña', field: 'password' },
-    { title: 'Root', field: 'root' },
+    { title: 'Root', field: 'root',editable: 'never'  }
   ];
 
   return (
