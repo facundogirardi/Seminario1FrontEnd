@@ -317,20 +317,20 @@ export const deleteUsuario = async function (id) {
     };
 }
 
-export const updateUsuario = async function (name, lastname, email, dni, password) {
+export const updateUsuario = async function (dni, name, lastname, email, password) {
     //url webservices
     let url = urlWebServices.updateUsuario;
     const formData = new URLSearchParams();
+    console.log(dni);
     console.log(name);
     console.log(lastname);
     console.log(email);
-    console.log(dni);
     console.log(password);
 
+    formData.append('dni', dni);
     formData.append('name', name);
     formData.append('lastname', lastname);
     formData.append('email', email);
-    formData.append('dni', dni);
     formData.append('password', password);
 
 
@@ -347,7 +347,7 @@ export const updateUsuario = async function (name, lastname, email, dni, passwor
             body: formData
         });
 
-        if (response.status === 201) {
+        if (response.status === 200) {
             return true;
         }
         else {

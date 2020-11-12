@@ -47,7 +47,7 @@ export default function AbmUsuarios() {
 
   const editarUsuario = async function (newUsuario) {
     let Usuario = false;
-      Usuario = await updateUsuario(newUsuario.name, newUsuario.lastname, newUsuario.email, newUsuario.dni, newUsuario.password);
+      Usuario = await updateUsuario(newUsuario.dni, newUsuario.name, newUsuario.lastname, newUsuario.email, newUsuario.password);
   }
 
   const borrarUsuario = async function (newUsuario) {
@@ -80,14 +80,14 @@ export default function AbmUsuarios() {
   };
 
   const addUsuario = (usuario, resolve) => {
-    const newUsuario = { name: usuario.name, lastname: usuario.lastname, email: usuario.email, dni: usuario.dni, password: usuario.password };
+    const newUsuario = { dni: usuario.dni, name: usuario.name, lastname: usuario.lastname, email: usuario.email, password: usuario.password };
     subirUsuario(newUsuario)
     resolve()
     console.log("aca creo el usuario", usuario)
   };
 
   const editUsuario = (oldUsuario, usuario, resolve) => {
-    const newUsuario = { name: usuario.name, lastname: usuario.lastname, email: usuario.email, dni: usuario.dni, password: usuario.password };
+    const newUsuario = { dni: usuario.dni, name: usuario.name, lastname: usuario.lastname, email: usuario.email, password: usuario.password };
     editarUsuario(newUsuario)
     console.log("aca edito el usuario", usuario)
     resolve();
@@ -109,7 +109,7 @@ export default function AbmUsuarios() {
   };
 
   const columns = [
-    { title: 'DNI', field: 'dni'},
+    { title: 'DNI', field: 'dni', editable: 'never'},
     { title: 'Nombre', field: 'name' },
     { title: 'Apellido', field: 'lastname' },
     { title: 'Email', field: 'email' },
