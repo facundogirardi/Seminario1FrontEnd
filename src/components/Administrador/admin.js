@@ -17,9 +17,6 @@ export default function AbmUsuarios() {
   const [usuarios, setUsuarios] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    getUser()
-  }, []);
 
   const isEmpty = (stringToValidate) => {
     if (stringToValidate !== undefined && stringToValidate !== null) {
@@ -29,12 +26,16 @@ export default function AbmUsuarios() {
     return true;
   };
 
+  useEffect(() => {
+    getUser()
+  }, []);
+
   const getUser = async () => {
     const usuarios = await getUsuario()
     setUsuarios(usuarios)
     setLoading(false)
   };
-
+  
   const subirUsuario = async function (newUsuario) {
     let Usuario = false;
     if (!isEmpty(newUsuario.name) && !isEmpty(newUsuario.email) && !isEmpty(newUsuario.lastname) && !isEmpty(newUsuario.dni) && !isEmpty(newUsuario.password)) {
@@ -109,12 +110,12 @@ export default function AbmUsuarios() {
   };
 
   const columns = [
-    { title: 'DNI', field: 'dni', editable: 'never'},
+    { title: 'DNI', field: 'dni'},
     { title: 'Nombre', field: 'name' },
     { title: 'Apellido', field: 'lastname' },
     { title: 'Email', field: 'email' },
     { title: 'Contraseña', field: 'password' },
-    { title: 'Root', field: 'root',editable: 'never'  }
+    { title: 'Root', field: 'root',editable: 'never' }
   ];
 
   return (

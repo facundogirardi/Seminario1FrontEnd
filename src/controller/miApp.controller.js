@@ -288,11 +288,12 @@ export const deleteUsuario = async function (id) {
     let url = urlWebServices.deleteUsuario;
     const formData = new URLSearchParams();
     console.log("el id", id)
-    formData.append('_id', id);
+    formData.append('id', id);
     console.log("el formData", formData)
-
+    console.log("inicio verificacion", url,"fin verificacion")
     try {
         let response = await fetch(url, {
+            
             method: 'DELETE', // or 'PUT'
             mode: "cors",
             headers: {
@@ -302,6 +303,7 @@ export const deleteUsuario = async function (id) {
                 'Content-Type': 'application/x-www-form-urlencoded'
             },
             body: formData
+          
         });
 
         if (response.status === 201) {
@@ -348,6 +350,82 @@ export const updateUsuario = async function (dni, name, lastname, email, passwor
         });
 
         if (response.status === 200) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    catch (error) {
+        console.log("error", error);
+        return false;
+    };
+}
+
+// Traer encuestas
+
+export const getEncuesta = async function () {
+    //url webservices
+    let url = urlWebServices.getEncuesta;
+    //console.log("url",url);
+    //console.log("token",WebToken.webToken);
+
+    try {
+        let response = await fetch(url, {
+            method: 'GET', // or 'PUT'
+            mode: "cors",
+            headers: {
+                'Accept': 'application/x-www-form-urlencoded',
+                'x-access-token': localStorage.getItem('x'),
+                'Origin': 'http://localhost:3000',
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+        });
+        if (response.status === 200) {
+            let data = await response.json();
+
+            let listaUsuarios = data.data.docs;
+            console.log("Lista de Usuarios", listaUsuarios);
+            return listaUsuarios;
+        }
+        else {
+            let vacio = [];
+            console.log("No hay usuarios")
+            return (vacio);
+
+        }
+    }
+    catch (error) {
+        console.log("error", error);
+    };
+}
+
+//Editar encuestas
+
+export const updateEncuesta = async function (_id,titulo,sector,tamaño) {
+    //url webservices
+    let url = urlWebServices.updateEncuesta;
+    const formData = new URLSearchParams();
+
+    formData.append('_id', _id);
+    formData.append('titulo', titulo);
+    formData.append('sector', sector);
+    formData.append('tamaño', tamaño);
+
+    try {
+        let response = await fetch(url, {
+            method: 'PUT', // or 'PUT'
+            mode: "cors",
+            headers: {
+                'Accept': 'application/x-www-form-urlencoded',
+                //'x-access-token': localStorage.getItem('x'),
+                'Origin': 'http://localhost:3000',
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: formData
+        });
+
+        if (response.status === 201) {
             return true;
         }
         else {
