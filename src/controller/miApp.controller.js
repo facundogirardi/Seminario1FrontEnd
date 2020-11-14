@@ -290,7 +290,7 @@ export const deleteUsuario = async function (id_user) {
     console.log("el formData", formData)
     //console.log("el id", id)
     formData.append('id', id_user);
-    //window.location.reload(true);
+    window.location.reload(true);
     
 
 
