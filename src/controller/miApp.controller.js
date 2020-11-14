@@ -220,7 +220,6 @@ export const guardarUsuario = async function (name, lastname, email, dni, passwo
     formData.append('dni', dni);
     formData.append('password', password);
 
-
     try {
         let response = await fetch(url, {
             method: 'POST', // or 'PUT'
@@ -283,31 +282,34 @@ export const getUsuario = async function () {
     };
 }
 
-export const deleteUsuario = async function (id) {
+export const deleteUsuario = async function (id_user) {
     //url webservices
     let url = urlWebServices.deleteUsuario;
     const formData = new URLSearchParams();
-    console.log("el id", id)
-    formData.append('id', id);
+    console.log(url)
     console.log("el formData", formData)
-    console.log("inicio verificacion", url,"fin verificacion")
+    //console.log("el id", id)
+    formData.append('id', id_user);
+    //window.location.reload(true);
+    
+
+
     try {
         let response = await fetch(url, {
-            
-            method: 'DELETE', // or 'PUT'
+            method: 'POST', // or 'PUT'
             mode: "cors",
             headers: {
                 'Accept': 'application/x-www-form-urlencoded',
-                //'x-access-token': localStorage.getItem('x'),
+                'x-access-token': localStorage.getItem('x'),
                 'Origin': 'http://localhost:3000',
                 'Content-Type': 'application/x-www-form-urlencoded'
             },
             body: formData
-          
         });
 
         if (response.status === 201) {
             return true;
+            
         }
         else {
             return false;
@@ -334,6 +336,7 @@ export const updateUsuario = async function (dni, name, lastname, email, passwor
     formData.append('lastname', lastname);
     formData.append('email', email);
     formData.append('password', password);
+    window.location.reload(true);
 
 
     try {
@@ -411,6 +414,7 @@ export const updateEncuesta = async function (_id,titulo,sector,tamaño) {
     formData.append('titulo', titulo);
     formData.append('sector', sector);
     formData.append('tamaño', tamaño);
+    window.location.reload(true);
 
     try {
         let response = await fetch(url, {

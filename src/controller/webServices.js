@@ -11,7 +11,7 @@ const urlWebServices = {
     contacto: urlApi + "api/users/contacto",
     guardarUsuario: urlApi + "api/users/registration",
     getUsuario: urlApi + "api/users/tusuarios",
-    deleteUsuario: urlApi + "api/users/:id",
+    deleteUsuario: urlApi + "api/users/usr",
     updateUsuario: urlApi + "api/users/actualizacion",
     getEncuesta: urlApi + "api/users/tencuesta"
 }
