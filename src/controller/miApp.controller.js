@@ -219,6 +219,7 @@ export const guardarUsuario = async function (name, lastname, email, dni, passwo
     formData.append('email', email);
     formData.append('dni', dni);
     formData.append('password', password);
+    window.location.reload(true);
 
     try {
         let response = await fetch(url, {

@@ -35,7 +35,7 @@ export default function AbmUsuarios() {
     setUsuarios(usuarios)
     setLoading(false)
   };
-  
+
   const subirUsuario = async function (newUsuario) {
     let Usuario = false;
     if (!isEmpty(newUsuario.name) && !isEmpty(newUsuario.email) && !isEmpty(newUsuario.lastname) && !isEmpty(newUsuario.dni) && !isEmpty(newUsuario.password)) {
@@ -48,7 +48,7 @@ export default function AbmUsuarios() {
 
   const editarUsuario = async function (newUsuario) {
     let Usuario = false;
-      Usuario = await updateUsuario(newUsuario.dni, newUsuario.name, newUsuario.lastname, newUsuario.email, newUsuario.password);
+    Usuario = await updateUsuario(newUsuario.dni, newUsuario.name, newUsuario.lastname, newUsuario.email, newUsuario.password);
   }
 
   const borrarUsuario = async function (newUsuario) {
@@ -110,20 +110,26 @@ export default function AbmUsuarios() {
   };
 
   const columns = [
-    { title: 'DNI', field: 'dni'},
+    { title: 'DNI', field: 'dni' },
     { title: 'Nombre', field: 'name' },
     { title: 'Apellido', field: 'lastname' },
     { title: 'Email', field: 'email' },
     { title: 'Contraseña', field: 'password' },
-    { title: 'Root', field: 'root',editable: 'never' }
+    { title: 'Root', field: 'root', editable: 'never' }
   ];
 
   return (
-    <div style={{ padding: 24, width:"100%"}}>
-      <EditableTable title={"Usuarios"} data={usuarios} columns={columns} setData={setUsuarios}
-        onRowDelete={deleteUsuarios}
-        onRowAdd={addUsuario} onRowUpdate={editUsuario}
-        deleteText={"¿Está seguro de eliminar el usuario?"} isLoading={loading} />
-    </div>
+    <Page pageTitle={'Administrador de usuarios'}>
+      <Scrollbar
+        style={{ height: '100%', width: '100%', display: 'flex', flex: 1 }}>
+        <div style={{ padding: 24, width: "100%" }}>
+          <EditableTable title={"Usuarios"} data={usuarios} columns={columns} setData={setUsuarios}
+            onRowDelete={deleteUsuarios}
+            onRowAdd={addUsuario} onRowUpdate={editUsuario}
+            deleteText={"¿Está seguro de eliminar el usuario?"} isLoading={loading} />
+        </div>
+      </Scrollbar>
+      <Footer />
+    </Page>
   )
 }
