@@ -40,6 +40,7 @@ export default function AbmUsuarios() {
     let Usuario = false;
     if (!isEmpty(newUsuario.name) && !isEmpty(newUsuario.email) && !isEmpty(newUsuario.lastname) && !isEmpty(newUsuario.dni) && !isEmpty(newUsuario.password)) {
       Usuario = await guardarUsuario(newUsuario.name, newUsuario.lastname, newUsuario.email, newUsuario.dni, newUsuario.password);
+      window.location.reload(true);
     }
     else {
       alert("Completar todos los datos.")
@@ -47,14 +48,17 @@ export default function AbmUsuarios() {
   }
 
   const editarUsuario = async function (newUsuario) {
-    let Usuario = false;
-    Usuario = await updateUsuario(newUsuario.dni, newUsuario.name, newUsuario.lastname, newUsuario.email, newUsuario.password);
+   let Usuario = false;
+    
+    Usuario = await updateUsuario(newUsuario._id,newUsuario.dni, newUsuario.name, newUsuario.lastname, newUsuario.email, newUsuario.password);
+    window.location.reload(true);
   }
 
   const borrarUsuario = async function (newUsuario) {
     let Usuario = false;
 
     Usuario = await deleteUsuario(newUsuario._id);
+    window.location.reload(true);
     console.log(newUsuario._id)
   }
 
@@ -125,7 +129,8 @@ export default function AbmUsuarios() {
         <div style={{ padding: 24, width: "100%" }}>
           <EditableTable title={"Usuarios"} data={usuarios} columns={columns} setData={setUsuarios}
             onRowDelete={deleteUsuarios}
-            onRowAdd={addUsuario} onRowUpdate={editUsuario}
+            onRowAdd={addUsuario} 
+            onRowUpdate={editUsuario}
             deleteText={"¿Está seguro de eliminar el usuario?"} isLoading={loading} />
         </div>
       </Scrollbar>

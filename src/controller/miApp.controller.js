@@ -23,9 +23,7 @@ export const login = async function (login) {
         });
 
         let rdo = response.status;
-        console.log("response", response);
         let data = await response.json();
-        console.log("jsonresponse", data);
         switch (rdo) {
             case 201:
                 {
@@ -219,7 +217,7 @@ export const guardarUsuario = async function (name, lastname, email, dni, passwo
     formData.append('email', email);
     formData.append('dni', dni);
     formData.append('password', password);
-    window.location.reload(true);
+    //window.location.reload(true);
 
     try {
         let response = await fetch(url, {
@@ -291,8 +289,8 @@ export const deleteUsuario = async function (id_user) {
     console.log("el formData", formData)
     //console.log("el id", id)
     formData.append('id', id_user);
-    window.location.reload(true);
-    
+    //window.location.reload(true);
+
 
 
     try {
@@ -309,8 +307,10 @@ export const deleteUsuario = async function (id_user) {
         });
 
         if (response.status === 201) {
+
             return true;
-            
+
+
         }
         else {
             return false;
@@ -322,7 +322,7 @@ export const deleteUsuario = async function (id_user) {
     };
 }
 
-export const updateUsuario = async function (dni, name, lastname, email, password) {
+export const updateUsuario = async function (id, dni, name, lastname, email, password) {
     //url webservices
     let url = urlWebServices.updateUsuario;
     const formData = new URLSearchParams();
@@ -332,12 +332,13 @@ export const updateUsuario = async function (dni, name, lastname, email, passwor
     console.log(email);
     console.log(password);
 
+    formData.append('id', id);
     formData.append('dni', dni);
     formData.append('name', name);
     formData.append('lastname', lastname);
     formData.append('email', email);
     formData.append('password', password);
-    window.location.reload(true);
+    //window.location.reload(true);
 
 
     try {
@@ -406,16 +407,15 @@ export const getEncuesta = async function () {
 
 //Editar encuestas
 
-export const updateEncuesta = async function (_id,titulo,sector,tamaño) {
+export const updateEncuesta = async function (id,titulo,sector,tamaño) {
     //url webservices
     let url = urlWebServices.updateEncuesta;
     const formData = new URLSearchParams();
 
-    formData.append('_id', _id);
+    formData.append('id', id);
     formData.append('titulo', titulo);
     formData.append('sector', sector);
     formData.append('tamaño', tamaño);
-    window.location.reload(true);
 
     try {
         let response = await fetch(url, {
@@ -432,6 +432,45 @@ export const updateEncuesta = async function (_id,titulo,sector,tamaño) {
 
         if (response.status === 201) {
             return true;
+        }
+        else {
+            return false;
+        }
+    }
+    catch (error) {
+        console.log("error", error);
+        return false;
+    };
+}
+
+export const deleteEncuesta = async function (id_encuesta) {
+    //url webservices
+    let url = urlWebServices.deleteEncuesta;
+    const formData = new URLSearchParams();
+    console.log(url)
+    console.log("el formData", formData)
+    //console.log("el id", id)
+    formData.append('id', id_encuesta);
+    window.location.reload(true);
+    
+
+
+    try {
+        let response = await fetch(url, {
+            method: 'POST', // or 'PUT'
+            mode: "cors",
+            headers: {
+                'Accept': 'application/x-www-form-urlencoded',
+                'x-access-token': localStorage.getItem('x'),
+                'Origin': 'http://localhost:3000',
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: formData
+        });
+
+        if (response.status === 201) {
+            return true;
+            
         }
         else {
             return false;

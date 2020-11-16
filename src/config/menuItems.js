@@ -24,7 +24,7 @@ const getMenuItems = (props) => {
   } = props
   const { isDesktop, isAuthMenuOpen, useMiniMode, setMiniMode } = menuContext
   const { themeID, setThemeID } = themeContext
-  const { auth, setAuth } = authData
+  const { auth } = authData
   const { isAppInstallable, isAppInstalled, deferredPrompt } = a2HSContext
 
   const isAuthorised = auth.isAuthenticated
