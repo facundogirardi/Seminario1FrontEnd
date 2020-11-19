@@ -370,7 +370,7 @@ export const updateUsuario = async function (id, dni, name, lastname, email, pas
 
 //Crear encuestas
 
-export const guardarEncuesta = async function (titulo, sector, tamaño, questions) {
+export const guardarEncuesta = async function (titulo, sector, tamaño, questions, valorReferencia) {
     //url webservices
     let url = urlWebServices.guardarEncuesta;
     const formData = new URLSearchParams();
@@ -379,34 +379,31 @@ export const guardarEncuesta = async function (titulo, sector, tamaño, question
     formData.append('tamaño', tamaño);
 
     console.log("Esta es la lista de preguntas y respuestas:", questions);
-    
+
     var i = 0;
     var j = 0;
-    var respuesta = "P1respuesta";
     var numeroRespuesta = 1;
     var numeroPregunta = 1;
+    var cantidadRes = 1;
+    var cantidadPreguntasRef = 1;
 
     for (i = 0; i < questions.length; i++) {
         const newQuestion = { questionText: questions[i].questionText }
-        console.log("newQuestion.questionText",newQuestion.questionText)
-        formData.append("pregunta"+numeroPregunta,newQuestion.questionText)
-        numeroPregunta++;
+        formData.append("pregunta" + numeroPregunta, newQuestion.questionText)
+        numeroPregunta = numeroPregunta + 1;
+        formData.append("P"+cantidadPreguntasRef+"valorref1", valorReferencia[i])
 
-        //console.log("Pregunta: ", newQuestion.questionText)
-
-        for (j = 0; j < questions[i].options[j].length; j++) {
-            const newAnswer = { optionText: questions[i].options[j].optionText }
-            console.log("newAnswer",newAnswer)
-            formData.append("P1respuesta"+numeroRespuesta, newAnswer.optionText)
-            numeroRespuesta++;
+        for (j = 0; j < questions[i].options.length; j++) {
+            const newAnswer = { options: questions[i].options[j].optionText }
+            formData.append("P"+cantidadRes+"respuesta" + numeroRespuesta, newAnswer.options)
+            numeroRespuesta = numeroRespuesta + 1;
+            
         }
+        cantidadPreguntasRef=cantidadPreguntasRef+1;
+        numeroRespuesta=1;
+        cantidadRes = cantidadRes + 1;
     };
-
-    //formData.append("P1respuesta1", questions[0].options[0])
-    //const newAnswer = { options: questions[0].options[0].optionText }
-    //formData.append("P1respuesta1", newAnswer.options)
-    //console.log("questions.options ", newAnswer.options)
-
+    
     try {
         let response = await fetch(url, {
             method: 'POST', // or 'PUT'
@@ -456,12 +453,12 @@ export const getEncuesta = async function () {
             let data = await response.json();
 
             let listaUsuarios = data.data.docs;
-            console.log("Lista de Usuarios", listaUsuarios);
+            console.log("Lista de Encuestas", listaUsuarios);
             return listaUsuarios;
         }
         else {
             let vacio = [];
-            console.log("No hay usuarios")
+            console.log("No hay encuestas")
             return (vacio);
 
         }

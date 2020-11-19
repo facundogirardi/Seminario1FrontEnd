@@ -29,7 +29,7 @@ const EditableTable = ({ onRowAdd, onRowUpdate, selectedRow, deleteText, data, c
                             }}
                             localization={{
                                 header: {
-                                    actions: "Responder",
+                                    actions: "",
                                 },
                                 toolbar: {
                                     searchPlaceholder: "Busque encuesta"

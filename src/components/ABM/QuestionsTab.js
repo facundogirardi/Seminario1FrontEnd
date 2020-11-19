@@ -50,6 +50,7 @@ function QuestionsTab(props) {
   const [tituloEncuesta, setTituloEncuesta] = React.useState('');
   const [sector, setSector] = React.useState('');
   const [tamaño, setTamaño] = React.useState("");
+  const [valorReferencia, setValorReferencia] = React.useState([]);
 
   const handleTituloEncuesta = (event) => {
     setTituloEncuesta(event.target.value);
@@ -59,6 +60,15 @@ function QuestionsTab(props) {
   }
   const handleTamaño = (event) => {
     setTamaño(event.target.value);
+  }
+  const handleValorReferencia = (event) => {
+    setValorReferencia(event.target.value);
+  }
+
+  function handleValorReferencia2(valor, i) {
+    var valores = [...valorReferencia];
+    valores[i] = valor;
+    setValorReferencia(valores);
   }
 
   const redirect = async () => {
@@ -82,9 +92,9 @@ function QuestionsTab(props) {
   const subirEncuesta = async function () {
     let archivoEncuesta = false;
 
-    if (!isEmpty(tituloEncuesta) && !isEmpty(sector) && !isEmpty(tamaño) && !isEmpty(questions) ) {
+    if (!isEmpty(tituloEncuesta) && !isEmpty(sector) && !isEmpty(tamaño) && !isEmpty(questions) && !isEmpty(valorReferencia) ) {
 
-      archivoEncuesta = await guardarEncuesta(tituloEncuesta, sector, tamaño, questions);
+      archivoEncuesta = await guardarEncuesta(tituloEncuesta, sector, tamaño, questions, valorReferencia);
     }
     else {
       alert("Completar todos los datos.")
@@ -299,9 +309,8 @@ function QuestionsTab(props) {
                         id="titulo"
                         label="Valor de referencia:"
                         variant="outlined"
-                        inputProps={{
-                          //onChange: (event) => handleTituloEncuesta(event),
-                        }}
+                        value={valorReferencia[i]}
+                        onChange={(e) => { handleValorReferencia2(e.target.value, i) }}
                       />
                       <br></br>
                       <br></br>

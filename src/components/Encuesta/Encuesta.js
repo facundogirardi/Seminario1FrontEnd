@@ -14,9 +14,11 @@ import CardContent from '@material-ui/core/CardContent';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import { useHistory } from 'react-router';
-import Formulario from "./Formulario"
-import banner from '../../imagenes/banner1.jpg';
-import TableEncuesta from "./TableEncuesta"
+import EditableTable from "./TableEncuesta"
+import MaterialTable from "material-table";
+import Checkbox from "@material-ui/core/Checkbox";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import banner from '../../imagenes/banner3.jpg';
 
 //importo 
 import { getEncuesta } from "../../controller/miApp.controller";
@@ -80,11 +82,16 @@ const useStylesGrid = makeStyles((theme) => ({
 
 export default function Encuesta() {
   const clase1 = useStylesCards();
+  const clase3 = useStylesText();
   const clase2 = useStylesSelect();
   const clase4 = useStylesButton();
   const clase5 = useStylesGrid();
+
+  const [isVisible, setVisible] = useState(false);
   const [encuestas, setEncuestas] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [data, setData] = useState([encuestas]);
+  const [checked, setChecked] = useState(false);
 
   useEffect(() => {
     getTEncuesta()
@@ -100,6 +107,7 @@ export default function Encuesta() {
 
   const history = useHistory();
   const [sector, setSector] = React.useState('');
+  const [tamaño, setTamaño] = React.useState('');
 
   const getTEncuesta = async () => {
     const encuestas = await getEncuesta()
@@ -108,58 +116,75 @@ export default function Encuesta() {
   };
 
   const handleSector = (event) => {
-    setSector(event.target.value);
+    setSector(event.target.values);
   }
-  const newEncuesta = {
-    id: encuestas.id,
-    titulo: encuestas.titulo,
-    sector: encuestas.sector,
-    tamaño: encuestas.tamaño
-  };
-  console.log("Encuestas", encuestas)
+  const handleTamaño = (event) => {
+    setTamaño(event.target.valuet);
+  }
 
-  const columns = [
-    { title: 'Titulo', field: 'titulo' },
-    { title: 'Sector', field: 'sector' },
+  // prueba
+  const filterValue = value => {
+    if (value) {
+      const filtered = data.filter(d => d.id.trim().length > 0);
+      setData(filtered);
+    } else {
+      setData([encuestas]);
+    }
+    setChecked(value);
+  };
+
+  const columnas = [
+    { title: 'Sector', field: 'sector',
+    filterComponent: props => {
+      console.log("Props: ", props);
+      return (
+        <FormControlLabel
+          control={
+              <Select
+                native
+                pl
+                checked={checked}
+                onChange={e => filterValue(e.target.checked)}
+                onClick={() => setVisible(true)}>
+                <option values={setSector.values} />
+                <option values={"sector1"}>Elaboraciòn de productos alimenticios y/o bebidas</option>
+                <option values={"sector2"}>Fabricación de productos textiles</option>
+                <option values={"sector3"}>Producción de madera y fabricación de productos de madera, corcho y paja, excepto muebles</option>
+                <option values={"sector4"}>Fabricación de papel y productos de papel</option>
+                <option values={"sector5"}>Fabricación de sustancias y productos químicos</option>
+              </Select>
+          }
+          labelPlacement="end"
+        />
+      );
+    }
+  },
+    { title: 'Titulo', field: 'titulo',filtering: false },
+    { title: 'Tamaño', field: 'tamaño',filtering: false },
   ];
 
   return (
-    <Page pageTitle={'API Benchmark - Observatorio Pyme'}>
+    <Page pageTitle={'Usted esta en la ventana de consulta.'}>
       <Scrollbar style={{ height: '93.4%', width: '100%', display: 'flex', flex: 1 }}>
-        <img src={banner} width="100%" height="25%" alt="Logo" />
+      <img src={banner} width="100%" height="25%" alt="Logo" />
         <br />
         <Grid container spacing={3}>
           <Grid item xs={12}>
-            <Paper className={clase5.paper}><h2>Seleccione el sector de su empresa</h2></Paper>
+            <Paper className={clase5.paper}><h2>Realice su consulta</h2></Paper>
           </Grid>
         </Grid>
         <br />
-        <Card className={clase1.root}>
-          <CardContent>
-            <FormControl variant="outlined" className={clase2.formControl}>
-              <InputLabel htmlFor="outlined-age-native-simple">Seleccione el sector de su empresa</InputLabel>
-              <Select
-                native
-                value={encuestas.titulo}
-                onChange={handleSector.value}>
-                <option value={setSector.value} />
-                <option value={"sector1"}>Elaboraciòn de productos alimenticios y/o bebidas</option>
-                <option value={"sector2"}>Fabricación de productos textiles</option>
-                <option value={"sector3"}>Producción de madera y fabricación de productos de madera, corcho y paja, excepto muebles</option>
-                <option value={"sector4"}>Fabricación de papel y productos de papel</option>
-                <option value={"sector5"}>Fabricación de sustancias y productos químicos</option>
-              </Select>
-            </FormControl>
-          </CardContent>
-        </Card>
         <div style={{ padding: 24, width: "100%" }}>
-          <TableEncuesta title={"Encuestas"} data={encuestas} columns={columns} setData={setEncuestas}/>
+          <EditableTable title={"Encuestas"} data={encuestas} columns={columnas} setData={setEncuestas}
+            deleteText={"¿Está seguro de eliminar la encuesta?"} isLoading={loading} />
         </div>
+        <div className="App">
+    </div>
         <Button
           variant="contained"
           color="Primary"
           className={clase4.button}
-          startIcon={<NavigateNextIcon />} 
+          startIcon={<NavigateNextIcon />}
           onClick={() => { redirect() }}
         >
           Siguiente
