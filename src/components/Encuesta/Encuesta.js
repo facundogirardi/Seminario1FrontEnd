@@ -15,6 +15,8 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import { useHistory } from 'react-router';
 import Formulario from "./Formulario"
+import banner from '../../imagenes/banner1.jpg';
+import TableEncuesta from "./TableEncuesta"
 
 //importo 
 import { getEncuesta } from "../../controller/miApp.controller";
@@ -78,12 +80,9 @@ const useStylesGrid = makeStyles((theme) => ({
 
 export default function Encuesta() {
   const clase1 = useStylesCards();
-  const clase3 = useStylesText();
   const clase2 = useStylesSelect();
   const clase4 = useStylesButton();
   const clase5 = useStylesGrid();
-
-  const [isVisible, setVisible] = useState(false);
   const [encuestas, setEncuestas] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -101,8 +100,6 @@ export default function Encuesta() {
 
   const history = useHistory();
   const [sector, setSector] = React.useState('');
-  const [titulo, setTitulo] = React.useState('');
-  const [tamaño, setTamaño] = React.useState("");
 
   const getTEncuesta = async () => {
     const encuestas = await getEncuesta()
@@ -113,28 +110,27 @@ export default function Encuesta() {
   const handleSector = (event) => {
     setSector(event.target.value);
   }
-  const handleTamaño = (event) => {
-    setTamaño(event.target.value);
-  }
-  const handleTitulo = (event) => {
-    setTitulo(event.target.value);
-  }
-
   const newEncuesta = {
     id: encuestas.id,
     titulo: encuestas.titulo,
     sector: encuestas.sector,
     tamaño: encuestas.tamaño
   };
-  console.log(newEncuesta.titulo)
+  console.log("Encuestas", encuestas)
+
+  const columns = [
+    { title: 'Titulo', field: 'titulo' },
+    { title: 'Sector', field: 'sector' },
+  ];
 
   return (
-    <Page pageTitle={'Usted esta en la ventana de consulta.'}>
+    <Page pageTitle={'API Benchmark - Observatorio Pyme'}>
       <Scrollbar style={{ height: '93.4%', width: '100%', display: 'flex', flex: 1 }}>
+        <img src={banner} width="100%" height="25%" alt="Logo" />
         <br />
         <Grid container spacing={3}>
           <Grid item xs={12}>
-            <Paper className={clase5.paper}><h2>Realice su consulta</h2></Paper>
+            <Paper className={clase5.paper}><h2>Seleccione el sector de su empresa</h2></Paper>
           </Grid>
         </Grid>
         <br />
@@ -144,9 +140,8 @@ export default function Encuesta() {
               <InputLabel htmlFor="outlined-age-native-simple">Seleccione el sector de su empresa</InputLabel>
               <Select
                 native
-                value={setSector.value}
-                onChange={handleSector}
-              >
+                value={encuestas.titulo}
+                onChange={handleSector.value}>
                 <option value={setSector.value} />
                 <option value={"sector1"}>Elaboraciòn de productos alimenticios y/o bebidas</option>
                 <option value={"sector2"}>Fabricación de productos textiles</option>
@@ -155,44 +150,16 @@ export default function Encuesta() {
                 <option value={"sector5"}>Fabricación de sustancias y productos químicos</option>
               </Select>
             </FormControl>
-            <br />
-            <br />
-            <FormControl variant="outlined" className={clase2.formControl}>
-              <InputLabel htmlFor="outlined-age-native-simple">Seleccione el tamaño de su empresa</InputLabel>
-              <Select
-                native
-                value={setTamaño.value}
-                onChange={handleTamaño}
-              >
-                <option value={setTamaño.value} />
-                <option value={"pequeña"}>Pequeña</option>
-                <option value={"grande"}>Grande</option>
-              </Select>
-            </FormControl>
-            <br />
-            <br />
-            <FormControl variant="outlined" className={clase2.formControl}>
-              <InputLabel htmlFor="outlined-age-native-simple">Seleccione la encuesta a realizar</InputLabel>
-              <Select
-                native
-                value={encuestas.titulo}
-                onChange={handleTitulo.value}
-                onClick={() => setVisible(true)}
-              >
-                <option value={handleTitulo.value} />
-                <option value={encuestas.titulo}>Titulo de la consulta numero 1</option>
-                <option value={encuestas.titulo}>Titulo de la consulta numero 2</option>
-                <option value={encuestas.titulo}>Titulo de la consulta numero 3</option>
-              </Select>
-            </FormControl>
           </CardContent>
         </Card>
-        {isVisible && <Formulario />}
+        <div style={{ padding: 24, width: "100%" }}>
+          <TableEncuesta title={"Encuestas"} data={encuestas} columns={columns} setData={setEncuestas}/>
+        </div>
         <Button
           variant="contained"
           color="Primary"
           className={clase4.button}
-          startIcon={<NavigateNextIcon />}
+          startIcon={<NavigateNextIcon />} 
           onClick={() => { redirect() }}
         >
           Siguiente

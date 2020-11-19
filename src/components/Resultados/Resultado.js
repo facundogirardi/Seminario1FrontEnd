@@ -1,10 +1,12 @@
-import * as React from 'react';
-import Page from 'material-ui-shell/lib/containers/Page/Page'
+import React, { useEffect, useState } from "react";
 import Scrollbar from 'material-ui-shell/lib/components/Scrollbar/Scrollbar'
+import Page from 'material-ui-shell/lib/containers/Page/Page'
+import Footer from '../Footer/Footer';
+import EditableTable from "./EditableTable"
+import InputLabel from '@material-ui/core/InputLabel';
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import { Link } from 'react-router-dom'
-import Footer from '../Footer/Footer';
 import Doc from './DocService';
 import PdfContainer from './PdfContainer';
 import "./Resultado.css";
@@ -19,6 +21,8 @@ import {
   ValueAxis,
 } from '@devexpress/dx-react-chart-material-ui';
 
+//importo 
+import { getUsuario } from "../../controller/miApp.controller";
 
 const legendStyles = () => ({
   root: {
@@ -41,128 +45,46 @@ const legendLabelBase = ({ classes, ...restProps }) => (
 );
 const Label = withStyles(legendLabelStyles, { name: 'LegendLabel' })(legendLabelBase);
 
+export default function AbmUsuarios() {
+  const [usuarios, setUsuarios] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-export default class Demo extends React.PureComponent {
-  constructor(props) {
+  useEffect(() => {
+    getUser()
+  }, []);
 
-    super(props);
+  const getUser = async () => {
+    const usuarios = await getUsuario()
+    setUsuarios(usuarios)
+    setLoading(false)
+    console.log("usuarios", usuarios)
+  };
 
-    this.state = {
-      data,
-    };
-  }
+  var myJSON = JSON.stringify(usuarios);
+  var myObject = JSON.parse(myJSON);
+  console.log("json",myObject)
 
-  createPdf = (html) => Doc.createPdf(html);
-  
-  render() {
-    const { data: chartData } = this.state;
+  return (
+    <Page pageTitle={'Api Benchmarck'}>
+      <Scrollbar
+        style={{ height: '93.4%', width: '100%', display: 'flex', flex: 1 }}>
 
-    return (
-      
-     
-      <Page pageTitle={'Usted esta en la ventana de los resultados.'}>
-         
-        <Scrollbar
-        style={{ height: '93.4%', width: '100%', display: 'flex', flex: 1 }}
-      >
         <Link to="/Encuesta">
           <button class="block">Realizar otra encuesta</button>
         </Link>
-        <PdfContainer createPdf={this.createPdf}>
-      <Paper>
-        <Chart
-          data={chartData}
-        >
-          <ArgumentAxis />
-          <ValueAxis
-            max={10000}
-          />
+        <br></br>
 
-          <BarSeries
-            name="Pepsi Facturacion"
-            valueField="hydro"
-            argumentField="FacturacionPromedioGeneral"
-          />
-          <BarSeries
-            name="Ferrari Facturacion"
-            valueField="oil"
-            argumentField="FacturacionPromedioGeneral"
-          />
-          <BarSeries
-            name="Ford Facturacion"
-            valueField="gas"
-            argumentField="FacturacionPromedioGeneral"
-          />
-          <BarSeries
-            name="Coca Cola Facturacion"
-            valueField="coal"
-            argumentField="FacturacionPromedioGeneral"
-          />
-          <BarSeries
-            name="Nissan Facturacion"
-            valueField="nuclear"
-            argumentField="FacturacionPromedioGeneral"
-          />
-          <Animation />
-          
-          <Legend position="bottom" rootComponent={Root} labelComponent={Label} />
-          <Title  fontFamily= "Bauer Bodoni" text="Dashboard sobre la facturacion promedio general dentro del rubro." />
-          <Stack
-            stacks={[
-              { series: ['Pepsi', 'Ferrari', 'Ford', 'Coca-Cola', 'Nissan'] },
-            ]}
-          />
-        </Chart>
-      </Paper>
-      <Paper>
-        <Chart
-          data={chartData}
-        >
-          <ArgumentAxis />
-          <ValueAxis
-            max={10000}
-          />
-          <BarSeries
-            name="Pepsi Pedidos"
-            valueField="hydro"
-            argumentField="CarteraDePedidosPromedioGeneral"
-          />
-          <BarSeries
-            name="Ferrari Pedidos"
-            valueField="oil"
-            argumentField="CarteraDePedidosPromedioGeneral"
-          />
-          <BarSeries
-            name="Ford Pedidos"
-            valueField="gas"
-            argumentField="CarteraDePedidosPromedioGeneral"
-          />
-          <BarSeries
-            name="Coca Cola Pedidos"
-            valueField="coal"
-            argumentField="CarteraDePedidosPromedioGeneral"
-          />
-          <BarSeries
-            name="Nissan Pedidos"
-            valueField="nuclear"
-            argumentField="CarteraDePedidosPromedioGeneral"
-          />
-          <Animation />
-          <Legend position="bottom" rootComponent={Root} labelComponent={Label} />
-          <Title  fontFamily= "Bauer Bodoni" text="Dashboard sobre la cartera de pedidos promedio general dentro del rubro." />
-          <Stack
-            stacks={[
-              { series: ['Pepsi', 'Ferrari', 'Ford', 'Coca-Cola', 'Nissan'] },
-            ]}
-          />
-        </Chart>
-      </Paper>       
-      </PdfContainer>
-    </Scrollbar>
- 
-    <Footer/>
-    </Page>
-           
-    );
-  }
+        <span>
+          <h3>El resultado de su encuesta es :</h3>
+
+          hola
+
+        </span>
+
+
+
+      </Scrollbar>
+      <Footer />
+    </Page >
+  )
 }

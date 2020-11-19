@@ -21,7 +21,8 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import Paper from '@material-ui/core/Paper';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
-import {useHistory} from 'react-router';
+import { useHistory } from 'react-router';
+import banner from '../../imagenes/banner2.jpg';
 
 //importo llamada a endpoint
 import { guardarContacto } from "../../controller/miApp.controller";
@@ -112,7 +113,6 @@ export default function Encuesta() {
     if (stringToValidate !== undefined && stringToValidate !== null) {
       return stringToValidate.length === 0
     }
-
     return true;
   };
 
@@ -126,13 +126,26 @@ export default function Encuesta() {
     console.log("email", email);
     console.log("region", region);
     console.log("tamaño", tamaño);
-    if (!isEmpty(razonsocial) && !isEmpty(email) && !isEmpty(region) && !isEmpty(tamaño)) {
 
+    const validateValidEmail = (stringToValidate) => {
+      
+      if (typeof stringToValidate !== undefined) {
+        let lastAtPos = stringToValidate.lastIndexOf('@');
+        let lastDotPos = stringToValidate.lastIndexOf('.');
+        if (!(lastAtPos < lastDotPos && lastAtPos > 0 && stringToValidate.indexOf('@@') === -1 && lastDotPos > 2 && (stringToValidate.length - lastDotPos) > 2)) {
+          return stringToValidate.length === 0
+        }
+      }
+      return true;
+    };
+
+    if (!isEmpty(razonsocial) && !isEmpty(region) && validateValidEmail(email) && !isEmpty(tamaño)) {
       archivoDatos = await guardarContacto(razonsocial, email, region, tamaño);
     }
-    else{
-      alert("Completar todos los datos")
+    else {
+      alert("Verificar que los datos esten completados correctamente")
     }
+    
     return archivoDatos
   }
 
@@ -143,11 +156,12 @@ export default function Encuesta() {
     }
   }
 
-  
+
 
   return (
-    <Page pageTitle={'Usted esta en la ventana de Contacto'}>
+    <Page pageTitle={'API Benchmark - Observatorio Pyme'}>
       <Scrollbar style={{ height: '93.4%', width: '100%', display: 'flex', flex: 1 }}>
+        <img src={banner} width="100%" height="25%" alt="Logo" />
         <br />
         <Grid container spacing={3}>
           <Grid item xs={12}>
@@ -174,50 +188,47 @@ export default function Encuesta() {
                   onChange: (event) => handleEmail(event),
                 }}
               />
-      <FormControl className={classes.formControl}>
-        <InputLabel id="demo-simple-select-label">Region *</InputLabel>
-        <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          value={region}
-          onChange={handleChange}
-        >
-          <MenuItem value={"Buenos Aires"}>Buenos Aires</MenuItem>
-          <MenuItem value={"Cuidad Autonoma de Buenos Aires"}>Cuidad Autonoma de Buenos Aires</MenuItem>
-          <MenuItem value={"Catamarca"}>Catamarca</MenuItem>
-          <MenuItem value={"Chaco"}>Chaco</MenuItem>
-          <MenuItem value={"Chubut"}>Chubut</MenuItem>
-          <MenuItem value={"Córdoba"}>Córdoba</MenuItem>
-          <MenuItem value={"Corrientes"}>Corrientes</MenuItem>
-          <MenuItem value={"Entre Ríos"}>Entre Ríos</MenuItem>
-          <MenuItem value={"Formosa"}>Formosa</MenuItem>
-          <MenuItem value={"Jujuy"}>Jujuy</MenuItem>
-          <MenuItem value={"La Pampa"}>La Pampa</MenuItem>
-          <MenuItem value={"La Rioja"}>La Rioja</MenuItem>
-          <MenuItem value={"Mendoza"}>Mendoza</MenuItem>
-          <MenuItem value={"Misiones"}>Misiones</MenuItem>
-          <MenuItem value={"Neuquén"}>Río Negro</MenuItem>
-          <MenuItem value={"Río Negro"}>Río Negro</MenuItem>
-          <MenuItem value={"Salta"}>Salta</MenuItem>
-          <MenuItem value={"San Juan"}>San Juan</MenuItem>
-          <MenuItem value={"San Luis"}>San Luis</MenuItem>
-          <MenuItem value={"Santa Cruz"}>Santa Cruz</MenuItem>
-          <MenuItem value={"Santa Fe"}>Santa Fe</MenuItem>
-          <MenuItem value={"Santiago del Estero"}>Santiago del Estero</MenuItem>
-          <MenuItem value={"Tierra del Fuego, Antártida e Isla del Atlántico Sur"}>Tierra del Fuego, Antártida e Isla del Atlántico Sur</MenuItem>
-          <MenuItem value={"Tucumán"}>Tucumán</MenuItem>
-        </Select>
-      </FormControl>
+              <FormControl className={classes.formControl}>
+                <InputLabel id="demo-simple-select-label">Region *</InputLabel>
+                <Select
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
+                  value={region}
+                  onChange={handleChange}
+                >
+                  <MenuItem value={"Buenos Aires"}>Buenos Aires</MenuItem>
+                  <MenuItem value={"Cuidad Autonoma de Buenos Aires"}>Cuidad Autonoma de Buenos Aires</MenuItem>
+                  <MenuItem value={"Catamarca"}>Catamarca</MenuItem>
+                  <MenuItem value={"Chaco"}>Chaco</MenuItem>
+                  <MenuItem value={"Chubut"}>Chubut</MenuItem>
+                  <MenuItem value={"Córdoba"}>Córdoba</MenuItem>
+                  <MenuItem value={"Corrientes"}>Corrientes</MenuItem>
+                  <MenuItem value={"Entre Ríos"}>Entre Ríos</MenuItem>
+                  <MenuItem value={"Formosa"}>Formosa</MenuItem>
+                  <MenuItem value={"Jujuy"}>Jujuy</MenuItem>
+                  <MenuItem value={"La Pampa"}>La Pampa</MenuItem>
+                  <MenuItem value={"La Rioja"}>La Rioja</MenuItem>
+                  <MenuItem value={"Mendoza"}>Mendoza</MenuItem>
+                  <MenuItem value={"Misiones"}>Misiones</MenuItem>
+                  <MenuItem value={"Neuquén"}>Río Negro</MenuItem>
+                  <MenuItem value={"Río Negro"}>Río Negro</MenuItem>
+                  <MenuItem value={"Salta"}>Salta</MenuItem>
+                  <MenuItem value={"San Juan"}>San Juan</MenuItem>
+                  <MenuItem value={"San Luis"}>San Luis</MenuItem>
+                  <MenuItem value={"Santa Cruz"}>Santa Cruz</MenuItem>
+                  <MenuItem value={"Santa Fe"}>Santa Fe</MenuItem>
+                  <MenuItem value={"Santiago del Estero"}>Santiago del Estero</MenuItem>
+                  <MenuItem value={"Tierra del Fuego, Antártida e Isla del Atlántico Sur"}>Tierra del Fuego, Antártida e Isla del Atlántico Sur</MenuItem>
+                  <MenuItem value={"Tucumán"}>Tucumán</MenuItem>
+                </Select>
+              </FormControl>
             </form>
             <br /> <br />
             <FormControl component="fieldset">
               <FormLabel component="legend">Tamaño de su empresa *</FormLabel>
               <RadioGroup onChange={handleTamaño}>
-                <FormControlLabel required value="Micro" control={<Radio />} label="Micro: 0-9 ocupados" />
-                <FormControlLabel required value="Pequeña" control={<Radio />} label="Pequeña: 10-50 ocupados" />
-                <FormControlLabel required value="Mediana" control={<Radio />} label="Mediana: 51-250 ocupados" />
-                <FormControlLabel required value="Mediana Grande" control={<Radio />} label="Mediana Grande: 251-800 ocupados" />
-                <FormControlLabel required value="Grande" control={<Radio />} label="Grande: Más de 800 ocupados" />
+                <FormControlLabel required value="Pequeña" control={<Radio />} label="Pequeña: < 50 empleados" />
+                <FormControlLabel required value="Mediana" control={<Radio />} label="Mediana: < 250 empleados" />
               </RadioGroup>
             </FormControl>
           </CardContent>
@@ -232,14 +243,14 @@ export default function Encuesta() {
             Atras
       </Button>
         </Link>
-          <Button
-            variant="contained"
-            color="Primary"
-            className={clase4.submit}
-            startIcon={<TimelineIcon />}
-            onClick={() => { redirect() }}
-          >
-            Generar resultados
+        <Button
+          variant="contained"
+          color="Primary"
+          className={clase4.submit}
+          startIcon={<TimelineIcon />}
+          onClick={() => { redirect() }}
+        >
+          Generar resultados
       </Button>
       </Scrollbar>
       <Footer />

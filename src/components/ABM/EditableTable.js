@@ -37,12 +37,6 @@ const EditableTable = ({onRowAdd, onRowUpdate, onRowDelete, deleteText, data, co
                                 },
                             }}
                             editable={{
-                                onRowUpdate: (newData, oldData) =>
-                                    new Promise((resolve, reject) => {
-                                        setTimeout(() => {
-                                            onRowUpdate(oldData, newData, resolve)
-                                        }, 1000)
-                                    }),
                                 onRowDelete: oldData =>
                                     new Promise((resolve, reject) => {
                                         setTimeout(() => {

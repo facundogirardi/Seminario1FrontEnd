@@ -3,17 +3,19 @@ import "react-sweet-progress/lib/style.css";
 import MaterialTable from "material-table";
 import CircularProgress from "@material-ui/core/CircularProgress/CircularProgress";
 
-const EditableTable = ({onRowAdd, onRowUpdate, onRowDelete, deleteText, data, columns, setData, title, loading, options}) => {
+
+
+const EditableTable = ({ onRowAdd, onRowUpdate, selectedRow, deleteText, data, columns, setData, title, loading, options }) => {
 
     return (
         <>
             {
                 loading ?
-                    <CircularProgress/>
+                    <CircularProgress />
                     :
                     (
-
                         <MaterialTable
+                            icons={{ Filter: () => <div /> }} // 
                             title={title}
                             columns={columns}
                             paging
@@ -27,38 +29,33 @@ const EditableTable = ({onRowAdd, onRowUpdate, onRowDelete, deleteText, data, co
                             }}
                             localization={{
                                 header: {
-                                    actions: "Acciones",
+                                    actions: "Responder",
                                 },
                                 toolbar: {
-                                    searchPlaceholder: "Busque usuario"
+                                    searchPlaceholder: "Busque encuesta"
                                 },
                                 body: {
                                     editRow: {
-                                        deleteText:
-                                        deleteText,
+                                        deleteText: deleteText,
                                     },
                                 },
                             }}
                             editable={{
-                                onRowAdd: newData =>
-                                    new Promise((resolve, reject) => {
-                                        setTimeout(() => {
-                                            onRowAdd(newData, resolve);
-                                        }, 1000)
-                                    }),
                                 onRowUpdate: (newData, oldData) =>
                                     new Promise((resolve, reject) => {
                                         setTimeout(() => {
                                             onRowUpdate(oldData, newData, resolve)
                                         }, 1000)
                                     }),
-                                onRowDelete: oldData =>
-                                    new Promise((resolve, reject) => {
-                                        setTimeout(() => {
-                                            onRowDelete(oldData, resolve);
-                                        }, 1000)
-                                    }),
                             }}
+                            options={{
+                                searchable: false,
+                                filtering: true,
+                                grouping: false,
+                                search:false,
+                                showTextRowsSelected: true,
+                                //filterComponent: (props) => <CustomDatePicker {...props} />,
+                              }}
                         />
                     )
             }

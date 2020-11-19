@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import Scrollbar from 'material-ui-shell/lib/components/Scrollbar/Scrollbar'
 import Page from 'material-ui-shell/lib/containers/Page/Page'
 import Footer from '../Footer/Footer';
-//import BasicTable from './tabla_admin'
-//import Altausuario from './Altausuario'
 import EditableTable from "./EditableTable"
+import { Link } from 'react-router-dom'
 import { Button } from "@material-ui/core";
+import "./ABM.css"
 
 //importo 
 import { getEncuesta } from "../../controller/miApp.controller";
@@ -29,7 +29,7 @@ export default function AbmEncuestas() {
   const editarEncuesta = async function (newEncuesta) {
     let Encuesta = false;
     Encuesta = await updateEncuesta(newEncuesta._id, newEncuesta.titulo, newEncuesta.sector, newEncuesta.tamaño);
-    window.location.reload(true);
+    //window.location.reload(true);
   }
 
   const borrarEncuesta = async function (newEncuesta) {
@@ -47,7 +47,7 @@ export default function AbmEncuestas() {
   };
 
   const editEncuesta = (oldEncuesta, encuesta, resolve) => {
-    const newEncuesta = { id: encuesta.id, titulo: encuesta.titulo, sector: encuesta.sector, tamaño: encuesta.tamaño };
+    const newEncuesta = { _id: encuesta._id, titulo: encuesta.titulo, sector: encuesta.sector, tamaño: encuesta.tamaño };
     editarEncuesta(newEncuesta)
     console.log("aca edito la encuesta", encuesta)
     resolve();
@@ -64,7 +64,9 @@ export default function AbmEncuestas() {
       <Scrollbar
         style={{ height: '100%', width: '100%', display: 'flex', flex: 1 }}>
         <br/>
+        <Link to="/NuevaEncuesta">
         <Button variant="contained" color="secondary" fullWidth="true">Generar Nueva Encuesta</Button>
+        </Link>
         <div style={{ padding: 24, width: "100%" }}>
           <EditableTable title={"Encuestas"} data={encuestas} columns={columns} setData={setEncuestas}
             onRowDelete={deleteEncuestas}

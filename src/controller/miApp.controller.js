@@ -262,11 +262,12 @@ export const getUsuario = async function () {
                 'Content-Type': 'application/x-www-form-urlencoded'
             },
         });
+
         if (response.status === 200) {
             let data = await response.json();
 
             let listaUsuarios = data.data.docs;
-            console.log("Lista de Usuarios", listaUsuarios);
+            console.log("Lista de Usuarios", data.data.docs);
             return listaUsuarios;
         }
         else {
@@ -367,6 +368,71 @@ export const updateUsuario = async function (id, dni, name, lastname, email, pas
     };
 }
 
+//Crear encuestas
+
+export const guardarEncuesta = async function (titulo, sector, tamaño, questions) {
+    //url webservices
+    let url = urlWebServices.guardarEncuesta;
+    const formData = new URLSearchParams();
+    formData.append('titulo', titulo);
+    formData.append('sector', sector);
+    formData.append('tamaño', tamaño);
+
+    console.log("Esta es la lista de preguntas y respuestas:", questions);
+    
+    var i = 0;
+    var j = 0;
+    var respuesta = "P1respuesta";
+    var numeroRespuesta = 1;
+    var numeroPregunta = 1;
+
+    for (i = 0; i < questions.length; i++) {
+        const newQuestion = { questionText: questions[i].questionText }
+        console.log("newQuestion.questionText",newQuestion.questionText)
+        formData.append("pregunta"+numeroPregunta,newQuestion.questionText)
+        numeroPregunta++;
+
+        //console.log("Pregunta: ", newQuestion.questionText)
+
+        for (j = 0; j < questions[i].options[j].length; j++) {
+            const newAnswer = { optionText: questions[i].options[j].optionText }
+            console.log("newAnswer",newAnswer)
+            formData.append("P1respuesta"+numeroRespuesta, newAnswer.optionText)
+            numeroRespuesta++;
+        }
+    };
+
+    //formData.append("P1respuesta1", questions[0].options[0])
+    //const newAnswer = { options: questions[0].options[0].optionText }
+    //formData.append("P1respuesta1", newAnswer.options)
+    //console.log("questions.options ", newAnswer.options)
+
+    try {
+        let response = await fetch(url, {
+            method: 'POST', // or 'PUT'
+            mode: "cors",
+            headers: {
+                'Accept': 'application/x-www-form-urlencoded',
+                //'x-access-token': localStorage.getItem('x'),
+                'Origin': 'http://localhost:3000',
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: formData
+        });
+
+        if (response.status === 201) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    catch (error) {
+        console.log("error", error);
+        return false;
+    };
+}
+
 // Traer encuestas
 
 export const getEncuesta = async function () {
@@ -407,7 +473,7 @@ export const getEncuesta = async function () {
 
 //Editar encuestas
 
-export const updateEncuesta = async function (id,titulo,sector,tamaño) {
+export const updateEncuesta = async function (id, titulo, sector, tamaño) {
     //url webservices
     let url = urlWebServices.updateEncuesta;
     const formData = new URLSearchParams();
@@ -443,6 +509,8 @@ export const updateEncuesta = async function (id,titulo,sector,tamaño) {
     };
 }
 
+//Borrar encuestas
+
 export const deleteEncuesta = async function (id_encuesta) {
     //url webservices
     let url = urlWebServices.deleteEncuesta;
@@ -452,7 +520,7 @@ export const deleteEncuesta = async function (id_encuesta) {
     //console.log("el id", id)
     formData.append('id', id_encuesta);
     window.location.reload(true);
-    
+
 
 
     try {
@@ -470,7 +538,7 @@ export const deleteEncuesta = async function (id_encuesta) {
 
         if (response.status === 201) {
             return true;
-            
+
         }
         else {
             return false;
