@@ -18,7 +18,7 @@ import { getEncuesta } from "../../controller/miApp.controller";
 const useStylesButton = makeStyles((theme) => ({
   button: {
     margin: theme.spacing(2),
-    width: "98%",
+    width: "100%",
   },
 }));
 
@@ -29,8 +29,7 @@ const useStylesGrid = makeStyles((theme) => ({
   paper: {
     padding: theme.spacing(2),
     textAlign: 'center',
-    width: "98%",
-    margin: "0 10px",
+    width: "100%",
     color: theme.palette.text.secondary,
   },
 }));
@@ -101,15 +100,6 @@ export default function Encuesta() {
         </div>
         <div className="App">
         </div>
-        <Button
-          variant="contained"
-          color="Primary"
-          className={clase4.button}
-          startIcon={<NavigateNextIcon />}
-          onClick={() => { redirect() }}
-        >
-          Siguiente
-      </Button>
       </Scrollbar>
       <Footer />
     </Page>

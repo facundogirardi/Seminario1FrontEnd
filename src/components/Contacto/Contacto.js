@@ -29,8 +29,8 @@ import { guardarContacto } from "../../controller/miApp.controller";
 
 const useStylesButton = makeStyles((theme) => ({
   button: {
-    margin: theme.spacing(3),
-    width: "47%",
+    margin: theme.spacing(2),
+    width: "98%",
   },
 }));
 
@@ -227,16 +227,6 @@ export default function Encuesta() {
             </FormControl>
           </CardContent>
         </Card>
-        <Link to="/Encuesta">
-          <Button
-            variant="contained"
-            color="Primary"
-            className={clase4.button}
-            startIcon={<ArrowBackIosIcon />}
-          >
-            Atras
-      </Button>
-        </Link>
         <Button
           variant="contained"
           color="Primary"
