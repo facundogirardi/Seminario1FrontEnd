@@ -293,6 +293,64 @@ export const guardarEncuesta = async function (titulo, sector, tamaño, question
     };
 }
 
+//Crear encuestas respuesta
+export const guardarEncuestaResp = async function (titulo, sector, tamaño, questions, valorReferencia) {
+
+    let url = urlWebServices.guardarEncuesta;
+    const formData = new URLSearchParams();
+    formData.append('titulo', titulo);
+    formData.append('sector', sector);
+    formData.append('tamaño', tamaño);
+
+    var i = 0;
+    var j = 0;
+    var numeroRespuesta = 1;
+    var numeroPregunta = 1;
+    var cantidadRes = 1;
+    var cantidadPreguntasRef = 1;
+
+    for (i = 0; i < questions.length; i++) {
+        const newQuestion = { questionText: questions[i].questionText }
+        formData.append("pregunta" + numeroPregunta, newQuestion.questionText)
+        numeroPregunta = numeroPregunta + 1;
+        formData.append("P" + cantidadPreguntasRef + "valorref1", valorReferencia[i])
+
+        for (j = 0; j < questions[i].options.length; j++) {
+            const newAnswer = { options: questions[i].options[j].optionText }
+            formData.append("P" + cantidadRes + "respuesta" + numeroRespuesta, newAnswer.options)
+            numeroRespuesta = numeroRespuesta + 1;
+
+        }
+        cantidadPreguntasRef = cantidadPreguntasRef + 1;
+        numeroRespuesta = 1;
+        cantidadRes = cantidadRes + 1;
+    };
+
+    try {
+        let response = await fetch(url, {
+            method: 'POST', // or 'PUT'
+            mode: "cors",
+            headers: {
+                'Accept': 'application/x-www-form-urlencoded',
+                'Origin': 'http://localhost:3000',
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: formData
+        });
+
+        if (response.status === 201) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    catch (error) {
+        console.log("error", error);
+        return false;
+    };
+}
+
 // Traer encuestas
 export const getEncuesta = async function () {
     let url = urlWebServices.getEncuesta;
