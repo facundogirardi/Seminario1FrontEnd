@@ -61,4 +61,4 @@ Se probo en los siguientes navegadores:
 - GIT: <https://gitlab.com/facundogirardi/aplicaciones-interactivas-backend>
 
 ## Flujo
-![Product Presentation Image](https://i.ibb.co/wpcQydJ/Flujo.png)
+![Product Presentation Image](https://i.ibb.co/HF4scZD/Flujo.png)
