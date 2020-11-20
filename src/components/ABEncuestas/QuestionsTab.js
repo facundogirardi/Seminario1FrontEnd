@@ -76,7 +76,7 @@ function QuestionsTab(props) {
     //const ok = true
     if (ok) {
       alert("Encuesta subida a la Base de datos.")
-      history.push("/ABM")
+      history.push("/ABEncuestas")
       console.log("Encuesta subida a la base de datos.")
     }
   }

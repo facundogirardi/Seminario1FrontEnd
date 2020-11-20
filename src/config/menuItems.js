@@ -50,10 +50,10 @@ const getMenuItems = (props) => {
         leftIcon: <HomeIcon />,
         },
         {
-          value: '/ABM',
+          value: '/ABEncuestas',
           visible: isAuthorised,
           primaryText: intl.formatMessage({
-            id: 'ABM',
+            id: 'ABEncuestas',
           }),
           leftIcon: <CreateIcon />,
         },
@@ -125,10 +125,10 @@ const getMenuItems = (props) => {
         leftIcon: <HomeIcon />,
         },
       {
-        value: '/ABM',
+        value: '/ABEncuestas',
         visible: false,
         primaryText: intl.formatMessage({
-          id: 'ABM Encuestas',
+          id: 'AB Encuestas',
         }),
         leftIcon: <FormatListNumberedIcon />,
       },

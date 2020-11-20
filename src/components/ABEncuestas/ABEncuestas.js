@@ -5,7 +5,7 @@ import Footer from '../Footer/Footer';
 import EditableTable from "./EditableTable"
 import { Link } from 'react-router-dom'
 import { Button } from "@material-ui/core";
-import "./ABM.css"
+import "./ABEncuestas.css"
 
 //importo 
 import { getEncuesta } from "../../controller/miApp.controller";

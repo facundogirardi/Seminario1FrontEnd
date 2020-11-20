@@ -115,7 +115,7 @@ export default function SignIn(props) {
       return <Redirect to="/Administrador" />
     }
     else if(usuarioValido) {
-      return <Redirect to="/ABM" />
+      return <Redirect to="/ABEncuestas" />
     }
   }
 
