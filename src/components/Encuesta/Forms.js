@@ -110,9 +110,9 @@ export default function Forms() {
                 <br/>
                 <RadioGroup aria-label="gender" name="gender1" value={cambiar} onChange={handleCambiar}>
                     <center>
-                    <FormControlLabel value="female" control={<Radio />} label="Todos." />
-                    <FormControlLabel value="male" control={<Radio />} label="Algunos." />
-                    <FormControlLabel value="other" control={<Radio />} label="Ninguno." />
+                    <FormControlLabel value="female" control={<Radio />} label="10%" />
+                    <FormControlLabel value="male" control={<Radio />} label="20%%" />
+                    <FormControlLabel value="other" control={<Radio />} label="100%" />
                     </center>
                 </RadioGroup>
                 <br/>

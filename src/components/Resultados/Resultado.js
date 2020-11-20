@@ -9,10 +9,10 @@ import banner from '../../imagenes/banner4.png';
 // Viene de la respuesta del cuestionario (JSON)
 const pregunta1 = "Como estuvo el porcentaje de ventas en los ultimos 6 meses?"
 const respuesta1 = "Decrecio un 30%"
-const valorreferencia1 = "Bajo un 15%"
+const valorreferencia1 = "15%"
 const pregunta2 = "Debido a la pandemia, cuantos empleados se encuentran en home office?"
-const respuesta2 = "Algunos"
-const valorreferencia2 = "Todos"
+const respuesta2 = "20%"
+const valorreferencia2 = "20%"
 
 
 function Forms(props) {
@@ -32,8 +32,8 @@ function Forms(props) {
          <h2>Muchas gracias por utilizar nuestro Benchmarck</h2>
          <h4>El resultado de su encuesta es :</h4>
           <br></br>
-          <p>Pregunta 1, "{pregunta1}", usted selecciono {respuesta1}, valor general {valorreferencia1}. </p>        
-          <p>Pregunta 2, "{pregunta2}", usted selecciono {respuesta2}, valor general {valorreferencia2}. </p>    
+          <p>Pregunta 1, <b>"{pregunta1}"</b>, selecciono <b>{respuesta1}</b>, usted se encuestra por encima del parametro valor general. </p>        
+          <p>Pregunta 2, <b>"{pregunta2}"</b>, selecciono <b>{respuesta2}</b>, usted se encuestra dentro del parametro valor general. </p>    
 
         </span>
 
