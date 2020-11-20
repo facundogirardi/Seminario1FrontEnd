@@ -1,7 +1,7 @@
  ![version](https://img.shields.io/badge/version-1.0.0-blue.svg) 
 
 ## Presentacion del producto
-![Product Presentation Image](https://i.ibb.co/xFPczJJ/Portada.png)
+![Product Presentation Image](https://i.ibb.co/BzWtgP6/2020-11-20-09-37-06-Window.png)
 
 ## Descripcion
 
@@ -32,12 +32,22 @@ https://www.observatoriopyme.org.ar/la-fundacion/historia-y-actualidad/
 
 ## Instalacion
 
+## FrontEnd
+
 * Descargar la aplicacion del repositorio https://gitlab.com/facundogirardi/api-benchmarking
 * En la carpeta del proyecto ejecutar <b>npm install</b>
 * <b>cd</b> aplicaciones-interactivas
 * Luego dar <b>npm start</b>
 * Se levantará en local http://localhost:3000/
 
+## BackEnd
+
+* El backend de la aplicacion se encuesta en ek siguiente repositorio https://gitlab.com/facundogirardi/aplicaciones-interactivas-backend
+* En la carpeta del proyecto ejecutar <b>npm install</b>
+* <b>cd</b> aplicaciones-interactivas
+* Luego dar <b>npm start</b> o <b>nodemon --exec npm start</b> (Requiere tener instalado el nodemon*)
+* Se levantará en local http://localhost:4000/
+* Tambien se encueetra hosteado en Heroku https://api-benchmark-back.herokuapp.com/
 
 ## Navegadores soportados
 
@@ -50,4 +60,4 @@ Se probo en los siguientes navegadores:
 - GIT: <https://gitlab.com/facundogirardi/api-benchmarking>
 
 ## Flujo
-![Product Presentation Image](https://i.ibb.co/tsZJYG6/Flujo.png)
+![Product Presentation Image](https://i.ibb.co/wpcQydJ/Flujo.png)
