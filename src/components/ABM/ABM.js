@@ -10,7 +10,6 @@ import "./ABM.css"
 //importo 
 import { getEncuesta } from "../../controller/miApp.controller";
 import { deleteEncuesta } from "../../controller/miApp.controller";
-import { updateEncuesta } from "../../controller/miApp.controller";
 
 export default function AbmEncuestas() {
   const [encuestas, setEncuestas] = useState([]);
@@ -26,31 +25,18 @@ export default function AbmEncuestas() {
     setLoading(false)
   };
 
-  const editarEncuesta = async function (newEncuesta) {
-    let Encuesta = false;
-    Encuesta = await updateEncuesta(newEncuesta._id, newEncuesta.titulo, newEncuesta.sector, newEncuesta.tamaño);
-    //window.location.reload(true);
-  }
-
   const borrarEncuesta = async function (newEncuesta) {
     let Encuesta = false;
+    window.location.reload(true);
 
     Encuesta = await deleteEncuesta(newEncuesta._id, newEncuesta.titulo, newEncuesta.sector, newEncuesta.tamaño);
-    console.log(newEncuesta._id)
   }
 
   const deleteEncuestas = (encuesta, resolve) => {
     const newEncuesta = { _id: encuesta._id };
     borrarEncuesta(newEncuesta)
-    console.log("Aca elimino la encuesta.", encuesta)
     resolve()
-  };
-
-  const editEncuesta = (oldEncuesta, encuesta, resolve) => {
-    const newEncuesta = { _id: encuesta._id, titulo: encuesta.titulo, sector: encuesta.sector, tamaño: encuesta.tamaño };
-    editarEncuesta(newEncuesta)
-    console.log("aca edito la encuesta", encuesta)
-    resolve();
+        window.location.reload(true);
   };
 
   const columns = [
@@ -63,14 +49,13 @@ export default function AbmEncuestas() {
     <Page pageTitle={'Administrador de encuestas'}>
       <Scrollbar
         style={{ height: '100%', width: '100%', display: 'flex', flex: 1 }}>
-        <br/>
+        <br />
         <Link to="/NuevaEncuesta">
-        <Button variant="contained" color="secondary" fullWidth="true">Generar Nueva Encuesta</Button>
+          <Button variant="contained" color="secondary" fullWidth="true">Generar Nueva Encuesta</Button>
         </Link>
         <div style={{ padding: 24, width: "100%" }}>
           <EditableTable title={"Encuestas"} data={encuestas} columns={columns} setData={setEncuestas}
             onRowDelete={deleteEncuestas}
-            onRowUpdate={editEncuesta}
             deleteText={"¿Está seguro de eliminar la encuesta?"} isLoading={loading} />
         </div>
       </Scrollbar>

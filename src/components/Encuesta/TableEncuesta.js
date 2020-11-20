@@ -1,6 +1,5 @@
 import React from "react";
 import "react-sweet-progress/lib/style.css";
-import AssessmentIcon from '@material-ui/icons/Assessment';
 import MaterialTable from "material-table";
 import CircularProgress from "@material-ui/core/CircularProgress/CircularProgress";
 

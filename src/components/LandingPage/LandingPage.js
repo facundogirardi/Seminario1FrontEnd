@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import fondo from '../../imagenes/fondo1.jpg';
 import logo from '../../imagenes/logo.png';
 import fotoDashboard from '../../imagenes/header-teamwork.png';
 import { makeStyles } from '@material-ui/core/styles';

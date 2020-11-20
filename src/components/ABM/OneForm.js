@@ -29,7 +29,6 @@ export default function OneForm(props) {
     const [form, setForm] = React.useState({})
 
     React.useEffect(() => {
-        //console.log(props.formData)
         setForm(props.formData)
     }, [props.formData])
 

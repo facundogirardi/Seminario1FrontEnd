@@ -1,7 +1,7 @@
  ![version](https://img.shields.io/badge/version-1.0.0-blue.svg) 
 
 ## Presentacion del producto
-![Product Presentation Image](https://i.ibb.co/xFPczJJ/Portada.png)
+![Product Presentation Image](https://i.ibb.co/BzWtgP6/2020-11-20-09-37-06-Window.png)
 
 ## Descripcion
 
@@ -12,7 +12,7 @@ https://www.observatoriopyme.org.ar/la-fundacion/historia-y-actualidad/
 ## Tabla de contenidos
 
 * [Integrantes](#Integrantes)
-* [Version](#Version)
+* [Tecnologia](#Tecnologia)
 * [Instalacion](#Instalacion)
 * [Navegadores soportados](#Navegadores-soportados)
 * [Recursos](#Recursos)
@@ -26,11 +26,13 @@ https://www.observatoriopyme.org.ar/la-fundacion/historia-y-actualidad/
 * Marchant Rojas, Luis Jose Javier      <b>Legajo : 1042891</b>
 * Venzmer, Nicolas Alejandro            <b>Legajo : 1076345</b>
 
-## Version
+## Tecnologia
 
 <img src="https://github.com/creativetimofficial/public-assets/blob/master/logos/html-logo.jpg?raw=true" width="64" height="64" /><img src="https://github.com/creativetimofficial/public-assets/blob/master/logos/react-logo.jpg?raw=true" width="64" height="64" />
 
 ## Instalacion
+
+## FrontEnd
 
 * Descargar la aplicacion del repositorio https://gitlab.com/facundogirardi/api-benchmarking
 * En la carpeta del proyecto ejecutar <b>npm install</b>
@@ -38,6 +40,14 @@ https://www.observatoriopyme.org.ar/la-fundacion/historia-y-actualidad/
 * Luego dar <b>npm start</b>
 * Se levantará en local http://localhost:3000/
 
+## BackEnd
+
+* El backend de la aplicacion se encuesta en ek siguiente repositorio https://gitlab.com/facundogirardi/aplicaciones-interactivas-backend
+* En la carpeta del proyecto ejecutar <b>npm install</b>
+* <b>cd</b> aplicaciones-interactivas
+* Luego dar <b>npm start</b> o <b>nodemon --exec npm start</b> (Requiere tener instalado el nodemon*)
+* Se levantará en local http://localhost:4000/
+* Tambien se encuentra hosteado en Heroku https://api-benchmark-back.herokuapp.com/
 
 ## Navegadores soportados
 
@@ -48,6 +58,7 @@ Se probo en los siguientes navegadores:
 ## Recursos
 
 - GIT: <https://gitlab.com/facundogirardi/api-benchmarking>
+- GIT: <https://gitlab.com/facundogirardi/aplicaciones-interactivas-backend>
 
 ## Flujo
-![Product Presentation Image](https://i.ibb.co/tsZJYG6/Flujo.png)
+![Product Presentation Image](https://i.ibb.co/wpcQydJ/Flujo.png)

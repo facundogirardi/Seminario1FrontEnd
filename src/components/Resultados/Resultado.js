@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Scrollbar from 'material-ui-shell/lib/components/Scrollbar/Scrollbar'
 import Page from 'material-ui-shell/lib/containers/Page/Page'
 import Footer from '../Footer/Footer';

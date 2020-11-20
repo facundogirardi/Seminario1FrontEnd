@@ -103,13 +103,10 @@ export default function Encuesta() {
   const handleRazonSocial = (event) => {
     setRazonSocial(event.target.value);
   }
-  const handleRegion = (event) => {
-    setRegion(event.target.value);
-  }
+
   const handleTamaño = (event) => {
     setTamaño(event.target.value);
   }
-
   const isEmpty = (stringToValidate) => {
     if (stringToValidate !== undefined && stringToValidate !== null) {
       return stringToValidate.length === 0
@@ -123,13 +120,9 @@ export default function Encuesta() {
 
   const subirDatos = async function () {
     let archivoDatos = false;
-    console.log("razonsocial", razonsocial);
-    console.log("email", email);
-    console.log("region", region);
-    console.log("tamaño", tamaño);
 
     const validateValidEmail = (stringToValidate) => {
-      
+
       if (typeof stringToValidate !== undefined) {
         let lastAtPos = stringToValidate.lastIndexOf('@');
         let lastDotPos = stringToValidate.lastIndexOf('.');
@@ -146,7 +139,7 @@ export default function Encuesta() {
     else {
       alert("Verificar que los datos esten completados correctamente")
     }
-    
+
     return archivoDatos
   }
 

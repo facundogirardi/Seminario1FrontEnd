@@ -1,9 +1,10 @@
 import urlWebServices from '../controller/webServices.js';
 
+// Login de usuarios
 export const login = async function (login) {
-    //url webservices
+
     let url = urlWebServices.login;
-    //armo json con datos
+
     const formData = new URLSearchParams();
     formData.append('email', login.email);
     formData.append('password', login.password);
@@ -14,7 +15,6 @@ export const login = async function (login) {
             mode: "cors",
             headers: {
                 'Accept': 'application/x-www-form-urlencoded',
-                // 'x-access-token': WebToken.webToken,
                 'Origin': 'http://localhost:3000',
                 'Content-Type': 'application/x-www-form-urlencoded'
             },
@@ -27,13 +27,10 @@ export const login = async function (login) {
         switch (rdo) {
             case 201:
                 {
-                    //guardo token
                     localStorage.setItem("x", data.loginUser.token);
-                    //guardo usuario logueado
                     let user = data.loginUser.user;
                     localStorage.setItem("nombre", user.name);
                     localStorage.setItem("email", user.email);
-                    console.log("es usurio", user.root);
 
                     if (user.root === "S") {
                         return ({ rdo: 2, mensaje: "Ok" });//Es root
@@ -42,21 +39,17 @@ export const login = async function (login) {
                         return ({ rdo: 0, mensaje: "Ok" });//correcto
                     }
 
-
                 }
             case 202:
                 {
-                    //error mail
                     return ({ rdo: 1, mensaje: "El mail ingresado no existe en nuestra base." });
                 }
             case 203:
                 {
-                    //error password
                     return ({ rdo: 1, mensaje: "La contraseña no es correcta." });
                 }
             default:
                 {
-                    //otro error
                     return ({ rdo: 1, mensaje: "Ha ocurrido un error" });
                 }
         }
@@ -66,122 +59,15 @@ export const login = async function (login) {
     };
 }
 
-export const guardarImgUser = async function (message) {
-    //url webservices
-    let url = urlWebServices.guardarImgUser;
-    const formData = new URLSearchParams();
-    formData.append('email', message.email);
-    formData.append('nombreImagen', message.imagen);
-
-    try {
-        let response = await fetch(url, {
-            method: 'POST', // or 'PUT'
-            mode: "cors",
-            headers: {
-                'Accept': 'application/x-www-form-urlencoded',
-                'x-access-token': localStorage.getItem('x'),
-                'Origin': 'http://localhost:3000',
-                'Content-Type': 'application/x-www-form-urlencoded'
-            },
-            body: formData
-        });
-        if (response.status === 201) {
-            return true;
-        }
-        else {
-            return false;
-        }
-    }
-    catch (error) {
-        console.log("error", error);
-        return false;
-    };
-}
-
-export const uploadFileImg = async function (files, nombres) {
-    //url webservices
-    let url = urlWebServices.uploadFileImg;
-
-    console.log('files', files)
-    console.log('nombres', nombres)
-    const formData = new FormData();
-    //agrego archivos para subir
-    for (let i = 0; i < files.length; i++) {
-        formData.append('files', files[i], nombres[i])
-    }
-
-    try {
-        let response = await fetch(url, {
-            method: 'POST', // or 'PUT'
-            mode: "cors",
-            headers: {
-                'Accept': 'application/form-data',
-                'x-access-token': localStorage.getItem('x'),
-                'Origin': 'http://localhost:3000',
-                //'Content-Type': 'application/form-data'
-            },
-            body: formData
-        });
-
-        let archivos = await response.json()
-        console.log('respuestaUpload', archivos);
-        return archivos;
-    } catch (err) {
-        alert('Error uploading the files')
-        console.log('Error uploading the files', err)
-    }
-}
-export const getImagenesByUser = async function () {
-    //url webservices
-    let url = urlWebServices.getImgUser;
-    //console.log("url",url);
-    //console.log("token",WebToken.webToken);
-    const formData = new URLSearchParams();
-    formData.append('email', localStorage.getItem('email'));
-
-    try {
-        let response = await fetch(url, {
-            method: 'POST', // or 'PUT'
-            mode: "cors",
-            headers: {
-                'Accept': 'application/x-www-form-urlencoded',
-                'x-access-token': localStorage.getItem('x'),
-                'Origin': 'http://localhost:3000',
-                'Content-Type': 'application/x-www-form-urlencoded'
-            },
-            body: formData
-        });
-        if (response.status === 200) {
-            let data = await response.json();
-            console.log("imagenesUser", data);
-            let listaImg = data.data.docs;
-            return listaImg;
-        }
-        else {
-            let vacio = [];
-            console.log("No hay imagenes")
-            return (vacio);
-
-        }
-    }
-    catch (error) {
-        console.log("error", error);
-    };
-}
-
 //Contacto
-
 export const guardarContacto = async function (razonsocial, email, region, tamaño) {
-    //url webservices
     let url = urlWebServices.contacto;
-    //console.log("url",url);
-    //console.log("token",WebToken.webToken);
+
     const formData = new URLSearchParams();
     formData.append('razonsocial', razonsocial);
     formData.append('email', email);
     formData.append('region', region);
     formData.append('tamaño', tamaño);
-    console.log("formData", formData)
 
     try {
         let response = await fetch(url, {
@@ -208,8 +94,8 @@ export const guardarContacto = async function (razonsocial, email, region, tama�
     };
 }
 
+// Guardar usuario
 export const guardarUsuario = async function (name, lastname, email, dni, password) {
-    //url webservices
     let url = urlWebServices.guardarUsuario;
     const formData = new URLSearchParams();
     formData.append('name', name);
@@ -217,7 +103,6 @@ export const guardarUsuario = async function (name, lastname, email, dni, passwo
     formData.append('email', email);
     formData.append('dni', dni);
     formData.append('password', password);
-    //window.location.reload(true);
 
     try {
         let response = await fetch(url, {
@@ -245,11 +130,9 @@ export const guardarUsuario = async function (name, lastname, email, dni, passwo
     };
 }
 
+// Recupero usuarios
 export const getUsuario = async function () {
-    //url webservices
     let url = urlWebServices.getUsuario;
-    //console.log("url",url);
-    //console.log("token",WebToken.webToken);
 
     try {
         let response = await fetch(url, {
@@ -267,7 +150,6 @@ export const getUsuario = async function () {
             let data = await response.json();
 
             let listaUsuarios = data.data.docs;
-            console.log("Lista de Usuarios", data.data.docs);
             return listaUsuarios;
         }
         else {
@@ -282,17 +164,11 @@ export const getUsuario = async function () {
     };
 }
 
+// Borro usuarios
 export const deleteUsuario = async function (id_user) {
-    //url webservices
     let url = urlWebServices.deleteUsuario;
     const formData = new URLSearchParams();
-    console.log(url)
-    console.log("el formData", formData)
-    //console.log("el id", id)
     formData.append('id', id_user);
-    //window.location.reload(true);
-
-
 
     try {
         let response = await fetch(url, {
@@ -311,7 +187,6 @@ export const deleteUsuario = async function (id_user) {
 
             return true;
 
-
         }
         else {
             return false;
@@ -323,15 +198,10 @@ export const deleteUsuario = async function (id_user) {
     };
 }
 
+// Acutualizo usuarios
 export const updateUsuario = async function (id, dni, name, lastname, email, password) {
-    //url webservices
     let url = urlWebServices.updateUsuario;
     const formData = new URLSearchParams();
-    console.log(dni);
-    console.log(name);
-    console.log(lastname);
-    console.log(email);
-    console.log(password);
 
     formData.append('id', id);
     formData.append('dni', dni);
@@ -339,8 +209,6 @@ export const updateUsuario = async function (id, dni, name, lastname, email, pas
     formData.append('lastname', lastname);
     formData.append('email', email);
     formData.append('password', password);
-    //window.location.reload(true);
-
 
     try {
         let response = await fetch(url, {
@@ -348,7 +216,6 @@ export const updateUsuario = async function (id, dni, name, lastname, email, pas
             mode: "cors",
             headers: {
                 'Accept': 'application/x-www-form-urlencoded',
-                //'x-access-token': localStorage.getItem('x'),
                 'Origin': 'http://localhost:3000',
                 'Content-Type': 'application/x-www-form-urlencoded'
             },
@@ -369,16 +236,13 @@ export const updateUsuario = async function (id, dni, name, lastname, email, pas
 }
 
 //Crear encuestas
-
 export const guardarEncuesta = async function (titulo, sector, tamaño, questions, valorReferencia) {
-    //url webservices
+
     let url = urlWebServices.guardarEncuesta;
     const formData = new URLSearchParams();
     formData.append('titulo', titulo);
     formData.append('sector', sector);
     formData.append('tamaño', tamaño);
-
-    console.log("Esta es la lista de preguntas y respuestas:", questions);
 
     var i = 0;
     var j = 0;
@@ -391,26 +255,25 @@ export const guardarEncuesta = async function (titulo, sector, tamaño, question
         const newQuestion = { questionText: questions[i].questionText }
         formData.append("pregunta" + numeroPregunta, newQuestion.questionText)
         numeroPregunta = numeroPregunta + 1;
-        formData.append("P"+cantidadPreguntasRef+"valorref1", valorReferencia[i])
+        formData.append("P" + cantidadPreguntasRef + "valorref1", valorReferencia[i])
 
         for (j = 0; j < questions[i].options.length; j++) {
             const newAnswer = { options: questions[i].options[j].optionText }
-            formData.append("P"+cantidadRes+"respuesta" + numeroRespuesta, newAnswer.options)
+            formData.append("P" + cantidadRes + "respuesta" + numeroRespuesta, newAnswer.options)
             numeroRespuesta = numeroRespuesta + 1;
-            
+
         }
-        cantidadPreguntasRef=cantidadPreguntasRef+1;
-        numeroRespuesta=1;
+        cantidadPreguntasRef = cantidadPreguntasRef + 1;
+        numeroRespuesta = 1;
         cantidadRes = cantidadRes + 1;
     };
-    
+
     try {
         let response = await fetch(url, {
             method: 'POST', // or 'PUT'
             mode: "cors",
             headers: {
                 'Accept': 'application/x-www-form-urlencoded',
-                //'x-access-token': localStorage.getItem('x'),
                 'Origin': 'http://localhost:3000',
                 'Content-Type': 'application/x-www-form-urlencoded'
             },
@@ -431,12 +294,8 @@ export const guardarEncuesta = async function (titulo, sector, tamaño, question
 }
 
 // Traer encuestas
-
 export const getEncuesta = async function () {
-    //url webservices
     let url = urlWebServices.getEncuesta;
-    //console.log("url",url);
-    //console.log("token",WebToken.webToken);
 
     try {
         let response = await fetch(url, {
@@ -453,7 +312,6 @@ export const getEncuesta = async function () {
             let data = await response.json();
 
             let listaUsuarios = data.data.docs;
-            console.log("Lista de Encuestas", listaUsuarios);
             return listaUsuarios;
         }
         else {
@@ -468,56 +326,8 @@ export const getEncuesta = async function () {
     };
 }
 
-
-// Traer encuestas filtradas
-
-export const getEncuestaR = async function (sector) {
-    //url webservices
-    console.log("sector encuestaR : ",sector)
-    let url = urlWebServices.getEncuestaR;
-    //console.log("url",url);
-    //console.log("token",WebToken.webToken);
-    const formData = new URLSearchParams();
-    formData.append('sector', sector);
- 
-    
-
-    try {
-        let response = await fetch(url, {
-            method: 'POST', // or 'PUT'
-            mode: "cors",
-            headers: {
-                'Accept': 'application/x-www-form-urlencoded',
-               // 'x-access-token': localStorage.getItem('x'),
-                'Origin': 'http://localhost:3000',
-                'Content-Type': 'application/x-www-form-urlencoded'
-            },
-            body: formData
-        });
-        console.log("response.status : ", response.status)
-        if (response.status === 200) {
-            let data = await response.json();
-
-            let listaEncuestasR = data.data.docs;
-            console.log("Lista de Encuestas", listaEncuestasR);
-            return listaEncuestasR;
-        }
-        else {
-            let vacio = [];
-            console.log("No hay encuestas")
-            return (vacio);
-
-        }
-    }
-    catch (error) {
-        console.log("error", error);
-    };
-}
-
 //Editar encuestas
-
 export const updateEncuesta = async function (id, titulo, sector, tamaño) {
-    //url webservices
     let url = urlWebServices.updateEncuesta;
     const formData = new URLSearchParams();
 
@@ -532,7 +342,6 @@ export const updateEncuesta = async function (id, titulo, sector, tamaño) {
             mode: "cors",
             headers: {
                 'Accept': 'application/x-www-form-urlencoded',
-                //'x-access-token': localStorage.getItem('x'),
                 'Origin': 'http://localhost:3000',
                 'Content-Type': 'application/x-www-form-urlencoded'
             },
@@ -553,14 +362,9 @@ export const updateEncuesta = async function (id, titulo, sector, tamaño) {
 }
 
 //Borrar encuestas
-
 export const deleteEncuesta = async function (id_encuesta) {
-    //url webservices
     let url = urlWebServices.deleteEncuesta;
     const formData = new URLSearchParams();
-    console.log(url)
-    console.log("el formData", formData)
-    //console.log("el id", id)
     formData.append('id', id_encuesta);
 
     try {

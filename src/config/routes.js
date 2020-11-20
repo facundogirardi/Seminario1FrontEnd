@@ -1,5 +1,4 @@
 import React, { lazy } from 'react'
-import PrivateRoute from 'base-shell/lib/components/PrivateRoute/PrivateRoute'
 import PublicRoute from 'base-shell/lib/components/PublicRoute/PublicRoute'
 
 const SignIn = lazy(() => import('../components/SignIn/SignIn'))

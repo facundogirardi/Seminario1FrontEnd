@@ -4,67 +4,21 @@ import "./Encuesta.css";
 import Footer from '../Footer/Footer';
 import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import InputLabel from '@material-ui/core/InputLabel';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
 import Button from '@material-ui/core/Button';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import { useHistory } from 'react-router';
 import EditableTable from "./TableEncuesta"
-import MaterialTable from "material-table";
-import Checkbox from "@material-ui/core/Checkbox";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
 import banner from '../../imagenes/banner3.jpg';
 
 //importo 
 import { getEncuesta } from "../../controller/miApp.controller";
-import { ContactSupportOutlined } from '@material-ui/icons';
 
 const useStylesButton = makeStyles((theme) => ({
   button: {
     margin: theme.spacing(2),
     width: "98%",
-  },
-}));
-
-const useStylesSelect = makeStyles((theme) => ({
-  formControl: {
-    width: "100%",
-  },
-  selectEmpty: {
-    marginTop: theme.spacing(2),
-  },
-}));
-
-const useStylesCards = makeStyles({
-  root: {
-    width: "98%",
-    margin: '0 10px',
-    padding: "10px",
-  },
-  bullet: {
-    display: 'inline-block',
-    margin: '0 2px',
-    transform: 'scale(0.8)',
-  },
-  title: {
-    fontSize: 14,
-  },
-  pos: {
-    marginBottom: 12,
-  },
-});
-
-const useStylesText = makeStyles((theme) => ({
-  root: {
-    '& > *': {
-      margin: theme.spacing(1),
-      width: '100%',
-    },
   },
 }));
 
@@ -82,12 +36,9 @@ const useStylesGrid = makeStyles((theme) => ({
 }));
 
 export default function Encuesta() {
-  const clase1 = useStylesCards();
-  const clase3 = useStylesText();
-  const clase2 = useStylesSelect();
+
   const clase4 = useStylesButton();
   const clase5 = useStylesGrid();
-
   const [isVisible, setVisible] = useState(false);
   const [encuestas, setEncuestas] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -116,13 +67,6 @@ export default function Encuesta() {
     setLoading(false)
   };
 
-  const handleSector = (event) => {
-    setSector(event.target.values);
-  }
-  const handleTamaño = (event) => {
-    setTamaño(event.target.valuet);
-  }
-
   // prueba
   const filterValue = value => {
     if (value) {
@@ -136,14 +80,14 @@ export default function Encuesta() {
 
   const columnas = [
     { title: 'Sector', field: 'sector', filtering: true },
-    { title: 'Titulo', field: 'titulo',filtering: false },
-    { title: 'Tamaño', field: 'tamaño',filtering: false },
+    { title: 'Titulo', field: 'titulo', filtering: false },
+    { title: 'Tamaño', field: 'tamaño', filtering: false },
   ];
 
   return (
     <Page pageTitle={'Usted esta en la ventana de consulta.'}>
       <Scrollbar style={{ height: '93.4%', width: '100%', display: 'flex', flex: 1 }}>
-      <img src={banner} width="100%" height="25%" alt="Logo" />
+        <img src={banner} width="100%" height="25%" alt="Logo" />
         <br />
         <Grid container spacing={3}>
           <Grid item xs={12}>
@@ -156,7 +100,7 @@ export default function Encuesta() {
             deleteText={"¿Está seguro de eliminar la encuesta?"} isLoading={loading} />
         </div>
         <div className="App">
-    </div>
+        </div>
         <Button
           variant="contained"
           color="Primary"

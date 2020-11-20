@@ -59,7 +59,6 @@ export default function AbmUsuarios() {
 
     Usuario = await deleteUsuario(newUsuario._id);
     window.location.reload(true);
-    console.log(newUsuario._id)
   }
 
   const showMessageAlert = (messages, isSuccess, isDelete) => {
@@ -80,7 +79,6 @@ export default function AbmUsuarios() {
   const deleteUsuarios = (usuario, resolve) => {
     const newUsuario = { _id: usuario._id, name: usuario.name, lastname: usuario.lastname, email: usuario.email, dni: usuario.dni, password: usuario.password };
     borrarUsuario(newUsuario)
-    console.log("Aca elimino el usuario.", usuario)
     resolve()
   };
 
@@ -88,13 +86,11 @@ export default function AbmUsuarios() {
     const newUsuario = { dni: usuario.dni, name: usuario.name, lastname: usuario.lastname, email: usuario.email, password: usuario.password };
     subirUsuario(newUsuario)
     resolve()
-    console.log("aca creo el usuario", usuario)
   };
 
   const editUsuario = (oldUsuario, usuario, resolve) => {
     const newUsuario = { dni: usuario.dni, name: usuario.name, lastname: usuario.lastname, email: usuario.email, password: usuario.password };
     editarUsuario(newUsuario)
-    console.log("aca edito el usuario", usuario)
     resolve();
   };
 
