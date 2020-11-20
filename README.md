@@ -47,7 +47,7 @@ https://www.observatoriopyme.org.ar/la-fundacion/historia-y-actualidad/
 * <b>cd</b> aplicaciones-interactivas
 * Luego dar <b>npm start</b> o <b>nodemon --exec npm start</b> (Requiere tener instalado el nodemon*)
 * Se levantará en local http://localhost:4000/
-* Tambien se encueetra hosteado en Heroku https://api-benchmark-back.herokuapp.com/
+* Tambien se encuentra hosteado en Heroku https://api-benchmark-back.herokuapp.com/
 
 ## Navegadores soportados
 
