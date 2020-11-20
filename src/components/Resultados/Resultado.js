@@ -4,7 +4,7 @@ import Page from 'material-ui-shell/lib/containers/Page/Page'
 import Footer from '../Footer/Footer';
 import { Link } from 'react-router-dom'
 import "./Resultado.css";
-import banner from '../../imagenes/banner4.jpg';
+import banner from '../../imagenes/banner4.png';
 
 // Viene de la respuesta del cuestionario (JSON)
 const pregunta = "Promedio de edad"

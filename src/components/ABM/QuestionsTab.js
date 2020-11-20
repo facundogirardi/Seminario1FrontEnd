@@ -348,12 +348,12 @@ function QuestionsTab(props) {
         alignItems="center"
       >
         {loadingFormData ? (<CircularProgress />) : ""}
-        <Grid item xs={12} sm={5} style={{ width: '100%' }}>
+        <Grid item xs={12} style={{ width: '100%' }}>
           <Grid style={{ borderTop: '10px solid teal', borderRadius: 10 }}>
             <div>
               <div>
                 <Paper elevation={2} style={{ width: '100%' }}>
-                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', marginLeft: '15px', paddingTop: '20px', paddingBottom: '20px' }}>
+                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', marginLeft: '15px', paddingTop: '2%', paddingBottom: '2%' }}>
                     <Typography variant="h4" style={{ fontFamily: 'sans-serif Roboto', marginBottom: "15px" }}>
                       <TextField
                         id="titulo"
@@ -363,6 +363,20 @@ function QuestionsTab(props) {
                           onChange: (event) => handleTituloEncuesta(event),
                         }}
                       />
+                      <FormControl variant="outlined" className={classes2.formControl}>
+                        <InputLabel id="demo-simple-select-outlined-label">Tamaño</InputLabel>
+                        <Select
+                          id="tamaño"
+                          value={tamaño}
+                          onChange={handleTamaño}
+                        >
+                          <MenuItem value="">
+                            <em>Ninguno seleccionado</em>
+                          </MenuItem>
+                          <MenuItem value={"Pequeña"}>Pequeña</MenuItem>
+                          <MenuItem value={"Mediana"}>Mediana</MenuItem>
+                        </Select>
+                      </FormControl>
                       <FormControl variant="outlined" className={classes2.formControl}>
                         <InputLabel id="demo-simple-select-outlined-label">Sector</InputLabel>
                         <Select
@@ -380,20 +394,7 @@ function QuestionsTab(props) {
                           <MenuItem value={"Fabricación de sustancias y productos químicos"}>Fabricación de sustancias y productos químicos</MenuItem>
                         </Select>
                       </FormControl>
-                      <FormControl variant="outlined" className={classes2.formControl}>
-                        <InputLabel id="demo-simple-select-outlined-label">Tamaño</InputLabel>
-                        <Select
-                          id="tamaño"
-                          value={tamaño}
-                          onChange={handleTamaño}
-                        >
-                          <MenuItem value="">
-                            <em>Ninguno seleccionado</em>
-                          </MenuItem>
-                          <MenuItem value={"Pequeña"}>Pequeña</MenuItem>
-                          <MenuItem value={"Mediana"}>Mediana</MenuItem>
-                        </Select>
-                      </FormControl>
+                      
                       {formData.name}
                     </Typography>
                     <Typography variant="subtitle1">{formData.description}</Typography>
