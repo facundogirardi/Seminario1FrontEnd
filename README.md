@@ -12,7 +12,7 @@ https://www.observatoriopyme.org.ar/la-fundacion/historia-y-actualidad/
 ## Tabla de contenidos
 
 * [Integrantes](#Integrantes)
-* [Version](#Version)
+* [Tecnologia](#Tecnologia)
 * [Instalacion](#Instalacion)
 * [Navegadores soportados](#Navegadores-soportados)
 * [Recursos](#Recursos)
@@ -26,7 +26,7 @@ https://www.observatoriopyme.org.ar/la-fundacion/historia-y-actualidad/
 * Marchant Rojas, Luis Jose Javier      <b>Legajo : 1042891</b>
 * Venzmer, Nicolas Alejandro            <b>Legajo : 1076345</b>
 
-## Version
+## Tecnologia
 
 <img src="https://github.com/creativetimofficial/public-assets/blob/master/logos/html-logo.jpg?raw=true" width="64" height="64" /><img src="https://github.com/creativetimofficial/public-assets/blob/master/logos/react-logo.jpg?raw=true" width="64" height="64" />
 
@@ -58,6 +58,7 @@ Se probo en los siguientes navegadores:
 ## Recursos
 
 - GIT: <https://gitlab.com/facundogirardi/api-benchmarking>
+- GIT: <https://gitlab.com/facundogirardi/aplicaciones-interactivas-backend>
 
 ## Flujo
 ![Product Presentation Image](https://i.ibb.co/wpcQydJ/Flujo.png)
