@@ -15,7 +15,7 @@ const respuesta2 = "20%"
 const valorreferencia2 = "20%"
 
 
-function Forms(props) {
+function Resultado(props) {
 
   return (
     <Page pageTitle={'Api Benchmark'}>
@@ -43,5 +43,5 @@ function Forms(props) {
   )
 }
 
-  export default Forms;
+  export default Resultado;
 
