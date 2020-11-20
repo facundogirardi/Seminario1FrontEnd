@@ -17,9 +17,11 @@ const urlWebServices = {
     updateUsuario: urlApi + "api/users/actualizacion",
 
     //Encuestas
+    getEncuestaID: urlApi + "api/users/encuestaID",
     getEncuesta: urlApi + "api/users/tencuesta",
     deleteEncuesta: urlApi + "api/users/bencuesta",
     guardarEncuesta: urlApi + "api/users/encuesta",
+
 
 }
 

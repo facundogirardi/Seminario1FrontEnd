@@ -9,6 +9,7 @@ const ABEncuestas = lazy(() => import('../components/ABEncuestas/ABEncuestas'))
 const Resultados = lazy(() => import('../components/Resultados/Resultado'))
 const Contacto = lazy(() => import('../components/Contacto/Contacto'))
 const NuevaEncuesta = lazy(() => import('../components/ABEncuestas/EditForm.js'))
+const Forms = lazy(() => import('../components/Encuesta/Forms.js'))
 
 const routes = [
   <PublicRoute path="/signin" redirectTo="/" exact component={SignIn} />,
@@ -19,6 +20,7 @@ const routes = [
   <PublicRoute path="/Resultados" exact component={Resultados} />,
   <PublicRoute path="/Contacto" exact component={Contacto} />,
   <PublicRoute path="/NuevaEncuesta" exact component={NuevaEncuesta} />,
+  <PublicRoute path="/Forms/:titulo" exact component={Forms} />,
 ]
 
 export default routes

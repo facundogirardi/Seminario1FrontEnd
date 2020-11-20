@@ -1,12 +1,13 @@
 import React from "react";
 import "react-sweet-progress/lib/style.css";
 import MaterialTable from "material-table";
+import { useHistory } from 'react-router';
 import CircularProgress from "@material-ui/core/CircularProgress/CircularProgress";
 
 
 
 const EditableTable = ({ onRowAdd, onRowUpdate, selectedRow, deleteText, data, columns, setData, title, loading, options }) => {
-
+    const history = useHistory();
     return (
         <>
             {
@@ -51,7 +52,11 @@ const EditableTable = ({ onRowAdd, onRowUpdate, selectedRow, deleteText, data, c
                             actions={[
                                 {
                                     icon: '*',
-                                    onClick: (event, rowData) => alert("You saved " + rowData.name)
+                                    onClick: (event, rowData) => 
+                                    history.push({
+                                        pathname: "/Forms/" + rowData.titulo,
+                                    }),
+                                    state: { detail: data.titulo }
                                 }
                             ]}
                         />

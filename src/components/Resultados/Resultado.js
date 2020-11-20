@@ -15,7 +15,7 @@ const valorreferencia = "15"
 function Forms(props) {
 
   return (
-    <Page pageTitle={'Api Benchmarck'}>
+    <Page pageTitle={'Api Benchmark'}>
       <Scrollbar
         style={{ height: '93.4%', width: '100%', display: 'flex', flex: 1 }}>
         <img src={banner} width="100%" height="25%" alt="Logo" />
