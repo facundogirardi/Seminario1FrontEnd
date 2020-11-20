@@ -7,7 +7,8 @@ import React, { useEffect, useState } from "react";
 import { getEncuestaID } from "../../controller/miApp.controller";
 
 var url = window.location.href;
-var titulo = url.substring(url.lastIndexOf('/') + 1);
+var tituloID = url.substring(url.lastIndexOf('/') + 1);
+var titulo = tituloID.replace(/%20/g, " ");
 
 export default function Forms() {
     const [encuestas, setEncuestas] = useState([]);
@@ -23,12 +24,13 @@ export default function Forms() {
         setLoading(false)
     };
 
+    console.log("Encuesta titulo por ID : ", titulo)
     console.log("Encuesta recuperada por ID : ", encuestas)
 
     return (
         <Page pageTitle={'Cuestionario Api Benchmark'}>
             <Scrollbar style={{ height: '93.4%', width: '100%', display: 'flex', flex: 1 }}>
-                <h1>En construccion</h1>
+                <h1>En construccion front</h1>
                 <h1>API ya llega</h1>
             </Scrollbar>
             <Footer />
