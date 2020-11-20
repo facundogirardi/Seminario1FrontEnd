@@ -26,7 +26,8 @@ import { ContactSupportOutlined } from '@material-ui/icons';
 
 const useStylesButton = makeStyles((theme) => ({
   button: {
-    margin: theme.spacing(3),
+    margin: theme.spacing(2),
+    width: "98%",
   },
 }));
 
@@ -134,31 +135,7 @@ export default function Encuesta() {
   };
 
   const columnas = [
-    { title: 'Sector', field: 'sector',
-    filterComponent: props => {
-      console.log("Props: ", props);
-      return (
-        <FormControlLabel
-          control={
-              <Select
-                native
-                pl
-                checked={checked}
-                onChange={e => filterValue(e.target.checked)}
-                onClick={() => setVisible(true)}>
-                <option values={setSector.values} />
-                <option values={"sector1"}>Elaboraciòn de productos alimenticios y/o bebidas</option>
-                <option values={"sector2"}>Fabricación de productos textiles</option>
-                <option values={"sector3"}>Producción de madera y fabricación de productos de madera, corcho y paja, excepto muebles</option>
-                <option values={"sector4"}>Fabricación de papel y productos de papel</option>
-                <option values={"sector5"}>Fabricación de sustancias y productos químicos</option>
-              </Select>
-          }
-          labelPlacement="end"
-        />
-      );
-    }
-  },
+    { title: 'Sector', field: 'sector', filtering: true },
     { title: 'Titulo', field: 'titulo',filtering: false },
     { title: 'Tamaño', field: 'tamaño',filtering: false },
   ];

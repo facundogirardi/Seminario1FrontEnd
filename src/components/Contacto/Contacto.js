@@ -30,6 +30,7 @@ import { guardarContacto } from "../../controller/miApp.controller";
 const useStylesButton = makeStyles((theme) => ({
   button: {
     margin: theme.spacing(3),
+    width: "47%",
   },
 }));
 
@@ -246,7 +247,7 @@ export default function Encuesta() {
         <Button
           variant="contained"
           color="Primary"
-          className={clase4.submit}
+          className={clase4.button}
           startIcon={<TimelineIcon />}
           onClick={() => { redirect() }}
         >

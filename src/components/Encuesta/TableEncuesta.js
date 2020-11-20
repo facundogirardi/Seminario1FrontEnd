@@ -1,5 +1,6 @@
 import React from "react";
 import "react-sweet-progress/lib/style.css";
+import AssessmentIcon from '@material-ui/icons/Assessment';
 import MaterialTable from "material-table";
 import CircularProgress from "@material-ui/core/CircularProgress/CircularProgress";
 
@@ -40,22 +41,20 @@ const EditableTable = ({ onRowAdd, onRowUpdate, selectedRow, deleteText, data, c
                                     },
                                 },
                             }}
-                            editable={{
-                                onRowUpdate: (newData, oldData) =>
-                                    new Promise((resolve, reject) => {
-                                        setTimeout(() => {
-                                            onRowUpdate(oldData, newData, resolve)
-                                        }, 1000)
-                                    }),
-                            }}
+
                             options={{
                                 searchable: false,
                                 filtering: true,
                                 grouping: false,
-                                search:false,
+                                search: false,
                                 showTextRowsSelected: true,
-                                //filterComponent: (props) => <CustomDatePicker {...props} />,
-                              }}
+                            }}
+                            actions={[
+                                {
+                                    icon: '*',
+                                    onClick: (event, rowData) => alert("You saved " + rowData.name)
+                                }
+                            ]}
                         />
                     )
             }

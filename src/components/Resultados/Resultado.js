@@ -2,72 +2,23 @@ import React, { useEffect, useState } from "react";
 import Scrollbar from 'material-ui-shell/lib/components/Scrollbar/Scrollbar'
 import Page from 'material-ui-shell/lib/containers/Page/Page'
 import Footer from '../Footer/Footer';
-import EditableTable from "./EditableTable"
-import InputLabel from '@material-ui/core/InputLabel';
-import { withStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
 import { Link } from 'react-router-dom'
-import Doc from './DocService';
-import PdfContainer from './PdfContainer';
 import "./Resultado.css";
-import { energyConsumption as data } from '../Resultados/DatosTabla';
-import { Stack, Animation } from '@devexpress/dx-react-chart';
-import {
-  Chart,
-  Title,
-  Legend,
-  ArgumentAxis,
-  BarSeries,
-  ValueAxis,
-} from '@devexpress/dx-react-chart-material-ui';
+import banner from '../../imagenes/banner4.jpg';
 
-//importo 
-import { getUsuario } from "../../controller/miApp.controller";
+// Viene de la respuesta del cuestionario (JSON)
+const pregunta = "Promedio de edad"
+const respuesta = "20"
+const valorreferencia = "15"
 
-const legendStyles = () => ({
-  root: {
-    display: 'flex',
-    margin: 'auto',
-    flexDirection: 'row',
-  },
-});
-const legendRootBase = ({ classes, ...restProps }) => (
-  <Legend.Root {...restProps} className={classes.root} />
-);
-const Root = withStyles(legendStyles, { name: 'LegendRoot' })(legendRootBase);
-const legendLabelStyles = () => ({
-  label: {
-    whiteSpace: 'nowrap',
-  },
-});
-const legendLabelBase = ({ classes, ...restProps }) => (
-  <Legend.Label className={classes.label} {...restProps} />
-);
-const Label = withStyles(legendLabelStyles, { name: 'LegendLabel' })(legendLabelBase);
 
-export default function AbmUsuarios() {
-  const [usuarios, setUsuarios] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    getUser()
-  }, []);
-
-  const getUser = async () => {
-    const usuarios = await getUsuario()
-    setUsuarios(usuarios)
-    setLoading(false)
-    console.log("usuarios", usuarios)
-  };
-
-  var myJSON = JSON.stringify(usuarios);
-  var myObject = JSON.parse(myJSON);
-  console.log("json",myObject)
+function Forms(props) {
 
   return (
     <Page pageTitle={'Api Benchmarck'}>
       <Scrollbar
         style={{ height: '93.4%', width: '100%', display: 'flex', flex: 1 }}>
+        <img src={banner} width="100%" height="25%" alt="Logo" />
 
         <Link to="/Encuesta">
           <button class="block">Realizar otra encuesta</button>
@@ -75,16 +26,18 @@ export default function AbmUsuarios() {
         <br></br>
 
         <span>
-          <h3>El resultado de su encuesta es :</h3>
-
-          hola
+         <h2>Muchas gracias por utilizar nuestro Benchmarck</h2>
+         <h4>El resultado de su encuesta es :</h4>
+          <br></br>
+          <p>Pregunta 1, "{pregunta}", usted selecciono {respuesta}, valor general {valorreferencia}. </p>         
 
         </span>
-
-
 
       </Scrollbar>
       <Footer />
     </Page >
   )
 }
+
+  export default Forms;
+
