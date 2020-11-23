@@ -4,7 +4,7 @@ import Page from 'material-ui-shell/lib/containers/Page/Page'
 import Footer from '../Footer/Footer';
 import { Link } from 'react-router-dom'
 import "./Resultado.css";
-import banner from '../../imagenes/banner4.png';
+import banner from '../../imagenes/banner4.jpg';
 
 // Viene de la respuesta del cuestionario (JSON)
 const pregunta1 = "Como estuvo el porcentaje de ventas en los ultimos 6 meses?"
@@ -18,6 +18,7 @@ const valorreferencia2 = "20%"
 function Resultado(props) {
 
   return (
+    
     <Page pageTitle={'Api Benchmark'}>
       <Scrollbar
         style={{ height: '93.4%', width: '100%', display: 'flex', flex: 1 }}>

@@ -4,8 +4,6 @@ import "./Encuesta.css";
 import Footer from '../Footer/Footer';
 import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
-import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import { useHistory } from 'react-router';
@@ -84,7 +82,7 @@ export default function Encuesta() {
   ];
 
   return (
-    <Page pageTitle={'Usted esta en la ventana de consulta.'}>
+    <Page pageTitle={'Seleccion Api Benchmark'}>
       <Scrollbar style={{ height: '93.4%', width: '100%', display: 'flex', flex: 1 }}>
         <img src={banner} width="100%" height="25%" alt="Logo" />
         <br />

@@ -27,22 +27,23 @@ export default function AbmEncuestas() {
 
   const borrarEncuesta = async function (newEncuesta) {
     let Encuesta = false;
-    window.location.reload(true);
+   // window.location.reload(true);
 
-    Encuesta = await deleteEncuesta(newEncuesta._id, newEncuesta.titulo, newEncuesta.sector, newEncuesta.tamaño);
+    Encuesta = await deleteEncuesta(newEncuesta._id, newEncuesta.titulo, newEncuesta.sector, newEncuesta.tamaño, newEncuesta.date);
   }
 
   const deleteEncuestas = (encuesta, resolve) => {
     const newEncuesta = { _id: encuesta._id };
     borrarEncuesta(newEncuesta)
     resolve()
-        window.location.reload(true);
+   //     window.location.reload(true);
   };
 
   const columns = [
     { title: 'Titulo', field: 'titulo' },
     { title: 'Sector', field: 'sector' },
     { title: 'Tamaño', field: 'tamaño' },
+    { title: 'Fecha Creacion', field: 'date' },
   ];
 
   return (

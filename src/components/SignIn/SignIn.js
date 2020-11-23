@@ -1,6 +1,7 @@
 import Button from '@material-ui/core/Button'
 import Page from 'material-ui-shell/lib/containers/Page/Page'
 import Paper from '@material-ui/core/Paper'
+import banner from '../../imagenes/banner1.jpg';
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import InputAdornment from "@material-ui/core/InputAdornment";
@@ -82,11 +83,11 @@ export default function SignIn(props) {
     let datos = {
       email: email,
       password: password
-        
+
     }
-    
+
     let getLogin = await login(datos);
-    
+
     if (getLogin.rdo === 0) {
       setUsuarioValido(true);
     }
@@ -107,39 +108,39 @@ export default function SignIn(props) {
     else {
       alert("Debe completar usuario y password");
     }
-  
+
 
   }
   const redirect = () => {
-    if (usuarioRoot){
+    if (usuarioRoot) {
       return <Redirect to="/Administrador" />
     }
-    else if(usuarioValido) {
+    else if (usuarioValido) {
       return <Redirect to="/ABEncuestas" />
     }
   }
 
-  return ( 
-    <div 
+  return (
+
+    <div
       style={{
         display: 'flex',
         flexDirection: 'row',
         width: '100%',
         justifyContent: 'space-between',
-      }}
-    >
+      }} >
       {redirect()}
       <Page pageTitle={intl.formatMessage({ id: 'sign_in' })}>
         <Paper className={classes.paper} elevation={6}>
-          
+          <img src={banner} width="100%" height="25%" alt="Logo" />
           <div className={classes.container}>
-            <img src={loginimg} width="200px" alt="Logo"/>
+            <img src={loginimg} width="200px" alt="Logo" />
             <Typography component="h1" variant="h5">
-              {intl.formatMessage({ id: 'Iniciar Sesion' })}
+              {intl.formatMessage({ id: ' ' })}
             </Typography>
             <form className={classes.form}>
               <TextField
-               
+
                 variant="outlined"
                 margin="normal"
                 required
@@ -174,7 +175,7 @@ export default function SignIn(props) {
                   )
                 }}
               />
-              
+
               <Button
                 fullWidth
                 variant="contained"
