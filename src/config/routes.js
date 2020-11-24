@@ -20,7 +20,7 @@ const routes = [
   <PublicRoute path="/Resultados" exact component={Resultados} />,
   <PublicRoute path="/Contacto" exact component={Contacto} />,
   <PublicRoute path="/NuevaEncuesta" exact component={NuevaEncuesta} />,
-  <PublicRoute path="/Forms/:titulo" exact component={Forms} />,
+  <PublicRoute path="/Forms/:id" exact component={Forms} />,
 ]
 
 export default routes

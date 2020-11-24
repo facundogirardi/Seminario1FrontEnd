@@ -191,7 +191,7 @@ export default function Encuesta() {
                   onChange={handleChange}
                 >
                   <MenuItem value={"Buenos Aires"}>Buenos Aires</MenuItem>
-                  <MenuItem value={"Cuidad Autonoma de Buenos Aires"}>Cuidad Autonoma de Buenos Aires</MenuItem>
+                  <MenuItem value={"Ciudad Autonoma de Buenos Aires"}>Cuidad Autonoma de Buenos Aires</MenuItem>
                   <MenuItem value={"Catamarca"}>Catamarca</MenuItem>
                   <MenuItem value={"Chaco"}>Chaco</MenuItem>
                   <MenuItem value={"Chubut"}>Chubut</MenuItem>

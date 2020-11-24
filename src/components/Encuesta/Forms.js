@@ -15,11 +15,7 @@ import Button from '@material-ui/core/Button';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 
 //importo 
-import { getEncuestaID } from "../../controller/miApp.controller";
-
-var url = window.location.href;
-var tituloID = url.substring(url.lastIndexOf('/') + 1);
-var titulo = tituloID.replace(/%20/g, " ");
+import { guardarEncuestaResp, getEncuestaID } from "../../controller/miApp.controller";
 
 const useStylesGrid = makeStyles((theme) => ({
     root: {
@@ -35,12 +31,12 @@ const useStylesGrid = makeStyles((theme) => ({
 
 const useStylesButton = makeStyles((theme) => ({
     button: {
-      margin: theme.spacing(2),
-      width: "98%",
+        margin: theme.spacing(2),
+        width: "98%",
     },
-  }));
+}));
 
-export default function Forms() {
+export default function Forms(props) {
 
     const clase5 = useStylesGrid();
     const clase4 = useStylesButton();
@@ -48,32 +44,70 @@ export default function Forms() {
     const [loading, setLoading] = useState(true);
     const history = useHistory();
 
-    const [cambiar, setCambiar] = React.useState('');
+    const [pregunta1, setPregunta1] = React.useState('');
+    const [pregunta2, setPregunta2] = React.useState('');
+    const [pregunta3, setPregunta3] = React.useState('');
+    const [pregunta4, setPregunta4] = React.useState('');
+    const [pregunta5, setPregunta5] = React.useState('');
 
-    const handleCambiar = (event) => {
-        setCambiar(event.target.value);
+    const handlePregunta1 = (event) => {
+        setPregunta1(event.target.value);
+    }
+    const handlePregunta2 = (event) => {
+        setPregunta2(event.target.value);
+    }
+    const handlePregunta3 = (event) => {
+        setPregunta3(event.target.value);
+    }
+    const handlePregunta4 = (event) => {
+        setPregunta4(event.target.value);
+    }
+    const handlePregunta5 = (event) => {
+        setPregunta5(event.target.value);
     }
 
     useEffect(() => {
-        getEncuesta()
-    }, []);
+        getEncuesta(props.match.params.id)
+    }, [props.match.params.id]);
 
-    const getEncuesta = async () => {
-        const encuestas = await getEncuestaID(titulo)
-        setEncuestas(encuestas)
+    const getEncuesta = async (id) => {
+        const encuestas = await getEncuestaID(id)
+        setEncuestas(encuestas[0])
         setLoading(false)
     };
 
-    const redirect = async () => {
-        //const ok = await encuestaCompletada()
-        const ok = true
-        if (ok) {
-          history.push("/Contacto")
+    const isEmpty = (stringToValidate) => {
+        if (stringToValidate !== undefined && stringToValidate !== null) {
+            return stringToValidate.length === 0
         }
-      }
 
-    console.log("Encuesta titulo por ID : ", titulo)
-    console.log("Encuesta recuperada por ID : ", encuestas)
+        return true;
+    };
+
+    const subirRespuesta = async function () {
+        let Respuesta = false;
+        const valorPregunta1 = encuestas.pregunta1 ? !isEmpty(pregunta1) : true
+        const valorPregunta2 = encuestas.pregunta2 ? !isEmpty(pregunta2) : true
+        const valorPregunta3 = encuestas.pregunta3 ? !isEmpty(pregunta3) : true
+        const valorPregunta4 = encuestas.pregunta4 ? !isEmpty(pregunta4) : true
+        const valorPregunta5 = encuestas.pregunta5 ? !isEmpty(pregunta5) : true
+        if (valorPregunta1 && valorPregunta2 && valorPregunta3 && valorPregunta4 && valorPregunta5) {
+            Respuesta = await guardarEncuestaResp(encuestas,pregunta1,pregunta2,pregunta3,pregunta4,pregunta5);
+            return true
+        }
+        else {
+            alert("Completar todos los datos.")
+            return false
+        }
+    }
+
+    const redirect = async () => {
+        const ok = await subirRespuesta()
+        //const ok = true
+        if (ok) {
+            history.push("/Contacto")
+        }
+    }
 
     return (
         <Page pageTitle={'Cuestionario Api Benchmark'}>
@@ -82,38 +116,160 @@ export default function Forms() {
                 <br />
                 <Grid container spacing={3}>
                     <Grid item xs={12}>
-                        <Paper className={clase5.paper}><h2>{titulo}</h2></Paper>
+                        <Paper className={clase5.paper}><h2>{encuestas.titulo}</h2></Paper>
                     </Grid>
                 </Grid>
-                <br/>
-                <Grid container spacing={3}>
-                    <Grid item xs={12}>
-                        <Paper className={clase5.paper}><h2>Como estuvo el porcentaje de ventas en los ultimos 6 meses?</h2></Paper>
-                    </Grid>
-                </Grid>
-                <br/>
-                <RadioGroup aria-label="gender" name="gender1" value={cambiar} onChange={handleCambiar}>
-                    <center>
-                    <FormControlLabel value="female" control={<Radio />} label="Crecio un 25%." />
-                    <FormControlLabel value="male" control={<Radio />} label="Decrecio un 30%." />
-                    <FormControlLabel value="other" control={<Radio />} label="Se mantuvo igual al 2019." />
-                    </center>
-                </RadioGroup>
-                <br/>
-                <Grid container spacing={3}>
-                    <Grid item xs={12}>
-                        <Paper className={clase5.paper}><h2>Debido a la pandemia, cuantos empleados se encuentran en home office?</h2></Paper>
-                    </Grid>
-                </Grid>
-                <br/>
-                <RadioGroup aria-label="gender" name="gender1" value={cambiar} onChange={handleCambiar}>
-                    <center>
-                    <FormControlLabel value="female" control={<Radio />} label="10%" />
-                    <FormControlLabel value="male" control={<Radio />} label="20%" />
-                    <FormControlLabel value="other" control={<Radio />} label="100%" />
-                    </center>
-                </RadioGroup>
-                <br/>
+                <br />
+
+                {encuestas.pregunta1 &&
+                    <>
+                        <Grid container spacing={3}>
+                            <Grid item xs={12}>
+                                <Paper className={clase5.paper}><h2>{encuestas.pregunta1}</h2></Paper>
+                            </Grid>
+                        </Grid>
+                        <br />
+                        <RadioGroup aria-label="gender" name="gender1" value={pregunta1} onChange={handlePregunta1}>
+                            <center>
+                                {encuestas.P1respuesta1 &&
+                                    <FormControlLabel value={encuestas.P1respuesta1} control={<Radio />} label={encuestas.P1respuesta1} />
+                                }
+                                {encuestas.P1respuesta2 &&
+                                    <FormControlLabel value={encuestas.P1respuesta2} control={<Radio />} label={encuestas.P1respuesta2} />
+                                }
+                                {encuestas.P1respuesta3 &&
+                                    <FormControlLabel value={encuestas.P1respuesta3} control={<Radio />} label={encuestas.P1respuesta3} />
+                                }
+                                {encuestas.P1respuesta4 &&
+                                    <FormControlLabel value={encuestas.P1respuesta4} control={<Radio />} label={encuestas.P1respuesta4} />
+                                }
+                                {encuestas.P1respuesta5 &&
+                                    <FormControlLabel value={encuestas.P1respuesta5} control={<Radio />} label={encuestas.P1respuesta5} />
+                                }
+                            </center>
+                        </RadioGroup>
+                    </>
+                }
+                <br />
+                {encuestas.pregunta2 &&
+                    <>
+                        <Grid container spacing={3}>
+                            <Grid item xs={12}>
+                                <Paper className={clase5.paper}><h2>{encuestas.pregunta2}</h2></Paper>
+                            </Grid>
+                        </Grid>
+                        <br />
+                        <RadioGroup aria-label="gender" name="gender1" value={pregunta2} onChange={handlePregunta2}>
+                            <center>
+                                {encuestas.P2respuesta1 &&
+                                    <FormControlLabel value={encuestas.P2respuesta1} control={<Radio />} label={encuestas.P2respuesta1} />
+                                }
+                                {encuestas.P2respuesta2 &&
+                                    <FormControlLabel value={encuestas.P2respuesta2} control={<Radio />} label={encuestas.P2respuesta2} />
+                                }
+                                {encuestas.P2respuesta3 &&
+                                    <FormControlLabel value={encuestas.P2respuesta3} control={<Radio />} label={encuestas.P2respuesta3} />
+                                }
+                                {encuestas.P2respuesta4 &&
+                                    <FormControlLabel value={encuestas.P2respuesta4} control={<Radio />} label={encuestas.P2respuesta4} />
+                                }
+                                {encuestas.P2respuesta5 &&
+                                    <FormControlLabel value={encuestas.P2respuesta5} control={<Radio />} label={encuestas.P2respuesta5} />
+                                }
+                            </center>
+                        </RadioGroup>
+                    </>
+                }
+                <br />
+                {encuestas.pregunta3 &&
+                    <>
+                        <Grid container spacing={3}>
+                            <Grid item xs={12}>
+                                <Paper className={clase5.paper}><h2>{encuestas.pregunta3}</h2></Paper>
+                            </Grid>
+                        </Grid>
+                        <br />
+                        <RadioGroup aria-label="gender" name="gender1" value={pregunta3} onChange={handlePregunta3}>
+                            <center>
+                                {encuestas.P3respuesta1 &&
+                                    <FormControlLabel value={encuestas.P3respuesta1} control={<Radio />} label={encuestas.P3respuesta1} />
+                                }
+                                {encuestas.P3respuesta2 &&
+                                    <FormControlLabel value={encuestas.P3respuesta2} control={<Radio />} label={encuestas.P3respuesta2} />
+                                }
+                                {encuestas.P3respuesta3 &&
+                                    <FormControlLabel value={encuestas.P3respuesta3} control={<Radio />} label={encuestas.P3respuesta3} />
+                                }
+                                {encuestas.P3respuesta4 &&
+                                    <FormControlLabel value={encuestas.P3respuesta4} control={<Radio />} label={encuestas.P3respuesta4} />
+                                }
+                                {encuestas.P3respuesta5 &&
+                                    <FormControlLabel value={encuestas.P3respuesta5} control={<Radio />} label={encuestas.P3respuesta5} />
+                                }
+                            </center>
+                        </RadioGroup>
+                    </>
+                }
+                <br />
+                {encuestas.pregunta4 &&
+                    <>
+                        <Grid container spacing={3}>
+                            <Grid item xs={12}>
+                                <Paper className={clase5.paper}><h2>{encuestas.pregunta4}</h2></Paper>
+                            </Grid>
+                        </Grid>
+                        <br />
+                        <RadioGroup aria-label="gender" name="gender1" value={pregunta4} onChange={handlePregunta4}>
+                            <center>
+                                {encuestas.P4respuesta1 &&
+                                    <FormControlLabel value={encuestas.P4respuesta1} control={<Radio />} label={encuestas.P4respuesta1} />
+                                }
+                                {encuestas.P4respuesta2 &&
+                                    <FormControlLabel value={encuestas.P4respuesta2} control={<Radio />} label={encuestas.P4respuesta2} />
+                                }
+                                {encuestas.P4respuesta3 &&
+                                    <FormControlLabel value={encuestas.P4respuesta3} control={<Radio />} label={encuestas.P4respuesta3} />
+                                }
+                                {encuestas.P4respuesta4 &&
+                                    <FormControlLabel value={encuestas.P4respuesta4} control={<Radio />} label={encuestas.P4respuesta4} />
+                                }
+                                {encuestas.P4respuesta5 &&
+                                    <FormControlLabel value={encuestas.P4respuesta5} control={<Radio />} label={encuestas.P4respuesta5} />
+                                }
+                            </center>
+                        </RadioGroup>
+                    </>
+                }
+                <br />
+                {encuestas.pregunta5 &&
+                    <>
+                        <Grid container spacing={3}>
+                            <Grid item xs={12}>
+                                <Paper className={clase5.paper}><h2>{encuestas.pregunta5}</h2></Paper>
+                            </Grid>
+                        </Grid>
+                        <br />
+                        <RadioGroup aria-label="gender" name="gender1" value={pregunta5} onChange={handlePregunta5}>
+                            <center>
+                                {encuestas.P5respuesta1 &&
+                                    <FormControlLabel value={encuestas.P5respuesta1} control={<Radio />} label={encuestas.P5respuesta1} />
+                                }
+                                {encuestas.P5respuesta2 &&
+                                    <FormControlLabel value={encuestas.P5respuesta2} control={<Radio />} label={encuestas.P5respuesta2} />
+                                }
+                                {encuestas.P5respuesta3 &&
+                                    <FormControlLabel value={encuestas.P5respuesta3} control={<Radio />} label={encuestas.P5respuesta3} />
+                                }
+                                {encuestas.P5respuesta4 &&
+                                    <FormControlLabel value={encuestas.P5respuesta4} control={<Radio />} label={encuestas.P5respuesta4} />
+                                }
+                                {encuestas.P5respuesta5 &&
+                                    <FormControlLabel value={encuestas.P5respuesta5} control={<Radio />} label={encuestas.P5respuesta5} />
+                                }
+                            </center>
+                        </RadioGroup>
+                    </>
+                }
                 <Button
                     variant="contained"
                     color="Primary"
