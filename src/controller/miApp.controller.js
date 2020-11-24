@@ -304,27 +304,27 @@ export const guardarEncuestaResp = async function (encuesta,resp1,resp2,resp3,re
     if (resp1) {
         formData.append('pregunta1', encuesta.pregunta1);
         formData.append('P1respuesta', resp1);
-        formData.append('P1valorref', encuesta.P1valorref);
+        formData.append('P1valorref', encuesta.P1valorref1);
     }
     if (resp2) {
         formData.append('pregunta2', encuesta.pregunta2);
         formData.append('P2respuesta', resp2);
-        formData.append('P2valorref', encuesta.P2valorref);
+        formData.append('P2valorref', encuesta.P2valorref1);
     }
     if (resp3) {
         formData.append('pregunta3', encuesta.pregunta3);
         formData.append('P3respuesta', resp3);
-        formData.append('P3valorref', encuesta.P3valorref);
+        formData.append('P3valorref', encuesta.P3valorref1);
     }
     if (resp4) {
         formData.append('pregunta4', encuesta.pregunta4);
         formData.append('P4respuesta', resp4);
-        formData.append('P4valorref', encuesta.P4valorref);
+        formData.append('P4valorref', encuesta.P4valorref1);
     }
     if (resp5) {
         formData.append('pregunta5', encuesta.pregunta5);
         formData.append('P5respuesta', resp5);
-        formData.append('P5valorref', encuesta.P5valorref);
+        formData.append('P5valorref', encuesta.P5valorref1);
     }
 
     try {
@@ -386,7 +386,7 @@ export const getEncuesta = async function () {
 }
 
 // Traer encuestas por ID
-export const getEncuestaID = async function (id) {
+export const getEncuestaID = async function (_id) {
     let url = urlWebServices.getEncuestaID;
     const formData = new URLSearchParams();
 
