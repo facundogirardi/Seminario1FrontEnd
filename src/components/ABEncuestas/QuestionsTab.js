@@ -11,6 +11,7 @@ import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import Radio from '@material-ui/core/Radio';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Alert from '@material-ui/lab/Alert';
 import AccordionActions from '@material-ui/core/AccordionActions';
 import Divider from '@material-ui/core/Divider';
 import VisibilityIcon from '@material-ui/icons/Visibility';
@@ -92,7 +93,7 @@ function QuestionsTab(props) {
   const subirEncuesta = async function () {
     let archivoEncuesta = false;
 
-    if (!isEmpty(tituloEncuesta) && !isEmpty(sector) && !isEmpty(tamaño) && !isEmpty(questions) && !isEmpty(valorReferencia) ) {
+    if (!isEmpty(tituloEncuesta) && !isEmpty(sector) && !isEmpty(tamaño) && !isEmpty(questions) && !isEmpty(valorReferencia)) {
 
       archivoEncuesta = await guardarEncuesta(tituloEncuesta, sector, tamaño, questions, valorReferencia);
     }
@@ -284,7 +285,7 @@ function QuestionsTab(props) {
                             <div style={{ display: 'flex', flexDirection: 'row', marginLeft: '-12.5px', justifyContent: 'space-between', paddingTop: '5px', paddingBottom: '5px' }}>
                               <TextField
                                 fullWidth={true}
-				type='Number'
+                                type='Number'
                                 placeholder="Ingrese la respuesta..."
                                 style={{ marginTop: '5px' }}
                                 value={ques.options[j].optionText}
@@ -310,7 +311,7 @@ function QuestionsTab(props) {
                         id="titulo"
                         label="Valor de referencia:"
                         variant="outlined"
-			type='Number'
+                        type='Number'
                         value={valorReferencia[i]}
                         onChange={(e) => { handleValorReferencia2(e.target.value, i) }}
                       />
@@ -355,6 +356,11 @@ function QuestionsTab(props) {
             <div>
               <div>
                 <Paper elevation={2} style={{ width: '100%' }}>
+                  <br></br>
+                  <div>
+                  <Alert severity="info"> Los valores de las respuestas y valor de referencia deben ser numericos</Alert>
+             
+                  </div>
                   <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', marginLeft: '15px', paddingTop: '2%', paddingBottom: '2%' }}>
                     <Typography variant="h4" style={{ fontFamily: 'sans-serif Roboto', marginBottom: "15px" }}>
                       <TextField
@@ -396,7 +402,7 @@ function QuestionsTab(props) {
                           <MenuItem value={"Fabricación de sustancias y productos químicos"}>Fabricación de sustancias y productos químicos</MenuItem>
                         </Select>
                       </FormControl>
-                      
+
                       {formData.name}
                     </Typography>
                     <Typography variant="subtitle1">{formData.description}</Typography>
@@ -421,24 +427,24 @@ function QuestionsTab(props) {
                 </Droppable>
               </DragDropContext>
               {questions.length < 5 ? (
-              <div>
-                <Button
-                  variant="contained"
-                  onClick={addMoreQuestionField}
-                  endIcon={<AddCircleIcon />}
-                  style={{ margin: '5px' }}
-                >Agregar Pregunta </Button>
-              </div>
+                <div>
+                  <Button
+                    variant="contained"
+                    onClick={addMoreQuestionField}
+                    endIcon={<AddCircleIcon />}
+                    style={{ margin: '15px' }}
+                  >Agregar Pregunta </Button>
+                </div>
               ) : ""}
-                <Button
-                  variant="contained"
-                  color="primary"
-                  style={{ margin: '15px' }}
-                  endIcon={<SaveIcon />}
-                  onClick={() => { redirect() }}
-                >Guardar Encuesta </Button>
-              
-              
+              <Button
+                variant="contained"
+                color="primary"
+                style={{ margin: '15px' }}
+                endIcon={<SaveIcon />}
+                onClick={() => { redirect() }}
+              >Guardar Encuesta </Button>
+
+
             </div>
           </Grid>
         </Grid>

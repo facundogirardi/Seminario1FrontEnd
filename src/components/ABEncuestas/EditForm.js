@@ -81,18 +81,21 @@ function EditForm(props) {
           { formDeatils.createdBy === user.id ? (
             <div>
             <div className={classes.root}>
+             <br></br> 
+                     
                     <Toolbar className={classes.toolbar}>
+                   
                     <Typography variant="h6" noWrap style={{marginTop: '8.5px', color:'black'}}>
+                      
                         {formDeatils.name}
                     </Typography>
-                    <Tabs
+                <Tabs
                     className={classes.title}
                     value={value}
                     onChange={handleChange}
                     indicatorColor="primary"
                     textColor="primary"
-                    centered
-                >
+                    centered>
                     <Tab label="Encuesta a crear" />
                 </Tabs>
                     </Toolbar>
