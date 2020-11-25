@@ -148,12 +148,6 @@ const getMenuItems = (props) => {
         leftIcon: <InfoIcon />,
       },
       {
-        value: '/SignIn',
-        visible: true,
-        primaryText: intl.formatMessage({ id: 'Cerrar Sesion' }),
-        leftIcon: <ExitToAppIcon />,
-      },
-      {
         value: null,
         visible: isAppInstallable && !isAppInstalled,
         onClick: () => {

@@ -6,6 +6,8 @@ import EditableTable from "./EditableTable"
 import { Link } from 'react-router-dom'
 import { Button } from "@material-ui/core";
 import "./ABEncuestas.css"
+import IconButton from '@material-ui/core/IconButton';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
 //importo 
 import { getEncuesta } from "../../controller/miApp.controller";
@@ -47,6 +49,11 @@ export default function AbmEncuestas() {
 
   return (
     <Page pageTitle={'Administrador de encuestas'}>
+      <Link to="/Signin">
+        <IconButton color="primary" aria-label="upload picture" component="span">
+          <Button variant="contained" color="secondary">Log Out</Button>
+        </IconButton>
+      </Link>
       <Scrollbar
         style={{ height: '100%', width: '100%', display: 'flex', flex: 1 }}>
         <br />

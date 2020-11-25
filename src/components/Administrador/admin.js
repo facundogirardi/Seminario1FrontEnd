@@ -2,10 +2,12 @@ import React, { useEffect, useState } from "react";
 import Scrollbar from 'material-ui-shell/lib/components/Scrollbar/Scrollbar'
 import Page from 'material-ui-shell/lib/containers/Page/Page'
 import Footer from '../Footer/Footer';
-//import BasicTable from './tabla_admin'
-//import Altausuario from './Altausuario'
+import IconButton from '@material-ui/core/IconButton';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import EditableTable from "./EditableTable"
 import Swal from "sweetalert2";
+import Button from '@material-ui/core/Button';
+import { Link } from 'react-router-dom'
 
 //importo 
 import { getUsuario } from "../../controller/miApp.controller";
@@ -48,9 +50,9 @@ export default function AbmUsuarios() {
   }
 
   const editarUsuario = async function (newUsuario) {
-   let Usuario = false;
-    
-    Usuario = await updateUsuario(newUsuario._id,newUsuario.dni, newUsuario.name, newUsuario.lastname, newUsuario.email, newUsuario.password);
+    let Usuario = false;
+
+    Usuario = await updateUsuario(newUsuario._id, newUsuario.dni, newUsuario.name, newUsuario.lastname, newUsuario.email, newUsuario.password);
     window.location.reload(true);
   }
 
@@ -110,7 +112,7 @@ export default function AbmUsuarios() {
   };
 
   const columns = [
-    { title: 'DNI', field: 'dni'},
+    { title: 'DNI', field: 'dni' },
     { title: 'Nombre', field: 'name' },
     { title: 'Apellido', field: 'lastname' },
     { title: 'Email', field: 'email' },
@@ -120,12 +122,17 @@ export default function AbmUsuarios() {
 
   return (
     <Page pageTitle={'Administrador de usuarios'}>
+      <Link to="/Signin">
+        <IconButton color="primary" aria-label="upload picture" component="span">
+        <Button variant="contained" color="secondary">Log Out</Button>
+        </IconButton>
+      </Link>
       <Scrollbar
         style={{ height: '100%', width: '100%', display: 'flex', flex: 1 }}>
         <div style={{ padding: 24, width: "100%" }}>
           <EditableTable title={"Usuarios"} data={usuarios} columns={columns} setData={setUsuarios}
             onRowDelete={deleteUsuarios}
-            onRowAdd={addUsuario} 
+            onRowAdd={addUsuario}
             onRowUpdate={editUsuario}
             deleteText={"¿Está seguro de eliminar el usuario?"} isLoading={loading} />
         </div>
