@@ -41,7 +41,6 @@ export default function Forms(props) {
     const clase5 = useStylesGrid();
     const clase4 = useStylesButton();
     const [encuestas, setEncuestas] = useState([]);
-    const [loading, setLoading] = useState(true);
     const history = useHistory();
 
     const [pregunta1, setPregunta1] = React.useState('');
@@ -73,7 +72,6 @@ export default function Forms(props) {
     const getEncuesta = async (id) => {
         const encuestas = await getEncuestaID(id)
         setEncuestas(encuestas[0])
-        setLoading(false)
     };
 
     const isEmpty = (stringToValidate) => {
@@ -92,7 +90,7 @@ export default function Forms(props) {
         const valorPregunta4 = encuestas.pregunta4 ? !isEmpty(pregunta4) : true
         const valorPregunta5 = encuestas.pregunta5 ? !isEmpty(pregunta5) : true
         if (valorPregunta1 && valorPregunta2 && valorPregunta3 && valorPregunta4 && valorPregunta5) {
-            Respuesta = await guardarEncuestaResp(encuestas,pregunta1,pregunta2,pregunta3,pregunta4,pregunta5);
+            Respuesta = await guardarEncuestaResp(encuestas, pregunta1, pregunta2, pregunta3, pregunta4, pregunta5);
             return true
         }
         else {

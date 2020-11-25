@@ -13,13 +13,6 @@ import banner from '../../imagenes/banner3.jpg';
 //importo 
 import { getEncuesta } from "../../controller/miApp.controller";
 
-const useStylesButton = makeStyles((theme) => ({
-  button: {
-    margin: theme.spacing(2),
-    width: "100%",
-  },
-}));
-
 const useStylesGrid = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -34,13 +27,11 @@ const useStylesGrid = makeStyles((theme) => ({
 
 export default function Encuesta() {
 
-  const clase4 = useStylesButton();
+
   const clase5 = useStylesGrid();
-  const [isVisible, setVisible] = useState(false);
   const [encuestas, setEncuestas] = useState([]);
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([encuestas]);
-  const [checked, setChecked] = useState(false);
 
   useEffect(() => {
     getTEncuesta()
@@ -55,9 +46,7 @@ export default function Encuesta() {
   }
 
   const history = useHistory();
-  const [sector, setSector] = React.useState('');
-  const [tamaño, setTamaño] = React.useState('');
-
+ 
   const getTEncuesta = async () => {
     const encuestas = await getEncuesta()
     setEncuestas(encuestas)
@@ -72,7 +61,6 @@ export default function Encuesta() {
     } else {
       setData([encuestas]);
     }
-    setChecked(value);
   };
 
   const columnas = [

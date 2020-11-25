@@ -7,7 +7,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import TimelineIcon from '@material-ui/icons/Timeline';
 import FormControl from '@material-ui/core/FormControl';
 import Button from '@material-ui/core/Button';
-import { Link } from 'react-router-dom'
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -20,7 +19,6 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import Paper from '@material-ui/core/Paper';
-import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import { useHistory } from 'react-router';
 import banner from '../../imagenes/banner2.jpg';
 

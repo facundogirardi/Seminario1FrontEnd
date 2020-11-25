@@ -392,7 +392,6 @@ export const getEncuestaID = async function (_id) {
 
     formData.append('_id', _id);
 
-    console.log(_id)
     try {
         let response = await fetch(url, {
             method: 'POST', // or 'PUT'

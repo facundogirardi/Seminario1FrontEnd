@@ -29,8 +29,7 @@ export default class Demo extends React.PureComponent {
   createPdf = (html) => Doc.createPdf(html);
 
   render() {
-    const { data: chartData } = this.state;
-
+   
     return (
       <Page pageTitle={'Gracias por utilizar Api Benchmark'}>
         <Scrollbar
