@@ -284,7 +284,8 @@ function QuestionsTab(props) {
                             <div style={{ display: 'flex', flexDirection: 'row', marginLeft: '-12.5px', justifyContent: 'space-between', paddingTop: '5px', paddingBottom: '5px' }}>
                               <TextField
                                 fullWidth={true}
-                                placeholder="Option text"
+				type='Number'
+                                placeholder="Ingrese la respuesta..."
                                 style={{ marginTop: '5px' }}
                                 value={ques.options[j].optionText}
                                 onChange={(e) => { handleOptionValue(e.target.value, i, j) }}
@@ -309,6 +310,7 @@ function QuestionsTab(props) {
                         id="titulo"
                         label="Valor de referencia:"
                         variant="outlined"
+			type='Number'
                         value={valorReferencia[i]}
                         onChange={(e) => { handleValorReferencia2(e.target.value, i) }}
                       />
@@ -418,6 +420,7 @@ function QuestionsTab(props) {
                   )}
                 </Droppable>
               </DragDropContext>
+              {questions.length < 5 ? (
               <div>
                 <Button
                   variant="contained"
@@ -425,6 +428,8 @@ function QuestionsTab(props) {
                   endIcon={<AddCircleIcon />}
                   style={{ margin: '5px' }}
                 >Agregar Pregunta </Button>
+              </div>
+              ) : ""}
                 <Button
                   variant="contained"
                   color="primary"
@@ -432,7 +437,8 @@ function QuestionsTab(props) {
                   endIcon={<SaveIcon />}
                   onClick={() => { redirect() }}
                 >Guardar Encuesta </Button>
-              </div>
+              
+              
             </div>
           </Grid>
         </Grid>

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import logo from '../../imagenes/logo.png';
-import fotoDashboard from '../../imagenes/header-teamwork.png';
+import fotoDashboard from '../../imagenes/teamwork-chico.png';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import "./LandingPage.css";
@@ -61,7 +61,7 @@ export default function () {
         </Grid>
       </Grid>
       <Grid container spacing={3}>
-        <Grid item xs={6} md={4}>
+        <Grid item xs={6} sm={4}>
           <br />
           <br />
           <center><h3>Bienvenidos al Termometro PyME!</h3>
@@ -71,10 +71,11 @@ export default function () {
             </Link>
           </center>
         </Grid>
-        <Grid item xs={6} md={4}></Grid>
-        <Grid item xs={6} md={4}>
-          <center><h4>Benchmarking</h4>
-            <img src={fotoDashboard} alt="alternative" /></center>
+        <Grid item xs={2} sm={2}></Grid>
+        <Grid item xs={6} sm={6}>
+          <center><h4>Benchmark</h4>
+            <img src={fotoDashboard} alt="alternative" />
+          </center>
         </Grid>
       </Grid>
     </div>

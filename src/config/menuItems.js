@@ -12,6 +12,7 @@ import CreateIcon from '@material-ui/icons/Create';
 import HomeIcon from '@material-ui/icons/Home';
 import FormatListNumberedIcon from '@material-ui/icons/FormatListNumbered';
 import PersonIcon from '@material-ui/icons/Person';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
 
 const getMenuItems = (props) => {
@@ -142,9 +143,15 @@ const getMenuItems = (props) => {
       },
       {
         value: '/about',
-        visible: isAuthorised,
+        visible: true,
         primaryText: intl.formatMessage({ id: 'Informacion' }),
         leftIcon: <InfoIcon />,
+      },
+      {
+        value: '/SignIn',
+        visible: true,
+        primaryText: intl.formatMessage({ id: 'Cerrar Sesion' }),
+        leftIcon: <ExitToAppIcon />,
       },
       {
         value: null,
