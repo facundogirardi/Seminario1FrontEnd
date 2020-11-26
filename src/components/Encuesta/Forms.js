@@ -74,7 +74,7 @@ export default function Forms(props) {
         setEncuestas(encuestas[0])
     };
     const idbusqueda = props.match.params.id
-    
+
     const isEmpty = (stringToValidate) => {
         if (stringToValidate !== undefined && stringToValidate !== null) {
             return stringToValidate.length === 0
@@ -158,7 +158,7 @@ export default function Forms(props) {
                             </Grid>
                         </Grid>
                         <br />
-                        <RadioGroup aria-label="gender" name="gender1" value={pregunta2} onChange={handlePregunta2}>
+                        <RadioGroup aria-label="Preguntas2" name="Preguntas2" value={pregunta2} onChange={handlePregunta2}>
                             <center>
                                 {encuestas.P2respuesta1 &&
                                     <FormControlLabel value={encuestas.P2respuesta1} control={<Radio />} label={encuestas.P2respuesta1} />
@@ -188,7 +188,7 @@ export default function Forms(props) {
                             </Grid>
                         </Grid>
                         <br />
-                        <RadioGroup aria-label="gender" name="gender1" value={pregunta3} onChange={handlePregunta3}>
+                        <RadioGroup aria-label="Preguntas3" name="Preguntas3" value={pregunta3} onChange={handlePregunta3}>
                             <center>
                                 {encuestas.P3respuesta1 &&
                                     <FormControlLabel value={encuestas.P3respuesta1} control={<Radio />} label={encuestas.P3respuesta1} />
@@ -218,7 +218,7 @@ export default function Forms(props) {
                             </Grid>
                         </Grid>
                         <br />
-                        <RadioGroup aria-label="gender" name="gender1" value={pregunta4} onChange={handlePregunta4}>
+                        <RadioGroup aria-label="Preguntas4" name="Preguntas4" value={pregunta4} onChange={handlePregunta4}>
                             <center>
                                 {encuestas.P4respuesta1 &&
                                     <FormControlLabel value={encuestas.P4respuesta1} control={<Radio />} label={encuestas.P4respuesta1} />
@@ -248,7 +248,7 @@ export default function Forms(props) {
                             </Grid>
                         </Grid>
                         <br />
-                        <RadioGroup aria-label="gender" name="gender1" value={pregunta5} onChange={handlePregunta5}>
+                        <RadioGroup aria-label="Preguntas5" name="Preguntas5" value={pregunta5} onChange={handlePregunta5}>
                             <center>
                                 {encuestas.P5respuesta1 &&
                                     <FormControlLabel value={encuestas.P5respuesta1} control={<Radio />} label={encuestas.P5respuesta1} />

@@ -6,48 +6,10 @@ import React, { useEffect, useState } from "react";
 import { Link } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-import Grid from '@material-ui/core/Grid';
-import { useHistory } from 'react-router';
 import banner from '../../imagenes/banner4.jpg';
 
 //importo llamada a endpoint
 import { getEncuestaRespID } from "../../controller/miApp.controller";
-
-const useStylesButton = makeStyles((theme) => ({
-  button: {
-    margin: theme.spacing(2),
-    width: "98%",
-  },
-}));
-
-const useStylesCards = makeStyles({
-  root: {
-    width: "98%",
-    margin: '0 10px',
-  },
-  bullet: {
-    display: 'inline-block',
-    margin: '0 2px',
-    transform: 'scale(0.8)',
-  },
-  title: {
-    fontSize: 14,
-  },
-  pos: {
-    marginBottom: 12,
-  },
-});
-
-const useStylesText = makeStyles((theme) => ({
-  root: {
-    '& > *': {
-      margin: theme.spacing(1),
-      width: '100%',
-    },
-  },
-}));
 
 const useStylesGrid = makeStyles((theme) => ({
   root: {
@@ -61,31 +23,10 @@ const useStylesGrid = makeStyles((theme) => ({
   },
 }));
 
-const useStyles = makeStyles((theme) => ({
-  formControl: {
-    margin: theme.spacing(1),
-    minWidth: 120,
-  },
-  selectEmpty: {
-    marginTop: theme.spacing(2),
-  },
-}));
-
-var BenchP1 = "1"
-var BenchP2 = "2"
-var BenchP3 = "3"
-var BenchP4 = "4"
-var BenchP5 = "5"
-
 export default function Encuesta(props) {
-  const clase1 = useStylesCards();
-  const clase3 = useStylesText();
-  const clase4 = useStylesButton();
+
   const [encuestas, setEncuestas] = useState([]);
   const clase5 = useStylesGrid();
-  const classes = useStyles();
-  const history = useHistory();
-
   var url = window.location.href;
   var tituloID = url.substring(url.lastIndexOf('/') + 1);
   var titulo = tituloID.replace(/%20/g, " ");
@@ -96,40 +37,42 @@ export default function Encuesta(props) {
 
   const getEncuesta = async (titulo) => {
     const encuestas = await getEncuestaRespID(titulo)
-    setEncuestas(encuestas[0])
+    setEncuestas(encuestas.slice(-1)[0])
   };
+
   if (encuestas.P1respuesta < encuestas.P1valorref) {
-    BenchP1 = "por debajo"
+    var BenchP1 = "por debajo"
   }
   else {
-    BenchP1 = "por encima"
+    var BenchP1 = "por encima"
   }
   if (encuestas.P2respuesta < encuestas.P2valorref) {
-    BenchP2 = "por debajo"
+    var BenchP2 = "por debajo"
   }
   else {
-    BenchP2 = "por encima"
+    var BenchP2 = "por encima"
   }
   if (encuestas.P3respuesta < encuestas.P3valorref) {
-    BenchP3 = "por debajo"
+    var BenchP3 = "por debajo"
   }
   else {
-    BenchP3 = "por encima"
+    var BenchP3 = "por encima"
   }
   if (encuestas.P4respuesta < encuestas.P4valorref) {
-    BenchP4 = "por debajo"
+    var BenchP4 = "por debajo"
   }
   else {
-    BenchP4 = "por encima"
+    var BenchP4 = "por encima"
   }
   if (encuestas.P5respuesta < encuestas.P5valorref) {
-    BenchP5 = "por debajo"
+    var BenchP5 = "por debajo"
   }
   else {
-    BenchP5 = "por encima"
+    var BenchP5 = "por encima"
   }
 
   console.log("Llgue a la encuesta", encuestas)
+
 
   return (
     <Page pageTitle={'Gracias por utilizar Api Benchmark'}>
@@ -137,7 +80,6 @@ export default function Encuesta(props) {
         <Link to="/Encuesta">
           <button class="block">Realizar otra encuesta</button>
         </Link>
-
         <img src={banner} width="100%" height="25%" alt="Logo" />
         <Paper className={clase5.paper}><h2>{encuestas.titulo}</h2></Paper>
         <br />
@@ -168,11 +110,10 @@ export default function Encuesta(props) {
             <p>En la pregunta, <b>"{encuestas.pregunta5}"</b>, usted selecciono <b>{encuestas.P5respuesta}</b>, su empresa se encuentra <b>{BenchP5}</b> del parametro valor general en el sector. </p>
           </Paper>
         }
-
       </Scrollbar>
-
       <Footer />
     </Page>
 
   );
+
 }
