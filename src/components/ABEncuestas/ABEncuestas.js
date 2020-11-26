@@ -6,13 +6,25 @@ import EditableTable from "./EditableTable"
 import { Link } from 'react-router-dom'
 import { Button } from "@material-ui/core";
 import "./ABEncuestas.css"
-import IconButton from '@material-ui/core/IconButton';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import { makeStyles } from '@material-ui/core/styles';
+import PollIcon from '@material-ui/icons/Poll';
 
 //importo 
 import { getEncuesta } from "../../controller/miApp.controller";
 import { deleteEncuesta } from "../../controller/miApp.controller";
 
+const useStylesButton = makeStyles((theme) => ({
+  button: {
+    margin: theme.spacing(1),
+    padding: 10,
+    width: "48%",
+  },
+}));
+
 export default function AbmEncuestas() {
+
+  const clase4 = useStylesButton();
   const [encuestas, setEncuestas] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -48,18 +60,17 @@ export default function AbmEncuestas() {
 
   return (
     <Page pageTitle={'Administrador de encuestas'}>
-      <Link to="/Signin">
-        <IconButton color="primary" aria-label="upload picture" component="span">
-          <Button variant="contained" color="secondary">Log Out</Button>
-        </IconButton>
-      </Link>
       <Scrollbar
         style={{ height: '100%', width: '100%', display: 'flex', flex: 1 }}>
-        <br />
-        <Link to="/NuevaEncuesta">
-          <Button variant="contained" color="secondary" fullWidth="true">Generar Nueva Encuesta</Button>
-        </Link>
         <div style={{ padding: 24, width: "100%" }}>
+          <Link to="/NuevaEncuesta">
+            <Button variant="contained" color="secondary" className={clase4.button} startIcon={<PollIcon />}>Generar Nueva Encuesta</Button>
+          </Link>
+          <Link to="/Signin">
+            <Button variant="contained" color="red" className={clase4.button} startIcon={<ExitToAppIcon />}>Cerrar Sesion</Button>
+          </Link>
+          <br />
+          <br />
           <EditableTable title={"Encuestas"} data={encuestas} columns={columns} setData={setEncuestas}
             onRowDelete={deleteEncuestas}
             deleteText={"¿Está seguro de eliminar la encuesta?"} isLoading={loading} />

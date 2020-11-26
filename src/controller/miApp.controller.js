@@ -294,13 +294,14 @@ export const guardarEncuesta = async function (titulo, sector, tamaño, question
 }
 
 //Crear encuestas respuesta
-export const guardarEncuestaResp = async function (encuesta,resp1,resp2,resp3,resp4,resp5) {
+export const guardarEncuestaResp = async function (encuesta,resp1,resp2,resp3,resp4,resp5, idbusqueda ) {
 
     let url = urlWebServices.guardarEncuestaResp;
     const formData = new URLSearchParams();
     formData.append('titulo', encuesta.titulo);
     formData.append('sector', encuesta.sector);
     formData.append('tamaño', encuesta.tamaño);
+    formData.append('idbusqueda', idbusqueda);
     if (resp1) {
         formData.append('pregunta1', encuesta.pregunta1);
         formData.append('P1respuesta', resp1);
@@ -392,6 +393,43 @@ export const getEncuestaID = async function (_id) {
 
     formData.append('_id', _id);
 
+    try {
+        let response = await fetch(url, {
+            method: 'POST', // or 'PUT'
+            mode: "cors",
+            headers: {
+                'Accept': 'application/x-www-form-urlencoded',
+                'x-access-token': localStorage.getItem('x'),
+                'Origin': 'http://localhost:3000',
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: formData
+        });
+        if (response.status === 200) {
+            let data = await response.json();
+
+            let listaEncuestaID = data.data.docs;
+            return listaEncuestaID;
+        }
+        else {
+            let vacio = [];
+            console.log("No hay encuestas por ese ID")
+            return (vacio);
+
+        }
+    }
+    catch (error) {
+        console.log("error", error);
+    };
+}
+
+// Traer encuestas por ID
+export const getEncuestaRespID = async function (idbusqueda) {
+    let url = urlWebServices.getEncuestaRespID;
+    const formData = new URLSearchParams();
+    formData.append('idbusqueda', idbusqueda);
+ 
+    console.log("idbuesque",idbusqueda)
     try {
         let response = await fetch(url, {
             method: 'POST', // or 'PUT'

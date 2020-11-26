@@ -2,12 +2,13 @@ import React, { useEffect, useState } from "react";
 import Scrollbar from 'material-ui-shell/lib/components/Scrollbar/Scrollbar'
 import Page from 'material-ui-shell/lib/containers/Page/Page'
 import Footer from '../Footer/Footer';
-import IconButton from '@material-ui/core/IconButton';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import EditableTable from "./EditableTable"
 import Swal from "sweetalert2";
 import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom'
+import { makeStyles } from '@material-ui/core/styles';
+import "./admin.css"
 
 //importo 
 import { getUsuario } from "../../controller/miApp.controller";
@@ -15,7 +16,17 @@ import { guardarUsuario } from "../../controller/miApp.controller";
 import { deleteUsuario } from "../../controller/miApp.controller";
 import { updateUsuario } from "../../controller/miApp.controller";
 
+const useStylesButton = makeStyles((theme) => ({
+  button: {
+    margin: theme.spacing(1),
+    padding: 10,
+    width: "98%",
+  },
+}));
+
 export default function AbmUsuarios() {
+
+  const clase4 = useStylesButton();
   const [usuarios, setUsuarios] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -121,15 +132,15 @@ export default function AbmUsuarios() {
   ];
 
   return (
-    <Page pageTitle={'Administrador de usuarios'}>
-      <Link to="/Signin">
-        <IconButton color="primary" aria-label="upload picture" component="span">
-        <Button variant="contained" color="secondary">Log Out</Button>
-        </IconButton>
-      </Link>
+    <Page pageTitle={'Administrador de usuarios'} Button={<Button>olaa</Button>}>
       <Scrollbar
         style={{ height: '100%', width: '100%', display: 'flex', flex: 1 }}>
         <div style={{ padding: 24, width: "100%" }}>
+          <Link to="/Signin">
+            <Button variant="contained" color="red" className={clase4.button} startIcon={<ExitToAppIcon />}>Cerrar Sesion</Button>
+          </Link>
+          <br/>
+          <br/>
           <EditableTable title={"Usuarios"} data={usuarios} columns={columns} setData={setUsuarios}
             onRowDelete={deleteUsuarios}
             onRowAdd={addUsuario}

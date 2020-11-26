@@ -2,7 +2,7 @@ import Scrollbar from 'material-ui-shell/lib/components/Scrollbar/Scrollbar'
 import Page from 'material-ui-shell/lib/containers/Page/Page'
 import "./Contacto.css";
 import Footer from '../Footer/Footer';
-import React from 'react';
+import React, { useEffect, useState } from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import TimelineIcon from '@material-ui/icons/Timeline';
 import FormControl from '@material-ui/core/FormControl';
@@ -24,6 +24,7 @@ import banner from '../../imagenes/banner2.jpg';
 
 //importo llamada a endpoint
 import { guardarContacto } from "../../controller/miApp.controller";
+import { getEncuestaID } from "../../controller/miApp.controller";
 
 const useStylesButton = makeStyles((theme) => ({
   button: {
@@ -82,10 +83,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Encuesta() {
+export default function Encuesta(props) {
   const clase1 = useStylesCards();
   const clase3 = useStylesText();
   const clase4 = useStylesButton();
+  const [encuestas, setEncuestas] = useState([]);
   const clase5 = useStylesGrid();
   const classes = useStyles();
   const [region, setRegion] = React.useState('');
@@ -116,6 +118,15 @@ export default function Encuesta() {
     setRegion(event.target.value);
   };
 
+  useEffect(() => {
+    getEncuesta(props.match.params.id)
+  }, [props.match.params.id]);
+
+  const getEncuesta = async (id) => {
+    const encuestas = await getEncuestaID(id)
+    setEncuestas(encuestas[0])
+  };
+
   const subirDatos = async function () {
     let archivoDatos = false;
 
@@ -144,11 +155,9 @@ export default function Encuesta() {
   const redirect = async () => {
     const ok = await subirDatos()
     if (ok) {
-      history.push("/Resultados")
+      history.push("/Resultados/"+ encuestas._id)
     }
   }
-
-
 
   return (
     <Page pageTitle={'API Benchmark - Observatorio Pyme'}>

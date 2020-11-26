@@ -17,10 +17,11 @@ const routes = [
   <PublicRoute path="/about" exact component={About} />,
   <PublicRoute path="/Encuesta" exact component={Encuesta} />,
   <PublicRoute path="/ABEncuestas" exact component={ABEncuestas} />,
-  <PublicRoute path="/Resultados" exact component={Resultados} />,
-  <PublicRoute path="/Contacto" exact component={Contacto} />,
-  <PublicRoute path="/NuevaEncuesta" exact component={NuevaEncuesta} />,
   <PublicRoute path="/Forms/:id" exact component={Forms} />,
+  <PublicRoute path="/Contacto/:id" exact component={Contacto} />,
+  <PublicRoute path="/Resultados/:id" exact component={Resultados} />,
+  <PublicRoute path="/NuevaEncuesta" exact component={NuevaEncuesta} />,
+
 ]
 
 export default routes

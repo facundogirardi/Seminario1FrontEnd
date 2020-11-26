@@ -73,7 +73,8 @@ export default function Forms(props) {
         const encuestas = await getEncuestaID(id)
         setEncuestas(encuestas[0])
     };
-
+    const idbusqueda = props.match.params.id
+    
     const isEmpty = (stringToValidate) => {
         if (stringToValidate !== undefined && stringToValidate !== null) {
             return stringToValidate.length === 0
@@ -90,7 +91,7 @@ export default function Forms(props) {
         const valorPregunta4 = encuestas.pregunta4 ? !isEmpty(pregunta4) : true
         const valorPregunta5 = encuestas.pregunta5 ? !isEmpty(pregunta5) : true
         if (valorPregunta1 && valorPregunta2 && valorPregunta3 && valorPregunta4 && valorPregunta5) {
-            Respuesta = await guardarEncuestaResp(encuestas, pregunta1, pregunta2, pregunta3, pregunta4, pregunta5);
+            Respuesta = await guardarEncuestaResp(encuestas, pregunta1, pregunta2, pregunta3, pregunta4, pregunta5, idbusqueda);
             return true
         }
         else {
@@ -103,7 +104,7 @@ export default function Forms(props) {
         const ok = await subirRespuesta()
         //const ok = true
         if (ok) {
-            history.push("/Contacto")
+            history.push("/Contacto/" + encuestas._id)
         }
     }
 
@@ -127,7 +128,7 @@ export default function Forms(props) {
                             </Grid>
                         </Grid>
                         <br />
-                        <RadioGroup aria-label="gender" name="gender1" value={pregunta1} onChange={handlePregunta1}>
+                        <RadioGroup aria-label="Preguntas" name="Preguntas" value={pregunta1} onChange={handlePregunta1}>
                             <center>
                                 {encuestas.P1respuesta1 &&
                                     <FormControlLabel value={encuestas.P1respuesta1} control={<Radio />} label={encuestas.P1respuesta1} />
