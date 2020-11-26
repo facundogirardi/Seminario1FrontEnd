@@ -6,7 +6,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
-import banner from '../../imagenes/banner4.jpg';
+import banner from '../../imagenes/Banner Resultados.jpg';
 
 //importo llamada a endpoint
 import { getEncuestaRespID } from "../../controller/miApp.controller";
@@ -44,43 +44,40 @@ export default function Encuesta(props) {
     var BenchP1 = "por debajo"
   }
   else {
-    var BenchP1 = "por encima"
+    BenchP1 = "por encima"
   }
   if (encuestas.P2respuesta < encuestas.P2valorref) {
     var BenchP2 = "por debajo"
   }
   else {
-    var BenchP2 = "por encima"
+    BenchP2 = "por encima"
   }
   if (encuestas.P3respuesta < encuestas.P3valorref) {
     var BenchP3 = "por debajo"
   }
   else {
-    var BenchP3 = "por encima"
+    BenchP3 = "por encima"
   }
   if (encuestas.P4respuesta < encuestas.P4valorref) {
     var BenchP4 = "por debajo"
   }
   else {
-    var BenchP4 = "por encima"
+    BenchP4 = "por encima"
   }
   if (encuestas.P5respuesta < encuestas.P5valorref) {
     var BenchP5 = "por debajo"
   }
   else {
-    var BenchP5 = "por encima"
+    BenchP5 = "por encima"
   }
-
-  console.log("Llgue a la encuesta", encuestas)
-
 
   return (
     <Page pageTitle={'Gracias por utilizar Api Benchmark'}>
       <Scrollbar style={{ height: '93.4%', width: '100%', display: 'flex', flex: 1 }}>
+        <img src={banner} width="100%" height="25%" alt="Logo" />
         <Link to="/Encuesta">
           <button class="block">Realizar otra encuesta</button>
         </Link>
-        <img src={banner} width="100%" height="25%" alt="Logo" />
         <Paper className={clase5.paper}><h2>{encuestas.titulo}</h2></Paper>
         <br />
         <br />

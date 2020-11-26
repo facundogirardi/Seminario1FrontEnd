@@ -62,10 +62,6 @@ function QuestionsTab(props) {
   const handleTamaño = (event) => {
     setTamaño(event.target.value);
   }
-  const handleValorReferencia = (event) => {
-    setValorReferencia(event.target.value);
-  }
-
   function handleValorReferencia2(valor, i) {
     var valores = [...valorReferencia];
     valores[i] = valor;
@@ -78,7 +74,6 @@ function QuestionsTab(props) {
     if (ok) {
       alert("Encuesta subida a la Base de datos.")
       history.push("/ABEncuestas")
-      console.log("Encuesta subida a la base de datos.")
     }
   }
 

@@ -10,6 +10,7 @@ import { Redirect } from "react-router-dom";
 import TextField from '@material-ui/core/TextField';
 import { useIntl } from 'react-intl'
 import Typography from '@material-ui/core/Typography'
+import Footer from "../Footer/Footer"
 import loginimg from '../../imagenes/login.png';
 //importo llamada a endpoint
 import { login } from "../../controller/miApp.controller";
@@ -18,8 +19,6 @@ import { login } from "../../controller/miApp.controller";
 const useStyles = makeStyles((theme) => ({
   paper: {
     width: 'auto',
-    marginLeft: theme.spacing(3),
-    marginRight: theme.spacing(3),
     [theme.breakpoints.up(620 + theme.spacing(6))]: {
       width: "100%",
       height: "100%",
@@ -30,21 +29,12 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    padding: `${theme.spacing(2)}px ${theme.spacing(3)}px ${theme.spacing(
-      3
-    )}px`,
   },
   avatar: {
     margin: theme.spacing(1),
     width: 192,
     height: 192,
     color: theme.palette.secondary.main,
-  },
-  form: {
-    marginTop: theme.spacing(1),
-  },
-  submit: {
-    margin: theme.spacing(3, 0, 2),
   },
   container: {
     display: 'flex',
@@ -56,18 +46,12 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 export default function SignIn(props) {
-  const [cardAnimaton, setCardAnimation] = React.useState("cardHidden");
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
   const [usuarioValido, setUsuarioValido] = React.useState(false);
   const [usuarioRoot, setUsuarioRoot] = React.useState(false);
 
-  setTimeout(function () {
-    setCardAnimation("");
-  }, 100);
-
   const classes = useStyles();
-  const { ...rest } = props;
   const intl = useIntl()
 
   const handleEmail = (event) => {
@@ -188,6 +172,7 @@ export default function SignIn(props) {
             </form>
           </div>
         </Paper>
+        <Footer />
       </Page>
     </div>
   )

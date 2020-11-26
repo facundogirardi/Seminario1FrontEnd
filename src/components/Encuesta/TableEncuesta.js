@@ -47,7 +47,6 @@ const EditableTable = ({ onRowAdd, onRowUpdate, selectedRow, deleteText, data, c
                                     },
                                 },
                             }}
-
                             options={{
                                 searchable: false,
                                 filtering: true,

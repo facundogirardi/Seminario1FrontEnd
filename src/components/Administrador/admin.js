@@ -4,7 +4,6 @@ import Page from 'material-ui-shell/lib/containers/Page/Page'
 import Footer from '../Footer/Footer';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import EditableTable from "./EditableTable"
-import Swal from "sweetalert2";
 import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles';
@@ -74,21 +73,6 @@ export default function AbmUsuarios() {
     window.location.reload(true);
   }
 
-  const showMessageAlert = (messages, isSuccess, isDelete) => {
-    let message = "";
-    messages.forEach(msg => {
-      message = message + msg + "\n";
-    });
-    const icon = isSuccess ? "success" : "error";
-    const title = isSuccess ? isDelete ? "Borrado correctamente" : "Registro Finalizado" : "Hubo un error";
-    return Swal.fire({
-      title: title,
-      text: `${message}`,
-      icon: icon,
-      confirmButtonText: "Aceptar",
-    });
-  };
-
   const deleteUsuarios = (usuario, resolve) => {
     const newUsuario = { _id: usuario._id, name: usuario.name, lastname: usuario.lastname, email: usuario.email, dni: usuario.dni, password: usuario.password };
     borrarUsuario(newUsuario)
@@ -105,21 +89,6 @@ export default function AbmUsuarios() {
     const newUsuario = { dni: usuario.dni, name: usuario.name, lastname: usuario.lastname, email: usuario.email, password: usuario.password };
     editarUsuario(newUsuario)
     resolve();
-  };
-
-  const handleError = (error, defaultMessage) => {
-    let errorMessage = [defaultMessage];
-    if (error.response.data.message) {
-      if (Array.isArray(error.response.data.message)) {
-        errorMessage = [];
-        error.response.data.message.forEach(msg => {
-          errorMessage.push(msg.msg)
-        })
-      } else {
-        errorMessage = [error.response.data.message];
-      }
-    }
-    showMessageAlert(errorMessage, false);
   };
 
   const columns = [

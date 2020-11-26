@@ -1,7 +1,7 @@
  ![version](https://img.shields.io/badge/version-1.0.0-blue.svg) 
 
 ## Presentacion del producto
-![Product Presentation Image](https://i.ibb.co/BzWtgP6/2020-11-20-09-37-06-Window.png)
+![Product Presentation Image](https://i.ibb.co/TbfGrL5/landing.png)
 
 ## Descripcion
 
@@ -45,9 +45,14 @@ https://www.observatoriopyme.org.ar/la-fundacion/historia-y-actualidad/
 * El backend de la aplicacion se encuesta en ek siguiente repositorio https://gitlab.com/facundogirardi/aplicaciones-interactivas-backend
 * En la carpeta del proyecto ejecutar <b>npm install</b>
 * <b>cd</b> aplicaciones-interactivas
-* Luego dar <b>npm start</b> o <b>nodemon --exec npm start</b> (Requiere tener instalado el nodemon*)
+* Luego dar <b>npm start</b> o <b>nodemon --exec npm start</b> (Requiere tener instalado el nodemon*) -> Por default se encuentra apuntando a local para cambiar, dirijase a Controller/webServices
 * Se levantará en local http://localhost:4000/
 * Tambien se encuentra hosteado en Heroku https://api-benchmark-back.herokuapp.com/
+
+## Usuarios
+
+* Usuario Administrador de usuarios : root@mail.com > root
+* Usuario Administrador de encuestas : admin@mail.com > admin
 
 ## Navegadores soportados
 
@@ -139,7 +144,7 @@ Una vez completado esto se podrá enviar toda esta información haciendo clic en
 
 ### Resultados
 
-![Resultados](https://i.ibb.co/ZcbFydT/resultados.jpg)
+![Resultados](https://i.ibb.co/thtrVFM/Resultados.jpg)
 
 Página final del proceso de responder encuestas. Aquí se observarán los resultados del Benchmarking teniendo en cuenta los datos ingresados por el usuario en la encuesta. De está manera se da por concluido el circuito de responder encuestas.
 

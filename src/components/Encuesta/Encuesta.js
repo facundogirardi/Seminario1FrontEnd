@@ -6,7 +6,6 @@ import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-import { useHistory } from 'react-router';
 import EditableTable from "./TableEncuesta"
 import banner from '../../imagenes/banner3.jpg';
 
@@ -31,36 +30,15 @@ export default function Encuesta() {
   const clase5 = useStylesGrid();
   const [encuestas, setEncuestas] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [data, setData] = useState([encuestas]);
 
   useEffect(() => {
     getTEncuesta()
   }, []);
 
-  const redirect = async () => {
-    //const ok = await encuestaCompletada()
-    const ok = true
-    if (ok) {
-      history.push("/Contacto")
-    }
-  }
-
-  const history = useHistory();
- 
   const getTEncuesta = async () => {
     const encuestas = await getEncuesta()
     setEncuestas(encuestas)
     setLoading(false)
-  };
-
-  // prueba
-  const filterValue = value => {
-    if (value) {
-      const filtered = data.filter(d => d.id.trim().length > 0);
-      setData(filtered);
-    } else {
-      setData([encuestas]);
-    }
   };
 
   const columnas = [

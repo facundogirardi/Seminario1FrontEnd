@@ -428,8 +428,7 @@ export const getEncuestaRespID = async function (idbusqueda) {
     let url = urlWebServices.getEncuestaRespID;
     const formData = new URLSearchParams();
     formData.append('idbusqueda', idbusqueda);
- 
-    console.log("idbuesque",idbusqueda)
+
     try {
         let response = await fetch(url, {
             method: 'POST', // or 'PUT'
