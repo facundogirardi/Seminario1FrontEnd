@@ -41,35 +41,28 @@ const getMenuItems = (props) => {
   })
 
   if (isAuthMenuOpen && isAuthorised) {
-      return [
-        {
+    return [
+      {
         value: '/',
         visible: true,
         primaryText: intl.formatMessage({ id: 'Inicio' }),
         leftIcon: <HomeIcon />,
-        },
-        {
-          value: '/ABEncuestas',
-          visible: isAuthorised,
-          primaryText: intl.formatMessage({
-            id: 'ABEncuestas',
-          }),
-          leftIcon: <CreateIcon />,
-        },
-        {
-          value: '/Encuesta',
-          visible: false,
-          primaryText: intl.formatMessage({ id: 'Encuesta' }),
-          leftIcon: <PollIcon />,
-        },
-        {
-          value: '/Resultados',
-          visible: false,
-          primaryText: intl.formatMessage({
-            id: 'Resultados',
-          }),
-          leftIcon: <DaschboardIcon />,
-        },
+      },
+
+      {
+        value: '/Encuesta',
+        visible: false,
+        primaryText: intl.formatMessage({ id: 'Encuesta' }),
+        leftIcon: <PollIcon />,
+      },
+      {
+        value: '/Resultados',
+        visible: false,
+        primaryText: intl.formatMessage({
+          id: 'Resultados',
+        }),
+        leftIcon: <DaschboardIcon />,
+      },
       {
         value: '/about',
         visible: isAuthorised,
@@ -88,7 +81,7 @@ const getMenuItems = (props) => {
         }),
         leftIcon: <GetApp />,
       },
-       { divider: true },
+      { divider: true },
       {
         primaryText: intl.formatMessage({ id: 'Configuracion' }),
         primaryTogglesNestedList: true,
@@ -115,22 +108,15 @@ const getMenuItems = (props) => {
       },
     ]
   }
-  else{
+  else {
     return [
-        {
+      {
         value: '/',
         visible: true,
         primaryText: intl.formatMessage({ id: 'Inicio' }),
         leftIcon: <HomeIcon />,
-        },
-      {
-        value: '/ABEncuestas',
-        visible: false,
-        primaryText: intl.formatMessage({
-          id: 'AB Encuestas',
-        }),
-        leftIcon: <FormatListNumberedIcon />,
       },
+
       {
         value: '/Administrador',
         visible: false,
@@ -157,21 +143,7 @@ const getMenuItems = (props) => {
         }),
         leftIcon: <GetApp />,
       },
-      {
-        value: '/Encuesta',
-        visible: false,
-        primaryText: intl.formatMessage({ id: 'Encuesta' }),
-        leftIcon: <PollIcon />,
-      },
-      {
-        value: '/Resultados',
-        visible: false,
-        primaryText: intl.formatMessage({
-          id: 'Resultados',
-        }),
-        leftIcon: <DaschboardIcon />,
-      },
-       { divider: true },
+      { divider: true },
       {
         primaryText: intl.formatMessage({ id: 'Configuracion' }),
         primaryTogglesNestedList: true,
@@ -190,6 +162,6 @@ const getMenuItems = (props) => {
     ]
   }
 
-  
+
 }
 export default getMenuItems

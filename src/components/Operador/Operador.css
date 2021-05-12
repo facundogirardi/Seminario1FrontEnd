@@ -1,34 +1,30 @@
-.main-about {
+.main-consultas {
     background-color: #232323;
-    display:block;
+    display: block;
     margin:auto; 
-    text-align: center;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow-x: hidden;
+    text-align: justify;
  }
  
  .Cuadrado{
-    border: 1px;
+    border: 0px;
     display: inline-block;
     width: auto;
     margin: 0 40px;
-    text-align: justify;
  }
 
- .BotonEnviar{
+ .Cuadrado2{
    border: 1px;
    display: inline-block;
    width: auto;
-   margin: 0 10px;
+   margin: 0 200px;
    text-align: justify;
 }
 
- .BotonAtras{
+.BotonResultados{
    border: 1px;
    display: inline-block;
    width: auto;
-   margin: 0 -10px;
+   margin: 0 40px;
    text-align: justify;
 }
 

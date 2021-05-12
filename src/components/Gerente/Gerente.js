@@ -1,6 +1,6 @@
 import Scrollbar from 'material-ui-shell/lib/components/Scrollbar/Scrollbar'
 import Page from 'material-ui-shell/lib/containers/Page/Page'
-import "./Encuesta.css";
+import "./Gerente.css";
 import Footer from '../Footer/Footer';
 import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
@@ -48,7 +48,7 @@ export default function Encuesta() {
   ];
 
   return (
-    <Page pageTitle={'Seleccion Api Benchmark'}>
+    <Page pageTitle={'Seccion Gerente'}>
       <Scrollbar style={{ height: '93.4%', width: '100%', display: 'flex', flex: 1 }}>
         <img src={banner} width="100%" height="25%" alt="Logo" />
         <br />
