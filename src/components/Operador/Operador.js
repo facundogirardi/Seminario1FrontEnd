@@ -7,7 +7,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import EditableTable from "./TableEncuesta"
-import banner from '../../imagenes/banner3.jpg';
+import banner from '../../imagenes/banner1.jpg';
 
 //importo 
 import { getEncuesta } from "../../controller/miApp.controller";
