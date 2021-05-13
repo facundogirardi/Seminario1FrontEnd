@@ -32,6 +32,7 @@
     "react-ios-pwa-prompt": "1.x",
     "react-markdown": "4.x",
     "react-minimal-pie-chart": "^8.0.1",
+    "react-phone-input-2": "^2.14.0",
     "react-protected-route-component": "^0.1.1",
     "react-redux": "7.x",
     "react-router-dom": "5.x",
@@ -42,6 +43,7 @@
     "survey-react": "^1.8.3",
     "sweetalert2": "^10.10.0",
     "sweetalert2-react": "^0.8.3",
+    "urlencode": "^1.1.0",
     "webpack": "^4.42.0"
   },
   "scripts": {

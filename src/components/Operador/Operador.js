@@ -8,6 +8,10 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import EditableTable from "./TableEncuesta"
 import banner from '../../imagenes/banner1.jpg';
+import PhoneInput from 'react-phone-input-2';
+import MessageBox from './MessageBox';
+import 'react-phone-input-2/lib/bootstrap.css';
+import urlencode from 'urlencode';
 
 //importo 
 import { getEncuesta } from "../../controller/miApp.controller";
@@ -25,27 +29,38 @@ const useStylesGrid = makeStyles((theme) => ({
 }));
 
 export default function Encuesta() {
-
-
   const clase5 = useStylesGrid();
-  const [encuestas, setEncuestas] = useState([]);
-  const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    getTEncuesta()
-  }, []);
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [message, setMessage] = useState('');
+  const [error, setError] = useState('');
+  let link = `https://api.whatsapp.com/send?phone=${phoneNumber}${message && `&text=${urlencode(message)}`
+    }`;
 
-  const getTEncuesta = async () => {
-    const encuestas = await getEncuesta()
-    setEncuestas(encuestas)
-    setLoading(false)
+  let handleLinkClick = () => {
+    if (validatePhoneNumber() && validateMessage()) {
+      window.location.assign(link);
+    }
   };
 
-  const columnas = [
-    { title: 'Sector', field: 'sector', filtering: true },
-    { title: 'Titulo', field: 'titulo', filtering: false },
-    { title: 'Tamaño', field: 'tamaño', filtering: false },
-  ];
+  let validatePhoneNumber = () => {
+    // eslint-disable-next-line
+    if (phoneNumber.match(/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/)) {
+      return true;
+    } else {
+      setError('Invalid Phone Number');
+      return false;
+    }
+  };
+
+  let validateMessage = () => {
+    if (message.length < 250) {
+      return true;
+    } else {
+      setError('Message can contain only upto 250 characters');
+      return false;
+    }
+  };
 
   return (
     <Page pageTitle={'Seccion Operador'}>
@@ -54,13 +69,40 @@ export default function Encuesta() {
         <br />
         <Grid container spacing={3}>
           <Grid item xs={12}>
-            <Paper className={clase5.paper}><h2>Realice su consulta</h2></Paper>
+            <Paper className={clase5.paper}><h2>Buscador de Farmacias</h2></Paper>
           </Grid>
         </Grid>
         <br />
         <div style={{ padding: 24, width: "100%" }}>
-          <EditableTable title={"Encuestas"} data={encuestas} columns={columnas} setData={setEncuestas}
-            deleteText={"¿Está seguro de eliminar la encuesta?"} isLoading={loading} />
+
+          <h2>Envio de Status</h2>
+          <p id="error">{error}</p>
+          <label>
+            Numero telefonico
+            <PhoneInput
+              country={'in'}
+              value={phoneNumber}
+              placeholder="+54 987654321"
+              onChange={(phone) => setPhoneNumber(phone)}
+            />
+          </label>
+          <br />
+          <br />
+          <label>
+            Mensaje
+            <br />
+            <MessageBox
+              placeholder="Ingrese mensaje"
+              value={message}
+              onChange={(message) => setMessage(message)}
+            />
+          </label>
+          <br />
+          <button onClick={handleLinkClick} className="message-btn">
+            Enviar
+      </button>
+
+
         </div>
         <div className="App">
         </div>

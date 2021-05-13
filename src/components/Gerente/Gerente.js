@@ -54,14 +54,11 @@ export default function Encuesta() {
         <br />
         <Grid container spacing={3}>
           <Grid item xs={12}>
-            <Paper className={clase5.paper}><h2>Realice su consulta</h2></Paper>
+            <Paper className={clase5.paper}><h2>Generacion de reporte</h2></Paper>
           </Grid>
         </Grid>
         <br />
-        <div style={{ padding: 24, width: "100%" }}>
-          <EditableTable title={"Encuestas"} data={encuestas} columns={columnas} setData={setEncuestas}
-            deleteText={"¿Está seguro de eliminar la encuesta?"} isLoading={loading} />
-        </div>
+      
         <div className="App">
         </div>
       </Scrollbar>
