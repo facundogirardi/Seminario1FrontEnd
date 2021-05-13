@@ -2,14 +2,14 @@ import Scrollbar from 'material-ui-shell/lib/components/Scrollbar/Scrollbar'
 import Page from 'material-ui-shell/lib/containers/Page/Page'
 import "./Operador.css";
 import Footer from '../Footer/Footer';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Component } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-import EditableTable from "./TableEncuesta"
 import banner from '../../imagenes/banner1.jpg';
 import PhoneInput from 'react-phone-input-2';
 import MessageBox from './MessageBox';
+import GoogleMaps from "simple-react-google-maps";
 import 'react-phone-input-2/lib/bootstrap.css';
 import urlencode from 'urlencode';
 
@@ -48,45 +48,70 @@ export default function Encuesta() {
     if (phoneNumber.match(/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/)) {
       return true;
     } else {
-      setError('Invalid Phone Number');
+      setError('Numero telefonico invalido');
       return false;
     }
   };
 
   let validateMessage = () => {
-    if (message.length < 250) {
+    if (message.length < 50) {
       return true;
     } else {
-      setError('Message can contain only upto 250 characters');
+      setError('El mensaje puede contener hasta 50 caracteres');
       return false;
     }
   };
 
   return (
-    <Page pageTitle={'Seccion Operador'}>
+    <Page pageTitle={'Seleccione operador'}>
       <Scrollbar style={{ height: '93.4%', width: '100%', display: 'flex', flex: 1 }}>
         <img src={banner} width="100%" height="25%" alt="Logo" />
         <br />
-        <Grid container spacing={3}>
+
+        <Grid container spacing={6}>
           <Grid item xs={12}>
             <Paper className={clase5.paper}><h2>Buscador de Farmacias</h2></Paper>
-          </Grid>
-        </Grid>
-        <br />
-        <div style={{ padding: 24, width: "100%" }}>
 
-          <h2>Envio de Status</h2>
+          </Grid>
+
+        </Grid>
+
+        <br />
+
+        <div style={{ padding: 24, width: "400px", display: 'flex', flex: 1 }}>
+            <div className="container " >
+              <GoogleMaps
+                apiKey={"AIzaSyCPmgstXgIilvBde2JqvGDxg3NdxcAgAVg"}
+                style={{ height: "250px", width: "1800px" }}
+                zoom={14}
+                center={{
+                  lat: -34.603581195827324,
+                  lng: -58.38154567992513
+                }}
+                markers={[
+                   
+                  { lat: -34.6121004821838, lng: -58.38101948717499 },
+                  { lat: -34.603581195827324, lng: -58.38154567992513 }
+    
+                ]}
+              />
+            </div>
+          </div>
+        <div style={{ padding: 24, width: "100%", display: 'block', flex: 1 }}>
+
+          <h5>Envio de Status por Whatsapp</h5>
           <p id="error">{error}</p>
           <label>
             Numero telefonico
             <PhoneInput
               country={'in'}
               value={phoneNumber}
-              placeholder="+54 987654321"
+              placeholder="+54 1130669664"
               onChange={(phone) => setPhoneNumber(phone)}
             />
           </label>
           <br />
+
           <br />
           <label>
             Mensaje
@@ -98,14 +123,16 @@ export default function Encuesta() {
             />
           </label>
           <br />
+
           <button onClick={handleLinkClick} className="message-btn">
             Enviar
-      </button>
+       </button>
 
 
         </div>
         <div className="App">
         </div>
+
       </Scrollbar>
       <Footer />
     </Page>
