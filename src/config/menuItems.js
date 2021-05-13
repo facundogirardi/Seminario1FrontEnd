@@ -48,27 +48,6 @@ const getMenuItems = (props) => {
         primaryText: intl.formatMessage({ id: 'Inicio' }),
         leftIcon: <HomeIcon />,
       },
-
-      {
-        value: '/Encuesta',
-        visible: false,
-        primaryText: intl.formatMessage({ id: 'Encuesta' }),
-        leftIcon: <PollIcon />,
-      },
-      {
-        value: '/Resultados',
-        visible: false,
-        primaryText: intl.formatMessage({
-          id: 'Resultados',
-        }),
-        leftIcon: <DaschboardIcon />,
-      },
-      {
-        value: '/about',
-        visible: isAuthorised,
-        primaryText: intl.formatMessage({ id: 'Informacion' }),
-        leftIcon: <InfoIcon />,
-      },
       {
         value: null,
         visible: isAppInstallable && !isAppInstalled,
@@ -127,7 +106,7 @@ const getMenuItems = (props) => {
       },
       {
         value: '/about',
-        visible: true,
+        visible: false,
         primaryText: intl.formatMessage({ id: 'Informacion' }),
         leftIcon: <InfoIcon />,
       },
