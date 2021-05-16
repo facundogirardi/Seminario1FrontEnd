@@ -1,7 +1,7 @@
  ![version](https://img.shields.io/badge/version-1.0.0-blue.svg) 
 
 ## Presentacion del producto
-![Product Presentation Image](https://i.ibb.co/yYb05nN/Sin-t-tulo.png)
+![Product Presentation Image](https://i.ibb.co/5svhyYy/Sin-t-tulo.png)
 
 ## Descripcion
 
