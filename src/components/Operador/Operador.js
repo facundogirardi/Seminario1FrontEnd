@@ -171,7 +171,9 @@ export default function Encuesta() {
 
           <Button onClick={handleLinkClick} className="message-btn" variant="contained" color="secondary">
             Enviar
-                     </Button>
+           </Button>
+
+           
         </div>
         <div className="App">
         </div>

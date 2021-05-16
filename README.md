@@ -6,14 +6,12 @@
 ## Descripcion
 
 <p>Nuestro proyecto consta en realizar una predicion de compra en Stock y mejorar la comunicacion con el cliente </p>
-https://www.observatoriopyme.org.ar/la-fundacion/historia-y-actualidad/
-
+ 
 ## Tabla de contenidos
 
 * [Integrantes](#Integrantes)
 * [Tecnologia](#Tecnologia)
 * [Instalacion](#Instalacion)
-* [End-Points](#End-Points)
 * [Base de datos](#Base-de-datos)
 * [Recursos](#Recursos)
 
