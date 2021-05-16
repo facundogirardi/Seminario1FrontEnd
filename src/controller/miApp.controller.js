@@ -60,14 +60,14 @@ export const login = async function (login) {
 }
 
 //Contacto
-export const guardarContacto = async function (razonsocial, email, region, tamaño) {
+export const guardarContacto = async function (nombre, email, region, opinion) {
     let url = urlWebServices.contacto;
 
     const formData = new URLSearchParams();
-    formData.append('razonsocial', razonsocial);
+    formData.append('nombre', nombre);
     formData.append('email', email);
     formData.append('region', region);
-    formData.append('tamaño', tamaño);
+    formData.append('opinion', opinion);
 
     try {
         let response = await fetch(url, {

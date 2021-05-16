@@ -2,6 +2,7 @@ import cyan from '@material-ui/core/colors/cyan'
 import red from '@material-ui/core/colors/red'
 import pink from '@material-ui/core/colors/pink'
 import green from '@material-ui/core/colors/green'
+import { createMuiTheme } from '@material-ui/core/styles';
 import purple from '@material-ui/core/colors/purple';
 
 
@@ -11,9 +12,10 @@ const themes = [
     color: red[500],
     source: {
       palette: {
-        primary: red,
+        primary: {
+          main: '#e1f5fe',
+        },
         secondary: red,
-        error: red,
       },
     },
   },

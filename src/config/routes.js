@@ -13,7 +13,7 @@ const routes = [
   <PublicRoute path="/administrador" component={Administrador} exact/>,
   <PublicRoute path="/Gerente" exact component={Gerente} />,
   <PublicRoute path="/Operador" exact component={Operador} />,
-  <PublicRoute path="/Contacto/:id" exact component={Contacto} />,
+  <PublicRoute path="/Contacto/" exact component={Contacto} />,
 
 ]
 

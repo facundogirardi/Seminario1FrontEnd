@@ -1,6 +1,7 @@
 import Scrollbar from 'material-ui-shell/lib/components/Scrollbar/Scrollbar'
 import Page from 'material-ui-shell/lib/containers/Page/Page'
 import "./Operador.css";
+import { Link } from 'react-router-dom'
 import Footer from '../Footer/Footer';
 import React, { useEffect, useState, Component } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
@@ -101,12 +102,13 @@ export default function Encuesta() {
         </Grid>
         <div style={{ padding: 24, width: "400px", display: 'flex', flex: 1 }}>
 
-          <Button onClick={handleLinkClick} className="message-btn" variant="contained" color="secondary">
-            Agregar y quitar Farmacias
-          </Button>
+          <Link to="/Contacto">
+            <Button variant="contained" color="secondary">Agregar y quitar Farmacias</Button>
+          </Link>
+
         </div>
         <div style={{ padding: 24, width: "400px", display: 'flex', flex: 1 }}>
-    
+
           <InputBase
             className={clase5.input}
             placeholder="Buscar direccion"
@@ -120,13 +122,13 @@ export default function Encuesta() {
             <DirectionsIcon />
           </IconButton>
         </div>
-   
+
 
         <div style={{ padding: 24, width: "400px", display: 'flex', flex: 1 }}>
           <div className="container " >
             <GoogleMaps
               apiKey={"AIzaSyCPmgstXgIilvBde2JqvGDxg3NdxcAgAVg"}
-              style={{ height: "250px", width: "1800px" }}
+              style={{ height: "300px", width: "1500px" }}
               zoom={14}
               center={{
                 lat: -34.6121004821838, lng: -58.38101948717499
@@ -169,9 +171,7 @@ export default function Encuesta() {
 
           <Button onClick={handleLinkClick} className="message-btn" variant="contained" color="secondary">
             Enviar
-          </Button>
-
-
+                     </Button>
         </div>
         <div className="App">
         </div>

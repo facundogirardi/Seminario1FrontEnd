@@ -93,19 +93,19 @@ export default function Encuesta(props) {
   const [region, setRegion] = React.useState('');
 
   const history = useHistory();
-  const [razonsocial, setRazonSocial] = React.useState('');
+  const [nombre, setNombre] = React.useState('');
   const [email, setEmail] = React.useState('');
-  const [tamaño, setTamaño] = React.useState("");
+  const [opinion, setOpinion] = React.useState("");
 
   const handleEmail = (event) => {
     setEmail(event.target.value);
   }
-  const handleRazonSocial = (event) => {
-    setRazonSocial(event.target.value);
+  const handleNombre = (event) => {
+    setNombre(event.target.value);
   }
 
-  const handleTamaño = (event) => {
-    setTamaño(event.target.value);
+  const handleOpinion = (event) => {
+    setOpinion(event.target.value);
   }
   const isEmpty = (stringToValidate) => {
     if (stringToValidate !== undefined && stringToValidate !== null) {
@@ -142,8 +142,8 @@ export default function Encuesta(props) {
       return true;
     };
 
-    if (!isEmpty(razonsocial) && !isEmpty(region) && validateValidEmail(email) && !isEmpty(tamaño)) {
-      archivoDatos = await guardarContacto(razonsocial, email, region, tamaño);
+    if (!isEmpty(nombre) && !isEmpty(region) && validateValidEmail(email) && !isEmpty(opinion)) {
+      archivoDatos = await guardarContacto(nombre, email, region, opinion);
     }
     else {
       alert("Verificar que los datos esten completados correctamente")
@@ -155,18 +155,18 @@ export default function Encuesta(props) {
   const redirect = async () => {
     const ok = await subirDatos()
     if (ok) {
-      history.push("/Resultados/"+ encuestas._id)
+      history.push("/Operador")
     }
   }
 
   return (
-    <Page pageTitle={'API Benchmark - Observatorio Pyme'}>
+    <Page pageTitle={'Funcionalidad en construccion'}>
       <Scrollbar style={{ height: '93.4%', width: '100%', display: 'flex', flex: 1 }}>
         <img src={banner} width="100%" height="25%" alt="Logo" />
         <br />
         <Grid container spacing={3}>
           <Grid item xs={12}>
-            <Paper className={clase5.paper}><h2>Información de contacto</h2></Paper>
+            <Paper className={clase5.paper}><h2>Quisieramos conocer su opinion sobre la aplicacion</h2></Paper>
           </Grid>
         </Grid>
         <br />
@@ -175,10 +175,10 @@ export default function Encuesta(props) {
             <form className={clase3.root} autoComplete="off">
               <TextField
                 required
-                id="RazonSocial"
-                label="Razon social"
+                id="Nombre"
+                label="Nombre"
                 inputProps={{
-                  onChange: (event) => handleRazonSocial(event),
+                  onChange: (event) => handleNombre(event),
                 }}
               />
               <TextField
@@ -223,15 +223,20 @@ export default function Encuesta(props) {
                   <MenuItem value={"Tucumán"}>Tucumán</MenuItem>
                 </Select>
               </FormControl>
+              <br />  
+
+              <TextField
+                required
+                id="Opinion"
+                label="Opinion"
+                inputProps={{
+                  onChange: (event) => handleOpinion(event),
+                }}
+              />
+
             </form>
-            <br /> <br />
-            <FormControl component="fieldset">
-              <FormLabel component="legend">Tamaño de su empresa *</FormLabel>
-              <RadioGroup onChange={handleTamaño}>
-                <FormControlLabel required value="Pequeña" control={<Radio />} label="Pequeña: < 50 empleados" />
-                <FormControlLabel required value="Mediana" control={<Radio />} label="Mediana: < 250 empleados" />
-              </RadioGroup>
-            </FormControl>
+            <br />
+
           </CardContent>
         </Card>
         <Button
@@ -241,7 +246,7 @@ export default function Encuesta(props) {
           startIcon={<TimelineIcon />}
           onClick={() => { redirect() }}
         >
-          Generar resultados
+          Enviar
       </Button>
       </Scrollbar>
       <Footer />
