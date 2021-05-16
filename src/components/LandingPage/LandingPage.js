@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import logo from '../../imagenes/logo.png';
+import logo1 from '../../imagenes/logo1.png';
 import fotoDashboard from '../../imagenes/teamwork-chico.png';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
@@ -38,14 +39,16 @@ export default function () {
         <Grid item xs={6} sm={4}>
           <br />
           <br />
-          <center> <img src={logo} alt="alternative" /><h3>Bienvenidos</h3>
-            <p>MVP | Analisis de Stock y Calidad con el cliente | Seminario profesional 1</p>
+          <center> <img src={logo1} alt="alternative" />   </center>
+          <center> <img src={logo} alt="alternative" />
+            <h5>MVP | Analisis de Stock y Calidad con el cliente | Seminario profesional 1</h5>
+            
             <br />
             <Link to="/Gerente">
               <Button variant="contained" color="secondary">Gerente</Button>
             </Link>
             <br />
-            <br />
+        
             <br />
             <Link to="/Operador">
               <Button variant="contained" color="secondary">Operador</Button>
