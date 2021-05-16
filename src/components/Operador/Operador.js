@@ -12,6 +12,13 @@ import MessageBox from './MessageBox';
 import GoogleMaps from "simple-react-google-maps";
 import 'react-phone-input-2/lib/bootstrap.css';
 import urlencode from 'urlencode';
+import Button from '@material-ui/core/Button';
+import InputBase from '@material-ui/core/InputBase';
+import Divider from '@material-ui/core/Divider';
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
+import SearchIcon from '@material-ui/icons/Search';
+import DirectionsIcon from '@material-ui/icons/Directions';
 
 //importo 
 import { getEncuesta } from "../../controller/miApp.controller";
@@ -25,6 +32,23 @@ const useStylesGrid = makeStyles((theme) => ({
     textAlign: 'center',
     width: "100%",
     color: theme.palette.text.secondary,
+  },
+  root: {
+    padding: '2px 4px',
+    display: 'flex',
+    alignItems: 'center',
+    width: 400,
+  },
+  input: {
+    marginLeft: theme.spacing(1),
+    flex: 1,
+  },
+  iconButton: {
+    padding: 10,
+  },
+  divider: {
+    height: 28,
+    margin: 4,
   },
 }));
 
@@ -75,28 +99,47 @@ export default function Encuesta() {
           </Grid>
 
         </Grid>
+        <div style={{ padding: 24, width: "400px", display: 'flex', flex: 1 }}>
 
-        <br />
+          <Button onClick={handleLinkClick} className="message-btn" variant="contained" color="secondary">
+            Agregar y quitar Farmacias
+          </Button>
+        </div>
+        <div style={{ padding: 24, width: "400px", display: 'flex', flex: 1 }}>
+    
+          <InputBase
+            className={clase5.input}
+            placeholder="Buscar direccion"
+            inputProps={{ 'aria-label': 'Buscar direccion' }}
+          />
+          <IconButton type="submit" className={clase5.iconButton} aria-label="search">
+            <SearchIcon />
+          </IconButton>
+          <Divider className={clase5.divider} orientation="vertical" />
+          <IconButton color="primary" className={clase5.iconButton} aria-label="directions">
+            <DirectionsIcon />
+          </IconButton>
+        </div>
+   
 
         <div style={{ padding: 24, width: "400px", display: 'flex', flex: 1 }}>
-            <div className="container " >
-              <GoogleMaps
-                apiKey={"AIzaSyCPmgstXgIilvBde2JqvGDxg3NdxcAgAVg"}
-                style={{ height: "250px", width: "1800px" }}
-                zoom={14}
-                center={{
-                  lat: -34.603581195827324,
-                  lng: -58.38154567992513
-                }}
-                markers={[
-                   
-                  { lat: -34.6121004821838, lng: -58.38101948717499 },
-                  { lat: -34.603581195827324, lng: -58.38154567992513 }
-    
-                ]}
-              />
-            </div>
+          <div className="container " >
+            <GoogleMaps
+              apiKey={"AIzaSyCPmgstXgIilvBde2JqvGDxg3NdxcAgAVg"}
+              style={{ height: "250px", width: "1800px" }}
+              zoom={14}
+              center={{
+                lat: -34.6121004821838, lng: -58.38101948717499
+              }}
+              markers={[
+
+                { lat: -34.6121004821838, lng: -58.38101948717499 },
+                { lat: -34.603581195827324, lng: -58.38154567992513 }
+
+              ]}
+            />
           </div>
+        </div>
         <div style={{ padding: 24, width: "100%", display: 'block', flex: 1 }}>
 
           <h5>Envio de Status por Whatsapp</h5>
@@ -104,7 +147,7 @@ export default function Encuesta() {
           <label>
             Numero telefonico
             <PhoneInput
-              country={'in'}
+              country={'ar'}
               value={phoneNumber}
               placeholder="+54 1130669664"
               onChange={(phone) => setPhoneNumber(phone)}
@@ -124,9 +167,9 @@ export default function Encuesta() {
           </label>
           <br />
 
-          <button onClick={handleLinkClick} className="message-btn">
+          <Button onClick={handleLinkClick} className="message-btn" variant="contained" color="secondary">
             Enviar
-       </button>
+          </Button>
 
 
         </div>

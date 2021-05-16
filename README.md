@@ -49,21 +49,6 @@ https://www.observatoriopyme.org.ar/la-fundacion/historia-y-actualidad/
 * Se levantará en local http://localhost:4000/
 * Tambien se encuentra hosteado en Heroku https://api-benchmark-back.herokuapp.com/
 
-## End-Points
-
-El backend tiene configurado los siguientes endpoints :
-
-<b><p>Contacto (/contacto)</b></p>
-<p>Se utiliza para poder registrar los datos de contacto del usuario</p>
-<p>Metodo : POST</p>
-
- * razonsocial: String
- * email: String
- * region: String
- * tamaño: String
-
-<img src="https://i.ibb.co/R2Sn3JY/contacto.png"/>
-
 ## Base de Datos
 
 <p>Para la base de datos utilizamos MongoDB</p>
