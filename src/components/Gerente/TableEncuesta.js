@@ -39,7 +39,7 @@ const EditableTable = ({ onRowAdd, onRowUpdate, selectedRow, deleteText, data, c
                                     actions: "",
                                 },
                                 toolbar: {
-                                    searchPlaceholder: "Busque encuesta"
+                                    searchPlaceholder: "Busque droga"
                                 },
                                 body: {
                                     editRow: {
@@ -54,13 +54,7 @@ const EditableTable = ({ onRowAdd, onRowUpdate, selectedRow, deleteText, data, c
                                 search: false,
                                 showTextRowsSelected: true,
                             }}
-                            actions={[
-                                {
-                                    icon: '*',
-                                    onClick: (event, rowData) => 
-                                    goToForms(rowData)
-                                }
-                            ]}
+                          
                         />
                     )
             }

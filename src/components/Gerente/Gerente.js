@@ -57,13 +57,13 @@ export default function Reporte() {
         <br />
         <Grid container spacing={3}>
           <Grid item xs={12}>
-            <Paper className={clase5.paper}><h2>Generacion de reporte</h2></Paper>
+            <Paper className={clase5.paper}><h2>Analisis de Stock</h2></Paper>
           </Grid>
         </Grid>
         <br />
         <div style={{ padding: 24, width: "100%" }}>
-          <EditableTable title={"Reporte de Stock"} data={reportes} columns={columnas} setData={setReportes}
-            deleteText={"¿Está seguro de eliminar la encuesta?"} isLoading={loading} />
+          <EditableTable title={"Pedidos"} data={reportes} columns={columnas} setData={setReportes}
+             isLoading={loading} />
         </div>
         <div className="App">
         </div>
