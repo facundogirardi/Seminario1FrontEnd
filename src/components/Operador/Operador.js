@@ -64,7 +64,7 @@ export default function Encuesta() {
 
   let handleLinkClick = () => {
     if (validatePhoneNumber() && validateMessage()) {
-      window.location.assign(link);
+      window.open(link);
     }
   };
 
@@ -131,11 +131,14 @@ export default function Encuesta() {
               style={{ height: "300px", width: "1500px" }}
               zoom={14}
               center={{
-                lat: -34.6121004821838, lng: -58.38101948717499
+                lat: -34.603581195827324, lng: -58.38154567992513
               }}
               markers={[
 
                 { lat: -34.6121004821838, lng: -58.38101948717499 },
+                { lat: -34.6079251785636, lng: -58.37224028465925 },
+                { lat: -34.601432149455974, lng: -58.3684163 },
+                { lat: -34.604042227170524, lng: -58.38597454069008 },
                 { lat: -34.603581195827324, lng: -58.38154567992513 }
 
               ]}
@@ -171,9 +174,8 @@ export default function Encuesta() {
 
           <Button onClick={handleLinkClick} className="message-btn" variant="contained" color="secondary">
             Enviar
-           </Button>
+          </Button>
 
-           
         </div>
         <div className="App">
         </div>
