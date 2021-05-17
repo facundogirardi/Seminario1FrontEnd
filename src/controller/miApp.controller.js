@@ -354,8 +354,8 @@ export const guardarEncuestaResp = async function (encuesta,resp1,resp2,resp3,re
 }
 
 // Traer encuestas
-export const getEncuesta = async function () {
-    let url = urlWebServices.getEncuesta;
+export const getReporte = async function () {
+    let url = urlWebServices.getReporte;
 
     try {
         let response = await fetch(url, {
@@ -368,6 +368,7 @@ export const getEncuesta = async function () {
                 'Content-Type': 'application/x-www-form-urlencoded'
             },
         });
+        
         if (response.status === 200) {
             let data = await response.json();
 

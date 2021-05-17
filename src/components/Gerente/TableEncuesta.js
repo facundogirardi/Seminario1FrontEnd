@@ -8,10 +8,10 @@ import CircularProgress from "@material-ui/core/CircularProgress/CircularProgres
 
 const EditableTable = ({ onRowAdd, onRowUpdate, selectedRow, deleteText, data, columns, setData, title, loading, options }) => {
     const history = useHistory();
-    const goToForms = (encuesta) => {
+    const goToForms = (reporte) => {
         history.push({
-          pathname: "/Forms/" + encuesta._id,
-          encuesta: encuesta,
+          pathname: "/Forms/" + reporte,
+          reporte: reporte,
         });
       };
     return (

@@ -16,13 +16,10 @@ const urlWebServices = {
     deleteUsuario: urlApi + "api/users/usr",
     updateUsuario: urlApi + "api/users/actualizacion",
 
-    //Encuestas
-    getEncuestaID: urlApi + "api/users/encuestaid",
-    getEncuesta: urlApi + "api/users/tencuesta",
-    deleteEncuesta: urlApi + "api/users/bencuesta",
-    guardarEncuesta: urlApi + "api/users/encuesta",
-    guardarEncuestaResp: urlApi + "api/users/encuestaResp",
-    getEncuestaRespID: urlApi + "api/users/encuestarepid",
+    //Reporte
+    getReporte: urlApi + "api/users/treporte",
+    guardarReporte: urlApi + "api/users/reporte",
+    getReporteID: urlApi + "api/users/reporteidid",
 
 }
 

@@ -10,7 +10,7 @@ import EditableTable from "./TableEncuesta"
 import banner from '../../imagenes/banner3.jpg';
 
 //importo 
-import { getEncuesta } from "../../controller/miApp.controller";
+import { getReporte } from "../../controller/miApp.controller";
 
 const useStylesGrid = makeStyles((theme) => ({
   root: {
@@ -24,31 +24,34 @@ const useStylesGrid = makeStyles((theme) => ({
   },
 }));
 
-export default function Encuesta() {
+export default function Reporte() {
 
 
   const clase5 = useStylesGrid();
-  const [encuestas, setEncuestas] = useState([]);
+  const [reportes, setReportes] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    getTEncuesta()
+    getTReporte()
   }, []);
 
-  const getTEncuesta = async () => {
-    const encuestas = await getEncuesta()
-    setEncuestas(encuestas)
+  const getTReporte = async () => {
+    const reportes = await getReporte()
+    setReportes(reportes)
     setLoading(false)
   };
 
   const columnas = [
-    { title: 'Sector', field: 'sector', filtering: true },
-    { title: 'Titulo', field: 'titulo', filtering: false },
-    { title: 'Tamaño', field: 'tamaño', filtering: false },
+    { title: 'Droga', field: 'droga', filtering: true },
+    { title: 'Marca', field: 'marca', filtering: false },
+    { title: 'Presentacion', field: 'presentacion', filtering: false },
+    { title: 'Laboratorio', field: 'laboratorio', filtering: false },
+    { title: 'Precio', field: 'precio', filtering: false },
+    { title: 'Resultado', field: 'resultado', filtering: false },
   ];
 
   return (
-    <Page pageTitle={'Seccion Gerente'}>
+    <Page pageTitle={'Armado de reporte'}>
       <Scrollbar style={{ height: '93.4%', width: '100%', display: 'flex', flex: 1 }}>
         <img src={banner} width="100%" height="25%" alt="Logo" />
         <br />
@@ -58,7 +61,10 @@ export default function Encuesta() {
           </Grid>
         </Grid>
         <br />
-      
+        <div style={{ padding: 24, width: "100%" }}>
+          <EditableTable title={"Reporte de Stock"} data={reportes} columns={columnas} setData={setReportes}
+            deleteText={"¿Está seguro de eliminar la encuesta?"} isLoading={loading} />
+        </div>
         <div className="App">
         </div>
       </Scrollbar>
