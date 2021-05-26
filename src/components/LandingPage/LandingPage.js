@@ -45,13 +45,13 @@ export default function () {
             
             <br />
             <Link to="/Gerente">
-              <Button variant="contained" color="secondary">Gerente</Button>
+              <Button variant="contained" color="primary">Gerente</Button>
             </Link>
             <br />
         
             <br />
             <Link to="/Operador">
-              <Button variant="contained" color="secondary">Operador</Button>
+              <Button variant="contained" color="primary">Operador</Button>
             </Link>
           </center>
         </Grid>

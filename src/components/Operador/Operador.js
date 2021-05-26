@@ -103,7 +103,7 @@ export default function Encuesta() {
         <div style={{ padding: 24, width: "400px", display: 'flex', flex: 1 }}>
 
           <Link to="/Contacto">
-            <Button variant="contained" color="secondary">Agregar y quitar Farmacias</Button>
+            <Button variant="contained" color="Primary">Agregar y quitar Farmacias</Button>
           </Link>
 
         </div>
@@ -172,7 +172,7 @@ export default function Encuesta() {
           </label>
           <br />
 
-          <Button onClick={handleLinkClick} className="message-btn" variant="contained" color="secondary">
+          <Button onClick={handleLinkClick} className="message-btn" variant="contained" color="Primary">
             Enviar
           </Button>
 
