@@ -53,6 +53,10 @@ const EditableTable = ({ onRowAdd, onRowUpdate, selectedRow, deleteText, data, c
                                 grouping: false,
                                 search: false,
                                 showTextRowsSelected: true,
+                                headerStyle: {
+                                    backgroundColor: '#01579b',
+                                    color: '#FFF' 
+                                  }
                             }}
                           
                         />

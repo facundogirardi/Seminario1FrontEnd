@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import logo from '../../imagenes/logo.png';
 import logo1 from '../../imagenes/logo1.png';
-import fotoDashboard from '../../imagenes/teamwork-chico.png';
+import fotoDashboard from '../../imagenes/cruz.png';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import "./LandingPage.css";
@@ -35,30 +35,41 @@ export default function () {
           <br />
         </Grid>
       </Grid>
+
       <Grid container spacing={3}>
+        <Grid item xs={3} sm={2}></Grid>
+
+
         <Grid item xs={6} sm={4}>
           <br />
           <br />
           <center> <img src={logo1} alt="alternative" />   </center>
           <center> <img src={logo} alt="alternative" />
             <h5>MVP | Analisis de Stock y Calidad con el cliente | Seminario profesional 1</h5>
-            
+
             <br />
             <Link to="/Gerente">
               <Button variant="contained" color="primary">Gerente</Button>
             </Link>
             <br />
-        
+
             <br />
             <Link to="/Operador">
               <Button variant="contained" color="primary">Operador</Button>
             </Link>
           </center>
-        </Grid>
-        <Grid item xs={2} sm={2}></Grid>
-        <Grid item xs={6} sm={6}>
 
         </Grid>
+
+        <right>
+          <img src={fotoDashboard} alt="alternative" />
+        </right>
+
+        <Grid item xs={2} sm={2}></Grid>
+        <Grid item xs={6} sm={6}>
+        </Grid>
+
+
       </Grid>
     </div>
 

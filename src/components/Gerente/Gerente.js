@@ -4,6 +4,7 @@ import "./Gerente.css";
 import Footer from '../Footer/Footer';
 import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import MaterialTable from 'material-table';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import EditableTable from "./TableEncuesta"
@@ -45,9 +46,15 @@ export default function Reporte() {
     { title: 'Droga', field: 'droga', filtering: true },
     { title: 'Marca', field: 'marca', filtering: false },
     { title: 'Presentacion', field: 'presentacion', filtering: false },
+    { title: 'Cantidad', field: 'cantidad', filtering: false },
     { title: 'Laboratorio', field: 'laboratorio', filtering: false },
-    { title: 'Precio', field: 'precio', filtering: false },
-    { title: 'Resultado', field: 'resultado', filtering: false },
+    { title: 'Precio (U$D)', field: 'precio', filtering: false, type: 'currency', align: 'left' },
+    {
+      title: 'Resultado', field: 'resultado', cellStyle: {
+        backgroundColor: '#039be5',
+        color: '#FFF'
+      }, filtering: false
+    },
   ];
 
   return (
@@ -63,10 +70,11 @@ export default function Reporte() {
         <br />
         <div style={{ padding: 24, width: "100%" }}>
           <EditableTable title={"Pedidos"} data={reportes} columns={columnas} setData={setReportes}
-             isLoading={loading} />
+            isLoading={loading} />
         </div>
         <div className="App">
         </div>
+
       </Scrollbar>
       <Footer />
     </Page>
