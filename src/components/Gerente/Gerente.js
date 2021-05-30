@@ -43,11 +43,12 @@ export default function Reporte() {
   };
 
   const columnas = [
+    { title: 'Pedido', field: 'pedido', filtering: true },
     { title: 'Droga', field: 'droga', filtering: true },
-    { title: 'Marca', field: 'marca', filtering: false },
-    { title: 'Presentacion', field: 'presentacion', filtering: false },
+    { title: 'Marca', field: 'marca', filtering: true },
+    { title: 'Laboratorio', field: 'laboratorio', filtering: true },
+    { title: 'Presentacion', field: 'presentacion', filtering: true },
     { title: 'Cantidad', field: 'cantidad', filtering: false },
-    { title: 'Laboratorio', field: 'laboratorio', filtering: false },
     { title: 'Precio (U$D)', field: 'precio', filtering: false, type: 'currency', align: 'left' },
     {
       title: 'Resultado', field: 'resultado', cellStyle: {

@@ -3,7 +3,7 @@ import Page from 'material-ui-shell/lib/containers/Page/Page'
 import "./Operador.css";
 import { Link } from 'react-router-dom'
 import Footer from '../Footer/Footer';
-import React, { useEffect, useState, Component } from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
@@ -11,13 +11,17 @@ import banner from '../../imagenes/banner1.jpg';
 import PhoneInput from 'react-phone-input-2';
 import MessageBox from './MessageBox';
 import GoogleMaps from "simple-react-google-maps";
+import FormControl from '@material-ui/core/FormControl';
+import EditableTable from "./TableEncuesta"
 import 'react-phone-input-2/lib/bootstrap.css';
 import urlencode from 'urlencode';
 import Button from '@material-ui/core/Button';
 import InputBase from '@material-ui/core/InputBase';
+import Select from '@material-ui/core/Select';
+import InputLabel from '@material-ui/core/InputLabel';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
 import SearchIcon from '@material-ui/icons/Search';
 import DirectionsIcon from '@material-ui/icons/Directions';
 
@@ -53,12 +57,25 @@ const useStylesGrid = makeStyles((theme) => ({
   },
 }));
 
+const useStyles = makeStyles((theme) => ({
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: 120,
+  },
+  selectEmpty: {
+    marginTop: theme.spacing(2),
+  },
+}));
+
 export default function Encuesta() {
   const clase5 = useStylesGrid();
-
+  const [reportes, setReportes] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [phoneNumber, setPhoneNumber] = useState('');
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
+  const classes = useStyles();
+  const [region, setRegion] = React.useState('');
   let link = `https://api.whatsapp.com/send?phone=${phoneNumber}${message && `&text=${urlencode(message)}`
     }`;
 
@@ -66,6 +83,11 @@ export default function Encuesta() {
     if (validatePhoneNumber() && validateMessage()) {
       window.open(link);
     }
+  };
+
+
+  const handleChange = (event) => {
+    setRegion(event.target.value);
   };
 
   let validatePhoneNumber = () => {
@@ -87,8 +109,24 @@ export default function Encuesta() {
     }
   };
 
+  const columnas = [
+    { title: 'Pedido', field: 'pedido', filtering: true },
+    { title: 'Droga', field: 'droga', filtering: true },
+    { title: 'Marca', field: 'marca', filtering: true },
+    { title: 'Laboratorio', field: 'laboratorio', filtering: true },
+    { title: 'Presentacion', field: 'presentacion', filtering: true },
+    { title: 'Cantidad', field: 'cantidad', filtering: false },
+    { title: 'Precio (U$D)', field: 'precio', filtering: false, type: 'currency', align: 'left' },
+    {
+      title: 'Resultado', field: 'resultado', cellStyle: {
+        backgroundColor: '#039be5',
+        color: '#FFF'
+      }, filtering: false
+    },
+  ];
+
   return (
-    <Page pageTitle={'Seleccione operador'}>
+    <Page pageTitle={'Seleccione operador'} >
       <Scrollbar style={{ height: '93.4%', width: '100%', display: 'flex', flex: 1 }}>
         <img src={banner} width="100%" height="25%" alt="Logo" />
         <br />
@@ -159,8 +197,8 @@ export default function Encuesta() {
             />
           </label>
           <br />
-
           <br />
+
           <label>
             Mensaje
             <br />
@@ -175,13 +213,18 @@ export default function Encuesta() {
           <Button onClick={handleLinkClick} className="message-btn" variant="contained" color="Primary">
             Enviar
           </Button>
-
         </div>
+
+        <div style={{ padding: 24, width: "100%" }}>
+          <EditableTable title={"Pedidos"} data={reportes} columns={columnas} setData={setReportes}
+            isLoading={loading} />
+        </div>
+
         <div className="App">
         </div>
 
       </Scrollbar>
       <Footer />
-    </Page>
+    </Page >
   );
 }
