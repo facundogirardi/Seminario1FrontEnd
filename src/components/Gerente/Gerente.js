@@ -59,13 +59,13 @@ export default function Reporte() {
   ];
 
   return (
-    <Page pageTitle={'Armado de reporte'}>
+    <Page pageTitle={'Seleccion operador'}>
       <Scrollbar style={{ height: '93.4%', width: '100%', display: 'flex', flex: 1 }}>
         <img src={banner} width="100%" height="25%" alt="Logo" />
         <br />
         <Grid container spacing={3}>
           <Grid item xs={12}>
-            <Paper className={clase5.paper}><h2>Analisis de Stock</h2></Paper>
+            <Paper className={clase5.paper}><h2>Reporte de Pronóstico de Compra</h2></Paper>
           </Grid>
         </Grid>
         <br />

@@ -20,7 +20,6 @@ import banner from '../../imagenes/banner2.jpg';
 
 //importo llamada a endpoint
 import { guardarContacto } from "../../controller/miApp.controller";
-import { getEncuestaID } from "../../controller/miApp.controller";
 
 const useStylesButton = makeStyles((theme) => ({
   button: {
@@ -112,15 +111,6 @@ export default function Encuesta(props) {
 
   const handleChange = (event) => {
     setRegion(event.target.value);
-  };
-
-  useEffect(() => {
-    getEncuesta(props.match.params.id)
-  }, [props.match.params.id]);
-
-  const getEncuesta = async (id) => {
-    const encuestas = await getEncuestaID(id)
-    setEncuestas(encuestas[0])
   };
 
   const subirDatos = async function () {

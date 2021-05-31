@@ -13,6 +13,7 @@ const urlWebServices = {
     //ABM Usuarios
     guardarUsuario: urlApi + "api/users/registration",
     getUsuario: urlApi + "api/users/tusuarios",
+    getUsuarioID: urlApi + "api/users/usuarioid",
     deleteUsuario: urlApi + "api/users/usr",
     updateUsuario: urlApi + "api/users/actualizacion",
 

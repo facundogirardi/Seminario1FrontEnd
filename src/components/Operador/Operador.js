@@ -3,7 +3,7 @@ import Page from 'material-ui-shell/lib/containers/Page/Page'
 import "./Operador.css";
 import { Link } from 'react-router-dom'
 import Footer from '../Footer/Footer';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
@@ -26,7 +26,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import DirectionsIcon from '@material-ui/icons/Directions';
 
 //importo 
-import { getEncuesta } from "../../controller/miApp.controller";
+import { getUsuario } from "../../controller/miApp.controller";
 
 const useStylesGrid = makeStyles((theme) => ({
   root: {
@@ -76,6 +76,12 @@ export default function Encuesta() {
   const [error, setError] = useState('');
   const classes = useStyles();
   const [region, setRegion] = React.useState('');
+
+
+  useEffect(() => {
+    getTReporte()
+  }, []);
+
   let link = `https://api.whatsapp.com/send?phone=${phoneNumber}${message && `&text=${urlencode(message)}`
     }`;
 
@@ -85,6 +91,13 @@ export default function Encuesta() {
     }
   };
 
+
+
+  const getTReporte = async () => {
+    const reportes = await getUsuario()
+    setReportes(reportes)
+    setLoading(false)
+  };
 
   const handleChange = (event) => {
     setRegion(event.target.value);
@@ -111,14 +124,14 @@ export default function Encuesta() {
 
   const columnas = [
     { title: 'Pedido', field: 'pedido', filtering: true },
-    { title: 'Droga', field: 'droga', filtering: true },
-    { title: 'Marca', field: 'marca', filtering: true },
-    { title: 'Laboratorio', field: 'laboratorio', filtering: true },
-    { title: 'Presentacion', field: 'presentacion', filtering: true },
-    { title: 'Cantidad', field: 'cantidad', filtering: false },
-    { title: 'Precio (U$D)', field: 'precio', filtering: false, type: 'currency', align: 'left' },
+    { title: 'Nombre', field: 'nombre', filtering: true },
+    { title: 'Apellido', field: 'apellido', filtering: true },
+    { title: 'DNI', field: 'dni', filtering: true },
+    { title: 'Telefono', field: 'telefono', filtering: false },
+    { title: 'Obra Social', field: 'osbrasocial', filtering: false },
+    { title: 'Provincia', field: 'provincia', filtering: false },
     {
-      title: 'Resultado', field: 'resultado', cellStyle: {
+      title: 'Estado Pedido', field: 'estadopedido', cellStyle: {
         backgroundColor: '#039be5',
         color: '#FFF'
       }, filtering: false
@@ -126,14 +139,14 @@ export default function Encuesta() {
   ];
 
   return (
-    <Page pageTitle={'Seleccione operador'} >
+    <Page pageTitle={'Seleccion operador'} >
       <Scrollbar style={{ height: '93.4%', width: '100%', display: 'flex', flex: 1 }}>
         <img src={banner} width="100%" height="25%" alt="Logo" />
         <br />
 
         <Grid container spacing={6}>
           <Grid item xs={12}>
-            <Paper className={clase5.paper}><h2>Buscador de Farmacias</h2></Paper>
+            <Paper className={clase5.paper}><h2>Buscador de Farmacias / Envio de Estados</h2></Paper>
 
           </Grid>
 
@@ -145,22 +158,6 @@ export default function Encuesta() {
           </Link>
 
         </div>
-        <div style={{ padding: 24, width: "400px", display: 'flex', flex: 1 }}>
-
-          <InputBase
-            className={clase5.input}
-            placeholder="Buscar direccion"
-            inputProps={{ 'aria-label': 'Buscar direccion' }}
-          />
-          <IconButton type="submit" className={clase5.iconButton} aria-label="search">
-            <SearchIcon />
-          </IconButton>
-          <Divider className={clase5.divider} orientation="vertical" />
-          <IconButton color="primary" className={clase5.iconButton} aria-label="directions">
-            <DirectionsIcon />
-          </IconButton>
-        </div>
-
 
         <div style={{ padding: 24, width: "400px", display: 'flex', flex: 1 }}>
           <div className="container " >
@@ -185,44 +182,15 @@ export default function Encuesta() {
         </div>
         <div style={{ padding: 24, width: "100%", display: 'block', flex: 1 }}>
 
-          <h5>Envio de Status por Whatsapp</h5>
-          <p id="error">{error}</p>
-          <label>
-            Numero telefonico
-            <PhoneInput
-              country={'ar'}
-              value={phoneNumber}
-              placeholder="+54 1130669664"
-              onChange={(phone) => setPhoneNumber(phone)}
-            />
-          </label>
-          <br />
-          <br />
+          <h5>Envio de estado por Whatsapp</h5>
+          <div style={{ padding: 24, width: "100%" }}>
+            <EditableTable title={"Pedidos en curso"} data={reportes} columns={columnas} setData={setReportes}
+              isLoading={loading} />
+          </div>
 
-          <label>
-            Mensaje
-            <br />
-            <MessageBox
-              placeholder="Ingrese mensaje"
-              value={message}
-              onChange={(message) => setMessage(message)}
-            />
-          </label>
-          <br />
-
-          <Button onClick={handleLinkClick} className="message-btn" variant="contained" color="Primary">
-            Enviar
-          </Button>
+          <div className="App">
+          </div>
         </div>
-
-        <div style={{ padding: 24, width: "100%" }}>
-          <EditableTable title={"Pedidos"} data={reportes} columns={columnas} setData={setReportes}
-            isLoading={loading} />
-        </div>
-
-        <div className="App">
-        </div>
-
       </Scrollbar>
       <Footer />
     </Page >
