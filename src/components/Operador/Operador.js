@@ -128,7 +128,7 @@ export default function Encuesta() {
     { title: 'Apellido', field: 'apellido', filtering: true },
     { title: 'DNI', field: 'dni', filtering: true },
     { title: 'Telefono', field: 'telefono', filtering: false },
-    { title: 'Obra Social', field: 'osbrasocial', filtering: false },
+    { title: 'Obra Social', field: 'obrasocial', filtering: false },
     { title: 'Provincia', field: 'provincia', filtering: false },
     {
       title: 'Estado Pedido', field: 'estadopedido', cellStyle: {
