@@ -48,7 +48,6 @@ export default function Reporte() {
     { title: 'Marca', field: 'marca', filtering: true },
     { title: 'Laboratorio', field: 'laboratorio', filtering: true },
     { title: 'Presentacion', field: 'presentacion', filtering: true },
-    { title: 'Cantidad', field: 'cantidad', filtering: false },
     { title: 'Precio (U$D)', field: 'precio', filtering: false, type: 'currency', align: 'left' },
     {
       title: 'Resultado', field: 'resultado', cellStyle: {

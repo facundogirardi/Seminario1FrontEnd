@@ -156,7 +156,7 @@ export const getReporte = async function () {
                 'Content-Type': 'application/x-www-form-urlencoded'
             },
         });
-        
+
         if (response.status === 200) {
             let data = await response.json();
 
@@ -173,5 +173,46 @@ export const getReporte = async function () {
     catch (error) {
         console.log("error", error);
     };
+
 }
+
+// Traer reporte por ID
+export const getReporteID = async function (_id) {
+    let url = urlWebServices.getReporteID;
+    const formData = new URLSearchParams();
+
+    formData.append('_id', _id);
+
+    try {
+        let response = await fetch(url, {
+            method: 'POST', // or 'PUT'
+            mode: "cors",
+            headers: {
+                'Accept': 'application/x-www-form-urlencoded',
+                'x-access-token': localStorage.getItem('x'),
+                'Origin': 'http://localhost:3000',
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: formData
+        });
+        if (response.status === 200) {
+            let data = await response.json();
+
+            let listaReporteID = data.data.docs;
+            return listaReporteID;
+        }
+        else {
+            let vacio = [];
+            console.log("No hay reportes por ese ID")
+            return (vacio);
+
+        }
+    }
+    catch (error) {
+        console.log("error", error);
+    };
+}
+
+
+
 

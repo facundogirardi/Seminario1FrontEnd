@@ -10,7 +10,7 @@ const EditableTable = ({ onRowAdd, onRowUpdate, selectedRow, deleteText, data, c
     const history = useHistory();
     const goToForms = (reporte) => {
         history.push({
-          pathname: "/Forms/" + reporte,
+          pathname: "/Detalle/" + reporte._id,
           reporte: reporte,
         });
       };
@@ -58,6 +58,13 @@ const EditableTable = ({ onRowAdd, onRowUpdate, selectedRow, deleteText, data, c
                                     color: '#FFF' 
                                   }
                             }}
+                            actions={[
+                                {
+                                    icon: '|>',
+                                    onClick: (event, rowData) => 
+                                    goToForms(rowData)
+                                }
+                            ]}
                           
                         />
                     )

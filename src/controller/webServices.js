@@ -20,7 +20,7 @@ const urlWebServices = {
     //Reporte
     getReporte: urlApi + "api/users/treporte",
     guardarReporte: urlApi + "api/users/reporte",
-    getReporteID: urlApi + "api/users/reporteidid",
+    getReporteID: urlApi + "api/users/reporteid",
 
 }
 
