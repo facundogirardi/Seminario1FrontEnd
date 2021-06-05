@@ -1,10 +1,12 @@
 import Scrollbar from 'material-ui-shell/lib/components/Scrollbar/Scrollbar'
 import Page from 'material-ui-shell/lib/containers/Page/Page'
 import "./Detalle.css";
+import { Link } from 'react-router-dom'
 import Footer from '../Footer/Footer';
 import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import banner from '../../imagenes/banner1.jpg';
+import Button from '@material-ui/core/Button';
 import 'react-phone-input-2/lib/bootstrap.css';
 
 //importo 
@@ -70,7 +72,7 @@ export default function Encuesta(props) {
   };
 
   const valor = (reportes.valor1 + reportes.valor2) / 2
-  
+
   var resultado
 
   if (valor > 50) {
@@ -90,15 +92,16 @@ export default function Encuesta(props) {
         <div style={{ padding: 24, width: "100%", display: 'block', flex: 1 }}>
           <h4>Detalle del pedido : {reportes.pedido}, para la Droga :  {reportes.droga} </h4>
           <br />
-          <h3>Condiciones utilizadas prediccion de compra</h3>
+          <h4>Condiciones utilizadas prediccion de compra</h4>
           <br />
-          <h4>1) Acuerdo exclusivo con el laboratorio {reportes.laboratorio} : {reportes.acuerdo} </h4>
-          <h4>2) Unidades vendidas en los ultimos 2 meses : {reportes.cantidad} </h4>
-          <h4>3) Condicion en construccion (Sprint 4) :</h4>
-          <h4>4) Condicion en construccion (Sprint 4) :</h4>
+          <condiciones>----- Acuerdo exclusivo con el laboratorio {reportes.laboratorio} : {reportes.acuerdo} </condiciones>
+          <condiciones>----- Unidades vendidas en los ultimos 2 meses : {reportes.cantidad} </condiciones>
+          <condiciones>----- Condicion en construccion (Sprint 4) :</condiciones>
+          <condiciones>----- Condicion en construccion (Sprint 4) :</condiciones>
           <br />
-          <h3>Resultado : {resultado} </h3>
-
+          <h3> {reportes.resultado} </h3>
+          <br />
+      
         </div>
       </Scrollbar>
       <Footer />

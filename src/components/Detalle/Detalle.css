@@ -1,48 +1,60 @@
 .main-consultas {
-    background-color: #232323;
-    display: block;
-    margin:auto; 
-    text-align: justify;
- }
- 
- .Cuadrado{
-    border: 0px;
-    display: inline-block;
-    width: auto;
-    margin: 0 40px;
- }
-
- .Cuadrado2{
-   border: 1px;
-   display: inline-block;
-   width: auto;
-   margin: 0 200px;
-   text-align: justify;
+  background-color: #232323;
+  display: block;
+  margin: auto;
+  text-align: justify;
 }
 
-.BotonResultados{
-   border: 1px;
-   display: inline-block;
-   width: auto;
-   margin: 0 40px;
-   text-align: justify;
+.Cuadrado {
+  border: 0px;
+  display: inline-block;
+  width: auto;
+  margin: 0 40px;
 }
 
-a:link, a:visited, a:active {
-   text-decoration:none;
+.Cuadrado2 {
+  border: 1px;
+  display: inline-block;
+  width: auto;
+  margin: 0 200px;
+  text-align: justify;
+}
+
+.BotonResultados {
+  border: 1px;
+  display: inline-block;
+  width: auto;
+  margin: 0 40px;
+  text-align: justify;
+}
+
+a:link,
+a:visited,
+a:active {
+  text-decoration: none;
 }
 
 h4 {
-   display: block;
-   
- }
+  display: block;
+  font-weight: bold;
+}
 
- h6 {
-   display: block;
-   
- }
+h6 {
+  display: block;
+}
 
- h3 {
+h3 {
+  display: block;
+  font-weight: bold;
+}
+
+condiciones {
    display: block;
    font-weight: bold;
  }
+
+h5 {
+  display: block;
+  font-weight: bold;
+ 
+}

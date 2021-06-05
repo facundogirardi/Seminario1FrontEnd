@@ -43,7 +43,6 @@ export default function Reporte() {
   };
 
   const columnas = [
-    { title: 'Pedido', field: 'pedido', filtering: true },
     { title: 'Droga', field: 'droga', filtering: true },
     { title: 'Marca', field: 'marca', filtering: true },
     { title: 'Laboratorio', field: 'laboratorio', filtering: true },
@@ -69,7 +68,7 @@ export default function Reporte() {
         </Grid>
         <br />
         <div style={{ padding: 24, width: "100%" }}>
-          <EditableTable title={"Pedidos"} data={reportes} columns={columnas} setData={setReportes}
+          <EditableTable title={"Productos (< a 5 unidades)"} data={reportes} columns={columnas} setData={setReportes}
             isLoading={loading} />
         </div>
         <div className="App">
