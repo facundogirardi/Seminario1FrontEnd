@@ -14,7 +14,6 @@
     "@progress/kendo-react-pdf": "^3.17.0",
     "axios": "^0.21.0",
     "base-shell": "1.x",
-    "date-fns": "^2.0.0-alpha.27",
     "github-markdown-css": "4.x",
     "google-map-react": "^2.1.9",
     "hooks": "^0.3.2",
@@ -48,8 +47,7 @@
     "sweetalert2": "^10.10.0",
     "sweetalert2-react": "^0.8.3",
     "urlencode": "^1.1.0",
-    "webpack": "^4.42.0",
-    "yarn": "^1.22.10"
+    "webpack": "^4.42.0"
   },
   "scripts": {
     "start": "react-scripts start",
