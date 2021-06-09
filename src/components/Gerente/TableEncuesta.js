@@ -60,7 +60,7 @@ const EditableTable = ({ onRowAdd, onRowUpdate, selectedRow, deleteText, data, c
                             }}
                             actions={[
                                 {
-                                    icon: '|>',
+                                    icon: '+',
                                     onClick: (event, rowData) => 
                                     goToForms(rowData)
                                 }
