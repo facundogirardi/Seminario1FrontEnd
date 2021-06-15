@@ -44,7 +44,6 @@ export default function Reporte() {
 
   const columnas = [
     { title: 'Droga', field: 'droga', filtering: true },
-    { title: 'Marca', field: 'marca', filtering: true },
     { title: 'Laboratorio', field: 'laboratorio', filtering: true },
     { title: 'Presentacion', field: 'presentacion', filtering: true },
     { title: 'Precio (U$D)', field: 'precio', filtering: false, type: 'currency', align: 'left' },
