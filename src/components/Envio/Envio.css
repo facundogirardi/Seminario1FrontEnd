@@ -46,3 +46,11 @@ h4 {
    display: block;
    font-weight: bold;
  }
+
+ condiciones {
+   background-color: #282c34;
+   color: white;
+   padding: 20px;
+   font-family: Arial;
+   
+ }

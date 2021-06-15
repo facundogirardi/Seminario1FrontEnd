@@ -166,7 +166,7 @@ export default function Encuesta() {
               style={{ height: "300px", width: "1500px" }}
               zoom={14}
               center={{
-                lat: -34.603581195827324, lng: -58.38154567992513
+                lat: -34.60294411544425, lng: -58.38135582311325
               }}
               markers={[
 

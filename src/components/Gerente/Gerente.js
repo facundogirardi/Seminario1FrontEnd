@@ -57,7 +57,7 @@ export default function Reporte() {
   ];
 
   return (
-    <Page pageTitle={'Seleccion operador'}>
+    <Page pageTitle={'Seleccion Gerente'}>
       <Scrollbar style={{ height: '93.4%', width: '100%', display: 'flex', flex: 1 }}>
         <img src={banner} width="100%" height="25%" alt="Logo" />
         <br />

@@ -46,6 +46,7 @@ h6 {
 h3 {
   display: block;
   font-weight: bold;
+  text-align: center;
 }
 
 condiciones {
@@ -57,4 +58,13 @@ h5 {
   display: block;
   font-weight: bold;
  
+}
+
+
+condiciones {
+  background-color: #282c34;
+  color: white;
+  padding: 5px;
+  font-family: Arial;
+  
 }
