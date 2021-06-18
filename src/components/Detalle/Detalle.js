@@ -74,12 +74,16 @@ export default function Encuesta(props) {
 
   console.log("reporte", reportes);
 
-  const vendido = 12.5
-  const valor = reportes.valormoroso + reportes.valorcronologico + reportes.valoracuerdo + vendido;
+  const vendido = 12.5;
+  const valor =
+    reportes.valormoroso +
+    reportes.valorcronologico +
+    reportes.valoracuerdo +
+    vendido;
 
   var resultado;
 
-  console.log("valor", valor)
+  console.log("valor", valor);
   if (valor > 50) {
     resultado = "COMPRAR";
   } else {
@@ -105,30 +109,50 @@ export default function Encuesta(props) {
         </Grid>
         <br />
         <div style={{ padding: 24, width: "100%", display: "block", flex: 1 }}>
-          <h4 style={{color: "red"}} >Droga : {reportes.droga} </h4>
+          <h4 style={{ color: "red" }}>Droga : {reportes.droga} </h4>
           <br />
+          <div>
           <h4>Condiciones utilizadas para la prediccion de compra</h4>
           <br />
-          <condiciones  > 
-            Acuerdo exclusivo con el laboratorio {reportes.laboratorio} :{" "}
+          <condiciones>
+          ○  Acuerdo exclusivo con el laboratorio {reportes.laboratorio} :{" "}
             {reportes.acuerdo}{" "}
           </condiciones>
+          <condicione>
+            Acuerdo con el laboratorio SI : 20% no 5%          {" "}  
+          </condicione>
+
           <condiciones>
-            Unidades vendidas en los ultimos 2 meses :{" "}
+          ○ Unidades vendidas en los ultimos 2 meses :{" "}
             {reportes.cantidadvendida}{" "}
           </condiciones>
+          <condicione>
+            Unidades vendidas promedio 2000u            
+          </condicione>
+
           <condiciones>
-            Prepaga cumple en terminos de pago (morosidad permitida, 2 meses) :{" "}
+          ○ Prepaga cumple en terminos de pago (morosidad permitida, 2 meses) :{" "}
             {reportes.moroso}{" "}
           </condiciones>
+          <condicione>
+            Prepaga cumple con el pago SI : 25% no 0%           
+          </condicione>
+
           <condiciones>
-            Es una drogra con necesidad CRONOLOGICA : {reportes.cronologico}{" "}
+          ○ Es una drogra con necesidad CRONOLOGICA : {reportes.cronologico}{" "}
           </condiciones>
+          <condicione>
+            La droga es para tratamiento cronologico? SI : 20% no 7.5%           
+          </condicione>
+          </div>
           <br />
           <br />
-          <h3 style={{backgroundColor: "lightblue"}}> {reportes.resultado} </h3>
+          <h3 style={{ backgroundColor: "lightblue" }}>
+            {" "}
+            {reportes.resultado}{" "}
+          </h3>
           <br />
-        </div>
+          </div>
       </Scrollbar>
       <Footer />
     </Page>

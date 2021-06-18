@@ -62,9 +62,19 @@ h5 {
 
 
 condiciones {
-  background-color: #282c34;
+  background-color: #3a3939;
   color: white;
-  padding: 5px;
+  padding: 20px;
   font-family: Arial;
+  font-size: medium;
+  
+}
+
+condicione {
+  background-color: #3a3939;
+  color: white;
+  padding: 20px;
+  font-family: Arial;
+  font-size: smaller;
   
 }
