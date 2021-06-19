@@ -4,10 +4,10 @@ import "./Historico.css";
 import Footer from "../Footer/Footer";
 import React, { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { PieChart } from "react-minimal-pie-chart";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import { useHistory } from "react-router";
+import { Pie } from 'react-chartjs-2';
 import banner from "../../imagenes/banner2.jpg";
 
 //importo llamada a endpoint
@@ -91,6 +91,40 @@ export default function Encuesta(props) {
     setNombre(event.target.value);
   };
 
+  const data = {
+    labels: ['Vimizim', 'Glybera', 'Soliris'],
+    datasets: [
+      {
+        label: '# of Votes',
+        data: [9222, 4119, 7503],
+        backgroundColor: [
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+        ],
+        borderColor: [
+          'rgba(255, 99, 132, 1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(255, 206, 86, 1)',
+        ],
+        borderWidth: 1,
+      },
+    ],
+  };
+
+  const options = {
+    scales: {
+      yAxes: [
+        {
+          ticks: {
+            beginAtZero: true,
+          },
+        },
+      ],
+    },
+  };
+
+
   const handleOpinion = (event) => {
     setOpinion(event.target.value);
   };
@@ -158,21 +192,15 @@ export default function Encuesta(props) {
         <Grid container spacing={3}>
           <Grid item xs={12}>
             <Paper className={clase5.paper}>
-              <h2>Drogas compradas en los ultimos 6 meses</h2>
+              <h2>Drogas compradas en los ultimos 6 meses (Unidades)</h2>
             </Paper>
           </Grid>
         </Grid>
         <br />
-        <PieChart
-          viewBoxSize ={[170,170]} 
-          label={({ dataEntry }) => `${Math.round(dataEntry.percentage)} %`}
-          data={[
-            { title: "One", value: 10, color: "#E38627" },
-            { title: "Two", value: 15, color: "#C13C37" },
-            { title: "Three", value: 20, color: "#6A2135" },
-          ]}
-        />
-         
+        <Pie
+          width={500}
+          height={100}
+          data={data} />
       </Scrollbar>
       <Footer />
     </Page>

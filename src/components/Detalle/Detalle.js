@@ -119,7 +119,7 @@ export default function Encuesta(props) {
             {reportes.acuerdo}{" "}
           </condiciones>
           <condicione>
-            Acuerdo con el laboratorio SI : 20% no 5%          {" "}  
+            Acuerdo con el laboratorio SI : 20%, NO : 5%          {" "}  
           </condicione>
 
           <condiciones>
@@ -135,14 +135,14 @@ export default function Encuesta(props) {
             {reportes.moroso}{" "}
           </condiciones>
           <condicione>
-            Prepaga cumple con el pago SI : 25% no 0%           
+            Prepaga cumple con el pago SI : 25%, NO : 0%           
           </condicione>
 
           <condiciones>
           ○ Es una drogra con necesidad CRONOLOGICA : {reportes.cronologico}{" "}
           </condiciones>
           <condicione>
-            La droga es para tratamiento cronologico? SI : 20% no 7.5%           
+            La droga es para tratamiento cronologico? SI : 20%, NO : 7.5%           
           </condicione>
           </div>
           <br />
