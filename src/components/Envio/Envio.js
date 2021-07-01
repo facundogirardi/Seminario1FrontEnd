@@ -117,10 +117,10 @@ export default function Encuesta(props) {
   };
 
   let validateMessage = () => {
-    if (message.length < 250) {
+    if (message.length < 50) {
       return true;
     } else {
-      setError("El mensaje puede contener hasta 250 caracteres");
+      setError("El mensaje puede contener hasta 50 caracteres");
       return false;
     }
   };

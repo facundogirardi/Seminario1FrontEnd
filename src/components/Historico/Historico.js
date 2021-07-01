@@ -7,7 +7,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import { useHistory } from "react-router";
-import { Pie } from 'react-chartjs-2';
+import { Bar } from 'react-chartjs-2';
 import banner from "../../imagenes/banner2.jpg";
 
 //importo llamada a endpoint
@@ -92,22 +92,25 @@ export default function Encuesta(props) {
   };
 
   const data = {
-    labels: ['Vimizim', 'Glybera', 'Soliris'],
+    labels: ['Soliris', 'Vimizim', 'Glybera', 'Zolgensma'],
     datasets: [
       {
-        label: '# of Votes',
-        data: [9222, 4119, 7503],
+        label: '',
+        data: [9551, 6551, 2125, 5115, 509],
         backgroundColor: [
           'rgba(255, 99, 132, 0.2)',
           'rgba(54, 162, 235, 0.2)',
           'rgba(255, 206, 86, 0.2)',
+          'rgba(75, 192, 192, 0.2)',
         ],
         borderColor: [
           'rgba(255, 99, 132, 1)',
           'rgba(54, 162, 235, 1)',
           'rgba(255, 206, 86, 1)',
+          'rgba(75, 192, 192, 1)',
+          'rgba(153, 102, 255, 1)',
         ],
-        borderWidth: 1,
+        borderWidth: 3,
       },
     ],
   };
@@ -197,7 +200,7 @@ export default function Encuesta(props) {
           </Grid>
         </Grid>
         <br />
-        <Pie
+        <Bar
           width={500}
           height={100}
           data={data} />
