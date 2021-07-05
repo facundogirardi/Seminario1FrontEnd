@@ -87,7 +87,7 @@ export default function Reporte() {
             </Button>
           </Link>
           <EditableTable
-            title={"Productos (< a 5 unidades)"}
+            title={"Productos (menos de 5 unidades en stock)"}
             data={reportes}
             columns={columnas}
             setData={setReportes}
