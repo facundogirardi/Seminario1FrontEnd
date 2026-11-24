@@ -14,7 +14,6 @@ import GoogleMaps from "simple-react-google-maps";
 import FormControl from '@material-ui/core/FormControl';
 import EditableTable from "./TableEncuesta"
 import 'react-phone-input-2/lib/bootstrap.css';
-import urlencode from 'urlencode';
 import Button from '@material-ui/core/Button';
 import InputBase from '@material-ui/core/InputBase';
 import Select from '@material-ui/core/Select';
@@ -82,7 +81,7 @@ export default function Encuesta() {
     getTReporte()
   }, []);
 
-  let link = `https://api.whatsapp.com/send?phone=${phoneNumber}${message && `&text=${urlencode(message)}`
+  let link = `https://api.whatsapp.com/send?phone=${phoneNumber}${message && `&text=${encodeURIComponent(message)}`
     }`;
 
   let handleLinkClick = () => {

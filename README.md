@@ -14,6 +14,7 @@
 * [Instalacion](#Instalacion)
 * [Base de datos](#Base-de-datos)
 * [Trello](#Trello)
+* [Actualizacion 2026](#Actualizacion-2026)
 * [Recursos](#Recursos)
 
 ## Integrantes Grupo 7
@@ -31,26 +32,36 @@
 
 ## Instalacion
 
-## FrontEnd
+### Requisitos
 
-* Descargar la aplicacion del repositorio https://github.com/facundogirardi/Seminario1FrontEnd
-* En la carpeta del proyecto ejecutar <b>npm install</b>
-* <b>cd</b> .\Seminario1BackEnd\
-* Ejecutar <b>npm start</b>
+* Node.js 18 o superior (probado con Node.js 24)
+* El backend levantado (por defecto en http://localhost:4000/)
+
+### FrontEnd (este repositorio)
+
+```bash
+git clone https://github.com/facundogirardi/Seminario1FrontEnd.git
+cd Seminario1FrontEnd
+npm install
+npm start
+```
+
 * Se levantará en local http://localhost:3000/
+* <b>npm run build</b> genera la versión optimizada en la carpeta <b>build/</b>
+* El repositorio incluye un <b>.npmrc</b> con `legacy-peer-deps=true`, necesario porque `base-shell` y `material-ui-shell` declaran dependencias peer antiguas
 
-Para apuntar al Backend de Heroku :
-* Ingresar a ./src/controller/webServices.js
-* comentar la linea <b>const urlApi = "http://localhost:4000/";</b>
+Para apuntar a otro backend, definir la variable <b>REACT_APP_URL</b> (por ejemplo en un archivo <b>.env.local</b>):
 
-## BackEnd
+```bash
+REACT_APP_URL=http://localhost:4000/
+```
 
-* El backend de la aplicacion se encuesta en ek siguiente repositorio https://github.com/facundogirardi/Seminario1BackEnd
-* En la carpeta del proyecto ejecutar <b>npm install</b>
-* <b>cd</b> .\Seminario1FrontEnd\
-* Ejecutar <b>npm start</b> o <b>nodemon --exec npm start</b> (Requiere tener instalado el nodemon*)
-* Se levantará en local http://localhost:4000/
-* Tambien se encuentra hosteado en Heroku <b>https://seminario1-backend.herokuapp.com/<b>
+### BackEnd
+
+* El backend de la aplicacion se encuentra en el repositorio https://github.com/facundogirardi/Seminario1BackEnd
+* Ver las instrucciones de instalación en su README
+
+> **Nota:** el deploy en Heroku que se usó durante la cursada ya no está disponible; el backend debe levantarse en local.
 
 ## Base de Datos
 
@@ -65,7 +76,18 @@ Para apuntar al Backend de Heroku :
 
 https://trello.com/b/z1BKBdrK/gesti%C3%B3n-de-stock-y-calidad-al-cliente
 
+## Actualizacion 2026
+
+Mantenimiento de dependencias realizado en noviembre de 2026:
+
+* react-scripts actualizado de 3.4 a 5.0.1 (webpack 5), lo que permite compilar con versiones actuales de Node.js sin `--openssl-legacy-provider`
+* React 16.14, Material-UI 4.12, react-router-dom 5.3, react-redux 7.2 y notistack actualizados a la última versión de su rama
+* Se eliminaron dependencias que no se usaban en el código y se agregaron las que se usaban sin estar declaradas
+* Se agregó <b>.npmrc</b> con `legacy-peer-deps=true`
+* La librería `urlencode` (pensada para Node.js) se reemplazó por `encodeURIComponent`, nativa del navegador
+
 ## Recursos
 
-- GIT: <https://github.com/facundogirardi/Seminario1FrontEnd>
+- Backend: <https://github.com/facundogirardi/Seminario1BackEnd>
+- Frontend: <https://github.com/facundogirardi/Seminario1FrontEnd>
 - GIT: <https://github.com/facundogirardi/Seminario1BackEnd>

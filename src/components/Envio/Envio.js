@@ -10,7 +10,6 @@ import MessageBox from "./MessageBox";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import "react-phone-input-2/lib/bootstrap.css";
-import urlencode from "urlencode";
 import Button from "@material-ui/core/Button";
 
 //importo
@@ -74,7 +73,7 @@ export default function Encuesta(props) {
       "*" +
       usuarios.estadopedido +
       "*" &&
-    `&text=${urlencode(
+    `&text=${encodeURIComponent(
       "Estimado cliente, le informamos que su pedido : " +
         "*" +
         usuarios.pedido +
