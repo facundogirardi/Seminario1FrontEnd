@@ -161,7 +161,7 @@ export default function Encuesta() {
         <div style={{ padding: 24, width: "400px", display: 'flex', flex: 1 }}>
           <div className="container " >
             <GoogleMaps
-              apiKey={"AIzaSyCPmgstXgIilvBde2JqvGDxg3NdxcAgAVg"}
+              apiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY}
               style={{ height: "300px", width: "1500px" }}
               zoom={14}
               center={{

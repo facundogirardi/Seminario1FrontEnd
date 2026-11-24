@@ -56,6 +56,14 @@ Para apuntar a otro backend, definir la variable <b>REACT_APP_URL</b> (por ejemp
 REACT_APP_URL=http://localhost:4000/
 ```
 
+El mapa de la pantalla de operador usa Google Maps y necesita una clave de API propia. Agregala en el mismo <b>.env.local</b>, que está en el `.gitignore` y no se sube al repositorio:
+
+```bash
+REACT_APP_GOOGLE_MAPS_API_KEY=tu_clave
+```
+
+Conviene restringir la clave en Google Cloud Console: por referente HTTP (los dominios donde corre la app) y por API (solo *Maps JavaScript API*). Igual va a quedar visible en el JavaScript que recibe el navegador.
+
 ### BackEnd
 
 * El backend de la aplicacion se encuentra en el repositorio https://github.com/facundogirardi/Seminario1BackEnd
@@ -84,6 +92,7 @@ Mantenimiento de dependencias realizado en noviembre de 2026:
 * React 16.14, Material-UI 4.12, react-router-dom 5.3, react-redux 7.2 y notistack actualizados a la última versión de su rama
 * Se eliminaron dependencias que no se usaban en el código y se agregaron las que se usaban sin estar declaradas
 * Se agregó <b>.npmrc</b> con `legacy-peer-deps=true`
+* La clave de Google Maps dejó de estar en el código: ahora se lee de `REACT_APP_GOOGLE_MAPS_API_KEY`
 * La librería `urlencode` (pensada para Node.js) se reemplazó por `encodeURIComponent`, nativa del navegador
 
 ## Recursos
